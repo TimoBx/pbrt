@@ -1,0 +1,133 @@
+Integrator "volpath" "integer maxdepth" [ 65 ] 
+Transform [ 0.435523 -4.21474e-008 -0.900177 -0 -0 1 -4.68212e-008 -0 -0.900177 -2.03917e-008 -0.435524 -0 -0.711083 -1.65163 7.33425 1]
+Sampler "sobol" "integer pixelsamples" [ 64 ] 
+PixelFilter "triangle" "float xwidth" [ 1.000000 ] "float ywidth" [ 1.000000 ] 
+Film "image" "integer xresolution" [ 1024 ] "integer yresolution" [ 1024 ] "string filename" [ "staircase.exr" ] 
+Camera "perspective" "float fov" [ 70.000000 ] 
+WorldBegin
+	Texture "Texture01" "spectrum" "imagemap" "string filename" [ "textures/wood5.tga" ] "bool trilinear" [ "true" ] 
+	Texture "Texture02" "spectrum" "imagemap" "string filename" [ "textures/Tiles.tga" ] "bool trilinear" [ "true" ] 
+	Texture "Texture03" "spectrum" "imagemap" "string filename" [ "textures/Wallpaper.tga" ] "bool trilinear" [ "true" ] 
+	MakeNamedMedium "green" "string type" [ "homogeneous" ] "rgb sigma_s" [ 0.000000 0.000000 0.000000 ] "rgb sigma_a" [ 0.500000 0.200000 0.400000 ] "float scale" [ 1.000000 ] 
+	MakeNamedMaterial "Glass" "string type" [ "glass" ] "float index" [ 1.500000 ] "bool remaproughness" [ "false" ] 
+	MakeNamedMaterial "Wood" "string type" [ "substrate" ] "rgb Ks" [ 0.040000 0.040000 0.040000 ] "texture Kd" [ "Texture01" ] "float uroughness" [ 0.100000 ] "float vroughness" [ 0.100000 ] "bool remaproughness" [ "false" ] 
+	MakeNamedMaterial "FloorTiles" "string type" [ "substrate" ] "rgb Ks" [ 0.040000 0.040000 0.040000 ] "texture Kd" [ "Texture02" ] "float uroughness" [ 0.010000 ] "float vroughness" [ 0.010000 ] "bool remaproughness" [ "false" ] 
+	MakeNamedMaterial "Wall" "string type" [ "matte" ] "rgb Kd" [ 0.893289 0.893289 0.893289 ] 
+	MakeNamedMaterial "Wallpaper" "string type" [ "matte" ] "texture Kd" [ "Texture03" ] 
+	MakeNamedMaterial "SpotHolder" "string type" [ "matte" ] "rgb Kd" [ 1.000000 1.000000 1.000000 ] 
+	MakeNamedMaterial "Metal" "string type" [ "metal" ] "rgb eta" [ 1.657460 0.880369 0.521229 ] "rgb k" [ 9.223869 6.269523 4.837001 ] "bool remaproughness" [ "false" ] "float uroughness" [ 0.100000 ] "float vroughness" [ 0.100000 ] 
+	MakeNamedMaterial "Chrome" "string type" [ "metal" ] "rgb eta" [ 4.369683 2.916703 1.654701 ] "rgb k" [ 5.206434 4.231365 3.754947 ] "bool remaproughness" [ "false" ] "float uroughness" [ 0.100000 ] "float vroughness" [ 0.100000 ] 
+	NamedMaterial "SpotHolder" 
+	Shape "plymesh" "string filename" [ "models/Mesh008.ply" ] 
+	Shape "plymesh" "string filename" [ "models/Mesh004.ply" ] 
+	Shape "plymesh" "string filename" [ "models/Mesh003.ply" ] 
+	Shape "plymesh" "string filename" [ "models/Mesh006.ply" ] 
+	NamedMaterial "Wall" 
+	Shape "plymesh" "string filename" [ "models/Mesh012.ply" ] 
+	NamedMaterial "SpotHolder" 
+	Shape "plymesh" "string filename" [ "models/Mesh013.ply" ] 
+	NamedMaterial "Chrome" 
+	Shape "plymesh" "string filename" [ "models/Mesh010.ply" ] 
+	Shape "plymesh" "string filename" [ "models/Mesh015.ply" ] 
+	Shape "plymesh" "string filename" [ "models/Mesh002.ply" ] 
+	Shape "plymesh" "string filename" [ "models/Mesh007.ply" ] 
+	NamedMaterial "Metal" 
+	Shape "plymesh" "string filename" [ "models/Mesh005.ply" ] 
+	NamedMaterial "Wood" 
+	Shape "plymesh" "string filename" [ "models/Mesh016.ply" ] 
+	Shape "plymesh" "string filename" [ "models/Mesh017.ply" ] 
+	NamedMaterial "Wallpaper" 
+	Shape "plymesh" "string filename" [ "models/Mesh018.ply" ] 
+	NamedMaterial "FloorTiles" 
+	Shape "plymesh" "string filename" [ "models/Mesh011.ply" ] 
+	AttributeBegin
+		MediumInterface "green" ""
+		NamedMaterial "Glass" 
+		Shape "plymesh" "string filename" [ "models/Mesh014.ply" ] 
+	AttributeEnd
+	NamedMaterial "Wood" 
+	Shape "plymesh" "string filename" [ "models/Mesh001.ply" ] 
+	NamedMaterial "Wall" 
+	Shape "plymesh" "string filename" [ "models/Mesh000.ply" ] 
+	Shape "plymesh" "string filename" [ "models/Mesh009.ply" ] 
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 1.500000 1.500000 1.500000 ] 
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+		TransformBegin
+			Transform [ 1 -1.50996e-007 -1.50996e-007 0 1.50996e-007 1 8.74227e-008 0 1.50996e-007 -8.74228e-008 1 0 1.80703 5.61029 1.498 1]
+			Shape "disk" "float radius" [ 0.104916 ] 
+		TransformEnd
+	AttributeEnd
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 1.500000 1.500000 1.500000 ] 
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+		TransformBegin
+			Transform [ 1 -1.50996e-007 -1.50996e-007 0 1.50996e-007 1 8.74228e-008 0 1.50996e-007 -8.74228e-008 1 0 -1.5106 5.61029 1.498 1]
+			Shape "disk" "float radius" [ 0.104916 ] 
+		TransformEnd
+	AttributeEnd
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 1.500000 1.500000 1.500000 ] 
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+		TransformBegin
+			Transform [ 1 -1.50996e-007 -1.50996e-007 0 1.50996e-007 1 8.74228e-008 0 1.50996e-007 -8.74228e-008 1 0 -4.82824 5.61029 1.498 1]
+			Shape "disk" "float radius" [ 0.104916 ] 
+		TransformEnd
+	AttributeEnd
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 1.500000 1.500000 1.500000 ] 
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+		TransformBegin
+			Transform [ 1 -1.50996e-007 -1.50996e-007 0 1.50996e-007 1 8.74227e-008 0 1.50996e-007 -8.74228e-008 1 0 -8.14588 5.61029 1.498 1]
+			Shape "disk" "float radius" [ 0.104916 ] 
+		TransformEnd
+	AttributeEnd
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 1.500000 1.500000 1.500000 ] 
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+		TransformBegin
+			Transform [ 1 -1.50996e-007 -1.50996e-007 0 1.50996e-007 1 8.74227e-008 0 1.50996e-007 -8.74228e-008 1 0 -11.4635 5.61029 1.498 1]
+			Shape "disk" "float radius" [ 0.104919 ] 
+		TransformEnd
+	AttributeEnd
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 1.500000 1.500000 1.500000 ] 
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+		Shape "trianglemesh" "integer indices" [ 0 1 2 0 2 3 ] "point P" [ -4.85856 5.61051 -2.99324 -4.85856 5.47343 -2.99324 -4.99564 5.47343 -2.99324 -4.99564 5.61051 -2.99324 ] "normal N" [ 4.37114e-008 4.37114e-008 1 4.37114e-008 4.37114e-008 1 4.37114e-008 4.37114e-008 1 4.37114e-008 4.37114e-008 1 ] "float uv" [ 0 0 1 0 1 1 0 1 ] 
+	AttributeEnd
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 1.500000 1.500000 1.500000 ] 
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+		Shape "trianglemesh" "integer indices" [ 0 1 2 0 2 3 ] "point P" [ -2.27376 4.03771 -2.99324 -2.27376 3.90063 -2.99324 -2.41084 3.90063 -2.99324 -2.41084 4.03771 -2.99324 ] "normal N" [ 4.37114e-008 4.37114e-008 1 4.37114e-008 4.37114e-008 1 4.37114e-008 4.37114e-008 1 4.37114e-008 4.37114e-008 1 ] "float uv" [ 0 0 1 0 1 1 0 1 ] 
+	AttributeEnd
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 1.500000 1.500000 1.500000 ] 
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+		Shape "trianglemesh" "integer indices" [ 0 1 2 0 2 3 ] "point P" [ 0.16807 2.58933 -2.99324 0.16807 2.45225 -2.99324 0.03099 2.45225 -2.99324 0.03099 2.58933 -2.99324 ] "normal N" [ 4.37114e-008 4.37114e-008 1 4.37114e-008 4.37114e-008 1 4.37114e-008 4.37114e-008 1 4.37114e-008 4.37114e-008 1 ] "float uv" [ 0 0 1 0 1 1 0 1 ] 
+	AttributeEnd
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 1.500000 1.500000 1.500000 ] 
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+		Shape "trianglemesh" "integer indices" [ 0 1 2 0 2 3 ] "point P" [ 2.61918 1.1688 -2.99324 2.61918 1.03172 -2.99324 2.4821 1.03172 -2.99324 2.4821 1.1688 -2.99324 ] "normal N" [ 4.37114e-008 4.37114e-008 1 4.37114e-008 4.37114e-008 1 4.37114e-008 4.37114e-008 1 4.37114e-008 4.37114e-008 1 ] "float uv" [ 0 0 1 0 1 1 0 1 ] 
+	AttributeEnd
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 1.598913 1.598913 1.598913 ] 
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+		Shape "trianglemesh" "integer indices" [ 0 1 2 0 2 3 ] "point P" [ -13.0774 8.46932 4.35663 -13.0774 11.385 3.41418 -0.083652 11.385 3.41418 -0.083652 8.46932 4.35663 ] "normal N" [ 7.01227e-008 -0.307563 -0.951528 7.01227e-008 -0.307563 -0.951528 7.01227e-008 -0.307563 -0.951528 7.01227e-008 -0.307563 -0.951528 ] "float uv" [ 0 0 1 0 1 1 0 1 ] 
+	AttributeEnd
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 4.575005 3.590758 1.549771 ] 
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+		Shape "trianglemesh" "integer indices" [ 0 1 2 0 2 3 ] "point P" [ -5.62738 5.07771 3.44375 0.835596 5.07771 3.44375 0.835596 -0.0414891 3.44375 -5.62738 -0.0414891 3.44375 ] "normal N" [ 0 -5.72381e-008 -1 0 -5.72381e-008 -1 0 -5.72381e-008 -1 0 -5.72381e-008 -1 ] "float uv" [ 0 0 1 0 1 1 0 1 ] 
+	AttributeEnd
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 4.575005 3.590758 1.549771 ] 
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+		Shape "trianglemesh" "integer indices" [ 0 1 2 0 2 3 ] "point P" [ -14.0938 0.0809031 0.0890168 -14.0938 0.0809031 2.99816 -14.0938 4.98968 2.99816 -14.0938 4.98968 0.089017 ] "normal N" [ 1 -1.91069e-015 4.37114e-008 1 -1.91069e-015 4.37114e-008 1 -1.91069e-015 4.37114e-008 1 -1.91069e-015 4.37114e-008 ] "float uv" [ 0 0 1 0 1 1 0 1 ] 
+	AttributeEnd
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 3.265813 3.265813 3.265813 ] 
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ] 
+		Shape "trianglemesh" "integer indices" [ 0 1 2 0 2 3 ] "point P" [ -4.61443 -2.85631 0.210778 -4.61443 -2.85631 -2.85345 1.74718 -2.85631 -2.85345 1.74718 -2.85631 0.210778 ] "normal N" [ 6.60024e-015 1 -1.50996e-007 6.60024e-015 1 -1.50996e-007 6.60024e-015 1 -1.50996e-007 6.60024e-015 1 -1.50996e-007 ] "float uv" [ 0 0 1 0 1 1 0 1 ] 
+	AttributeEnd
+WorldEnd
