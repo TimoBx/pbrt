@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=gnu++11 -Wno-conversion-null -Wno-unused-result -O3 -DNDEBUG   CMakeFiles/dwaLookups.dir/dwaLookups.cpp.o  -o dwaLookups -rdynamic ../../IlmBase/Half/libHalf.a ../../IlmBase/IlmThread/libIlmThread.a ../../IlmBase/Iex/libIex.a -lpthread 

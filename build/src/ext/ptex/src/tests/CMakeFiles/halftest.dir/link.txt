@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++98 -Wall -Wextra -pedantic  -std=gnu++11 -Wno-conversion-null -O3 -DNDEBUG   CMakeFiles/halftest.dir/halftest.cpp.o  -o halftest -rdynamic ../ptex/libPtex.so -lpthread -lz -Wl,-rpath,/home/timothebarbaux/Documents/stage/pbrt/build/src/ext/ptex/src/ptex 
