@@ -1,0 +1,52 @@
+LookAt	0 0 -5	
+	0 0 0
+	0 1 0
+
+Camera "perspective" "float fov" 90 
+
+
+Film "image"  
+"integer xresolution" [700] "integer yresolution" [700]
+    "string filename" "sphere_pbrt.exr"
+
+Sampler "sobol" "integer pixelsamples" [64]
+Integrator "path"
+
+
+WorldBegin
+
+
+
+LightSource "distant" "point from" [ 0 0 -2 ] "point to" [ 0.000000 0.000000 0.000000 ] "rgb L" [ 8.000000 8.000000 8.000000 ] 
+
+LightSource "infinite" "rgb L" [.4 .45 .5]
+
+
+
+MakeNamedMaterial "Blue" "string type" "uber" "color Kd" [0 0 1] "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000] 
+
+MakeNamedMaterial "Yellow" "string type" "uber" "color Kd" [1 1 0] "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000] 
+
+
+#define a blue sphere
+AttributeBegin
+  Translate -2 0 0
+  
+  NamedMaterial "Blue"
+  Shape "sphere" "float radius" [.75] "float height" [2]
+AttributeEnd
+
+#define a yellow cone
+AttributeBegin
+
+  Translate 2 0 0
+  Rotate -90 1 0 0
+  Rotate -45 0 0 1
+
+  NamedMaterial "Yellow"
+  Shape "cone" "float radius" [.75] "float height" [2]
+AttributeEnd
+
+
+
+WorldEnd
