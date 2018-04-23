@@ -1,0 +1,12 @@
+# Blender MTL File: 'monkey.blend'
+# Material Count: 1
+
+newmtl Material.001
+Ns 96.078431
+Ka 0.065347 0.083167 0.120482
+Kd 0.117375 0.640000 0.196547
+Ks 0.500000 0.459553 0.181912
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 5

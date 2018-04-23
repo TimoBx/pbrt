@@ -1,0 +1,74 @@
+# Converted from "torus.obj" by obj2pbrt
+# Scene bounds: (-1.250000, -0.250000, -1.250000) - (1.250000, 0.250000, 1.250000)
+
+
+LookAt	0 0 -6
+	0 0 0
+	0 1 0
+
+
+Camera "perspective" "float fov" 90 
+
+
+
+Film "image"  
+"integer xresolution" [700] "integer yresolution" [700]
+    "string filename" "torus.exr"
+
+Sampler "sobol" "integer pixelsamples" [64]
+Integrator "path"
+
+
+WorldBegin
+
+
+LightSource "distant" "point from" [ 3 2 -2 ] "point to" [ 0.000000 0.000000 0.000000 ] "rgb L" [ 8.000000 8.000000 8.000000 ] 
+
+LightSource "infinite" "rgb L" [.4 .45 .5]
+
+MakeNamedMaterial "matte" "string type" "matte" "color Kd" [0.1 0.2 0.3] "float texture" [0.1]
+
+MakeNamedMaterial "metal" "string type" "metal" 
+
+MakeNamedMaterial "mirror" "string type" "mirror"
+
+MakeNamedMaterial "glass" "string type" "glass""color Kt" [0.2 0.7 0.1]  "float eta" [2]
+
+# Name "Torus1"
+AttributeBegin
+Translate -1.5 -1.5 -1.5
+Rotate -45 1 1 1
+NamedMaterial "matte"
+Include "torusGeo.pbrt"
+
+AttributeEnd
+
+# Name "Torus2"
+AttributeBegin
+Translate 1.5 -1.5 0
+Rotate 90 1 0 0
+NamedMaterial "metal"
+Include "torusGeo.pbrt"
+
+AttributeEnd
+
+# Name "Torus3"
+AttributeBegin
+Translate -1.5 1.5 0
+Rotate 45 1 0 1
+NamedMaterial "mirror"
+Include "torusGeo.pbrt"
+
+AttributeEnd
+
+# Name "Torus4"
+AttributeBegin
+Translate 1.5 1.5 1.5
+NamedMaterial "glass"
+Include "torusGeo.pbrt"
+
+AttributeEnd
+
+
+
+WorldEnd

@@ -1,0 +1,208 @@
+# Converted from "pool.obj" by obj2pbrt
+# Scene bounds: (-25.000000, 0.000502, -25.000000) - (25.000000, 0.638302, 25.000000)
+
+
+
+LookAt	0 0 -10
+	0 0 0
+	0 1 0
+
+
+Rotate -40 5 0 0
+Camera "perspective" "float fov" 80
+
+
+
+Film "image"
+"integer xresolution" [700] "integer yresolution" [700]
+    "string filename" "pool.exr"
+
+Sampler "sobol" "integer pixelsamples" [64]
+Integrator "path"
+
+
+WorldBegin
+
+
+LightSource "distant" "point from" [ 3 2 -2 ] "point to" [ 0.000000 0.000000 0.000000 ] "rgb L" [ 8.000000 8.000000 8.000000 ]
+
+LightSource "infinite" "rgb L" [.4 .45 .5]
+
+Texture "ball1-kd-img" "color" "imagemap" "string filename" ["textures/Ball1.png"]
+Texture "ball1-kd" "color" "scale" "texture tex1" "ball1-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball1" "string type" "uber" "texture Kd" "ball1-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball10-kd-img" "color" "imagemap" "string filename" ["textures/Ball10.png"]
+Texture "ball10-kd" "color" "scale" "texture tex1" "ball10-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball10" "string type" "uber" "texture Kd" "ball10-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball11-kd-img" "color" "imagemap" "string filename" ["textures/Ball11.png"]
+Texture "ball11-kd" "color" "scale" "texture tex1" "ball11-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball11" "string type" "uber" "texture Kd" "ball11-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball12-kd-img" "color" "imagemap" "string filename" ["textures/Ball12.png"]
+Texture "ball12-kd" "color" "scale" "texture tex1" "ball12-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball12" "string type" "uber" "texture Kd" "ball12-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball13-kd-img" "color" "imagemap" "string filename" ["textures/Ball13.png"]
+Texture "ball13-kd" "color" "scale" "texture tex1" "ball13-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball13" "string type" "uber" "texture Kd" "ball13-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball14-kd-img" "color" "imagemap" "string filename" ["textures/Ball14.png"]
+Texture "ball14-kd" "color" "scale" "texture tex1" "ball14-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball14" "string type" "uber" "texture Kd" "ball14-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball16-kd-img" "color" "imagemap" "string filename" ["textures/BallCue.png"]
+Texture "ball16-kd" "color" "scale" "texture tex1" "ball16-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "whiteball" "string type" "uber" "texture Kd" "ball16-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball2-kd-img" "color" "imagemap" "string filename" ["textures/Ball2.png"]
+Texture "ball2-kd" "color" "scale" "texture tex1" "ball2-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball2" "string type" "uber" "texture Kd" "ball2-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball3-kd-img" "color" "imagemap" "string filename" ["textures/Ball3.png"]
+Texture "ball3-kd" "color" "scale" "texture tex1" "ball3-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball3" "string type" "uber" "texture Kd" "ball3-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball4-kd-img" "color" "imagemap" "string filename" ["textures/Ball4.png"]
+Texture "ball4-kd" "color" "scale" "texture tex1" "ball4-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball4" "string type" "uber" "texture Kd" "ball4-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball5-kd-img" "color" "imagemap" "string filename" ["textures/Ball5.png"]
+Texture "ball5-kd" "color" "scale" "texture tex1" "ball5-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball5" "string type" "uber" "texture Kd" "ball5-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball6-kd-img" "color" "imagemap" "string filename" ["textures/Ball6.png"]
+Texture "ball6-kd" "color" "scale" "texture tex1" "ball6-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball6" "string type" "uber" "texture Kd" "ball6-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball7-kd-img" "color" "imagemap" "string filename" ["textures/Ball7.png"]
+Texture "ball7-kd" "color" "scale" "texture tex1" "ball7-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball7" "string type" "uber" "texture Kd" "ball7-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball8-kd-img" "color" "imagemap" "string filename" ["textures/Ball8.png"]
+Texture "ball8-kd" "color" "scale" "texture tex1" "ball8-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball8" "string type" "uber" "texture Kd" "ball8-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "ball9-kd-img" "color" "imagemap" "string filename" ["textures/Ball9.png"]
+Texture "ball9-kd" "color" "scale" "texture tex1" "ball9-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "ball9" "string type" "uber" "texture Kd" "ball9-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+Texture "grnd-kd-img" "color" "imagemap" "string filename" ["textures/pool.png"]
+Texture "grnd-kd" "color" "scale" "texture tex1" "grnd-kd-img" "color tex2" [0.640000 0.640000 0.640000]
+MakeNamedMaterial "pool" "string type" "uber" "texture Kd" "grnd-kd" "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+
+AttributeBegin
+Translate 10 1 -7
+
+NamedMaterial "ball9"
+Shape "sphere"
+AttributeEnd
+
+AttributeBegin
+Translate 5 1 -11
+
+NamedMaterial "ball8"
+Shape "sphere"
+AttributeEnd
+
+AttributeBegin
+Translate -6 1 -2
+
+NamedMaterial "ball3"
+Shape "sphere"
+AttributeEnd
+
+AttributeBegin
+Translate -2 1 8
+
+NamedMaterial "ball4"
+Shape "sphere"
+AttributeEnd
+
+AttributeBegin
+Translate 4 1 -4
+
+NamedMaterial "ball2"
+Shape "sphere"
+AttributeEnd
+
+AttributeBegin
+Translate -5 1 -6
+
+NamedMaterial "ball12"
+Shape "sphere"
+AttributeEnd
+
+AttributeBegin
+Translate 1 1 13
+
+NamedMaterial "ball9"
+Shape "sphere"
+AttributeEnd
+
+AttributeBegin
+Translate 6 1 -7
+
+NamedMaterial "ball7"
+Shape "sphere"
+AttributeEnd
+
+AttributeBegin
+Translate -10 1 12
+
+NamedMaterial "ball1"
+Shape "sphere"
+AttributeEnd
+
+AttributeBegin
+Translate 3 1 1
+
+NamedMaterial "ball13"
+Shape "sphere"
+AttributeEnd
+
+
+
+# WHITE Ball
+
+AttributeBegin
+Translate 0 1 0
+
+#NamedMaterial "whiteball"
+Material "glass"
+Shape "sphere"
+AttributeEnd
+
+
+
+
+
+# Name "Cube_Cube.001"
+AttributeBegin
+NamedMaterial "pool"
+
+Shape "trianglemesh"  "integer indices" [0 2 1 0 3 2 ]
+    "point P" [-5000 0 -6000    -5000 0 5000    5000 0 5000    5000 0 -6000 ]
+Shape "trianglemesh"
+  "point3 P" [
+	-25 0 25
+	-25 0 -25
+	25 0 -25
+	25 0 25
+]
+  "normal N" [
+	0 -1 0
+	0 -1 0
+	0 -1 0
+	0 -1 0
+]
+  "integer indices" [
+	0 1 2
+	0 2 3
+	]
+
+AttributeEnd
+
+WorldEnd
