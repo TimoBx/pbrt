@@ -60,6 +60,7 @@
 #include <vector>
 #include <map>
 #include <cmath>
+#include <iostream>
 
 namespace tinyobj {
 
@@ -728,6 +729,7 @@ void LoadMtl(std::map<std::string, int> &material_map,
   material_t material;
   InitMaterial(material);
 
+  int numberOfMaterialsFound = 0;
   while (inStream.peek() != -1) {
     std::string linebuf;
     safeGetline(inStream, linebuf);
@@ -760,6 +762,7 @@ void LoadMtl(std::map<std::string, int> &material_map,
 
     // new mtl
     if ((0 == strncmp(token, "newmtl", 6)) && IS_SPACE((token[6]))) {
+      numberOfMaterialsFound++;
       // flush previous material.
       if (!material.name.empty()) {
         material_map.insert(std::pair<std::string, int>(
@@ -779,6 +782,8 @@ void LoadMtl(std::map<std::string, int> &material_map,
       sscanf(token, "%s", namebuf);
 #endif
       material.name = namebuf;
+
+      std::cout << "We found the material named :" << material.name <<  " !!" << std::endl;
       continue;
     }
 
@@ -946,6 +951,8 @@ void LoadMtl(std::map<std::string, int> &material_map,
         material.name, static_cast<int>(materials.size())));
     materials.push_back(material);
   }
+
+  std::cout << "We found " << numberOfMaterialsFound <<  " materials !!" << std::endl;
 }
 
 bool MaterialFileReader::operator()(const std::string &matId,
@@ -959,6 +966,8 @@ bool MaterialFileReader::operator()(const std::string &matId,
   } else {
     filepath = matId;
   }
+
+  std::cout << "Here's the mtl filename we got : " << filepath << std::endl;
 
   std::ifstream matIStream(filepath.c_str());
   LoadMtl(matMap, materials, matIStream);
@@ -987,10 +996,24 @@ bool LoadObj(std::vector<shape_t> &shapes,       // [output]
     return false;
   }
 
-  std::string basePath;
-  if (mtl_basepath) {
-    basePath = mtl_basepath;
+  /* CORRECTION MADE BY TIMO
+  TRYING TO GET THE BASE PATH OF THE MTL FILE, WHICH DOESN'T WORK IN THE ORIGINAL CODE */
+
+  std::string basePath = "";
+  std::string basePathFileName = filename;
+  std::size_t found = basePathFileName.find_last_of("/\\");
+  if (found != std::string::npos) {
+    std::cout << "hi there" << std::endl;
+    basePath = basePathFileName.substr(0,found) + "/";
   }
+
+  std::cout << "mtl and obj basepath : " << basePath << std::endl;
+
+
+  // std::string basePath;
+  // if (mtl_basepath) {
+  //   basePath = mtl_basepath;
+  // }
   MaterialFileReader matFileReader(basePath);
 
   return LoadObj(shapes, materials, err, ifs, matFileReader, flags);
@@ -1016,6 +1039,7 @@ bool LoadObj(std::vector<shape_t> &shapes,       // [output]
   int material = -1;
 
   shape_t shape;
+
 
   while (inStream.peek() != -1) {
     std::string linebuf;
@@ -1324,6 +1348,7 @@ int main(int argc, char *argv[]) {
     std::vector<shape_t> shapes;
     std::vector<material_t> materials;
     std::string err;
+
     if (!LoadObj(shapes, materials, err, objFilename, /* mtl_basepath */ nullptr,
                  ptexQuads ? 0 : load_flags_t(triangulation))) {
         fprintf(stderr, "%s: errors loading OBJ file: %s\n", objFilename, err.c_str());
