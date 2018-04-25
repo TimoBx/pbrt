@@ -78,6 +78,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/timothebarbaux/Documents/stage/pbrt/src/integrators/ao.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/integrators/ao.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/integrators/bdpt.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/integrators/bdpt.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/integrators/directlighting.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/integrators/directlighting.cpp.o"
+  "/home/timothebarbaux/Documents/stage/pbrt/src/integrators/importancePath.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/integrators/mlt.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/integrators/mlt.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/integrators/path.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/integrators/path.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/integrators/sppm.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/integrators/sppm.cpp.o"

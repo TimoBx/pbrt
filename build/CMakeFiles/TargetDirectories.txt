@@ -3,6 +3,7 @@
 /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/edit_cache.dir
 /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/package_source.dir
 /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/rebuild_cache.dir
+/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/install.dir
 /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt_test.dir
 /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir
 /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/imgtool.dir
@@ -13,7 +14,7 @@
 /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/bsdftest.dir
 /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/install/strip.dir
 /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/install/local.dir
-/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/install.dir
+/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/importancePbrt.dir
 /home/timothebarbaux/Documents/stage/pbrt/build/src/ext/openexr/CMakeFiles/test.dir
 /home/timothebarbaux/Documents/stage/pbrt/build/src/ext/openexr/CMakeFiles/package.dir
 /home/timothebarbaux/Documents/stage/pbrt/build/src/ext/openexr/CMakeFiles/edit_cache.dir

@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/timothebarbaux/Documents/stage/pbrt/src/tools/importancePbrt.cpp
+cstring
+-
+vector
+-
+map
+-
+cmath
+-
+iostream
+-
+set
+-
+stdio.h
+-
+

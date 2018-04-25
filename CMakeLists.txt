@@ -185,7 +185,7 @@ int main() {
    fstat(fd, &s);
    size_t len = s.st_size;
    void *ptr = mmap(0, len, PROT_READ, MAP_FILE | MAP_SHARED, fd, 0);
-   munmap(ptr, len);   
+   munmap(ptr, len);
 }
 " HAVE_MMAP )
 if ( HAVE_MMAP )
@@ -512,6 +512,11 @@ ADD_SANITIZERS ( obj2pbrt )
 ADD_EXECUTABLE ( cyhair2pbrt src/tools/cyhair2pbrt.cpp )
 ADD_SANITIZERS ( cyhair2pbrt )
 
+ADD_EXECUTABLE ( importancePbrt src/tools/importancePbrt.cpp )
+ADD_SANITIZERS ( importancePbrt )
+TARGET_COMPILE_FEATURES ( importancePbrt PRIVATE ${PBRT_CXX11_FEATURES} )
+TARGET_LINK_LIBRARIES ( importancePbrt ${ALL_PBRT_LIBS} )
+
 # Unit test
 
 FILE ( GLOB PBRT_TEST_SOURCE
@@ -534,6 +539,7 @@ INSTALL ( TARGETS
   imgtool
   obj2pbrt
   cyhair2pbrt
+  importancePbrt
   DESTINATION
   bin
   )

@@ -48,6 +48,9 @@ static void usage(const char *msg = nullptr) {
 Rendering options:
   --cropwindow <x0,x1,y0,y1> Specify an image crop window.
   --help               Print this help text.
+  --importance         Compute the importance map. Does not render an image of
+                       the scene; instead, render the importance map as a .EXR
+                       image (use this file in Gratin afterwards).
   --nthreads <num>     Use specified number of threads for rendering.
   --outfile <filename> Write the final image to the given filename.
   --quick              Automatically reduce a number of quality settings to
@@ -130,11 +133,16 @@ int main(int argc, char *argv[]) {
         }
         else if (!strcmp(argv[i], "--logtostderr")) {
           FLAGS_logtostderr = true;
-        } else if (!strcmp(argv[i], "--help") || !strcmp(argv[i], "-help") ||
+        }
+        else if (!strcmp(argv[i], "--help") || !strcmp(argv[i], "-help") ||
                    !strcmp(argv[i], "-h")) {
             usage();
             return 0;
-        } else
+        }
+        else if (!strcmp(argv[i], "--importance")) {
+            options.importance = true;
+        }
+        else
             filenames.push_back(argv[i]);
     }
 

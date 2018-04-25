@@ -1003,11 +1003,8 @@ bool LoadObj(std::vector<shape_t> &shapes,       // [output]
   std::string basePathFileName = filename;
   std::size_t found = basePathFileName.find_last_of("/\\");
   if (found != std::string::npos) {
-    std::cout << "hi there" << std::endl;
     basePath = basePathFileName.substr(0,found) + "/";
   }
-
-  std::cout << "mtl and obj basepath : " << basePath << std::endl;
 
 
   // std::string basePath;

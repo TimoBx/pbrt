@@ -52,6 +52,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/pbrt.dir/src/filters/mitchell.cpp.o"
   "CMakeFiles/pbrt.dir/src/filters/gaussian.cpp.o"
   "CMakeFiles/pbrt.dir/src/integrators/path.cpp.o"
+  "CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o"
   "CMakeFiles/pbrt.dir/src/integrators/directlighting.cpp.o"
   "CMakeFiles/pbrt.dir/src/integrators/volpath.cpp.o"
   "CMakeFiles/pbrt.dir/src/integrators/sppm.cpp.o"
