@@ -180,6 +180,8 @@ struct Options {
     Float cropWindow[2][2];
 
     bool importance = false;
+    Float *impMap;
+    int widthImpMap, heightImpMap;
 };
 
 extern Options PbrtOptions;

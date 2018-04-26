@@ -201,6 +201,7 @@ CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/filters/triangle.h
 CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/integrators/ao.h
 CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/integrators/bdpt.h
 CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/integrators/directlighting.h
+CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/integrators/importancePath.h
 CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/integrators/mlt.h
 CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/integrators/path.h
 CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/integrators/sppm.h

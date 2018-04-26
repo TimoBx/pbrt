@@ -141,6 +141,13 @@ int main(int argc, char *argv[]) {
         }
         else if (!strcmp(argv[i], "--importance")) {
             options.importance = true;
+            options.widthImpMap = 128, options.heightImpMap = 64;
+            options.impMap = new Float[3 * options.widthImpMap * options.heightImpMap];
+            for (int i = 0; i < options.widthImpMap*options.heightImpMap*3; i++){
+                if (i%3 == 0) options.impMap[i] = 0;
+                if (i%3 == 1) options.impMap[i] = 1;
+                if (i%3 == 2) options.impMap[i] = 1;
+            }
         }
         else
             filenames.push_back(argv[i]);

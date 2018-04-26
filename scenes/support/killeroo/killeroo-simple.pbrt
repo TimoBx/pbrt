@@ -6,7 +6,7 @@ Rotate -25 0 0 1
 Camera "perspective" "float fov" [60]
 Film "image"  
 "integer xresolution" [700] "integer yresolution" [700]
-    "string filename" "killeroo-simple3.exr"
+    "string filename" "killeroo-simple.exr"
 
 # zoom in by feet
 # "integer xresolution" [1500] "integer yresolution" [1500]
@@ -21,7 +21,24 @@ WorldBegin
 
 # CREATING LIGHT SOURCE
 
-LightSource "infinite" "string mapname" "light3.png"
+AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 9.000000 9.000000 10.000000 ]
+		Material "matte" "rgb Kd" [ 0 0 0 ]
+		Shape "trianglemesh" "integer indices" [ 0 1 2 0 2 3 ] "point P" [ -2.04973 5.14472 0.974365 2.04973 5.14472 0.974365 2.04973 5.14472 2.24722 -2.04973 5.14472 2.24721 ] "normal N" [ 1.50996e-007 -1 8.74228e-008 1.50996e-007 -1 8.74228e-008 1.50996e-007 -1 8.74228e-008 1.50996e-007 -1 8.74228e-008 ] "float uv" [ 0 0 1 0 1 1 0 1 ]
+	AttributeEnd
+
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 9.000000 9.000000 10.000000 ]
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ]
+		Shape "trianglemesh" "integer indices" [ 0 1 2 0 2 3 ] "point P" [ -2.04973 5.14472 -2.24722 2.04973 5.14472 -2.24721 2.04973 5.14472 -0.974365 -2.04973 5.14472 -0.974365 ] "normal N" [ 1.50996e-007 -1 8.74228e-008 1.50996e-007 -1 8.74228e-008 1.50996e-007 -1 8.74228e-008 1.50996e-007 -1 8.74228e-008 ] "float uv" [ 0 0 1 0 1 1 0 1 ]
+	AttributeEnd
+
+	TransformBegin
+		Transform [ -1 0 8.74228e-008 0 -8.74228e-008 0 -1 0 0 1 0 0 0 0 0 1]
+		LightSource "infinite" "rgb L" [ 0.300000 0.300000 0.300000 ]
+	TransformEnd
+
+LightSource "infinite" "string mapname" "monkey.exr"
 
 
 # CREATING GROUND AND BACKGROUND - TWO PLANES

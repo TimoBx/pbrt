@@ -66,7 +66,7 @@ class ImportancePathIntegrator : public SamplerIntegrator {
     std::unique_ptr<LightDistribution> lightDistribution;
 };
 
-ImportancePathIntegrator *CreatePathIntegrator(const ParamSet &params,
+ImportancePathIntegrator *CreateImportancePathIntegrator(const ParamSet &params,
                                      std::shared_ptr<Sampler> sampler,
                                      std::shared_ptr<const Camera> camera);
 

@@ -1327,6 +1327,8 @@ integrators/volpath.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/integrators/volpath.h
 integrators/whitted.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/integrators/whitted.h
+integrators/importancePath.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/integrators/importancePath.h
 lights/diffuse.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/lights/diffuse.h
 lights/distant.h
