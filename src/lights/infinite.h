@@ -73,7 +73,7 @@ class InfiniteAreaLight : public Light {
     std::unique_ptr<MIPMap<RGBSpectrum>> Lmap;
     Point3f worldCenter;
     Float worldRadius;
-    std::unique_ptr<Distribution2D> distribution;
+    std::shared_ptr<Distribution2D> distribution;
 };
 
 std::shared_ptr<InfiniteAreaLight> CreateInfiniteLight(

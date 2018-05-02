@@ -1289,6 +1289,8 @@ medium.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/medium.h
 stats.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/stats.h
+impgeneration.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
 accelerators/bvh.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/accelerators/bvh.h
 accelerators/kdtreeaccel.h
@@ -1613,6 +1615,22 @@ geometry.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/geometry.h
 cctype
 -
+
+/home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.cpp
+impgeneration.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
+api.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/api.h
+paramset.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/paramset.h
+imageio.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/imageio.h
+lights/infinite.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/lights/infinite.h
+
+/home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
+pbrt.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/pbrt.h
 
 /home/timothebarbaux/Documents/stage/pbrt/src/core/integrator.cpp
 integrator.h

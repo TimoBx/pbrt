@@ -60,6 +60,8 @@
 #include <string.h>
 #include <glog/logging.h>
 
+
+
 // Platform-specific definitions
 #if defined(_WIN32) || defined(_WIN64)
   #define PBRT_IS_WINDOWS
@@ -179,9 +181,11 @@ struct Options {
     // x0, x1, y0, y1
     Float cropWindow[2][2];
 
+    // Importance Map generation
     bool importance = false;
     Float *impMap;
     int widthImpMap, heightImpMap;
+    std::string impMapName;
 };
 
 extern Options PbrtOptions;

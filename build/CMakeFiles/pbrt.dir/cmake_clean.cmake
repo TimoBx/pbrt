@@ -10,6 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/pbrt.dir/src/core/floatfile.cpp.o"
   "CMakeFiles/pbrt.dir/src/core/geometry.cpp.o"
   "CMakeFiles/pbrt.dir/src/core/imageio.cpp.o"
+  "CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o"
   "CMakeFiles/pbrt.dir/src/core/integrator.cpp.o"
   "CMakeFiles/pbrt.dir/src/core/interaction.cpp.o"
   "CMakeFiles/pbrt.dir/src/core/interpolation.cpp.o"

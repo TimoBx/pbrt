@@ -41,6 +41,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/timothebarbaux/Documents/stage/pbrt/src/core/floatfile.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/floatfile.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/core/geometry.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/geometry.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/core/imageio.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/imageio.cpp.o"
+  "/home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/core/integrator.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/integrator.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/core/interaction.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/interaction.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/core/interpolation.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/interpolation.cpp.o"

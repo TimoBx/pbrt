@@ -1478,6 +1478,33 @@ src/core/imageio.cpp.s:
 	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/core/imageio.cpp.s
 .PHONY : src/core/imageio.cpp.s
 
+src/core/impgeneration.o: src/core/impgeneration.cpp.o
+
+.PHONY : src/core/impgeneration.o
+
+# target to build an object file
+src/core/impgeneration.cpp.o:
+	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o
+.PHONY : src/core/impgeneration.cpp.o
+
+src/core/impgeneration.i: src/core/impgeneration.cpp.i
+
+.PHONY : src/core/impgeneration.i
+
+# target to preprocess a source file
+src/core/impgeneration.cpp.i:
+	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.i
+.PHONY : src/core/impgeneration.cpp.i
+
+src/core/impgeneration.s: src/core/impgeneration.cpp.s
+
+.PHONY : src/core/impgeneration.s
+
+# target to generate assembly for a file
+src/core/impgeneration.cpp.s:
+	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.s
+.PHONY : src/core/impgeneration.cpp.s
+
 src/core/integrator.o: src/core/integrator.cpp.o
 
 .PHONY : src/core/integrator.o
@@ -4956,6 +4983,9 @@ help:
 	@echo "... src/core/imageio.o"
 	@echo "... src/core/imageio.i"
 	@echo "... src/core/imageio.s"
+	@echo "... src/core/impgeneration.o"
+	@echo "... src/core/impgeneration.i"
+	@echo "... src/core/impgeneration.s"
 	@echo "... src/core/integrator.o"
 	@echo "... src/core/integrator.i"
 	@echo "... src/core/integrator.s"

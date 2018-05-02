@@ -40,6 +40,9 @@
 #include "medium.h"
 #include "stats.h"
 
+// Importance Map generation
+#include "impgeneration.h"
+
 // API Additional Headers
 #include "accelerators/bvh.h"
 #include "accelerators/kdtreeaccel.h"
@@ -738,11 +741,7 @@ std::shared_ptr<Light> MakeLight(const std::string &name,
     std::shared_ptr<Light> light;
 
 
-    if (PbrtOptions.importance)
-        return light;
-
-
-    else if (name == "point")
+    if (name == "point")
         light =
             CreatePointLight(light2world, mediumInterface.outside, paramSet);
     else if (name == "spot")
@@ -1081,12 +1080,9 @@ void pbrtIntegrator(const std::string &name, const ParamSet &params) {
     renderOptions->IntegratorParams = params;
 
     if (PbrtOptions.importance) {
-        renderOptions->IntegratorName = "impath";
-        if (name == "volpath" || name == "path" || name == "whitted") {
-            renderOptions->IntegratorParams = params;
-            std::cout << "PARAMS KEPT FROM " + name + " !!"<< std::endl;
-        }
+        changeIntegrator(name, params, renderOptions->IntegratorName, renderOptions->IntegratorParams);
     }
+
 
 
     if (PbrtOptions.cat || PbrtOptions.toPly) {
@@ -1323,6 +1319,10 @@ void pbrtNamedMaterial(const std::string &name) {
 }
 
 void pbrtLightSource(const std::string &name, const ParamSet &params) {
+
+
+    if (PbrtOptions.importance)
+        return;
 
     VERIFY_WORLD("LightSource");
     WARN_IF_ANIMATED_TRANSFORM("LightSource");
@@ -1682,17 +1682,10 @@ Scene *RenderOptions::MakeScene() {
         MakeAccelerator(AcceleratorName, std::move(primitives), AcceleratorParams);
     if (!accelerator) accelerator = std::make_shared<BVHAccel>(primitives);
 
-    if (PbrtOptions.importance && lights.empty()) {
-        std::cout << "Importance map generation. There is no light in the scene;\n Now let's add the infinite light for the importance map." << std::endl;
-        int w = PbrtOptions.widthImpMap, h = PbrtOptions.heightImpMap;
-        WriteImage("testBlackImage.exr", PbrtOptions.impMap, Bounds2i(Point2i(0, 0), Point2i(w, h)), Point2i(w, h));
-
-
-
-        lights.push_back(std::make_shared<InfiniteAreaLight>(curTransform[0], Spectrum(1.0) * Spectrum(1.0), 1,"testBlackImage.exr"));
-
-
+    if (PbrtOptions.importance) {
+        changeLights(PbrtOptions, lights, curTransform[0]);
     }
+
     Scene *scene = new Scene(accelerator, lights);
     // Erase primitives and lights from _RenderOptions_
     primitives.clear();
@@ -1749,7 +1742,7 @@ Integrator *RenderOptions::MakeIntegrator() const {
 
     IntegratorParams.ReportUnused();
     // Warn if no light sources are defined
-    if (lights.empty())
+    if (!PbrtOptions.importance && lights.empty())
         Warning(
             "No light sources defined in scene; "
             "rendering a black image.");

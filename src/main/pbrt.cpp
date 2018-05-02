@@ -38,6 +38,9 @@
 #include "parallel.h"
 #include <glog/logging.h>
 
+// Importance Map generation
+#include "impgeneration.h"
+
 using namespace pbrt;
 
 static void usage(const char *msg = nullptr) {
@@ -80,6 +83,7 @@ int main(int argc, char *argv[]) {
     google::InitGoogleLogging(argv[0]);
     FLAGS_stderrthreshold = 1; // Warning and above.
 
+    bool impChangeRequired = false;
     Options options;
     std::vector<std::string> filenames;
     // Process command-line arguments
@@ -140,18 +144,13 @@ int main(int argc, char *argv[]) {
             return 0;
         }
         else if (!strcmp(argv[i], "--importance")) {
-            options.importance = true;
-            options.widthImpMap = 128, options.heightImpMap = 64;
-            options.impMap = new Float[3 * options.widthImpMap * options.heightImpMap];
-            for (int i = 0; i < options.widthImpMap*options.heightImpMap*3; i++){
-                if (i%3 == 0) options.impMap[i] = 0;
-                if (i%3 == 1) options.impMap[i] = 1;
-                if (i%3 == 2) options.impMap[i] = 1;
-            }
+            impChangeRequired = true;
         }
         else
             filenames.push_back(argv[i]);
     }
+
+    if (impChangeRequired) changeImpOptions(options, filenames[0]);
 
     // Print welcome banner
     if (!options.quiet && !options.cat && !options.toPly) {
@@ -171,6 +170,9 @@ int main(int argc, char *argv[]) {
             "The source code to pbrt (but *not* the book contents) is covered "
             "by the BSD License.\n");
         printf("See the file LICENSE.txt for the conditions of the license.\n");
+        printf("\n\n\n");
+        if (options.importance)
+            printf("*** IMPORTANCE MAP GENERATION ***\n");
         fflush(stdout);
     }
     pbrtInit(options);

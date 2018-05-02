@@ -268,6 +268,7 @@ CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/core/fileutil.h
 CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/core/film.h
 CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/core/filter.h
 CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/core/geometry.h
+CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/core/impgeneration.h
 CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/core/light.h
 CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/core/medium.h
 CMakeFiles/pbrt.dir/src/core/api.cpp.o: ../src/core/memory.h
@@ -449,6 +450,36 @@ CMakeFiles/pbrt.dir/src/core/imageio.cpp.o: src/ext/glog/glog/logging.h
 CMakeFiles/pbrt.dir/src/core/imageio.cpp.o: src/ext/glog/glog/vlog_is_on.h
 CMakeFiles/pbrt.dir/src/core/imageio.cpp.o: src/ext/openexr/IlmBase/config/IlmBaseConfig.h
 CMakeFiles/pbrt.dir/src/core/imageio.cpp.o: src/ext/openexr/OpenEXR/config/OpenEXRConfig.h
+
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/interaction.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/light.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/material.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/medium.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/mipmap.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/parallel.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/primitive.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/scene.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/shape.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/stats.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/ext/glog/src/glog/log_severity.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/lights/infinite.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/api.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/error.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/fileutil.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/geometry.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/imageio.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/impgeneration.cpp
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/impgeneration.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/memory.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/paramset.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/pbrt.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/quaternion.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/spectrum.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/stringprint.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/texture.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: ../src/core/transform.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: src/ext/glog/glog/logging.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o: src/ext/glog/glog/vlog_is_on.h
 
 CMakeFiles/pbrt.dir/src/core/integrator.cpp.o: ../src/ext/glog/src/glog/log_severity.h
 CMakeFiles/pbrt.dir/src/core/integrator.cpp.o: ../src/core/camera.h
