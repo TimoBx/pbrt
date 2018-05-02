@@ -22,6 +22,10 @@ stringprint.h
 iterator
 -
 
+../src/core/impgeneration.h
+pbrt.h
+../src/core/pbrt.h
+
 ../src/core/parallel.h
 pbrt.h
 ../src/core/pbrt.h
@@ -111,6 +115,8 @@ parallel.h
 /home/timothebarbaux/Documents/stage/pbrt/src/main/parallel.h
 glog/logging.h
 -
+impgeneration.h
+/home/timothebarbaux/Documents/stage/pbrt/src/main/impgeneration.h
 
 src/ext/glog/glog/logging.h
 errno.h

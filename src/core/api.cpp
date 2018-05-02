@@ -40,6 +40,9 @@
 #include "medium.h"
 #include "stats.h"
 
+// Importance Map generation
+#include "impgeneration.h"
+
 // API Additional Headers
 #include "accelerators/bvh.h"
 #include "accelerators/kdtreeaccel.h"
@@ -60,6 +63,7 @@
 #include "integrators/sppm.h"
 #include "integrators/volpath.h"
 #include "integrators/whitted.h"
+#include "integrators/importancePath.h"
 #include "lights/diffuse.h"
 #include "lights/distant.h"
 #include "lights/goniometric.h"
@@ -735,6 +739,8 @@ std::shared_ptr<Light> MakeLight(const std::string &name,
                                  const Transform &light2world,
                                  const MediumInterface &mediumInterface) {
     std::shared_ptr<Light> light;
+
+
     if (name == "point")
         light =
             CreatePointLight(light2world, mediumInterface.outside, paramSet);
@@ -762,6 +768,7 @@ std::shared_ptr<AreaLight> MakeAreaLight(const std::string &name,
                                          const ParamSet &paramSet,
                                          const std::shared_ptr<Shape> &shape) {
     std::shared_ptr<AreaLight> area;
+
     if (name == "area" || name == "diffuse")
         area = CreateDiffuseAreaLight(light2world, mediumInterface.outside,
                                       paramSet, shape);
@@ -1068,8 +1075,16 @@ void pbrtAccelerator(const std::string &name, const ParamSet &params) {
 
 void pbrtIntegrator(const std::string &name, const ParamSet &params) {
     VERIFY_OPTIONS("Integrator");
+
     renderOptions->IntegratorName = name;
     renderOptions->IntegratorParams = params;
+
+    if (PbrtOptions.importance) {
+        changeIntegrator(name, params, renderOptions->IntegratorName, renderOptions->IntegratorParams);
+    }
+
+
+
     if (PbrtOptions.cat || PbrtOptions.toPly) {
         printf("%*sIntegrator \"%s\" ", catIndentCount, "", name.c_str());
         params.Print(catIndentCount);
@@ -1304,6 +1319,11 @@ void pbrtNamedMaterial(const std::string &name) {
 }
 
 void pbrtLightSource(const std::string &name, const ParamSet &params) {
+
+
+    if (PbrtOptions.importance)
+        return;
+
     VERIFY_WORLD("LightSource");
     WARN_IF_ANIMATED_TRANSFORM("LightSource");
     MediumInterface mi = graphicsState.CreateMediumInterface();
@@ -1320,6 +1340,11 @@ void pbrtLightSource(const std::string &name, const ParamSet &params) {
 }
 
 void pbrtAreaLightSource(const std::string &name, const ParamSet &params) {
+
+    if (PbrtOptions.importance)
+          return;
+
+
     VERIFY_WORLD("AreaLightSource");
     graphicsState.areaLight = name;
     graphicsState.areaLightParams = params;
@@ -1656,6 +1681,11 @@ Scene *RenderOptions::MakeScene() {
     std::shared_ptr<Primitive> accelerator =
         MakeAccelerator(AcceleratorName, std::move(primitives), AcceleratorParams);
     if (!accelerator) accelerator = std::make_shared<BVHAccel>(primitives);
+
+    if (PbrtOptions.importance) {
+        changeLights(PbrtOptions, lights, curTransform[0]);
+    }
+
     Scene *scene = new Scene(accelerator, lights);
     // Erase primitives and lights from _RenderOptions_
     primitives.clear();
@@ -1678,7 +1708,9 @@ Integrator *RenderOptions::MakeIntegrator() const {
     }
 
     Integrator *integrator = nullptr;
-    if (IntegratorName == "whitted")
+    if (IntegratorName == "impath")
+        integrator = CreateImportancePathIntegrator(IntegratorParams, sampler, camera);
+    else if (IntegratorName == "whitted")
         integrator = CreateWhittedIntegrator(IntegratorParams, sampler, camera);
     else if (IntegratorName == "directlighting")
         integrator =
@@ -1710,7 +1742,7 @@ Integrator *RenderOptions::MakeIntegrator() const {
 
     IntegratorParams.ReportUnused();
     // Warn if no light sources are defined
-    if (lights.empty())
+    if (!PbrtOptions.importance && lights.empty())
         Warning(
             "No light sources defined in scene; "
             "rendering a black image.");

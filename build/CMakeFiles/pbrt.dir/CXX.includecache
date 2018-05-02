@@ -746,6 +746,14 @@ integrator.h
 scene.h
 ../src/integrators/scene.h
 
+../src/integrators/importancePath.h
+pbrt.h
+../src/integrators/pbrt.h
+integrator.h
+../src/integrators/integrator.h
+lightdistrib.h
+../src/integrators/lightdistrib.h
+
 ../src/integrators/mlt.h
 pbrt.h
 ../src/integrators/pbrt.h
@@ -1281,6 +1289,8 @@ medium.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/medium.h
 stats.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/stats.h
+impgeneration.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
 accelerators/bvh.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/accelerators/bvh.h
 accelerators/kdtreeaccel.h
@@ -1319,6 +1329,8 @@ integrators/volpath.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/integrators/volpath.h
 integrators/whitted.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/integrators/whitted.h
+integrators/importancePath.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/integrators/importancePath.h
 lights/diffuse.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/lights/diffuse.h
 lights/distant.h
@@ -1603,6 +1615,22 @@ geometry.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/geometry.h
 cctype
 -
+
+/home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.cpp
+impgeneration.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
+api.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/api.h
+paramset.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/paramset.h
+imageio.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/imageio.h
+lights/infinite.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/lights/infinite.h
+
+/home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
+pbrt.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/pbrt.h
 
 /home/timothebarbaux/Documents/stage/pbrt/src/core/integrator.cpp
 integrator.h
@@ -2363,6 +2391,24 @@ camera.h
 /home/timothebarbaux/Documents/stage/pbrt/src/integrators/camera.h
 film.h
 /home/timothebarbaux/Documents/stage/pbrt/src/integrators/film.h
+stats.h
+/home/timothebarbaux/Documents/stage/pbrt/src/integrators/stats.h
+
+/home/timothebarbaux/Documents/stage/pbrt/src/integrators/importancePath.cpp
+integrators/importancePath.h
+/home/timothebarbaux/Documents/stage/pbrt/src/integrators/integrators/importancePath.h
+bssrdf.h
+/home/timothebarbaux/Documents/stage/pbrt/src/integrators/bssrdf.h
+camera.h
+/home/timothebarbaux/Documents/stage/pbrt/src/integrators/camera.h
+film.h
+/home/timothebarbaux/Documents/stage/pbrt/src/integrators/film.h
+interaction.h
+/home/timothebarbaux/Documents/stage/pbrt/src/integrators/interaction.h
+paramset.h
+/home/timothebarbaux/Documents/stage/pbrt/src/integrators/paramset.h
+scene.h
+/home/timothebarbaux/Documents/stage/pbrt/src/integrators/scene.h
 stats.h
 /home/timothebarbaux/Documents/stage/pbrt/src/integrators/stats.h
 

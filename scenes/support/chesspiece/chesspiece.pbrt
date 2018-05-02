@@ -24,7 +24,11 @@ Integrator "path"
 WorldBegin
 
 
-LightSource "distant" "point from" [ 3 2 -2 ] "point to" [ 0.000000 0.000000 0.000000 ] "rgb L" [ 8.000000 8.000000 8.000000 ]
+LightSource "distant" "point from" [ 10 -2 -7 ] "point to" [ 0.000000 0.000000 0.000000 ] "rgb L" [ 1.000000 8.000000 8.000000 ]
+
+LightSource "distant" "point from" [ 5 0 10 ] "point to" [ 0.000000 0.000000 0.000000 ] "rgb L" [ 8.000000 2.000000 8.000000 ]
+
+LightSource "distant" "point from" [ 3 2 -2 ] "point to" [ 0.000000 0.000000 0.000000 ] "rgb L" [ 8.000000 8.000000 0.000000 ]
 
 LightSource "infinite" "rgb L" [.4 .45 .5]
 

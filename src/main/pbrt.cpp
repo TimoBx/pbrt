@@ -38,6 +38,9 @@
 #include "parallel.h"
 #include <glog/logging.h>
 
+// Importance Map generation
+#include "impgeneration.h"
+
 using namespace pbrt;
 
 static void usage(const char *msg = nullptr) {
@@ -48,6 +51,9 @@ static void usage(const char *msg = nullptr) {
 Rendering options:
   --cropwindow <x0,x1,y0,y1> Specify an image crop window.
   --help               Print this help text.
+  --importance         Compute the importance map. Does not render an image of
+                       the scene; instead, render the importance map as a .EXR
+                       image (use this file in Gratin afterwards).
   --nthreads <num>     Use specified number of threads for rendering.
   --outfile <filename> Write the final image to the given filename.
   --quick              Automatically reduce a number of quality settings to
@@ -77,6 +83,7 @@ int main(int argc, char *argv[]) {
     google::InitGoogleLogging(argv[0]);
     FLAGS_stderrthreshold = 1; // Warning and above.
 
+    bool impChangeRequired = false;
     Options options;
     std::vector<std::string> filenames;
     // Process command-line arguments
@@ -130,13 +137,20 @@ int main(int argc, char *argv[]) {
         }
         else if (!strcmp(argv[i], "--logtostderr")) {
           FLAGS_logtostderr = true;
-        } else if (!strcmp(argv[i], "--help") || !strcmp(argv[i], "-help") ||
+        }
+        else if (!strcmp(argv[i], "--help") || !strcmp(argv[i], "-help") ||
                    !strcmp(argv[i], "-h")) {
             usage();
             return 0;
-        } else
+        }
+        else if (!strcmp(argv[i], "--importance")) {
+            impChangeRequired = true;
+        }
+        else
             filenames.push_back(argv[i]);
     }
+
+    if (impChangeRequired) changeImpOptions(options, filenames[0]);
 
     // Print welcome banner
     if (!options.quiet && !options.cat && !options.toPly) {
@@ -156,6 +170,9 @@ int main(int argc, char *argv[]) {
             "The source code to pbrt (but *not* the book contents) is covered "
             "by the BSD License.\n");
         printf("See the file LICENSE.txt for the conditions of the license.\n");
+        printf("\n\n\n");
+        if (options.importance)
+            printf("*** IMPORTANCE MAP GENERATION ***\n");
         fflush(stdout);
     }
     pbrtInit(options);

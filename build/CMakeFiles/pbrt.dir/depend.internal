@@ -202,6 +202,7 @@ CMakeFiles/pbrt.dir/src/core/api.cpp.o
  ../src/integrators/ao.h
  ../src/integrators/bdpt.h
  ../src/integrators/directlighting.h
+ ../src/integrators/importancePath.h
  ../src/integrators/mlt.h
  ../src/integrators/path.h
  ../src/integrators/sppm.h
@@ -268,6 +269,7 @@ CMakeFiles/pbrt.dir/src/core/api.cpp.o
  /home/timothebarbaux/Documents/stage/pbrt/src/core/film.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/filter.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/geometry.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/light.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/medium.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/memory.h
@@ -449,6 +451,36 @@ CMakeFiles/pbrt.dir/src/core/imageio.cpp.o
  src/ext/glog/glog/vlog_is_on.h
  src/ext/openexr/IlmBase/config/IlmBaseConfig.h
  src/ext/openexr/OpenEXR/config/OpenEXRConfig.h
+CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o
+ ../src/core/interaction.h
+ ../src/core/light.h
+ ../src/core/material.h
+ ../src/core/medium.h
+ ../src/core/mipmap.h
+ ../src/core/parallel.h
+ ../src/core/primitive.h
+ ../src/core/scene.h
+ ../src/core/shape.h
+ ../src/core/stats.h
+ ../src/ext/glog/src/glog/log_severity.h
+ ../src/lights/infinite.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/api.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/error.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/fileutil.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/geometry.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/imageio.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.cpp
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/memory.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/paramset.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/pbrt.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/quaternion.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/spectrum.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/stringprint.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/texture.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/transform.h
+ src/ext/glog/glog/logging.h
+ src/ext/glog/glog/vlog_is_on.h
 CMakeFiles/pbrt.dir/src/core/integrator.cpp.o
  ../src/ext/glog/src/glog/log_severity.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/camera.h
@@ -1112,6 +1144,43 @@ CMakeFiles/pbrt.dir/src/integrators/directlighting.cpp.o
  ../src/ext/glog/src/glog/log_severity.h
  ../src/integrators/directlighting.h
  /home/timothebarbaux/Documents/stage/pbrt/src/integrators/directlighting.cpp
+ src/ext/glog/glog/logging.h
+ src/ext/glog/glog/vlog_is_on.h
+CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o
+ ../src/core/bssrdf.h
+ ../src/core/camera.h
+ ../src/core/error.h
+ ../src/core/fileutil.h
+ ../src/core/film.h
+ ../src/core/filter.h
+ ../src/core/geometry.h
+ ../src/core/integrator.h
+ ../src/core/interaction.h
+ ../src/core/light.h
+ ../src/core/lightdistrib.h
+ ../src/core/material.h
+ ../src/core/medium.h
+ ../src/core/memory.h
+ ../src/core/microfacet.h
+ ../src/core/parallel.h
+ ../src/core/paramset.h
+ ../src/core/pbrt.h
+ ../src/core/primitive.h
+ ../src/core/quaternion.h
+ ../src/core/reflection.h
+ ../src/core/rng.h
+ ../src/core/sampler.h
+ ../src/core/sampling.h
+ ../src/core/scene.h
+ ../src/core/shape.h
+ ../src/core/spectrum.h
+ ../src/core/stats.h
+ ../src/core/stringprint.h
+ ../src/core/texture.h
+ ../src/core/transform.h
+ ../src/ext/glog/src/glog/log_severity.h
+ ../src/integrators/importancePath.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/integrators/importancePath.cpp
  src/ext/glog/glog/logging.h
  src/ext/glog/glog/vlog_is_on.h
 CMakeFiles/pbrt.dir/src/integrators/mlt.cpp.o

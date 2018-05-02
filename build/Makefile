@@ -111,6 +111,18 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -142,18 +154,6 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -277,6 +277,19 @@ bsdftest: cmake_check_build_system
 bsdftest/fast:
 	$(MAKE) -f CMakeFiles/bsdftest.dir/build.make CMakeFiles/bsdftest.dir/build
 .PHONY : bsdftest/fast
+
+#=============================================================================
+# Target rules for targets named importancePbrt
+
+# Build rule for target.
+importancePbrt: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 importancePbrt
+.PHONY : importancePbrt
+
+# fast build rule for target.
+importancePbrt/fast:
+	$(MAKE) -f CMakeFiles/importancePbrt.dir/build.make CMakeFiles/importancePbrt.dir/build
+.PHONY : importancePbrt/fast
 
 #=============================================================================
 # Target rules for targets named CopyIlmBaseLibs
@@ -1465,6 +1478,33 @@ src/core/imageio.cpp.s:
 	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/core/imageio.cpp.s
 .PHONY : src/core/imageio.cpp.s
 
+src/core/impgeneration.o: src/core/impgeneration.cpp.o
+
+.PHONY : src/core/impgeneration.o
+
+# target to build an object file
+src/core/impgeneration.cpp.o:
+	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o
+.PHONY : src/core/impgeneration.cpp.o
+
+src/core/impgeneration.i: src/core/impgeneration.cpp.i
+
+.PHONY : src/core/impgeneration.i
+
+# target to preprocess a source file
+src/core/impgeneration.cpp.i:
+	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.i
+.PHONY : src/core/impgeneration.cpp.i
+
+src/core/impgeneration.s: src/core/impgeneration.cpp.s
+
+.PHONY : src/core/impgeneration.s
+
+# target to generate assembly for a file
+src/core/impgeneration.cpp.s:
+	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.s
+.PHONY : src/core/impgeneration.cpp.s
+
 src/core/integrator.o: src/core/integrator.cpp.o
 
 .PHONY : src/core/integrator.o
@@ -2490,6 +2530,33 @@ src/integrators/directlighting.s: src/integrators/directlighting.cpp.s
 src/integrators/directlighting.cpp.s:
 	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/integrators/directlighting.cpp.s
 .PHONY : src/integrators/directlighting.cpp.s
+
+src/integrators/importancePath.o: src/integrators/importancePath.cpp.o
+
+.PHONY : src/integrators/importancePath.o
+
+# target to build an object file
+src/integrators/importancePath.cpp.o:
+	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o
+.PHONY : src/integrators/importancePath.cpp.o
+
+src/integrators/importancePath.i: src/integrators/importancePath.cpp.i
+
+.PHONY : src/integrators/importancePath.i
+
+# target to preprocess a source file
+src/integrators/importancePath.cpp.i:
+	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.i
+.PHONY : src/integrators/importancePath.cpp.i
+
+src/integrators/importancePath.s: src/integrators/importancePath.cpp.s
+
+.PHONY : src/integrators/importancePath.s
+
+# target to generate assembly for a file
+src/integrators/importancePath.cpp.s:
+	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.s
+.PHONY : src/integrators/importancePath.cpp.s
 
 src/integrators/mlt.o: src/integrators/mlt.cpp.o
 
@@ -4732,6 +4799,33 @@ src/tools/imgtool.cpp.s:
 	$(MAKE) -f CMakeFiles/imgtool.dir/build.make CMakeFiles/imgtool.dir/src/tools/imgtool.cpp.s
 .PHONY : src/tools/imgtool.cpp.s
 
+src/tools/importancePbrt.o: src/tools/importancePbrt.cpp.o
+
+.PHONY : src/tools/importancePbrt.o
+
+# target to build an object file
+src/tools/importancePbrt.cpp.o:
+	$(MAKE) -f CMakeFiles/importancePbrt.dir/build.make CMakeFiles/importancePbrt.dir/src/tools/importancePbrt.cpp.o
+.PHONY : src/tools/importancePbrt.cpp.o
+
+src/tools/importancePbrt.i: src/tools/importancePbrt.cpp.i
+
+.PHONY : src/tools/importancePbrt.i
+
+# target to preprocess a source file
+src/tools/importancePbrt.cpp.i:
+	$(MAKE) -f CMakeFiles/importancePbrt.dir/build.make CMakeFiles/importancePbrt.dir/src/tools/importancePbrt.cpp.i
+.PHONY : src/tools/importancePbrt.cpp.i
+
+src/tools/importancePbrt.s: src/tools/importancePbrt.cpp.s
+
+.PHONY : src/tools/importancePbrt.s
+
+# target to generate assembly for a file
+src/tools/importancePbrt.cpp.s:
+	$(MAKE) -f CMakeFiles/importancePbrt.dir/build.make CMakeFiles/importancePbrt.dir/src/tools/importancePbrt.cpp.s
+.PHONY : src/tools/importancePbrt.cpp.s
+
 src/tools/obj2pbrt.o: src/tools/obj2pbrt.cpp.o
 
 .PHONY : src/tools/obj2pbrt.o
@@ -4770,6 +4864,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... package_source"
 	@echo "... rebuild_cache"
+	@echo "... install"
 	@echo "... pbrt_test"
 	@echo "... pbrt"
 	@echo "... imgtool"
@@ -4780,7 +4875,7 @@ help:
 	@echo "... bsdftest"
 	@echo "... install/strip"
 	@echo "... install/local"
-	@echo "... install"
+	@echo "... importancePbrt"
 	@echo "... CopyIlmBaseLibs"
 	@echo "... Half"
 	@echo "... eLut"
@@ -4888,6 +4983,9 @@ help:
 	@echo "... src/core/imageio.o"
 	@echo "... src/core/imageio.i"
 	@echo "... src/core/imageio.s"
+	@echo "... src/core/impgeneration.o"
+	@echo "... src/core/impgeneration.i"
+	@echo "... src/core/impgeneration.s"
 	@echo "... src/core/integrator.o"
 	@echo "... src/core/integrator.i"
 	@echo "... src/core/integrator.s"
@@ -5002,6 +5100,9 @@ help:
 	@echo "... src/integrators/directlighting.o"
 	@echo "... src/integrators/directlighting.i"
 	@echo "... src/integrators/directlighting.s"
+	@echo "... src/integrators/importancePath.o"
+	@echo "... src/integrators/importancePath.i"
+	@echo "... src/integrators/importancePath.s"
 	@echo "... src/integrators/mlt.o"
 	@echo "... src/integrators/mlt.i"
 	@echo "... src/integrators/mlt.s"
@@ -5251,6 +5352,9 @@ help:
 	@echo "... src/tools/imgtool.o"
 	@echo "... src/tools/imgtool.i"
 	@echo "... src/tools/imgtool.s"
+	@echo "... src/tools/importancePbrt.o"
+	@echo "... src/tools/importancePbrt.i"
+	@echo "... src/tools/importancePbrt.s"
 	@echo "... src/tools/obj2pbrt.o"
 	@echo "... src/tools/obj2pbrt.i"
 	@echo "... src/tools/obj2pbrt.s"

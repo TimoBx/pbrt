@@ -185,7 +185,7 @@ int main() {
    fstat(fd, &s);
    size_t len = s.st_size;
    void *ptr = mmap(0, len, PROT_READ, MAP_FILE | MAP_SHARED, fd, 0);
-   munmap(ptr, len);   
+   munmap(ptr, len);
 }
 " HAVE_MMAP )
 if ( HAVE_MMAP )
@@ -360,6 +360,7 @@ SET ( PBRT_CORE_SOURCE
   src/core/floatfile.cpp
   src/core/geometry.cpp
   src/core/imageio.cpp
+  src/core/impgeneration.cpp
   src/core/integrator.cpp
   src/core/interaction.cpp
   src/core/interpolation.cpp
@@ -400,6 +401,7 @@ SET ( PBRT_CORE_HEADERS
   src/core/floatfile.h
   src/core/geometry.h
   src/core/imageio.h
+  src/core/impgeneration.h
   src/core/integrator.h
   src/core/interaction.h
   src/core/interpolation.h
@@ -512,6 +514,11 @@ ADD_SANITIZERS ( obj2pbrt )
 ADD_EXECUTABLE ( cyhair2pbrt src/tools/cyhair2pbrt.cpp )
 ADD_SANITIZERS ( cyhair2pbrt )
 
+ADD_EXECUTABLE ( importancePbrt src/tools/importancePbrt.cpp )
+ADD_SANITIZERS ( importancePbrt )
+TARGET_COMPILE_FEATURES ( importancePbrt PRIVATE ${PBRT_CXX11_FEATURES} )
+TARGET_LINK_LIBRARIES ( importancePbrt ${ALL_PBRT_LIBS} )
+
 # Unit test
 
 FILE ( GLOB PBRT_TEST_SOURCE
@@ -534,6 +541,7 @@ INSTALL ( TARGETS
   imgtool
   obj2pbrt
   cyhair2pbrt
+  importancePbrt
   DESTINATION
   bin
   )

@@ -20,25 +20,35 @@ WorldBegin
 
 
 # CREATING LIGHT SOURCE
+
 AttributeBegin
-Material "matte" "color Kd" [0 0 0]
-Translate 100 0  20
-Translate 0 20 0
-AreaLightSource "area"  "color L" [2000 2000 2000] "integer nsamples" [8]
-Shape "sphere" "float radius" [3]
-AttributeEnd
+		AreaLightSource "diffuse" "rgb L" [ 9.000000 9.000000 10.000000 ]
+		Material "matte" "rgb Kd" [ 0 0 0 ]
+		Shape "trianglemesh" "integer indices" [ 0 1 2 0 2 3 ] "point P" [ -2.04973 5.14472 0.974365 2.04973 5.14472 0.974365 2.04973 5.14472 2.24722 -2.04973 5.14472 2.24721 ] "normal N" [ 1.50996e-007 -1 8.74228e-008 1.50996e-007 -1 8.74228e-008 1.50996e-007 -1 8.74228e-008 1.50996e-007 -1 8.74228e-008 ] "float uv" [ 0 0 1 0 1 1 0 1 ]
+	AttributeEnd
+
+	AttributeBegin
+		AreaLightSource "diffuse" "rgb L" [ 9.000000 9.000000 10.000000 ]
+		Material "matte" "rgb Kd" [ 0.000000 0.000000 0.000000 ]
+		Shape "trianglemesh" "integer indices" [ 0 1 2 0 2 3 ] "point P" [ -2.04973 5.14472 -2.24722 2.04973 5.14472 -2.24721 2.04973 5.14472 -0.974365 -2.04973 5.14472 -0.974365 ] "normal N" [ 1.50996e-007 -1 8.74228e-008 1.50996e-007 -1 8.74228e-008 1.50996e-007 -1 8.74228e-008 1.50996e-007 -1 8.74228e-008 ] "float uv" [ 0 0 1 0 1 1 0 1 ]
+	AttributeEnd
+
+	TransformBegin
+		Transform [ -1 0 8.74228e-008 0 -8.74228e-008 0 -1 0 0 1 0 0 0 0 0 1]
+		LightSource "infinite" "rgb L" [ 0.300000 0.300000 0.300000 ]
+	TransformEnd
+
+LightSource "infinite" "string mapname" "monkey.exr"
 
 
 # CREATING GROUND AND BACKGROUND - TWO PLANES
 AttributeBegin
-  Material "matte" "color Kd" [.5 .5 0]
+  Material "mirror"
   Translate 0 0 -140
 Shape "trianglemesh" "point P" [ -1000 -1000 0 1000 -1000 0 1000 1000 0 -1000 1000 0 ]
       "float uv" [ 0 0 5 0 5 5 0 5 ]
 	"integer indices" [ 0 1 2 2 3 0]
-Shape "trianglemesh" "point P" [ -400 -1000 -1000   -400 1000 -1000   -400 1000 1000 -400 -1000 1000 ]
-      "float uv" [ 0 0 5 0 5 5 0 5 ]
-        "integer indices" [ 0 1 2 2 3 0]
+
 AttributeEnd
 
 
@@ -48,8 +58,7 @@ Scale .5 .5 .5
 Rotate -60 0 0 1
 
 #FIRST
-    Material "plastic" "color Kd" [.4 .2 .2] "color Ks" [.5 .5 .5]
-        "float roughness" [.025]
+    Material "plastic"
 Translate 100 200 -140
     Include "geometry/killeroo.pbrt"
 
@@ -62,8 +71,7 @@ Rotate 90 0 0 1
 Rotate -90 1 0 0
 Rotate 90 0 1 0
 
-    Material "plastic" "color Ks" [.7 .3 .3] "color Kd" [.1 .5 .8]
-        "float roughness" [.015] 
+    Material "plastic"
     Include "geometry/killeroo.pbrt"
 
 AttributeEnd

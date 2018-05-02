@@ -5,6 +5,7 @@ CMakeFiles/pbrt_exe.dir/src/main/pbrt.cpp.o
  ../src/core/api.h
  ../src/core/error.h
  ../src/core/geometry.h
+ ../src/core/impgeneration.h
  ../src/core/parallel.h
  ../src/core/parser.h
  ../src/core/pbrt.h
