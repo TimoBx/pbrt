@@ -7,11 +7,11 @@ LookAt	0 0 -6
 	0 1 0
 
 
-Camera "perspective" "float fov" 90 
+Camera "perspective" "float fov" 90
 
 
 
-Film "image"  
+Film "image"
 "integer xresolution" [700] "integer yresolution" [700]
     "string filename" "torus.exr"
 
@@ -22,13 +22,11 @@ Integrator "path"
 WorldBegin
 
 
-LightSource "distant" "point from" [ 3 2 -2 ] "point to" [ 0.000000 0.000000 0.000000 ] "rgb L" [ 8.000000 8.000000 8.000000 ] 
-
-LightSource "infinite" "rgb L" [.4 .45 .5]
+LightSource "infinite" "string mapname" "impmap_torus.exr"
 
 MakeNamedMaterial "matte" "string type" "matte" "color Kd" [0.1 0.2 0.3] "float texture" [0.1]
 
-MakeNamedMaterial "metal" "string type" "metal" 
+MakeNamedMaterial "metal" "string type" "metal"
 
 MakeNamedMaterial "mirror" "string type" "mirror"
 

@@ -17,7 +17,8 @@ namespace pbrt {
   void changeImpOptions(Options &options, const std::string &filename);
   void changeIntegrator(const std::string &name, const ParamSet &params, std::string &IntegratorName, ParamSet &IntegratorParams);
   void changeLights(Options &PbrtOptions, std::vector<std::shared_ptr<Light>> &lights, const Transform &light2world);
-
+  Float* normalizeImpMap(Float *impmap, int width, int height);
+  void writeImpImage(Options &options);
 
 }  // namespace pbrt
 

@@ -1153,6 +1153,7 @@ CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o: ../src/core/fileutil.h
 CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o: ../src/core/film.h
 CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o: ../src/core/filter.h
 CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o: ../src/core/geometry.h
+CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o: ../src/core/impgeneration.h
 CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o: ../src/core/integrator.h
 CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o: ../src/core/interaction.h
 CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o: ../src/core/light.h

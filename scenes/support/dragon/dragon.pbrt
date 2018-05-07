@@ -58,7 +58,7 @@ WorldBegin
 		ObjectInstance "dragon"
 	AttributeEnd
 
-LightSource "infinite" "string mapname" "Drawing7.png"
+LightSource "infinite" "string mapname" "new.exr"
 
 
 WorldEnd

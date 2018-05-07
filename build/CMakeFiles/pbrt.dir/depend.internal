@@ -1154,6 +1154,7 @@ CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o
  ../src/core/film.h
  ../src/core/filter.h
  ../src/core/geometry.h
+ ../src/core/impgeneration.h
  ../src/core/integrator.h
  ../src/core/interaction.h
  ../src/core/light.h
