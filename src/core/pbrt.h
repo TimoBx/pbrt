@@ -188,6 +188,7 @@ struct Options {
     std::string impMapName;
 };
 
+
 extern Options PbrtOptions;
 class TextureParams;
 

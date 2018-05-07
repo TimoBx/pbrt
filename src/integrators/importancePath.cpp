@@ -39,6 +39,8 @@
 #include "paramset.h"
 #include "scene.h"
 #include "stats.h"
+#include "light.h"
+#include "impgeneration.h"
 
 namespace pbrt {
 
@@ -71,6 +73,8 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
     int bounces;
     Float etaScale = 1;
 
+    int max = 0;
+
     for (bounces = 0;; ++bounces) {
         // Find next path vertex and accumulate contribution
 
@@ -80,7 +84,9 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
 
 
         // Terminate path if ray escaped or _maxDepth_ was reached
-        if (!foundIntersection || bounces >= maxDepth) break;
+        if (!foundIntersection || bounces >= maxDepth) {
+          break;
+        }
 
         // Compute scattering functions and skip over medium boundaries
         isect.ComputeScatteringFunctions(ray, arena, true);
@@ -102,6 +108,7 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             if (Ld.IsBlack()) ++zeroRadiancePaths;
             CHECK_GE(Ld.y(), 0.f);
             L += Ld;
+
         }
 
         // Sample BSDF to get new path direction
@@ -120,6 +127,17 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             etaScale *= (Dot(wo, isect.n) > 0) ? (eta * eta) : 1 / (eta * eta);
         }
         ray = isect.SpawnRay(wi);
+
+
+        for (const auto &light : scene.infiniteLights) {
+                Vector3f w = Normalize(ray.d);
+                Point2i st(std::floor(SphericalPhi(w) * Inv2Pi * PbrtOptions.widthImpMap), std::floor(SphericalTheta(w) * InvPi * PbrtOptions.heightImpMap));
+                PbrtOptions.impMap[st.y * PbrtOptions.widthImpMap + st.x] += 1;
+                PbrtOptions.impMap[st.y * PbrtOptions.widthImpMap + st.x + 1] += 1;
+                PbrtOptions.impMap[st.y * PbrtOptions.widthImpMap + st.x + 2] += 1;
+                if (max < PbrtOptions.impMap[st.y * PbrtOptions.widthImpMap + st.x])
+                    max = PbrtOptions.impMap[st.y * PbrtOptions.widthImpMap + st.x];
+        }
 
         // Account for subsurface scattering, if applicable
         if (isect.bssrdf && (flags & BSDF_TRANSMISSION)) {

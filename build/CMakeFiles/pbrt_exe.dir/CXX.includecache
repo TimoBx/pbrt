@@ -22,6 +22,14 @@ stringprint.h
 iterator
 -
 
+../src/core/imageio.h
+pbrt.h
+../src/core/pbrt.h
+geometry.h
+../src/core/geometry.h
+cctype
+-
+
 ../src/core/impgeneration.h
 pbrt.h
 ../src/core/pbrt.h
@@ -117,6 +125,8 @@ glog/logging.h
 -
 impgeneration.h
 /home/timothebarbaux/Documents/stage/pbrt/src/main/impgeneration.h
+imageio.h
+/home/timothebarbaux/Documents/stage/pbrt/src/main/imageio.h
 
 src/ext/glog/glog/logging.h
 errno.h

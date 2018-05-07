@@ -128,6 +128,10 @@ geometry.h
 cctype
 -
 
+../src/core/impgeneration.h
+pbrt.h
+../src/core/pbrt.h
+
 ../src/core/integrator.h
 pbrt.h
 ../src/core/pbrt.h
@@ -2411,6 +2415,10 @@ scene.h
 /home/timothebarbaux/Documents/stage/pbrt/src/integrators/scene.h
 stats.h
 /home/timothebarbaux/Documents/stage/pbrt/src/integrators/stats.h
+light.h
+/home/timothebarbaux/Documents/stage/pbrt/src/integrators/light.h
+impgeneration.h
+/home/timothebarbaux/Documents/stage/pbrt/src/integrators/impgeneration.h
 
 /home/timothebarbaux/Documents/stage/pbrt/src/integrators/mlt.cpp
 integrators/mlt.h

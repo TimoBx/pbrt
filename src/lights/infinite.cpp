@@ -95,6 +95,12 @@ Spectrum InfiniteAreaLight::Le(const RayDifferential &ray) const {
     return Spectrum(Lmap->Lookup(st), SpectrumType::Illuminant);
 }
 
+
+
+/*
+    Infinite Area Lights vast light from all directions, so it's necessary
+    to use Monte Carlo integration to sample their illumination.
+*/
 Spectrum InfiniteAreaLight::Sample_Li(const Interaction &ref, const Point2f &u,
                                       Vector3f *wi, Float *pdf,
                                       VisibilityTester *vis) const {

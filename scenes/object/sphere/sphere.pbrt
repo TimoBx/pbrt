@@ -23,19 +23,18 @@ WorldBegin
 
 
 
-LightSource "distant" "point from" [ 0 0 -2 ] "point to" [ 0.000000 0.000000 0.000000 ] "rgb L" [ 8.000000 8.000000 8.000000 ]
-
-LightSource "infinite" "rgb L" [.4 .45 .5]
+LightSource "infinite" "string mapname" "new.exr"
 
 MakeNamedMaterial "Material.001" "string type" "uber" "color Kd" [0.104337 0.293050 0.640000] "color Ks" [0.151481 0.500000 0.485637] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
 
-
+MakeNamedMaterial "Material.002" "string type" "matte" "color Kd" [0 0 1]
 
 
 AttributeBegin
 Rotate 90 1 0 0
-Texture "earth" "spectrum" "imagemap" "string filename" "earth.png"
-Material "matte" "texture Kd" "earth"
+#Texture "earth" "spectrum" "imagemap" "string filename" "earth.png"
+#Material "matte" "texture Kd" "earth"
+NamedMaterial "Material.002"
 Shape "sphere"
 AttributeEnd
 

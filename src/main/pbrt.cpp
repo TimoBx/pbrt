@@ -40,6 +40,7 @@
 
 // Importance Map generation
 #include "impgeneration.h"
+#include "imageio.h"
 
 using namespace pbrt;
 
@@ -185,6 +186,11 @@ int main(int argc, char *argv[]) {
         for (const std::string &f : filenames)
             pbrtParseFile(f);
     }
+
+    if (options.importance) {
+        writeImpImage(options);
+    }
+
     pbrtCleanup();
     return 0;
 }
