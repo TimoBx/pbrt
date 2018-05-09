@@ -191,6 +191,8 @@ int main(int argc, char *argv[]) {
         writeImpImage(options);
     }
 
+    std::cout << "BEFORE CLEANUP..." << std::endl;
     pbrtCleanup();
+    std::cout << "AFTER CLEANUP !" << std::endl;
     return 0;
 }

@@ -16,7 +16,7 @@ Film "image"
 "integer xresolution" [700] "integer yresolution" [700]
     "string filename" "monkey.exr"
 
-Sampler "sobol" "integer pixelsamples" [64]
+Sampler "sobol" "integer pixelsamples" [256]
 Integrator "path"
 
 

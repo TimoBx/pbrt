@@ -2,7 +2,7 @@ Integrator "path" "integer maxdepth" [ 17 ]
 Transform [ 0.678116 -0.167853 -0.715531 -0 -0 0.973571 -0.228385 -0 -0.734955 -0.154871 -0.660194 -0 -0.554465 -6.29907 82.2988 1]
 Sampler "sobol" "integer pixelsamples" [ 64 ]
 PixelFilter "triangle" "float xwidth" [ 1.000000 ] "float ywidth" [ 1.000000 ]
-Film "image" "integer xresolution" [ 1280 ] "integer yresolution" [ 720 ] "string filename" [ "dragon7.exr" ]
+Film "image" "integer xresolution" [ 1280 ] "integer yresolution" [ 720 ] "string filename" [ "dragon.exr" ]
 Camera "perspective" "float fov" [ 28 ]
 
 WorldBegin
@@ -58,7 +58,7 @@ WorldBegin
 		ObjectInstance "dragon"
 	AttributeEnd
 
-LightSource "infinite" "string mapname" "new.exr"
+LightSource "infinite" "string mapname" "impmap_dragon.exr"
 
 
 WorldEnd

@@ -73,8 +73,6 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
     int bounces;
     Float etaScale = 1;
 
-    int max = 0;
-
     for (bounces = 0;; ++bounces) {
         // Find next path vertex and accumulate contribution
 
@@ -82,6 +80,23 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
         SurfaceInteraction isect;
         bool foundIntersection = scene.Intersect(ray, &isect);
 
+        // Possibly add emitted light at intersection
+        if (bounces == 0 || specularBounce) {
+            // Add emitted light at path vertex or from the environment
+            if (foundIntersection) {
+                L += beta * isect.Le(-ray.d);
+                VLOG(2) << "Added Le -> L = " << L;
+            } else {
+                for (const auto &light : scene.infiniteLights) {
+                    L += beta * light->Le(ray);
+                            // Vector3f w = Normalize(light->WorldToLight(ray.d));
+                            // Point2i p = Point2i(std::floor(SphericalPhi(w) * Inv2Pi * (PbrtOptions.widthImpMap-1)), std::floor(SphericalTheta(w) * InvPi * (PbrtOptions.heightImpMap-1)));
+                            // PbrtOptions.impMap[(p.y * PbrtOptions.widthImpMap + p.x)*3] = 1;
+                            // PbrtOptions.impMap[(p.y * PbrtOptions.widthImpMap + p.x)*3 + 1] = 0;
+                            // PbrtOptions.impMap[(p.y * PbrtOptions.widthImpMap + p.x)*3 + 2] = 0;
+            }
+        }
+      }
 
         // Terminate path if ray escaped or _maxDepth_ was reached
         if (!foundIntersection || bounces >= maxDepth) {
@@ -130,13 +145,17 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
 
 
         for (const auto &light : scene.infiniteLights) {
-                Vector3f w = Normalize(ray.d);
-                Point2i st(std::floor(SphericalPhi(w) * Inv2Pi * PbrtOptions.widthImpMap), std::floor(SphericalTheta(w) * InvPi * PbrtOptions.heightImpMap));
-                PbrtOptions.impMap[st.y * PbrtOptions.widthImpMap + st.x] += 1;
-                PbrtOptions.impMap[st.y * PbrtOptions.widthImpMap + st.x + 1] += 1;
-                PbrtOptions.impMap[st.y * PbrtOptions.widthImpMap + st.x + 2] += 1;
-                if (max < PbrtOptions.impMap[st.y * PbrtOptions.widthImpMap + st.x])
-                    max = PbrtOptions.impMap[st.y * PbrtOptions.widthImpMap + st.x];
+                Vector3f w = Normalize(light->WorldToLight(ray.d));
+                Point2i st = Point2i(std::floor(SphericalPhi(w) * Inv2Pi * (PbrtOptions.widthImpMap-1)), std::floor(SphericalTheta(w) * InvPi * (PbrtOptions.heightImpMap-1)));
+                if ((st.y * PbrtOptions.widthImpMap + st.x)*3 >= 3*(PbrtOptions.widthImpMap*PbrtOptions.heightImpMap)) {
+                    std::cout << "woops, error" << std::endl;
+                    std::cout << st.x << std::endl;
+                    std::cout << st.y << std::endl;
+                }
+                // std::cout << "i = " << st.x << "; j = " << st.y << "; width = " << PbrtOptions.widthImpMap << "; index = " << (st.y * PbrtOptions.widthImpMap + st.x)*3 << std::endl;
+                PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += 1;
+                PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += 1;
+                PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += 1;
         }
 
         // Account for subsurface scattering, if applicable
@@ -173,6 +192,7 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             DCHECK(!std::isinf(beta.y()));
         }
     }
+
     ReportValue(pathLength, bounces);
     return L;
 }

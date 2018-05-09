@@ -95,9 +95,11 @@ Float* normalizeImpMap(Float *impmap, int width, int height) {
     created infinite light.
 */
 void writeImpImage(Options &options) {
+    std::cout << "SAVING IMPORTANCE MAP..." << std::endl;
     options.impMap = normalizeImpMap(options.impMap, options.widthImpMap, options.heightImpMap);
     int w = options.widthImpMap, h = options.heightImpMap;
     WriteImage(options.impMapName, options.impMap, Bounds2i(Point2i(0, 0), Point2i(w, h)), Point2i(w, h));
+    std::cout << "IMPORTANCE MAP SAVED !" << std::endl;
 }
 
 
