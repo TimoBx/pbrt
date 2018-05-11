@@ -29,7 +29,7 @@ std::string computeNewFilename(std::string filename) {
 */
 void changeImpOptions(Options &options, const std::string &filename) {
     options.importance = true;
-    options.widthImpMap = 128, options.heightImpMap = 64;
+    options.widthImpMap = 1024, options.heightImpMap = 512;
     options.impMap = new Float[3 * options.widthImpMap * options.heightImpMap];
     for (int i = 0; i < options.widthImpMap*options.heightImpMap*3; i++){
         if (i%3 == 0) options.impMap[i] = 0;

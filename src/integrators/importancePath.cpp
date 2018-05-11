@@ -145,17 +145,23 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
 
 
         for (const auto &light : scene.infiniteLights) {
+          Float worldRadius;
+          Point3f worldCenter;
+          scene.WorldBound().BoundingSphere(&worldCenter, &worldRadius);
+            VisibilityTester vis = VisibilityTester(isect, Interaction(isect.p + wi * (2*worldRadius), isect.time, light->mediumInterface));
+            if (vis.Unoccluded(scene)) {
                 Vector3f w = Normalize(light->WorldToLight(ray.d));
-                Point2i st = Point2i(std::floor(SphericalPhi(w) * Inv2Pi * (PbrtOptions.widthImpMap-1)), std::floor(SphericalTheta(w) * InvPi * (PbrtOptions.heightImpMap-1)));
-                if ((st.y * PbrtOptions.widthImpMap + st.x)*3 >= 3*(PbrtOptions.widthImpMap*PbrtOptions.heightImpMap)) {
-                    std::cout << "woops, error" << std::endl;
-                    std::cout << st.x << std::endl;
-                    std::cout << st.y << std::endl;
-                }
+                Point2i st = Point2i(int(SphericalPhi(w) * Inv2Pi * (PbrtOptions.widthImpMap-1)), int(SphericalTheta(w) * InvPi * (PbrtOptions.heightImpMap-1)));
+                // if ((st.y * PbrtOptions.widthImpMap + st.x)*3 >= 3*(PbrtOptions.widthImpMap*PbrtOptions.heightImpMap)) {
+                //     std::cout << "woops, error" << std::endl;
+                //     std::cout << st.x << std::endl;
+                //     std::cout << st.y << std::endl;
+                // }
                 // std::cout << "i = " << st.x << "; j = " << st.y << "; width = " << PbrtOptions.widthImpMap << "; index = " << (st.y * PbrtOptions.widthImpMap + st.x)*3 << std::endl;
                 PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += 1;
                 PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += 1;
                 PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += 1;
+              }
         }
 
         // Account for subsurface scattering, if applicable
