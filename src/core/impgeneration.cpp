@@ -86,7 +86,7 @@ Float* normalizeImpMap(Float *impmap, int width, int height) {
     for (int i = 0; i < width*height*3; i++) {
         impmap[i] = (Float)(impmap[i] / max);
     }
-
+    std::cout << max << std::endl;
     return impmap;
 }
 
@@ -96,7 +96,7 @@ Float* normalizeImpMap(Float *impmap, int width, int height) {
 */
 void writeImpImage(Options &options) {
     std::cout << "SAVING IMPORTANCE MAP..." << std::endl;
-    options.impMap = normalizeImpMap(options.impMap, options.widthImpMap, options.heightImpMap);
+    // options.impMap = normalizeImpMap(options.impMap, options.widthImpMap, options.heightImpMap);
     int w = options.widthImpMap, h = options.heightImpMap;
     WriteImage(options.impMapName, options.impMap, Bounds2i(Point2i(0, 0), Point2i(w, h)), Point2i(w, h));
     std::cout << "IMPORTANCE MAP SAVED !" << std::endl;

@@ -33,8 +33,8 @@ Rotate 90 1 0 0
 #Texture "earth" "spectrum" "imagemap" "string filename" "earth.png"
 #Material "matte" "texture Kd" "earth"
 #Material "plastic" "color Kd" [0 0 0] "color Ks" [1 1 1] "float roughness" [0.01]
-#NamedMaterial "Material.002"
-Material "mirror"
+NamedMaterial "Material.002"
+#Material "mirror"
 Shape "sphere"
 AttributeEnd
 

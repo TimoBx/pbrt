@@ -158,9 +158,17 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
                 //     std::cout << st.y << std::endl;
                 // }
                 // std::cout << "i = " << st.x << "; j = " << st.y << "; width = " << PbrtOptions.widthImpMap << "; index = " << (st.y * PbrtOptions.widthImpMap + st.x)*3 << std::endl;
-                PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += 1;
-                PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += 1;
-                PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += 1;
+
+                float proba = 0;
+                if (std::sin(SphericalTheta(w) != 0)) proba = 1 / (2 * Pi * Pi * (std::sin(SphericalTheta(w))));
+                PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += proba;
+                PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += proba;
+                PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += proba;
+
+
+                // PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += 1;
+                // PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += 1;
+                // PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += 1;
               }
         }
 
