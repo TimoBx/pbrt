@@ -15,14 +15,35 @@ Film "image"
 "integer xresolution" [700] "integer yresolution" [700]
     "string filename" "torus.exr"
 
-Sampler "sobol" "integer pixelsamples" [64]
+Sampler "sobol" "integer pixelsamples" [128]
 Integrator "path"
 
 
 WorldBegin
 
 
-LightSource "infinite" "string mapname" "impmap_torus.exr"
+
+LightSource "distant" "point from" [ 0 0 0 ] "point to" [ 1 1 0 ] "rgb L" [ 50.000000 50.000000 50.000000 ]
+
+MakeNamedMaterial "mat1" "string type" "matte" "color Kd" [0 0 1]
+
+MakeNamedMaterial "mat2" "string type" "matte" "color Kd" [0 0 1] "float sigma" [1]
+
+MakeNamedMaterial "mat3" "string type" "mirror"
+
+MakeNamedMaterial "mat4" "string type" "plastic" "color Kd" [0 0 0] "color Ks" [1 1 1] "float roughness" [0.9]
+
+MakeNamedMaterial "mat5" "string type" "plastic" "color Kd" [0 0 0] "color Ks" [1 1 1] "float roughness" [0.01]
+
+MakeNamedMaterial "mat6" "string type" "glass" "color Kr" [0.1 0.1 0.1] "color Kt" [1 1 1] "float eta" [1.5] "float uroughness" [0] "float vroughness" [0]
+
+MakeNamedMaterial "mat7" "string type" "metal" "float roughness" [0.9]
+
+MakeNamedMaterial "mat8" "string type" "translucent" "spectrum transmit" [1 1 1] "spectrum reflect" [0 0 0]
+
+MakeNamedMaterial "mat9" "string type" "uber" "color Kd" [0 0 1]
+
+
 
 MakeNamedMaterial "matte" "string type" "matte" "color Kd" [0.1 0.2 0.3] "float texture" [0.1]
 
@@ -30,13 +51,15 @@ MakeNamedMaterial "metal" "string type" "metal"
 
 MakeNamedMaterial "mirror" "string type" "mirror"
 
-MakeNamedMaterial "glass" "string type" "glass""color Kt" [0.2 0.7 0.1]  "float eta" [2]
+MakeNamedMaterial "glass" "string type" "glass" "color Kt" [0.2 0.7 0.1]  "float eta" [2]
+
+
 
 # Name "Torus1"
 AttributeBegin
 Translate -1.5 -1.5 -1.5
 Rotate -45 1 1 1
-NamedMaterial "matte"
+NamedMaterial "mat4"
 Include "torusGeo.pbrt"
 
 AttributeEnd
@@ -45,7 +68,7 @@ AttributeEnd
 AttributeBegin
 Translate 1.5 -1.5 0
 Rotate 90 1 0 0
-NamedMaterial "metal"
+NamedMaterial "mat4"
 Include "torusGeo.pbrt"
 
 AttributeEnd
@@ -54,7 +77,7 @@ AttributeEnd
 AttributeBegin
 Translate -1.5 1.5 0
 Rotate 45 1 0 1
-NamedMaterial "mirror"
+NamedMaterial "mat4"
 Include "torusGeo.pbrt"
 
 AttributeEnd
@@ -62,7 +85,7 @@ AttributeEnd
 # Name "Torus4"
 AttributeBegin
 Translate 1.5 1.5 1.5
-NamedMaterial "glass"
+NamedMaterial "mat4"
 Include "torusGeo.pbrt"
 
 AttributeEnd
