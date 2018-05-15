@@ -1692,7 +1692,6 @@ Scene *RenderOptions::MakeScene() {
         changeLights(PbrtOptions, lights, curTransform[0]);
     }
 
-    std::cout << lights.size() << std::endl;
     Scene *scene = new Scene(accelerator, lights);
     // Erase primitives and lights from _RenderOptions_
     primitives.clear();
