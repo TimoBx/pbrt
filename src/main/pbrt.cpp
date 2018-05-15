@@ -55,6 +55,7 @@ Rendering options:
   --importance         Compute the importance map. Does not render an image of
                        the scene; instead, render the importance map as a .EXR
                        image (use this file in Gratin afterwards).
+  --matchange <mat>    Change all the materials in the scene to a chosen one.
   --nthreads <num>     Use specified number of threads for rendering.
   --outfile <filename> Write the final image to the given filename.
   --quick              Automatically reduce a number of quality settings to
@@ -85,6 +86,7 @@ int main(int argc, char *argv[]) {
     FLAGS_stderrthreshold = 1; // Warning and above.
 
     bool impChangeRequired = false;
+    bool matChangeRequired = false;
     Options options;
     std::vector<std::string> filenames;
     // Process command-line arguments
@@ -147,11 +149,18 @@ int main(int argc, char *argv[]) {
         else if (!strcmp(argv[i], "--importance")) {
             impChangeRequired = true;
         }
+        else if (!strcmp(argv[i], "--matchange")) {
+            if (i + 1 == argc)
+                usage("missing value after --matchange argument");
+            matChangeRequired = true;
+            options.newMat = argv[++i];
+        }
         else
             filenames.push_back(argv[i]);
     }
 
-    if (impChangeRequired) changeImpOptions(options, filenames[0]);
+    if (matChangeRequired) changeMatOptions(options, filenames[0]);
+    if (impChangeRequired) changeImpOptions(options, options.matChange ? options.newFileName : filenames[0]);
 
     // Print welcome banner
     if (!options.quiet && !options.cat && !options.toPly) {
@@ -191,8 +200,6 @@ int main(int argc, char *argv[]) {
         writeImpImage(options);
     }
 
-    std::cout << "BEFORE CLEANUP..." << std::endl;
     pbrtCleanup();
-    std::cout << "AFTER CLEANUP !" << std::endl;
     return 0;
 }

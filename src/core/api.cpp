@@ -43,6 +43,7 @@
 // Importance Map generation
 #include "impgeneration.h"
 
+
 // API Additional Headers
 #include "accelerators/bvh.h"
 #include "accelerators/kdtreeaccel.h"
@@ -1506,6 +1507,11 @@ bool shapeMaySetMaterialParameters(const ParamSet &ps) {
 
 std::shared_ptr<Material> GraphicsState::GetMaterialForShape(
     const ParamSet &shapeParams) {
+
+    if (PbrtOptions.matChange) {
+        return changeObjectMaterial(PbrtOptions.newMat);
+    }
+
     CHECK(currentMaterial);
     if (shapeMaySetMaterialParameters(shapeParams)) {
         // Only create a unique material for the shape if the shape's
@@ -1686,6 +1692,7 @@ Scene *RenderOptions::MakeScene() {
         changeLights(PbrtOptions, lights, curTransform[0]);
     }
 
+    std::cout << lights.size() << std::endl;
     Scene *scene = new Scene(accelerator, lights);
     // Erase primitives and lights from _RenderOptions_
     primitives.clear();

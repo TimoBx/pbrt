@@ -186,6 +186,10 @@ struct Options {
     Float *impMap;
     int widthImpMap, heightImpMap;
     std::string impMapName;
+
+    // Changing Material
+    bool matChange = false;
+    std::string newMat, newFileName;
 };
 
 
