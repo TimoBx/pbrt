@@ -7,6 +7,7 @@ CMakeFiles/pbrt_exe.dir/src/main/pbrt.cpp.o
  ../src/core/geometry.h
  ../src/core/imageio.h
  ../src/core/impgeneration.h
+ ../src/core/matchange.h
  ../src/core/parallel.h
  ../src/core/parser.h
  ../src/core/pbrt.h

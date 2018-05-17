@@ -22,10 +22,6 @@ namespace pbrt {
   void writeImpImage(Options &options);
 
 
-  void changeMatOptions(Options &options, const std::string &filename);
-  RGBSpectrum createFloatSpec(float a, float b, float c);
-  std::shared_ptr<Material> changeObjectMaterial(std::string &matname);
-
 }  // namespace pbrt
 
 #endif  // PBRT_CORE_IMPGENERATION_H

@@ -48,6 +48,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/timothebarbaux/Documents/stage/pbrt/src/core/light.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/light.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/core/lightdistrib.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/lightdistrib.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/core/lowdiscrepancy.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.o"
+  "/home/timothebarbaux/Documents/stage/pbrt/src/core/matchange.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/matchange.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/core/material.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/material.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/core/medium.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/medium.cpp.o"
   "/home/timothebarbaux/Documents/stage/pbrt/src/core/memory.cpp" "/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles/pbrt.dir/src/core/memory.cpp.o"

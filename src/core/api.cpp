@@ -43,6 +43,9 @@
 // Importance Map generation
 #include "impgeneration.h"
 
+// Material Change
+#include "matchange.h"
+
 
 // API Additional Headers
 #include "accelerators/bvh.h"
@@ -807,12 +810,16 @@ Camera *MakeCamera(const std::string &name, const ParamSet &paramSet,
     };
     AnimatedTransform animatedCam2World(cam2world[0], transformStart,
                                         cam2world[1], transformEnd);
-    if (name == "perspective")
-        camera = CreatePerspectiveCamera(paramSet, animatedCam2World, film,
-                                         mediumInterface.outside);
-    else if (name == "orthographic")
+
+    if (PbrtOptions.orthoCam || name == "orthographic") {
         camera = CreateOrthographicCamera(paramSet, animatedCam2World, film,
                                           mediumInterface.outside);
+        std::cout << "ORTHO CAM" << std::endl;
+    }
+
+    else if (name == "perspective")
+        camera = CreatePerspectiveCamera(paramSet, animatedCam2World, film,
+                                         mediumInterface.outside);
     else if (name == "realistic")
         camera = CreateRealisticCamera(paramSet, animatedCam2World, film,
                                        mediumInterface.outside);
@@ -1096,6 +1103,7 @@ void pbrtIntegrator(const std::string &name, const ParamSet &params) {
 void pbrtCamera(const std::string &name, const ParamSet &params) {
     VERIFY_OPTIONS("Camera");
     renderOptions->CameraName = name;
+
     renderOptions->CameraParams = params;
     renderOptions->CameraToWorld = Inverse(curTransform);
     namedCoordinateSystems["camera"] = renderOptions->CameraToWorld;
@@ -1376,7 +1384,12 @@ void pbrtShape(const std::string &name, const ParamSet &params) {
             MakeShapes(name, ObjToWorld, WorldToObj,
                        graphicsState.reverseOrientation, params);
         if (shapes.empty()) return;
-        std::shared_ptr<Material> mtl = graphicsState.GetMaterialForShape(params);
+        std::shared_ptr<Material> mtl;
+        if (PbrtOptions.matChange) {
+            mtl =  changeObjectMaterial(PbrtOptions.newMat, false);
+        }
+        else mtl = graphicsState.GetMaterialForShape(params);
+
         params.ReportUnused();
         MediumInterface mi = graphicsState.CreateMediumInterface();
         prims.reserve(shapes.size());
@@ -1508,9 +1521,6 @@ bool shapeMaySetMaterialParameters(const ParamSet &ps) {
 std::shared_ptr<Material> GraphicsState::GetMaterialForShape(
     const ParamSet &shapeParams) {
 
-    if (PbrtOptions.matChange) {
-        return changeObjectMaterial(PbrtOptions.newMat);
-    }
 
     CHECK(currentMaterial);
     if (shapeMaySetMaterialParameters(shapeParams)) {
@@ -1762,6 +1772,8 @@ Camera *RenderOptions::MakeCamera() const {
         Error("Unable to create film.");
         return nullptr;
     }
+
+
     Camera *camera = pbrt::MakeCamera(CameraName, CameraParams, CameraToWorld,
                                   renderOptions->transformStartTime,
                                   renderOptions->transformEndTime, film);

@@ -42,6 +42,9 @@
 #include "impgeneration.h"
 #include "imageio.h"
 
+// Material Change
+#include "matchange.h"
+
 using namespace pbrt;
 
 static void usage(const char *msg = nullptr) {
@@ -154,6 +157,12 @@ int main(int argc, char *argv[]) {
                 usage("missing value after --matchange argument");
             matChangeRequired = true;
             options.newMat = argv[++i];
+            if (options.newMat == "usage"
+            || options.newMat == "help"
+            || options.newMat == "options") {
+                usageMat();
+                return 0;
+            }
         }
         else
             filenames.push_back(argv[i]);
