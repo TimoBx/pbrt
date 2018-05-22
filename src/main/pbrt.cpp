@@ -88,8 +88,6 @@ int main(int argc, char *argv[]) {
     google::InitGoogleLogging(argv[0]);
     FLAGS_stderrthreshold = 1; // Warning and above.
 
-    bool impChangeRequired = false;
-    bool matChangeRequired = false;
     Options options;
     std::vector<std::string> filenames;
     // Process command-line arguments
@@ -150,16 +148,16 @@ int main(int argc, char *argv[]) {
             return 0;
         }
         else if (!strcmp(argv[i], "--importance")) {
-            impChangeRequired = true;
+            changeImpOptions(options);
         }
         else if (!strcmp(argv[i], "--matchange")) {
             if (i + 1 == argc)
                 usage("missing value after --matchange argument");
-            matChangeRequired = true;
-            options.newMat = argv[++i];
-            if (options.newMat == "usage"
-            || options.newMat == "help"
-            || options.newMat == "options") {
+            options.matChange = true;
+            options.newMatName = argv[++i];
+            if (options.newMatName == "usage"
+            || options.newMatName == "help"
+            || options.newMatName == "options") {
                 usageMat();
                 return 0;
             }
@@ -168,8 +166,7 @@ int main(int argc, char *argv[]) {
             filenames.push_back(argv[i]);
     }
 
-    if (matChangeRequired) changeMatOptions(options, filenames[0]);
-    if (impChangeRequired) changeImpOptions(options, options.matChange ? options.newFileName : filenames[0]);
+    options.newFileName = filenames[0];
 
     // Print welcome banner
     if (!options.quiet && !options.cat && !options.toPly) {
@@ -205,7 +202,10 @@ int main(int argc, char *argv[]) {
             pbrtParseFile(f);
     }
 
+    options = PbrtOptions;
+
     if (options.importance) {
+        options.impMapName = computeNewFilename(options.newFileName, "impmap_", "", ".exr");
         writeImpImage(options);
     }
 

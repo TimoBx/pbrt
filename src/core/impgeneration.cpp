@@ -29,7 +29,7 @@ std::string computeNewFilename(std::string filename, std::string prefix, std::st
     map, and the initial color of the imp map (black by default).
     This function is called when the option --importance is given by the user.
 */
-void changeImpOptions(Options &options, const std::string &filename) {
+void changeImpOptions(Options &options) {
     options.importance = true;
     options.widthImpMap = 1024, options.heightImpMap = 512;
     options.impMap = new Float[3 * options.widthImpMap * options.heightImpMap];
@@ -38,7 +38,6 @@ void changeImpOptions(Options &options, const std::string &filename) {
         if (i%3 == 1) options.impMap[i] = 0;
         if (i%3 == 2) options.impMap[i] = 0;
     }
-    options.impMapName = computeNewFilename(filename, "impmap_", "", ".exr");
 
     options.orthoCam = true;
 }

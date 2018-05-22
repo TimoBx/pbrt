@@ -190,8 +190,9 @@ struct Options {
 
     // Changing Material
     bool matChange = false;
-    std::string newMat, newFileName;
-    bool all = true;
+    std::string newMatName, newFileName;
+    std::shared_ptr<Material> newMat;
+
 };
 
 

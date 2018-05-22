@@ -35,7 +35,8 @@ then
 	rm $OUTPUT
 fi
 
-printf "   \n\n---  GENERATING THE IMP MAP  ---  \n\n "
+printf "   \n\n"
+# printf "---  GENERATING THE IMP MAP  ---  \n\n "
 ../../../build/pbrt $INPUT --importance --quiet $m $2
 # printf "   \n\n---  RENDERED IMAGE  ---   \n\n"
 if [ -f $OUTPUT ]

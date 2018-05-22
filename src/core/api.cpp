@@ -189,6 +189,7 @@ struct RenderOptions {
     std::vector<std::shared_ptr<Primitive>> primitives;
     std::map<std::string, std::vector<std::shared_ptr<Primitive>>> instances;
     std::vector<std::shared_ptr<Primitive>> *currentInstance = nullptr;
+    bool isCurrentInstanceATarget = false;
     bool haveScatteringMedia = false;
 };
 
@@ -814,7 +815,6 @@ Camera *MakeCamera(const std::string &name, const ParamSet &paramSet,
     if (PbrtOptions.orthoCam || name == "orthographic") {
         camera = CreateOrthographicCamera(paramSet, animatedCam2World, film,
                                           mediumInterface.outside);
-        std::cout << "ORTHO CAM" << std::endl;
     }
 
     else if (name == "perspective")
@@ -902,6 +902,11 @@ void pbrtInit(const Options &opt) {
     ParallelInit();  // Threads must be launched before the profiler is
                      // initialized.
     InitProfiler();
+
+    if (PbrtOptions.matChange)
+        changeMatOptions(PbrtOptions, PbrtOptions.newFileName);
+
+
 }
 
 void pbrtCleanup() {
@@ -1385,8 +1390,8 @@ void pbrtShape(const std::string &name, const ParamSet &params) {
                        graphicsState.reverseOrientation, params);
         if (shapes.empty()) return;
         std::shared_ptr<Material> mtl;
-        if (PbrtOptions.matChange) {
-            mtl =  changeObjectMaterial(PbrtOptions.newMat, false);
+        if (PbrtOptions.matChange && renderOptions->currentInstance && renderOptions->isCurrentInstanceATarget) {
+            mtl =  PbrtOptions.newMat;
         }
         else mtl = graphicsState.GetMaterialForShape(params);
 
@@ -1567,6 +1572,9 @@ void pbrtObjectBegin(const std::string &name) {
     pbrtAttributeBegin();
     if (renderOptions->currentInstance)
         Error("ObjectBegin called inside of instance definition");
+    if (name == "target") {
+      renderOptions->isCurrentInstanceATarget = true;
+    }
     renderOptions->instances[name] = std::vector<std::shared_ptr<Primitive>>();
     renderOptions->currentInstance = &renderOptions->instances[name];
     if (PbrtOptions.cat || PbrtOptions.toPly)
@@ -1579,6 +1587,8 @@ void pbrtObjectEnd() {
     VERIFY_WORLD("ObjectEnd");
     if (!renderOptions->currentInstance)
         Error("ObjectEnd called outside of instance definition");
+
+    renderOptions->isCurrentInstanceATarget = false;
     renderOptions->currentInstance = nullptr;
     pbrtAttributeEnd();
     ++nObjectInstancesCreated;
@@ -1608,6 +1618,13 @@ void pbrtObjectInstance(const std::string &name) {
         renderOptions->instances[name];
     if (in.empty()) return;
     ++nObjectInstancesUsed;
+
+    if (name == "target") {
+      for (int i = 0; i < in.size(); i++) {
+        in[i]->isTarget = true;
+      }
+    }
+
     if (in.size() > 1) {
         // Create aggregate for instance _Primitive_s
         std::shared_ptr<Primitive> accel(
@@ -1629,6 +1646,7 @@ void pbrtObjectInstance(const std::string &name) {
         InstanceToWorld[1], renderOptions->transformEndTime);
     std::shared_ptr<Primitive> prim(
         std::make_shared<TransformedPrimitive>(in[0], animatedInstanceToWorld));
+
     renderOptions->primitives.push_back(prim);
 }
 

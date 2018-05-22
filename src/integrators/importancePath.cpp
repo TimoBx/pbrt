@@ -149,7 +149,7 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
           Point3f worldCenter;
           scene.WorldBound().BoundingSphere(&worldCenter, &worldRadius);
             VisibilityTester vis = VisibilityTester(isect, Interaction(isect.p + wi * (2*worldRadius), isect.time, light->mediumInterface));
-            if (vis.Unoccluded(scene)) {
+            if (vis.Unoccluded(scene) && isect.primitive->isTarget) {
                 Vector3f w = Normalize(light->WorldToLight(ray.d));
                 Point2i st = Point2i(int(SphericalPhi(w) * Inv2Pi * (PbrtOptions.widthImpMap-1)), int(SphericalTheta(w) * InvPi * (PbrtOptions.heightImpMap-1)));
                 // if ((st.y * PbrtOptions.widthImpMap + st.x)*3 >= 3*(PbrtOptions.widthImpMap*PbrtOptions.heightImpMap)) {

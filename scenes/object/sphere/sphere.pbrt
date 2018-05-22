@@ -9,28 +9,57 @@ LookAt	0 -5 0
 
 
 #Camera "perspective" "float fov" 90
-Camera "orthographic"
+Camera "orthographic" "float screenwindow" [-5 5 -5 5]
 
 
 Film "image"
 "integer xresolution" [700] "integer yresolution" [700]
     "string filename" "sphere.exr"
 
-Sampler "sobol" "integer pixelsamples" [64]
+Sampler "stratified" "integer pixelsamples" [64]
 Integrator "path"
 
 
 WorldBegin
 
 
-AttributeBegin
-
+ObjectBegin "target"
+Material "glass"
 Shape "sphere"
+ObjectEnd
+
+ObjectBegin "test"
+Material "mirror"
+Shape "sphere"
+ObjectEnd
+
+
+ObjectInstance "target"
+
+AttributeBegin
+Translate 3 0 0
+ObjectInstance "test"
 AttributeEnd
 
+AttributeBegin
+Translate -3 0 0
+ObjectInstance "test"
+AttributeEnd
 
+AttributeBegin
+Translate 3 2 2
+ObjectInstance "test"
+AttributeEnd
 
+AttributeBegin
+Translate 3 0 -2
+ObjectInstance "test"
+AttributeEnd
 
+AttributeBegin
+Translate -3 0 2
+ObjectInstance "test"
+AttributeEnd
 
 
 WorldEnd

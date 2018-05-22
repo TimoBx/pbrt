@@ -61,6 +61,7 @@ class Primitive {
                                             MemoryArena &arena,
                                             TransportMode mode,
                                             bool allowMultipleLobes) const = 0;
+    bool isTarget = false;
 };
 
 // GeometricPrimitive Declarations

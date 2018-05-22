@@ -55,7 +55,7 @@ ProgressReporter::ProgressReporter(int64_t totalWork, const std::string &title)
     workDone = 0;
     exitThread = false;
     // Launch thread to periodically update progress bar
-    if (!PbrtOptions.quiet) {
+    // if (!PbrtOptions.quiet) {
         // We need to temporarily disable the profiler before launching
         // the update thread here, through the time the thread calls
         // ProfilerWorkerThreadInit(). Otherwise, there's a potential
@@ -70,22 +70,24 @@ ProgressReporter::ProgressReporter(int64_t totalWork, const std::string &title)
             ProfilerWorkerThreadInit();
             ProfilerState = 0;
             barrier->Wait();
+            std::cout << "\n" << std::endl;
             PrintBar();
+            std::cout << "\n" << std::endl;
         });
         // Wait for the thread to get past the ProfilerWorkerThreadInit()
         // call.
         barrier->Wait();
         ResumeProfiler();
-    }
+    // }
 }
 
 ProgressReporter::~ProgressReporter() {
-    if (!PbrtOptions.quiet) {
+    // if (!PbrtOptions.quiet) {
         workDone = totalWork;
         exitThread = true;
         updateThread.join();
         printf("\n");
-    }
+    // }
 }
 
 void ProgressReporter::PrintBar() {
