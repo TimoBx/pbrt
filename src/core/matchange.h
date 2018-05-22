@@ -29,12 +29,12 @@ namespace pbrt {
 
     void changeMatOptions(Options &options, const std::string &filename);
 
+    void addParamToNewMat(std::string name, std::string description, std::vector<Float> defValues, std::vector<Float> values, ParamSet &params, bool isCustom);
+
     RGBSpectrum createFloatSpec(float a, float b, float c);
     std::unique_ptr<Float[]> fromVectorToPointer(std::vector<Float> vec);
-    std::vector<Float> getSingleCustomParameter(std::string name, Float defValue);
-    std::vector<Float> getSeveralCustomParameters(std::string name, Float defValue1, Float defValue2, Float defValue3);
-
-    // extern std::string newMatString;
+    std::vector<Float> getCustomParameters(std::string name, std::vector<Float> defValues);
+    extern std::string newMatString;
 
 
 }  // namespace pbrt

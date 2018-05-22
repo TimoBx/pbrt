@@ -29,7 +29,7 @@
 
 namespace pbrt {
 
-
+std::string newMatString;
 
 void usageMat() {
     std::cout << R"(
@@ -68,13 +68,7 @@ void changeMatOptions(Options &options, const std::string &filename) {
     options.newMat = changeObjectMaterial(options, options.newMatName, false);
     options.newFileName = computeNewFilename(filename, "", "_" + options.newMatName, ".exr");
 }
-//
-// Float stringtoFloat(std::string s) {
-//     std::stringstream ss(text);
-//     T result;
-//     ss >> result;
-//     return result;
-// }
+
 
 RGBSpectrum createFloatSpec(float a, float b, float c) {
     RGBSpectrum spec(1);
@@ -91,35 +85,32 @@ std::unique_ptr<Float[]> fromVectorToPointer(std::vector<Float> vec) {
     return res;
 }
 
-std::vector<Float> getSingleCustomParameter(std::string name, Float defValue) {
-    std::cout << "\n      Please type the " << name << " value." << std::endl;
-    std::cout << "      Not typing a float will give you the default value ("<< defValue <<").\n" << std::endl;
-    std::vector<Float> f;
-    std::string value;
-    std::getline(std::cin, value);
-    if (value != "" && (value == "0" || std::stof(value)))
-      f.push_back(std::stof(value));
-    else
-      f.push_back(defValue);
-    return f;
-}
+std::vector<Float> getCustomParameters(std::string name, std::vector<Float> defValues) {
+    int n = defValues.size();
+    if (n == 1) {
+        std::cout << "\n      Please type the " << name << " value." << std::endl;
+        std::cout << "      Not typing a float will give you the default value ("<< defValues[0] <<").\n" << std::endl;
+    }
+    else if (n == 3) {
+        std::cout << "\n      Please type the " << name << " values (i.e, 0.2, 0.8 and 0.4, pressing enter for each value)." << std::endl;
+        std::cout << "      Not typing 3 consecutive floats will give you the default values (" << defValues[0] << " " << defValues[1] << " " << defValues[2] <<").\n" << std::endl;
+    }
 
-std::vector<Float> getSeveralCustomParameters(std::string name, Float defValue1, Float defValue2, Float defValue3) {
-    std::cout << "\n      Please type the " << name << " values (i.e, 0.2, 0.8 and 0.4, pressing enter for each value)." << std::endl;
-    std::cout << "      Not typing 3 consecutive floats will give you the default values (" << defValue1 << " " << defValue2 << " " << defValue3 <<").\n" << std::endl;
-    std::vector<Float> f;
-    for (int i = 0; i < 3; i++) {
+    std::vector<Float> f, d;
+    for (int i = 0; i < n; i++) {
+        d.push_back(defValues[i]);
+    }
+
+    for (int i = 0; i < n; i++) {
       std::string value;
       std::getline(std::cin, value);
-      if (value != "" && (value == "0" || std::stof(value)))
-        f.push_back(std::stof(value));
-      else {
-        f.clear();
-        f.push_back(defValue1);
-        f.push_back(defValue2);
-        f.push_back(defValue3);
-        return f;
+      std::istringstream ss(value);
+      float tmp;
+      if (value == "" || !(ss >> tmp)) {
+        return d;
       }
+      else
+        f.push_back(std::stof(value));
     }
     return f;
 }
@@ -130,11 +121,11 @@ std::shared_ptr<Material> newMatGlass(bool isCustom, Float kr1, Float kr2, Float
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
 
-    std::vector<Float> krvec = isCustom ? getSeveralCustomParameters("Kr (reflectivity)", 1, 1, 1) : std::vector<Float>{kr1,kr2,kr3};
-    std::vector<Float> ktvec = isCustom ? getSeveralCustomParameters("Kt (transmissivity)", 1, 1, 1) : std::vector<Float>{kt1,kt2,kt3};
-    std::vector<Float> evec = isCustom ? getSingleCustomParameter("eta (index of refraction of the inside)", 1.5) : std::vector<Float>{e};
-    std::vector<Float> uvec = isCustom ? getSingleCustomParameter("uroughness (microfacet roughness in the u direction)", 0) : std::vector<Float>{u};
-    std::vector<Float> vvec = isCustom ? getSingleCustomParameter("vroughness (microfacet roughness in the v direction)", 0) : std::vector<Float>{v};
+    std::vector<Float> krvec = isCustom ? getCustomParameters("Kr (reflectivity)", std::vector<Float>{1, 1, 1}) : std::vector<Float>{kr1,kr2,kr3};
+    std::vector<Float> ktvec = isCustom ? getCustomParameters("Kt (transmissivity)", std::vector<Float>{1, 1, 1}) : std::vector<Float>{kt1,kt2,kt3};
+    std::vector<Float> evec = isCustom ? getCustomParameters("eta (index of refraction of the inside)", std::vector<Float>{1.5}) : std::vector<Float>{e};
+    std::vector<Float> uvec = isCustom ? getCustomParameters("uroughness (microfacet roughness in the u direction)", std::vector<Float>{0}) : std::vector<Float>{u};
+    std::vector<Float> vvec = isCustom ? getCustomParameters("vroughness (microfacet roughness in the v direction)", std::vector<Float>{0}) : std::vector<Float>{v};
 
     params.AddRGBSpectrum("Kr", std::move(fromVectorToPointer(krvec)), 3);
     params.AddRGBSpectrum("Kt", std::move(fromVectorToPointer(ktvec)), 3);
@@ -151,8 +142,8 @@ std::shared_ptr<Material> newMatMatte(bool isCustom, Float kd1, Float kd2, Float
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
 
-    std::vector<Float> kd = isCustom ? getSeveralCustomParameters("Kd (diffuse reflectivity)", 1, 1, 1) : std::vector<Float>{kd1, kd2, kd3};
-    std::vector<Float> sigma = isCustom ? getSingleCustomParameter("sigma", 0) : std::vector<Float>{s};
+    std::vector<Float> kd = isCustom ? getCustomParameters("Kd (diffuse reflectivity)", std::vector<Float>{1, 1, 1}) : std::vector<Float>{kd1, kd2, kd3};
+    std::vector<Float> sigma = isCustom ? getCustomParameters("sigma", std::vector<Float>{0}) : std::vector<Float>{s};
 
     params.AddRGBSpectrum("Kd", std::move(fromVectorToPointer(kd)), 3);
     params.AddFloat("sigma", std::move(fromVectorToPointer(sigma)), 1);
@@ -165,7 +156,7 @@ std::shared_ptr<Material> newMatMetal(bool isCustom, Float r) {
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
 
-    std::vector<Float> rvec = isCustom ? getSingleCustomParameter("roughness", 0.01) : std::vector<Float>{r};
+    std::vector<Float> rvec = isCustom ? getCustomParameters("roughness", std::vector<Float>{0.01}) : std::vector<Float>{r};
     params.AddFloat("roughness", std::move(fromVectorToPointer(rvec)), 1);
     TextureParams newMp(empty, params, f, spec);
     return std::shared_ptr<Material>(CreateMetalMaterial(newMp));
@@ -176,7 +167,7 @@ std::shared_ptr<Material> newMatMirror(bool isCustom, Float kr1, Float kr2, Floa
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
 
-    std::vector<Float> krvec = isCustom ? getSeveralCustomParameters("Kr (reflectivity)", 0.9, 0.9, 0.9) : std::vector<Float>{kr1,kr2,kr3};
+    std::vector<Float> krvec = isCustom ? getCustomParameters("Kr (reflectivity)", std::vector<Float>{0.9, 0.9, 0.9}) : std::vector<Float>{kr1,kr2,kr3};
     params.AddRGBSpectrum("Kr", std::move(fromVectorToPointer(krvec)), 3);
     TextureParams newMp(empty, params, f, spec);
     return std::shared_ptr<Material>(CreateMirrorMaterial(newMp));
@@ -187,9 +178,9 @@ std::shared_ptr<Material> newMatPlastic(bool isCustom, Float kd1, Float kd2, Flo
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
 
-    std::vector<Float> kdvec = isCustom ? getSeveralCustomParameters("Kd (diffuse reflectivity)", 0.25, 0.25, 0.25) : std::vector<Float>{kd1,kd2,kd3};
-    std::vector<Float> ksvec = isCustom ? getSeveralCustomParameters("Ks (specular reflectivity)", 0.25, 0.25, 0.25) : std::vector<Float>{ks1,ks2,ks3};
-    std::vector<Float> rvec = isCustom ? getSingleCustomParameter("roughness", 0.1) : std::vector<Float>{r};
+    std::vector<Float> kdvec = isCustom ? getCustomParameters("Kd (diffuse reflectivity)", std::vector<Float>{0.25, 0.25, 0.25}) : std::vector<Float>{kd1,kd2,kd3};
+    std::vector<Float> ksvec = isCustom ? getCustomParameters("Ks (specular reflectivity)", std::vector<Float>{0.25, 0.25, 0.25}) : std::vector<Float>{ks1,ks2,ks3};
+    std::vector<Float> rvec = isCustom ? getCustomParameters("roughness", std::vector<Float>{0.1}) : std::vector<Float>{r};
 
     params.AddRGBSpectrum("Kd", std::move(fromVectorToPointer(kdvec)), 3);
     params.AddRGBSpectrum("Ks", std::move(fromVectorToPointer(ksvec)), 3);
@@ -203,11 +194,11 @@ std::shared_ptr<Material> newMatTranslucent(bool isCustom, Float kd1, Float kd2,
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
 
-    std::vector<Float> kdvec = isCustom ? getSeveralCustomParameters("Kd (coefficient of diffuse reflection and transmission)", 0.25, 0.25, 0.25) : std::vector<Float>{kd1,kd2,kd3};
-    std::vector<Float> ksvec = isCustom ? getSeveralCustomParameters("Ks (coefficient of specular reflection and transmission)", 0.25, 0.25, 0.25) : std::vector<Float>{ks1,ks2,ks3};
-    std::vector<Float> roughvec = isCustom ? getSingleCustomParameter("roughness", 0.1) : std::vector<Float>{rough};
-    std::vector<Float> rvec = isCustom ? getSeveralCustomParameters("reflect (fraction of light reflected)", 0.5, 0.5, 0.5) : std::vector<Float>{r1,r2,r3};
-    std::vector<Float> tvec = isCustom ? getSeveralCustomParameters("transmit (fraction of light transmitted)", 0.5, 0.5, 0.5) : std::vector<Float>{t1,t2,t3};
+    std::vector<Float> kdvec = isCustom ? getCustomParameters("Kd (coefficient of diffuse reflection and transmission)", std::vector<Float>{0.25, 0.25, 0.25}) : std::vector<Float>{kd1,kd2,kd3};
+    std::vector<Float> ksvec = isCustom ? getCustomParameters("Ks (coefficient of specular reflection and transmission)", std::vector<Float>{0.25, 0.25, 0.25}) : std::vector<Float>{ks1,ks2,ks3};
+    std::vector<Float> roughvec = isCustom ? getCustomParameters("roughness", std::vector<Float>{0.1}) : std::vector<Float>{rough};
+    std::vector<Float> rvec = isCustom ? getCustomParameters("reflect (fraction of light reflected)", std::vector<Float>{0.5, 0.5, 0.5}) : std::vector<Float>{r1,r2,r3};
+    std::vector<Float> tvec = isCustom ? getCustomParameters("transmit (fraction of light transmitted)", std::vector<Float>{0.5, 0.5, 0.5}) : std::vector<Float>{t1,t2,t3};
 
     params.AddRGBSpectrum("Kd", std::move(fromVectorToPointer(kdvec)), 3);
     params.AddRGBSpectrum("Ks", std::move(fromVectorToPointer(ksvec)), 3);
@@ -223,27 +214,36 @@ std::shared_ptr<Material> newMatUber(bool isCustom, Float kd1, Float kd2, Float 
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
 
-    std::vector<Float> kdvec = isCustom ? getSeveralCustomParameters("Kd (coefficient of diffuse reflection)", 0.25, 0.25, 0.25) : std::vector<Float>{kd1,kd2,kd3};
-    std::vector<Float> ksvec = isCustom ? getSeveralCustomParameters("Ks (coefficient of glossy reflection)", 0.25, 0.25, 0.25) : std::vector<Float>{ks1,ks2,ks3};
-    std::vector<Float> krvec = isCustom ? getSeveralCustomParameters("Kr (coefficient of specular reflection)", 0,0,0) : std::vector<Float>{kr1,kr2,kr3};
-    std::vector<Float> ktvec = isCustom ? getSeveralCustomParameters("Kt (coefficient of specular transmission)", 0,0,0) : std::vector<Float>{kt1,kt2,kt3};
-    std::vector<Float> rvec = isCustom ? getSingleCustomParameter("roughness", 0.1) : std::vector<Float>{r};
-    std::vector<Float> uvec = isCustom ? getSingleCustomParameter("uroughness (microfacet roughness in the u direction)", 0) : std::vector<Float>{u};
-    std::vector<Float> vvec = isCustom ? getSingleCustomParameter("vroughness (microfacet roughness in the v direction)", 0) : std::vector<Float>{v};
-    std::vector<Float> ovec = isCustom ? getSeveralCustomParameters("opacity", 1,1,1) : std::vector<Float>{o1,o2,o3};
-    std::vector<Float> evec = isCustom ? getSingleCustomParameter("eta (index of refraction)", 1.5) : std::vector<Float>{e};
+    addParamToNewMat("Kd", "Kd (coefficient of diffuse reflection)", std::vector<Float>{0.25, 0.25, 0.25}, std::vector<Float>{kd1,kd2,kd3}, params, isCustom);
+    addParamToNewMat("Ks", "Ks (coefficient of glossy reflection)", std::vector<Float>{0.25, 0.25, 0.25}, std::vector<Float>{ks1,ks2,ks3}, params, isCustom);
+    addParamToNewMat("Kr", "Kr (coefficient of specular reflection)", std::vector<Float>{0,0,0}, std::vector<Float>{kr1,kr2,kr3}, params, isCustom);
+    addParamToNewMat("Kt", "Kt (coefficient of specular transmission)", std::vector<Float>{0,0,0}, std::vector<Float>{kt1,kt2,kt3}, params, isCustom);
+    addParamToNewMat("roughness", "roughness", std::vector<Float>{0.1}, std::vector<Float>{r}, params, isCustom);
+    addParamToNewMat("uroughness", "uroughness (microfacet roughness in the u direction)", std::vector<Float>{0}, std::vector<Float>{u}, params, isCustom);
+    addParamToNewMat("vroughness", "vroughness (microfacet roughness in the v direction)", std::vector<Float>{0}, std::vector<Float>{v}, params, isCustom);
+    addParamToNewMat("opacity", "opacity", std::vector<Float>{1,1,1}, std::vector<Float>{o1,o2,o3}, params, isCustom);
+    addParamToNewMat("eta", "eta (index of refraction)", std::vector<Float>{1.5}, std::vector<Float>{e}, params, isCustom);
 
-    params.AddRGBSpectrum("Kd", std::move(fromVectorToPointer(kdvec)), 3);
-    params.AddRGBSpectrum("Ks", std::move(fromVectorToPointer(ksvec)), 3);
-    params.AddRGBSpectrum("Kr", std::move(fromVectorToPointer(krvec)), 3);
-    params.AddRGBSpectrum("Kt", std::move(fromVectorToPointer(ktvec)), 3);
-    params.AddFloat("roughness", std::move(fromVectorToPointer(rvec)), 1);
-    params.AddFloat("uroughness", std::move(fromVectorToPointer(uvec)), 3);
-    params.AddFloat("vroughness", std::move(fromVectorToPointer(vvec)), 3);
-    params.AddRGBSpectrum("opacity", std::move(fromVectorToPointer(ovec)), 3);
-    params.AddFloat("eta", std::move(fromVectorToPointer(evec)), 3);
     TextureParams newMp(empty, params, f, spec);
     return std::shared_ptr<Material>(CreateUberMaterial(newMp));
+}
+
+void addParamToNewMat(std::string name, std::string description, std::vector<Float> defValues, std::vector<Float> values, ParamSet &params, bool isCustom) {
+    int n = defValues.size();
+    std::vector<Float> vec = isCustom ? getCustomParameters(description, defValues) : values;
+
+    std::string s = description + " : (" ;
+    for (int i = 0; i < n; i++) {
+      s += std::to_string(vec[i]);
+      if (i != n-1) s += ", ";
+    }
+    s += ")\n";
+    std::cout << s << std::endl;
+    newMatString += s;
+
+    if (n == 1) params.AddFloat(name, std::move(fromVectorToPointer(vec)), 1);
+    else if (n == 3) params.AddRGBSpectrum(name, std::move(fromVectorToPointer(vec)), 3);
+
 }
 
 
@@ -277,9 +277,10 @@ std::shared_ptr<Material> newMatCustom(Options &options) {
     std::string newSuffix;
     std::getline(std::cin, newSuffix);
 
-    if (newSuffix != "") {
+    if (newSuffix != "")
         options.newMatName = newSuffix;
-    }
+    else
+        options.newMatName = "custom";
 
     return mtl;
 }
@@ -291,7 +292,7 @@ std::shared_ptr<Material> changeObjectMaterial(Options &options, std::string mat
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
     TextureParams mp(empty, params, f, spec);
-
+    options.newMatName = matname;
 
     if (matname == "custom"){
         mat = newMatCustom(options);
@@ -353,6 +354,19 @@ std::shared_ptr<Material> changeObjectMaterial(Options &options, std::string mat
 
     if (isCustom)
         std::cout << "\nYour custom material has been created !\n" << std::endl;
+
+    if (!(isCustom && matname != "custom")) {
+      std::string matDescription;
+      matDescription = "--- NEW MATERIAL ---\n";
+      matDescription += " Material name : " + options.newMatName + "\n";
+      matDescription += " Material type : " + matname + "\n";
+
+      newMatString = matDescription + newMatString;
+
+      std::cout << newMatString << std::endl;
+
+
+    }
 
     return mat;
 
