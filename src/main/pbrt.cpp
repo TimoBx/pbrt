@@ -192,6 +192,7 @@ int main(int argc, char *argv[]) {
         fflush(stdout);
     }
     pbrtInit(options);
+
     // Process scene description
     if (filenames.empty()) {
         // Parse scene from standard input
@@ -206,6 +207,9 @@ int main(int argc, char *argv[]) {
 
     if (options.importance) {
         options.impMapName = computeNewFilename(options.newFileName, "impmap_", "", ".exr");
+        options.reflectImpMapName = computeNewFilename(options.newFileName, "impmapR_", "", ".exr");
+        options.transmitImpMapName = computeNewFilename(options.newFileName, "impmapT_", "", ".exr");
+
         writeImpImage(options);
     }
 

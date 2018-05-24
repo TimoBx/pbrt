@@ -74,6 +74,8 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
     Float etaScale = 1;
 
     bool targetFoundFirstBounce = false;
+    bool reflection = false;
+    bool transmittance = false;
 
     for (bounces = 0;; ++bounces) {
         // Find next path vertex and accumulate contribution
@@ -82,17 +84,12 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
         SurfaceInteraction isect;
         bool foundIntersection = scene.Intersect(ray, &isect);
 
-        // std::cout << isect.primitive->isTarget << std::endl;
 
         if (foundIntersection && bounces == 0 && isect.primitive->isTarget) {
-          // std::cout << "We found a target on the first intersection !" << std::endl;
-            ray.firstIsectTarget = true;
+            // ray.firstIsectTarget = true;
             targetFoundFirstBounce = true;
         }
-        else
-          // std::cout << "We didnt find a target..." << std::endl;
 
-        // std::cout << "After test bounces" << std::endl;
 
         // Possibly add emitted light at intersection
         if (bounces == 0 || specularBounce) {
@@ -107,15 +104,10 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
 
         }
 
-        // std::cout << "Before test" << std::endl;
-
         // Terminate path if ray escaped or _maxDepth_ was reached
         if (!foundIntersection || bounces >= maxDepth) {
-          // std::cout << "Inside first if" << std::endl;
           if (bounces >= 1 && /*ray.firstIsectTarget*/ targetFoundFirstBounce) {
-              // std::cout << "Inside second if" << std::endl;
               for (const auto &light : scene.infiniteLights) {
-                  // std::cout << "Inside for" << std::endl;
                   Vector3f w = Normalize(light->WorldToLight(ray.d));
                   Point2i st = Point2i(int(SphericalPhi(w) * Inv2Pi * (PbrtOptions.widthImpMap-1)), int(SphericalTheta(w) * InvPi * (PbrtOptions.heightImpMap-1)));
 
@@ -124,6 +116,18 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
                   PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += proba;
                   PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += proba;
                   PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += proba;
+
+                  if (reflection) {
+                    PbrtOptions.reflectImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += proba;
+                    PbrtOptions.reflectImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += proba;
+                    PbrtOptions.reflectImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += proba;
+                  }
+
+                  if (transmittance) {
+                    PbrtOptions.transmitImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += proba;
+                    PbrtOptions.transmitImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += proba;
+                    PbrtOptions.transmitImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += proba;
+                  }
               }
 
           }
@@ -137,6 +141,7 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             bounces--;
             continue;
         }
+
 
         const Distribution1D *distrib = lightDistribution->Lookup(isect.p);
 
@@ -168,6 +173,8 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             Float eta = isect.bsdf->eta;
             etaScale *= (Dot(wo, isect.n) > 0) ? (eta * eta) : 1 / (eta * eta);
         }
+
+
         ray = isect.SpawnRay(wi);
 
 
@@ -195,6 +202,22 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             specularBounce = (flags & BSDF_SPECULAR) != 0;
             ray = pi.SpawnRay(wi);
         }
+
+
+
+        if (bounces == 0 && (flags & BSDF_TRANSMISSION))
+            transmittance = true;
+
+        if (!(transmittance == true && (flags & BSDF_TRANSMISSION)))
+            transmittance = false;
+
+        if (bounces == 0 && (flags & BSDF_REFLECTION))
+            reflection = true;
+
+        if (!(reflection == true && (flags & BSDF_REFLECTION)))
+            reflection = false;
+
+
 
         // Possibly terminate the path with Russian roulette.
         // Factor out radiance scaling due to refraction in rrBeta.

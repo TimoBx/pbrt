@@ -262,7 +262,7 @@ std::shared_ptr<Material> newMatCustom(Options &options) {
 
     std::cout << R"(
       Please type the extension you want for your file name (the extension for "sphere_test.exr" would be "test").
-      Not typing anything (pressing enter) will give you the extension "custom", which might result in the overwriting of a previous file.
+      Not typing anything (pressing enter) will give you the extension "custom", which might result in the overwriting of a previous custom file.
       )" << std::endl;
     std::string newSuffix;
     std::getline(std::cin, newSuffix);

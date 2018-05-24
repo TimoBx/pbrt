@@ -183,9 +183,9 @@ struct Options {
 
     // Importance Map generation
     bool importance = false;
-    Float *impMap;
+    Float *impMap, *reflectImpMap, *transmitImpMap;
     int widthImpMap, heightImpMap;
-    std::string impMapName;
+    std::string reflectImpMapName, transmitImpMapName, impMapName;
     bool orthoCam = false;
 
     // Changing Material

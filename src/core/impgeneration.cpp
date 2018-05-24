@@ -33,10 +33,12 @@ void changeImpOptions(Options &options) {
     options.importance = true;
     options.widthImpMap = 1024, options.heightImpMap = 512;
     options.impMap = new Float[3 * options.widthImpMap * options.heightImpMap];
+    options.reflectImpMap = new Float[3 * options.widthImpMap * options.heightImpMap];
+    options.transmitImpMap = new Float[3 * options.widthImpMap * options.heightImpMap];
     for (int i = 0; i < options.widthImpMap*options.heightImpMap*3; i++){
-        if (i%3 == 0) options.impMap[i] = 0;
-        if (i%3 == 1) options.impMap[i] = 0;
-        if (i%3 == 2) options.impMap[i] = 0;
+        options.impMap[i] = 0;
+        options.reflectImpMap[i] = 0;
+        options.transmitImpMap[i] = 0;
     }
 
     options.orthoCam = true;
@@ -101,6 +103,8 @@ void writeImpImage(Options &options) {
     // options.impMap = normalizeImpMap(options.impMap, options.widthImpMap, options.heightImpMap);
     int w = options.widthImpMap, h = options.heightImpMap;
     WriteImage(options.impMapName, options.impMap, Bounds2i(Point2i(0, 0), Point2i(w, h)), Point2i(w, h));
+    WriteImage(options.reflectImpMapName, options.reflectImpMap, Bounds2i(Point2i(0, 0), Point2i(w, h)), Point2i(w, h));
+    WriteImage(options.transmitImpMapName, options.transmitImpMap, Bounds2i(Point2i(0, 0), Point2i(w, h)), Point2i(w, h));
 }
 
 
