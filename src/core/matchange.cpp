@@ -30,6 +30,7 @@
 namespace pbrt {
 
 std::string newMatString;
+std::string newMatType;
 
 void usageMat() {
     std::cout << R"(
@@ -73,7 +74,6 @@ void changeMatOptions(Options &options, const std::string &filename) {
 RGBSpectrum createFloatSpec(float a, float b, float c) {
     RGBSpectrum spec(1);
     Float tmp[3] = {a, b, c};
-
     spec = RGBSpectrum::FromRGB(tmp);
     return spec;
 }
@@ -120,18 +120,14 @@ std::shared_ptr<Material> newMatGlass(bool isCustom, Float kr1, Float kr2, Float
     std::map<std::string, std::shared_ptr<Texture<Float>>> f;
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
+    newMatType = "glass";
 
-    std::vector<Float> krvec = isCustom ? getCustomParameters("Kr (reflectivity)", std::vector<Float>{1, 1, 1}) : std::vector<Float>{kr1,kr2,kr3};
-    std::vector<Float> ktvec = isCustom ? getCustomParameters("Kt (transmissivity)", std::vector<Float>{1, 1, 1}) : std::vector<Float>{kt1,kt2,kt3};
-    std::vector<Float> evec = isCustom ? getCustomParameters("eta (index of refraction of the inside)", std::vector<Float>{1.5}) : std::vector<Float>{e};
-    std::vector<Float> uvec = isCustom ? getCustomParameters("uroughness (microfacet roughness in the u direction)", std::vector<Float>{0}) : std::vector<Float>{u};
-    std::vector<Float> vvec = isCustom ? getCustomParameters("vroughness (microfacet roughness in the v direction)", std::vector<Float>{0}) : std::vector<Float>{v};
+    addParamToNewMat("Kr", "Kr (reflectivity)", std::vector<Float>{1,1,1}, std::vector<Float>{kr1,kr2,kr3}, params, isCustom);
+    addParamToNewMat("Kt", "Kt (transmissivity)", std::vector<Float>{1,1,1}, std::vector<Float>{kt1,kt2,kt3}, params, isCustom);
+    addParamToNewMat("eta", "eta (index of refraction of the inside)", std::vector<Float>{1.5}, std::vector<Float>{e}, params, isCustom);
+    addParamToNewMat("uroughness", "uroughness (microfacet roughness in the u direction)", std::vector<Float>{0}, std::vector<Float>{u}, params, isCustom);
+    addParamToNewMat("vroughness", "vroughness (microfacet roughness in the v direction)", std::vector<Float>{0}, std::vector<Float>{v}, params, isCustom);
 
-    params.AddRGBSpectrum("Kr", std::move(fromVectorToPointer(krvec)), 3);
-    params.AddRGBSpectrum("Kt", std::move(fromVectorToPointer(ktvec)), 3);
-    params.AddFloat("eta", std::move(fromVectorToPointer(evec)), 1);
-    params.AddFloat("uroughness", std::move(fromVectorToPointer(uvec)), 1);
-    params.AddFloat("vroughness", std::move(fromVectorToPointer(vvec)), 1);
     TextureParams newMp(empty, params, f, spec);
     return std::shared_ptr<Material>(CreateGlassMaterial(newMp));
 }
@@ -141,12 +137,11 @@ std::shared_ptr<Material> newMatMatte(bool isCustom, Float kd1, Float kd2, Float
     std::map<std::string, std::shared_ptr<Texture<Float>>> f;
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
+    newMatType = "matte";
 
-    std::vector<Float> kd = isCustom ? getCustomParameters("Kd (diffuse reflectivity)", std::vector<Float>{1, 1, 1}) : std::vector<Float>{kd1, kd2, kd3};
-    std::vector<Float> sigma = isCustom ? getCustomParameters("sigma", std::vector<Float>{0}) : std::vector<Float>{s};
+    addParamToNewMat("Kd", "Kd (diffuse reflectivity)", std::vector<Float>{1,1,1}, std::vector<Float>{kd1,kd2,kd3}, params, isCustom);
+    addParamToNewMat("sigma", "sigma", std::vector<Float>{0}, std::vector<Float>{s}, params, isCustom);
 
-    params.AddRGBSpectrum("Kd", std::move(fromVectorToPointer(kd)), 3);
-    params.AddFloat("sigma", std::move(fromVectorToPointer(sigma)), 1);
     TextureParams newMp(empty, params, f, spec);
     return std::shared_ptr<Material>(CreateMatteMaterial(newMp));
 }
@@ -155,9 +150,10 @@ std::shared_ptr<Material> newMatMetal(bool isCustom, Float r) {
     std::map<std::string, std::shared_ptr<Texture<Float>>> f;
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
+    newMatType = "metal";
 
-    std::vector<Float> rvec = isCustom ? getCustomParameters("roughness", std::vector<Float>{0.01}) : std::vector<Float>{r};
-    params.AddFloat("roughness", std::move(fromVectorToPointer(rvec)), 1);
+    addParamToNewMat("roughness", "roughness", std::vector<Float>{0.01}, std::vector<Float>{r}, params, isCustom);
+
     TextureParams newMp(empty, params, f, spec);
     return std::shared_ptr<Material>(CreateMetalMaterial(newMp));
 }
@@ -166,9 +162,10 @@ std::shared_ptr<Material> newMatMirror(bool isCustom, Float kr1, Float kr2, Floa
     std::map<std::string, std::shared_ptr<Texture<Float>>> f;
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
+    newMatType = "mirror";
 
-    std::vector<Float> krvec = isCustom ? getCustomParameters("Kr (reflectivity)", std::vector<Float>{0.9, 0.9, 0.9}) : std::vector<Float>{kr1,kr2,kr3};
-    params.AddRGBSpectrum("Kr", std::move(fromVectorToPointer(krvec)), 3);
+    addParamToNewMat("Kr", "Kr (reflectivity)", std::vector<Float>{0.9, 0.9, 0.9}, std::vector<Float>{kr1,kr2,kr3}, params, isCustom);
+
     TextureParams newMp(empty, params, f, spec);
     return std::shared_ptr<Material>(CreateMirrorMaterial(newMp));
 }
@@ -177,14 +174,12 @@ std::shared_ptr<Material> newMatPlastic(bool isCustom, Float kd1, Float kd2, Flo
     std::map<std::string, std::shared_ptr<Texture<Float>>> f;
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
+    newMatType = "plastic";
 
-    std::vector<Float> kdvec = isCustom ? getCustomParameters("Kd (diffuse reflectivity)", std::vector<Float>{0.25, 0.25, 0.25}) : std::vector<Float>{kd1,kd2,kd3};
-    std::vector<Float> ksvec = isCustom ? getCustomParameters("Ks (specular reflectivity)", std::vector<Float>{0.25, 0.25, 0.25}) : std::vector<Float>{ks1,ks2,ks3};
-    std::vector<Float> rvec = isCustom ? getCustomParameters("roughness", std::vector<Float>{0.1}) : std::vector<Float>{r};
+    addParamToNewMat("Kd", "Kd (diffuse reflectivity)", std::vector<Float>{0.25, 0.25, 0.25}, std::vector<Float>{kd1,kd2,kd3}, params, isCustom);
+    addParamToNewMat("Kd", "Ks (specular reflectivity)", std::vector<Float>{0.25, 0.25, 0.25}, std::vector<Float>{ks1,ks2,ks3}, params, isCustom);
+    addParamToNewMat("roughness", "roughness", std::vector<Float>{0.1}, std::vector<Float>{r}, params, isCustom);
 
-    params.AddRGBSpectrum("Kd", std::move(fromVectorToPointer(kdvec)), 3);
-    params.AddRGBSpectrum("Ks", std::move(fromVectorToPointer(ksvec)), 3);
-    params.AddFloat("roughness", std::move(fromVectorToPointer(rvec)), 1);
     TextureParams newMp(empty, params, f, spec);
     return std::shared_ptr<Material>(CreatePlasticMaterial(newMp));
 }
@@ -193,18 +188,14 @@ std::shared_ptr<Material> newMatTranslucent(bool isCustom, Float kd1, Float kd2,
     std::map<std::string, std::shared_ptr<Texture<Float>>> f;
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
+    newMatType = "translucent";
 
-    std::vector<Float> kdvec = isCustom ? getCustomParameters("Kd (coefficient of diffuse reflection and transmission)", std::vector<Float>{0.25, 0.25, 0.25}) : std::vector<Float>{kd1,kd2,kd3};
-    std::vector<Float> ksvec = isCustom ? getCustomParameters("Ks (coefficient of specular reflection and transmission)", std::vector<Float>{0.25, 0.25, 0.25}) : std::vector<Float>{ks1,ks2,ks3};
-    std::vector<Float> roughvec = isCustom ? getCustomParameters("roughness", std::vector<Float>{0.1}) : std::vector<Float>{rough};
-    std::vector<Float> rvec = isCustom ? getCustomParameters("reflect (fraction of light reflected)", std::vector<Float>{0.5, 0.5, 0.5}) : std::vector<Float>{r1,r2,r3};
-    std::vector<Float> tvec = isCustom ? getCustomParameters("transmit (fraction of light transmitted)", std::vector<Float>{0.5, 0.5, 0.5}) : std::vector<Float>{t1,t2,t3};
+    addParamToNewMat("Kd", "Kd (coefficient of diffuse reflection and transmission)", std::vector<Float>{0.25, 0.25, 0.25}, std::vector<Float>{kd1,kd2,kd3}, params, isCustom);
+    addParamToNewMat("Ks", "Ks (coefficient of specular reflection and transmission)", std::vector<Float>{0.25, 0.25, 0.25}, std::vector<Float>{ks1,ks2,ks3}, params, isCustom);
+    addParamToNewMat("roughness", "roughness", std::vector<Float>{0.1}, std::vector<Float>{rough}, params, isCustom);
+    addParamToNewMat("reflect", "reflect (fraction of light reflected)", std::vector<Float>{0.5, 0.5, 0.5}, std::vector<Float>{r1,r2,r3}, params, isCustom);
+    addParamToNewMat("transmit", "transmit (fraction of light transmitted)", std::vector<Float>{0.5, 0.5, 0.5}, std::vector<Float>{t1,t2,t3}, params, isCustom);
 
-    params.AddRGBSpectrum("Kd", std::move(fromVectorToPointer(kdvec)), 3);
-    params.AddRGBSpectrum("Ks", std::move(fromVectorToPointer(ksvec)), 3);
-    params.AddFloat("roughness", std::move(fromVectorToPointer(roughvec)), 1);
-    params.AddRGBSpectrum("reflect", std::move(fromVectorToPointer(rvec)), 3);
-    params.AddRGBSpectrum("transmit", std::move(fromVectorToPointer(tvec)), 3);
     TextureParams newMp(empty, params, f, spec);
     return std::shared_ptr<Material>(CreateTranslucentMaterial(newMp));
 }
@@ -213,6 +204,7 @@ std::shared_ptr<Material> newMatUber(bool isCustom, Float kd1, Float kd2, Float 
     std::map<std::string, std::shared_ptr<Texture<Float>>> f;
     std::map<std::string, std::shared_ptr<Texture<Spectrum>>> spec;
     ParamSet params, empty;
+    newMatType = "uber";
 
     addParamToNewMat("Kd", "Kd (coefficient of diffuse reflection)", std::vector<Float>{0.25, 0.25, 0.25}, std::vector<Float>{kd1,kd2,kd3}, params, isCustom);
     addParamToNewMat("Ks", "Ks (coefficient of glossy reflection)", std::vector<Float>{0.25, 0.25, 0.25}, std::vector<Float>{ks1,ks2,ks3}, params, isCustom);
@@ -238,12 +230,11 @@ void addParamToNewMat(std::string name, std::string description, std::vector<Flo
       if (i != n-1) s += ", ";
     }
     s += ")\n";
-    std::cout << s << std::endl;
+    // std::cout << s << std::endl;
     newMatString += s;
 
     if (n == 1) params.AddFloat(name, std::move(fromVectorToPointer(vec)), 1);
     else if (n == 3) params.AddRGBSpectrum(name, std::move(fromVectorToPointer(vec)), 3);
-
 }
 
 
@@ -259,12 +250,11 @@ std::shared_ptr<Material> newMatCustom(Options &options) {
         - Uber.
 
       Pressing enter will give you the default material (matte).)" << std::endl;
+
     std::string name;
     std::getline(std::cin, name);
-
-
     if (name == "") {
-        std::cout << "\nYou want matte I presume? Fine.\n" << std::endl;
+        std::cout << "\nSo you want a matte material huh? Fine.\n" << std::endl;
         name = "matte";
     }
 
@@ -272,7 +262,7 @@ std::shared_ptr<Material> newMatCustom(Options &options) {
 
     std::cout << R"(
       Please type the extension you want for your file name (the extension for "sphere_test.exr" would be "test").
-      Not typing anything (pressing enter) will give you the extension "custom", which might result in the overwrite of a previous file.
+      Not typing anything (pressing enter) will give you the extension "custom", which might result in the overwriting of a previous file.
       )" << std::endl;
     std::string newSuffix;
     std::getline(std::cin, newSuffix);
@@ -297,59 +287,46 @@ std::shared_ptr<Material> changeObjectMaterial(Options &options, std::string mat
     if (matname == "custom"){
         mat = newMatCustom(options);
     }
-
     else if (matname == "glass") {
         mat = newMatGlass(isCustom, 1,1,1,1,1,1,1.5,0,0);
     }
-
+    else if (matname == "air") {
+        mat = newMatGlass(isCustom, 1,1,1,1,1,1,1,0,0);
+    }
     else if (matname == "matte") {
         mat = newMatMatte(isCustom, 1,1,1,0);
     }
-
     else if (matname == "matteyellow") {
         mat = newMatMatte(isCustom, 1,1,0,0);
     }
-
     else if (matname == "metal") {
         mat = newMatMetal(isCustom, 0.01);
     }
-
     else if (matname == "mirror") {
         mat = newMatMirror(isCustom, 0.9,0.9,0.9);
     }
-
     else if (matname == "mirror01") {
         mat = newMatMirror(isCustom, 0.1,0.1,0.1);
     }
-
     else if (matname == "plastic") {
         mat = newMatPlastic(isCustom, 0.25,0.25,0.25,0.25,0.25,0.25,0.1);
     }
-
     else if (matname == "plastic001") {
         mat = newMatPlastic(isCustom, 0.25,0.25,0.25,0.25,0.25,0.25,0.01);
     }
-
     else if (matname == "plastic09") {
         mat = newMatPlastic(isCustom, 0.25,0.25,0.25,0.25,0.25,0.25,0.9);
     }
-
     else if (matname == "translucent") {
         mat = newMatTranslucent(isCustom, 0.25,0.25,0.25,0.25,0.25,0.25, 0.1, 0.5,0.5,0.5, 0.5,0.5,0.5);
     }
-
     else if (matname == "uber") {
         mat = newMatUber(isCustom, 0.25,0.25,0.25,0.25,0.25,0.25,0,0,0,0,0,0,0.1,0,0,1,1,1,1.5);
-
     }
-
-
     else {
-      std::cout << "Material name invalid: using red matte instead." << std::endl;
-      std::cout << "Next time, check out your options by typing \"usage\", \"options\" or \"help\" as argument for matchange." << std::endl;
-
-      mat = newMatMatte(isCustom, 1,1,1,0);
-
+        std::cout << "Material name invalid: using red matte instead." << std::endl;
+        std::cout << "Next time, check out your options by typing \"usage\", \"options\" or \"help\" as argument for matchange." << std::endl;
+        mat = newMatMatte(isCustom, 1,1,1,0);
     }
 
     if (isCustom)
@@ -359,17 +336,12 @@ std::shared_ptr<Material> changeObjectMaterial(Options &options, std::string mat
       std::string matDescription;
       matDescription = "--- NEW MATERIAL ---\n";
       matDescription += " Material name : " + options.newMatName + "\n";
-      matDescription += " Material type : " + matname + "\n";
-
+      matDescription += " Material type : " + newMatType + "\n";
       newMatString = matDescription + newMatString;
-
       std::cout << newMatString << std::endl;
-
-
     }
 
     return mat;
-
 }
 
 
