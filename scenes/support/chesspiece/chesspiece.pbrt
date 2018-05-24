@@ -38,6 +38,8 @@ MakeNamedMaterial "white" "string type" "uber" "color Kd" [0.512000 0.512000 0.5
 
 MakeNamedMaterial "white_marble1" "string type" "uber" "color Kd" [0.512000 0.512000 0.512000] "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
 
+
+ObjectBegin "target"
 # Name "white_bishop.001_Sphere.001"
 AttributeBegin
 Translate 0 0 -1
@@ -47,6 +49,9 @@ Translate 0 0.5 0
 Include "bishop.pbrt"
 
 AttributeEnd
+ObjectEnd
+
+ObjectInstance "target"
 
 
 # Name "blackboard_Plane.009"

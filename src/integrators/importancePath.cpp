@@ -41,8 +41,10 @@
 #include "stats.h"
 #include "light.h"
 #include "impgeneration.h"
+#include <map>
 
 namespace pbrt {
+
 
 STAT_PERCENT("Integrator/Zero-radiance paths", zeroRadiancePaths, totalPaths);
 STAT_INT_DISTRIBUTION("Integrator/Path length", pathLength);
@@ -76,6 +78,14 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
     bool targetFoundFirstBounce = false;
     bool reflection = false;
     bool transmittance = false;
+
+    std::map<int, bool> flagsMap;
+    flagsMap[BSDF_REFLECTION] = false;
+    flagsMap[BSDF_TRANSMISSION] = false;
+    flagsMap[BSDF_DIFFUSE] = false;
+    flagsMap[BSDF_GLOSSY] = false;
+    flagsMap[BSDF_SPECULAR] = false;
+    flagsMap[BSDF_ALL] = false;
 
     for (bounces = 0;; ++bounces) {
         // Find next path vertex and accumulate contribution
@@ -117,13 +127,13 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
                   PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += proba;
                   PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += proba;
 
-                  if (reflection) {
+                  if (flagsMap[BSDF_REFLECTION]) {
                     PbrtOptions.reflectImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += proba;
                     PbrtOptions.reflectImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += proba;
                     PbrtOptions.reflectImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += proba;
                   }
 
-                  if (transmittance) {
+                  if (flagsMap[BSDF_TRANSMISSION]) {
                     PbrtOptions.transmitImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += proba;
                     PbrtOptions.transmitImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += proba;
                     PbrtOptions.transmitImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += proba;
@@ -205,17 +215,21 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
 
 
 
-        if (bounces == 0 && (flags & BSDF_TRANSMISSION))
-            transmittance = true;
+        if (bounces == 0) {
+            std::map<int, bool>::iterator it = flagsMap.begin();
+            while (it != flagsMap.end()) {
+                if (flags & it->first)
+                    flagsMap[it->first] = true;
+                it++;
+            }
+        }
 
-        if (!(transmittance == true && (flags & BSDF_TRANSMISSION)))
-            transmittance = false;
-
-        if (bounces == 0 && (flags & BSDF_REFLECTION))
-            reflection = true;
-
-        if (!(reflection == true && (flags & BSDF_REFLECTION)))
-            reflection = false;
+        std::map<int, bool>::iterator it = flagsMap.begin();
+        while (it != flagsMap.end()) {
+          if (!(flagsMap[it->first] && (flags & it->first)))
+            flagsMap[it->first] = false;
+          it++;
+        }
 
 
 

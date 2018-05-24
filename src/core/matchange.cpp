@@ -43,6 +43,7 @@ void usageMat() {
     --matchange <mat> :  Change all the materials in the scene to a chosen one.
 
     Possible options:
+        - air : glass material, with an index of refraction of 1.
         - glass : glass material, standard parameters.
         - matte : matte material, standard parameters.
         - metal : metal material, standard parameters.

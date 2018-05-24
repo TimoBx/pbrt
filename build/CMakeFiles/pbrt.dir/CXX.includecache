@@ -757,6 +757,8 @@ integrator.h
 ../src/integrators/integrator.h
 lightdistrib.h
 ../src/integrators/lightdistrib.h
+map
+-
 
 ../src/integrators/mlt.h
 pbrt.h
@@ -2471,6 +2473,8 @@ light.h
 /home/timothebarbaux/Documents/stage/pbrt/src/integrators/light.h
 impgeneration.h
 /home/timothebarbaux/Documents/stage/pbrt/src/integrators/impgeneration.h
+map
+-
 
 /home/timothebarbaux/Documents/stage/pbrt/src/integrators/mlt.cpp
 integrators/mlt.h
