@@ -186,10 +186,13 @@ struct Options {
     Float *impMap;
     int widthImpMap, heightImpMap;
     std::string impMapName;
+    bool orthoCam = false;
 
     // Changing Material
     bool matChange = false;
-    std::string newMat, newFileName;
+    std::string newMatName, newFileName;
+    std::shared_ptr<Material> newMat;
+
 };
 
 

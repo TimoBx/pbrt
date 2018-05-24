@@ -1667,6 +1667,33 @@ src/core/lowdiscrepancy.cpp.s:
 	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.s
 .PHONY : src/core/lowdiscrepancy.cpp.s
 
+src/core/matchange.o: src/core/matchange.cpp.o
+
+.PHONY : src/core/matchange.o
+
+# target to build an object file
+src/core/matchange.cpp.o:
+	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/core/matchange.cpp.o
+.PHONY : src/core/matchange.cpp.o
+
+src/core/matchange.i: src/core/matchange.cpp.i
+
+.PHONY : src/core/matchange.i
+
+# target to preprocess a source file
+src/core/matchange.cpp.i:
+	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/core/matchange.cpp.i
+.PHONY : src/core/matchange.cpp.i
+
+src/core/matchange.s: src/core/matchange.cpp.s
+
+.PHONY : src/core/matchange.s
+
+# target to generate assembly for a file
+src/core/matchange.cpp.s:
+	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/core/matchange.cpp.s
+.PHONY : src/core/matchange.cpp.s
+
 src/core/material.o: src/core/material.cpp.o
 
 .PHONY : src/core/material.o
@@ -5004,6 +5031,9 @@ help:
 	@echo "... src/core/lowdiscrepancy.o"
 	@echo "... src/core/lowdiscrepancy.i"
 	@echo "... src/core/lowdiscrepancy.s"
+	@echo "... src/core/matchange.o"
+	@echo "... src/core/matchange.i"
+	@echo "... src/core/matchange.s"
 	@echo "... src/core/material.o"
 	@echo "... src/core/material.i"
 	@echo "... src/core/material.s"

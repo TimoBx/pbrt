@@ -17,6 +17,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/pbrt.dir/src/core/light.cpp.o"
   "CMakeFiles/pbrt.dir/src/core/lightdistrib.cpp.o"
   "CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.o"
+  "CMakeFiles/pbrt.dir/src/core/matchange.cpp.o"
   "CMakeFiles/pbrt.dir/src/core/material.cpp.o"
   "CMakeFiles/pbrt.dir/src/core/medium.cpp.o"
   "CMakeFiles/pbrt.dir/src/core/memory.cpp.o"

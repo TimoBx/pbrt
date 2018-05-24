@@ -60,6 +60,10 @@ class MetalMaterial : public Material {
                                     TransportMode mode,
                                     bool allowMultipleLobes) const;
 
+
+    
+
+
   private:
     // MetalMaterial Private Data
     std::shared_ptr<Texture<Spectrum>> eta, k;

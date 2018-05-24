@@ -8,7 +8,8 @@ LookAt	0 0 -5
 
 
 Rotate 20 1 1 1
-Camera "perspective" "float fov" 90
+#Camera "perspective" "float fov" 90
+Camera "orthographic" "float screenwindow" [-2 2 -2 2]
 
 
 

@@ -887,6 +887,7 @@ class Ray {
     mutable Float tMax;
     Float time;
     const Medium *medium;
+    bool firstIsectTarget;
 };
 
 class RayDifferential : public Ray {

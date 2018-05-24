@@ -5,8 +5,8 @@ e=".exr"
 i="impmap_"
 
 INPUT=$1$p
-IMP=$i$1$2$e
-OUTPUT=$1$2$e
+IMP=$i$1$e
+OUTPUT=$1$e
 
 
 if [ "$1" = "" ]
@@ -15,6 +15,15 @@ then
 
 
 else
+
+
+if [ "$2" != "" ]
+then
+          IMP=$i$1_$2$e
+          OUTPUT=$1_$2$e
+          m="--matchange"
+fi
+
 
 if [ -f $IMP ]
 then
@@ -26,17 +35,20 @@ then
 	rm $OUTPUT
 fi
 
-if [ "$2" != "" ]
+printf "   \n\n"
+# printf "---  GENERATING THE IMP MAP  ---  \n\n "
+../../../build/pbrt $INPUT --importance --quiet $m $2
+# printf "   \n\n---  RENDERED IMAGE  ---   \n\n"
+if [ -f $OUTPUT ]
 then
-        m="--matchange"
-	printf "\n\nSetting the default material to $2 !\n\n"
+  exrdisplay $OUTPUT
 fi
 
-printf "   \n\n---  GENERATING THE IMP MAP  ---  \n\n "
-../../../build/pbrt $INPUT --importance --quiet $m $2
-printf "   \n\n---  RENDERED IMAGE  ---   \n\n"
-exrdisplay $OUTPUT
-printf "   \n\n---  IMP MAP  ---   \n\n"
+# printf "   \n\n---  IMP MAP  ---   \n\n"
+if [ -f $IMP ]
+then
 exrdisplay $IMP
+fi
+
 
 fi

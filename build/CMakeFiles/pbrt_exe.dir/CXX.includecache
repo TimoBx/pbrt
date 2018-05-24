@@ -34,6 +34,10 @@ cctype
 pbrt.h
 ../src/core/pbrt.h
 
+../src/core/matchange.h
+pbrt.h
+../src/core/pbrt.h
+
 ../src/core/parallel.h
 pbrt.h
 ../src/core/pbrt.h
@@ -127,6 +131,8 @@ impgeneration.h
 /home/timothebarbaux/Documents/stage/pbrt/src/main/impgeneration.h
 imageio.h
 /home/timothebarbaux/Documents/stage/pbrt/src/main/imageio.h
+matchange.h
+/home/timothebarbaux/Documents/stage/pbrt/src/main/matchange.h
 
 src/ext/glog/glog/logging.h
 errno.h

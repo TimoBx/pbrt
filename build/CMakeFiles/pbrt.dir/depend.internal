@@ -271,6 +271,7 @@ CMakeFiles/pbrt.dir/src/core/api.cpp.o
  /home/timothebarbaux/Documents/stage/pbrt/src/core/geometry.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/light.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/matchange.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/medium.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/memory.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/parallel.h
@@ -452,38 +453,22 @@ CMakeFiles/pbrt.dir/src/core/imageio.cpp.o
  src/ext/openexr/IlmBase/config/IlmBaseConfig.h
  src/ext/openexr/OpenEXR/config/OpenEXRConfig.h
 CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o
- ../src/core/bssrdf.h
  ../src/core/interaction.h
- ../src/core/interpolation.h
  ../src/core/light.h
  ../src/core/material.h
  ../src/core/medium.h
- ../src/core/microfacet.h
+ ../src/core/memory.h
  ../src/core/mipmap.h
  ../src/core/parallel.h
  ../src/core/primitive.h
- ../src/core/reflection.h
+ ../src/core/quaternion.h
  ../src/core/scene.h
  ../src/core/shape.h
- ../src/core/spectrum.h
  ../src/core/stats.h
+ ../src/core/texture.h
+ ../src/core/transform.h
  ../src/ext/glog/src/glog/log_severity.h
  ../src/lights/infinite.h
- ../src/materials/disney.h
- ../src/materials/fourier.h
- ../src/materials/glass.h
- ../src/materials/hair.h
- ../src/materials/kdsubsurface.h
- ../src/materials/matte.h
- ../src/materials/metal.h
- ../src/materials/mirror.h
- ../src/materials/mixmat.h
- ../src/materials/plastic.h
- ../src/materials/substrate.h
- ../src/materials/subsurface.h
- ../src/materials/translucent.h
- ../src/materials/uber.h
- ../src/textures/constant.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/api.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/error.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/fileutil.h
@@ -491,13 +476,10 @@ CMakeFiles/pbrt.dir/src/core/impgeneration.cpp.o
  /home/timothebarbaux/Documents/stage/pbrt/src/core/imageio.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.cpp
  /home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
- /home/timothebarbaux/Documents/stage/pbrt/src/core/memory.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/paramset.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/pbrt.h
- /home/timothebarbaux/Documents/stage/pbrt/src/core/quaternion.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/spectrum.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/stringprint.h
- /home/timothebarbaux/Documents/stage/pbrt/src/core/texture.h
- /home/timothebarbaux/Documents/stage/pbrt/src/core/transform.h
  src/ext/glog/glog/logging.h
  src/ext/glog/glog/vlog_is_on.h
 CMakeFiles/pbrt.dir/src/core/integrator.cpp.o
@@ -627,6 +609,50 @@ CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.o
  /home/timothebarbaux/Documents/stage/pbrt/src/core/sampling.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/sobolmatrices.h
  /home/timothebarbaux/Documents/stage/pbrt/src/core/stringprint.h
+ src/ext/glog/glog/logging.h
+ src/ext/glog/glog/vlog_is_on.h
+CMakeFiles/pbrt.dir/src/core/matchange.cpp.o
+ ../src/core/bssrdf.h
+ ../src/core/interaction.h
+ ../src/core/interpolation.h
+ ../src/core/material.h
+ ../src/core/medium.h
+ ../src/core/microfacet.h
+ ../src/core/reflection.h
+ ../src/core/shape.h
+ ../src/core/spectrum.h
+ ../src/core/stats.h
+ ../src/ext/glog/src/glog/log_severity.h
+ ../src/materials/disney.h
+ ../src/materials/fourier.h
+ ../src/materials/glass.h
+ ../src/materials/hair.h
+ ../src/materials/kdsubsurface.h
+ ../src/materials/matte.h
+ ../src/materials/metal.h
+ ../src/materials/mirror.h
+ ../src/materials/mixmat.h
+ ../src/materials/plastic.h
+ ../src/materials/substrate.h
+ ../src/materials/subsurface.h
+ ../src/materials/translucent.h
+ ../src/materials/uber.h
+ ../src/textures/constant.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/api.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/error.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/fileutil.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/geometry.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/imageio.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/matchange.cpp
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/matchange.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/memory.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/paramset.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/pbrt.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/quaternion.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/stringprint.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/texture.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/transform.h
  src/ext/glog/glog/logging.h
  src/ext/glog/glog/vlog_is_on.h
 CMakeFiles/pbrt.dir/src/core/material.cpp.o
