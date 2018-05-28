@@ -757,8 +757,6 @@ integrator.h
 ../src/integrators/integrator.h
 lightdistrib.h
 ../src/integrators/lightdistrib.h
-map
--
 
 ../src/integrators/mlt.h
 pbrt.h

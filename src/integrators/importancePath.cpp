@@ -119,27 +119,32 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
           if (bounces >= 1 && /*ray.firstIsectTarget*/ targetFoundFirstBounce) {
               for (const auto &light : scene.infiniteLights) {
                   Vector3f w = Normalize(light->WorldToLight(ray.d));
-                  Point2i st = Point2i(int(SphericalPhi(w) * Inv2Pi * (PbrtOptions.widthImpMap-1)), int(SphericalTheta(w) * InvPi * (PbrtOptions.heightImpMap-1)));
+                  Float phi = SphericalPhi(w);
+                  Float theta = SphericalTheta(w);
+                  //
+                  // std::cout << theta * InvPi << std::endl;
 
-                  float proba = 0;
-                  if (std::sin(SphericalTheta(w) != 0)) proba = 1 / (2 * Pi * Pi * (std::sin(SphericalTheta(w))));
-                  PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += proba;
-                  PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += proba;
-                  PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += proba;
+                  int u = int(phi * Inv2Pi * (PbrtOptions.widthImpMap -1));
+                  int v = int(theta * InvPi * (PbrtOptions.heightImpMap -1));
+
+                  Float proba = 0, sintheta = std::sin(theta);
+                  if (sintheta != 0) proba = 1 / (2 * Pi * Pi * sintheta);
+                  PbrtOptions.impMap[(v * PbrtOptions.widthImpMap + u)*3] += proba;
+                  PbrtOptions.impMap[(v * PbrtOptions.widthImpMap + u)*3 + 1] += proba;
+                  PbrtOptions.impMap[(v * PbrtOptions.widthImpMap + u)*3 + 2] += proba;
 
                   if (flagsMap[BSDF_REFLECTION]) {
-                    PbrtOptions.reflectImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += proba;
-                    PbrtOptions.reflectImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += proba;
-                    PbrtOptions.reflectImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += proba;
+                    PbrtOptions.reflectImpMap[(v * PbrtOptions.widthImpMap + u)*3] += proba;
+                    PbrtOptions.reflectImpMap[(v * PbrtOptions.widthImpMap + u)*3 + 1] += proba;
+                    PbrtOptions.reflectImpMap[(v * PbrtOptions.widthImpMap + u)*3 + 2] += proba;
                   }
 
                   if (flagsMap[BSDF_TRANSMISSION]) {
-                    PbrtOptions.transmitImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += proba;
-                    PbrtOptions.transmitImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += proba;
-                    PbrtOptions.transmitImpMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += proba;
+                    PbrtOptions.transmitImpMap[(v * PbrtOptions.widthImpMap + u)*3] += proba;
+                    PbrtOptions.transmitImpMap[(v * PbrtOptions.widthImpMap + u)*3 + 1] += proba;
+                    PbrtOptions.transmitImpMap[(v * PbrtOptions.widthImpMap + u)*3 + 2] += proba;
                   }
               }
-
           }
           break;
         }

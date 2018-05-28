@@ -31,6 +31,7 @@ std::string computeNewFilename(std::string filename, std::string prefix, std::st
 */
 void changeImpOptions(Options &options) {
     options.importance = true;
+    options.orthoCam = true;
     options.widthImpMap = 1024, options.heightImpMap = 512;
     options.impMap = new Float[3 * options.widthImpMap * options.heightImpMap];
     options.reflectImpMap = new Float[3 * options.widthImpMap * options.heightImpMap];
@@ -40,8 +41,6 @@ void changeImpOptions(Options &options) {
         options.reflectImpMap[i] = 0;
         options.transmitImpMap[i] = 0;
     }
-
-    options.orthoCam = true;
 }
 
 

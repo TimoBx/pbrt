@@ -16,7 +16,7 @@ Film "image"
 "integer xresolution" [700] "integer yresolution" [700]
     "string filename" "sphere.exr"
 
-Sampler "stratified" "integer pixelsamples" [64]
+Sampler "stratified" "integer pixelsamples" [256]
 Integrator "path"
 
 
@@ -36,30 +36,6 @@ ObjectEnd
 
 ObjectInstance "target"
 
-AttributeBegin
-Translate 3 0 0
-ObjectInstance "test"
-AttributeEnd
-
-AttributeBegin
-Translate -3 0 0
-ObjectInstance "test"
-AttributeEnd
-
-AttributeBegin
-Translate 3 2 2
-ObjectInstance "test"
-AttributeEnd
-
-AttributeBegin
-Translate 3 0 -2
-ObjectInstance "test"
-AttributeEnd
-
-AttributeBegin
-Translate -3 0 2
-ObjectInstance "test"
-AttributeEnd
 
 
 WorldEnd
