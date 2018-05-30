@@ -2,83 +2,134 @@
 
 p=".pbrt"
 e=".exr"
-i="impmap_"
-r="impmapR_"
-t="impmapT_"
-
-INPUT=$1$p
-IMP=$i$1$e
-IMPR=$r$1$e
-IMPT=$t$1$e
-OUTPUT=$1$e
-
 
 if [ "$1" = "" ]
 then
         printf "\nCan you please give me a file name (without its extension) ?\n\n"
-
-
 else
 
-
+m=""
 if [ "$2" != "" ]
 then
-          IMP=$i$1_$2$e
-          IMPR=$r$1_$2$e
-          IMPT=$t$1_$2$e
-          OUTPUT=$1_$2$e
-          m="--matchange"
+          m=_$2
+          mat="--matchange"
 fi
 
+INPUT=$1$p
+OUTPUT=$1$m$e
 
-if [ -f $IMP ]
-then
-	rm $IMP
-fi
+R0="impmapR0_"
+RX="impmapRX_"
+R="impmapR_"
+TX="impmapTX_"
+TT0="impmapTT0_"
+TT="impmapTT_"
+TTX="impmapTTX_"
+TRT="impmapTRT_"
+TRTX="impmapTRTX_"
+TRT0="impmapTRT0_"
+ALL="impmapALL_"
 
-if [ -f $OUTPUT ]
-then
-	rm $OUTPUT
-fi
+IMP=$ALL$1$m$e
+IMP1=$R$1$m$e
+IMP2=$TX$1$m$e
+IMP3=$R0$1$m$e
+IMP4=$RX$1$m$e
+IMP5=$TT$1$m$e
+IMP6=$TT0$1$m$e
+IMP7=$TTX$1$m$e
+IMP8=$TRT$1$m$e
+IMP9=$TRT0$1$m$e
+IMP10=$TRTX$1$m$e
 
-if [ -f $IMPR ]
-then
-	rm $IMPR
-fi
-
-if [ -f $IMPT ]
-then
-	rm $IMPT
-fi
+echo $IMP
+echo $IMP1
+echo $IMP2
+echo $IMP3
+echo $IMP4
+echo $IMP5
+echo $IMP6
+echo $IMP7
+echo $IMP8
+echo $IMP9
+echo $IMP10
 
 printf "   \n\n"
-# printf "---  GENERATING THE IMP MAP  ---  \n\n "
-../../../build/pbrt $INPUT --importance --quiet $m $2
+../../../build/pbrt $INPUT --importance --quiet $mat $2
+
 # printf "   \n\n---  RENDERED IMAGE  ---   \n\n"
 if [ -f $OUTPUT ]
 then
   exrdisplay $OUTPUT
 fi
 
-
-# printf "   \n\n---  IMP MAP REFLECTIONS ---   \n\n"
-if [ -f $IMPR ]
-then
-  exrdisplay $IMPR
-fi
-
-# printf "   \n\n---  IMP MAP TRANSMITTANCES ---   \n\n"
-if [ -f $IMPT ]
-then
-exrdisplay $IMPT
-fi
-
-
-# printf "   \n\n---  IMP MAP ---   \n\n"
+# printf "   \n\n---  IMP MAP  ---   \n\n"
 if [ -f $IMP ]
 then
-exrdisplay $IMP
+  exrdisplay $IMP
 fi
+
+# printf "   \n\n---  IMP MAP R  ---   \n\n"
+if [ -f $IMP1 ]
+then
+exrdisplay $IMP1
+fi
+
+# printf "   \n\n---  IMP MAP TX ---   \n\n"
+if [ -f $IMP2 ]
+then
+exrdisplay $IMP2
+fi
+
+# printf "   \n\n---  IMP MAP R0 ---   \n\n"
+if [ -f $IMP3 ]
+then
+  exrdisplay $IMP3
+fi
+
+# printf "   \n\n---  IMP MAP RX  ---   \n\n"
+if [ -f $IMP4 ]
+then
+  exrdisplay $IMP4
+fi
+
+# printf "   \n\n---  IMP MAP TT ---   \n\n"
+if [ -f $IMP5 ]
+then
+  exrdisplay $IMP5
+fi
+
+# printf "   \n\n---  IMP MAP TT0 ---   \n\n"
+if [ -f $IMP6 ]
+then
+  exrdisplay $IMP6
+fi
+
+# printf "   \n\n---  IMP MAP TTX ---   \n\n"
+if [ -f $IMP7 ]
+then
+  exrdisplay $IMP7
+fi
+
+# printf "   \n\n---  IMP MAP TRT ---   \n\n"
+if [ -f $IMP8 ]
+then
+  exrdisplay $IMP8
+fi
+
+# printf "   \n\n---  IMP MAP TRT0 ---   \n\n"
+if [ -f $IMP9 ]
+then
+  exrdisplay $IMP9
+fi
+
+# printf "   \n\n---  IMP MAP TRTX ---   \n\n"
+if [ -f $IMP10 ]
+then
+  exrdisplay $IMP10
+fi
+
+
 
 
 fi

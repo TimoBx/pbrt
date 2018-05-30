@@ -206,10 +206,7 @@ int main(int argc, char *argv[]) {
     options = PbrtOptions;
 
     if (options.importance) {
-        options.impMapName = computeNewFilename(options.newFileName, "impmap_", "", ".exr");
-        options.reflectImpMapName = computeNewFilename(options.newFileName, "impmapR_", "", ".exr");
-        options.transmitImpMapName = computeNewFilename(options.newFileName, "impmapT_", "", ".exr");
-
+        computeImpMapNames(options);
         writeImpImage(options);
     }
 

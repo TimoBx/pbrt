@@ -65,12 +65,21 @@ void ImportancePathIntegrator::Preprocess(const Scene &scene, Sampler &sampler) 
         CreateLightSampleDistribution(lightSampleStrategy, scene);
 }
 
+
+void fillMap(Float* map, Float proba, int index) {
+  map[index] += proba;
+  map[index + 1] += proba;
+  map[index + 2] += proba;
+}
+
+
 Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &scene,
                             Sampler &sampler, MemoryArena &arena,
                             int depth) const {
     ProfilePhase p(Prof::SamplerIntegratorLi);
     Spectrum L(0.f), beta(1.f);
     RayDifferential ray(r);
+    ray.firstIsectTarget = false;
     bool specularBounce = false;
     int bounces;
     Float etaScale = 1;
@@ -85,7 +94,9 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
     flagsMap[BSDF_DIFFUSE] = false;
     flagsMap[BSDF_GLOSSY] = false;
     flagsMap[BSDF_SPECULAR] = false;
-    flagsMap[BSDF_ALL] = false;
+    // flagsMap[BSDF_ALL] = false;
+
+    int value = 0;
 
     for (bounces = 0;; ++bounces) {
         // Find next path vertex and accumulate contribution
@@ -96,7 +107,7 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
 
 
         if (foundIntersection && bounces == 0 && isect.primitive->isTarget) {
-            // ray.firstIsectTarget = true;
+            ray.firstIsectTarget = true;
             targetFoundFirstBounce = true;
         }
 
@@ -116,33 +127,66 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
 
         // Terminate path if ray escaped or _maxDepth_ was reached
         if (!foundIntersection || bounces >= maxDepth) {
-          if (bounces >= 1 && /*ray.firstIsectTarget*/ targetFoundFirstBounce) {
+          if (bounces >= 1 && ray.firstIsectTarget) {
               for (const auto &light : scene.infiniteLights) {
                   Vector3f w = Normalize(light->WorldToLight(ray.d));
                   Float phi = SphericalPhi(w);
                   Float theta = SphericalTheta(w);
-                  //
-                  // std::cout << theta * InvPi << std::endl;
+                  // std::cout << "bounces = " << bounces << "; value = " << value << std::endl;
 
-                  int u = int(phi * Inv2Pi * (PbrtOptions.widthImpMap -1));
-                  int v = int(theta * InvPi * (PbrtOptions.heightImpMap -1));
+                  int u = std::floor(phi * Inv2Pi * (PbrtOptions.widthImpMap) - 0.5f);
+                  int v = std::floor(theta * InvPi * (PbrtOptions.heightImpMap) - 0.5f);
 
                   Float proba = 0, sintheta = std::sin(theta);
                   if (sintheta != 0) proba = 1 / (2 * Pi * Pi * sintheta);
-                  PbrtOptions.impMap[(v * PbrtOptions.widthImpMap + u)*3] += proba;
-                  PbrtOptions.impMap[(v * PbrtOptions.widthImpMap + u)*3 + 1] += proba;
-                  PbrtOptions.impMap[(v * PbrtOptions.widthImpMap + u)*3 + 2] += proba;
 
-                  if (flagsMap[BSDF_REFLECTION]) {
-                    PbrtOptions.reflectImpMap[(v * PbrtOptions.widthImpMap + u)*3] += proba;
-                    PbrtOptions.reflectImpMap[(v * PbrtOptions.widthImpMap + u)*3 + 1] += proba;
-                    PbrtOptions.reflectImpMap[(v * PbrtOptions.widthImpMap + u)*3 + 2] += proba;
+                  int index = (v * PbrtOptions.widthImpMap + u) * 3;
+                  fillMap(PbrtOptions.maps["ALL"], proba, index);
+
+                  if (value % 10 == 1) {
+                      fillMap(PbrtOptions.maps["R"], proba, index);
+                      if (value == 1) {
+                          fillMap(PbrtOptions.maps["R0"], proba, index);
+                          // std::cout << value << " --> R" << std::endl;
+                      }
+                      else {
+                          fillMap(PbrtOptions.maps["RX"], proba, index);
+                          // std::cout << value << " --> RX+" << std::endl;
+                      }
                   }
 
-                  if (flagsMap[BSDF_TRANSMISSION]) {
-                    PbrtOptions.transmitImpMap[(v * PbrtOptions.widthImpMap + u)*3] += proba;
-                    PbrtOptions.transmitImpMap[(v * PbrtOptions.widthImpMap + u)*3 + 1] += proba;
-                    PbrtOptions.transmitImpMap[(v * PbrtOptions.widthImpMap + u)*3 + 2] += proba;
+                  else if (value % 10 == 2) {
+                      fillMap(PbrtOptions.maps["TX"], proba, index);
+                      int indexSecondT = 1;
+                      while(value % int(std::pow(10, indexSecondT+1)) < 2 * std::pow(10, indexSecondT)) {
+                          // std::cout << (value % 10^(indexSecondT+1)) << " inférieur à " << ((10^(indexSecondT)) * 2) << std::endl;
+                          indexSecondT++;
+                          if (indexSecondT > maxDepth+1) break;
+                      }
+
+                      // int rest = value % 10^(indexSecondT+1);
+                      if (indexSecondT == 1) {
+                          fillMap(PbrtOptions.maps["TT"], proba, index);
+                          if (value == 22) {
+                              // std::cout << value << " --> TT" << std::endl;
+                              fillMap(PbrtOptions.maps["TT0"], proba, index);
+                          }
+                          else {
+                              fillMap(PbrtOptions.maps["TTX"], proba, index);
+                              // std::cout << value << " --> TTX+" << std::endl;
+                          }
+                      }
+                      else {
+                          fillMap(PbrtOptions.maps["TRT"], proba, index);
+                          if (value < std::pow(10, (indexSecondT+1))) {
+                              // std::cout << value << " --> TR+T" << std::endl;
+                              fillMap(PbrtOptions.maps["TRT0"], proba, index);
+                          }
+                          else {
+                              // std::cout << value << " --> TR+TX+" << std::endl;
+                              fillMap(PbrtOptions.maps["TRTX"], proba, index);
+                          }
+                      }
                   }
               }
           }
@@ -152,7 +196,9 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
         // Compute scattering functions and skip over medium boundaries
         isect.ComputeScatteringFunctions(ray, arena, true);
         if (!isect.bsdf) {
+            bool tmp = ray.firstIsectTarget;
             ray = isect.SpawnRay(ray.d);
+            ray.firstIsectTarget = tmp;
             bounces--;
             continue;
         }
@@ -189,9 +235,9 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             etaScale *= (Dot(wo, isect.n) > 0) ? (eta * eta) : 1 / (eta * eta);
         }
 
-
+        bool tmp = ray.firstIsectTarget;
         ray = isect.SpawnRay(wi);
-
+        ray.firstIsectTarget = tmp;
 
 
         // Account for subsurface scattering, if applicable
@@ -215,28 +261,17 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             beta *= f * AbsDot(wi, pi.shading.n) / pdf;
             DCHECK(!std::isinf(beta.y()));
             specularBounce = (flags & BSDF_SPECULAR) != 0;
+
+            bool tmp = ray.firstIsectTarget;
             ray = pi.SpawnRay(wi);
+            ray.firstIsectTarget = tmp;
         }
 
-
-
-        if (bounces == 0) {
-            std::map<int, bool>::iterator it = flagsMap.begin();
-            while (it != flagsMap.end()) {
-                if (flags & it->first)
-                    flagsMap[it->first] = true;
-                it++;
-            }
+        if (foundIntersection) {
+            if (flags & BSDF_REFLECTION) value += (1 * std::pow(10, bounces));
+            else if (flags & BSDF_TRANSMISSION) value += (2 * std::pow(10, bounces));
+            else std::cout << "PROBLEEEEEEEEEEEEEEEEEEEEEEEEEEEME" << std::endl;
         }
-
-        std::map<int, bool>::iterator it = flagsMap.begin();
-        while (it != flagsMap.end()) {
-          if (!(flagsMap[it->first] && (flags & it->first)))
-            flagsMap[it->first] = false;
-          it++;
-        }
-
-
 
         // Possibly terminate the path with Russian roulette.
         // Factor out radiance scaling due to refraction in rrBeta.

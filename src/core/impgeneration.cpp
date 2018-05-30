@@ -24,6 +24,25 @@ std::string computeNewFilename(std::string filename, std::string prefix, std::st
     return prefix + file.substr(0,pos) + suffix + extension;
 }
 
+void computeImpMapNames(Options &options) {
+
+    // These names represent the path of the ray.
+    // R means we got a reflection; T means we got a transmission; 0 means it's the end of the path.
+    // X means we got anything; at this point we don't care what, though it is not 0.
+    options.mapNames["R0"] = computeNewFilename(options.newFileName, "impmapR0_", "", ".exr");
+    options.mapNames["RX"] = computeNewFilename(options.newFileName, "impmapRX_", "", ".exr");
+    options.mapNames["R"] = computeNewFilename(options.newFileName, "impmapR_", "", ".exr");
+    options.mapNames["TT"] = computeNewFilename(options.newFileName, "impmapTT_", "", ".exr");
+    options.mapNames["TT0"] = computeNewFilename(options.newFileName, "impmapTT0_", "", ".exr");
+    options.mapNames["TTX"] = computeNewFilename(options.newFileName, "impmapTTX_", "", ".exr");
+    options.mapNames["TRT"] = computeNewFilename(options.newFileName, "impmapTRT_", "", ".exr");
+    options.mapNames["TRT0"] = computeNewFilename(options.newFileName, "impmapTRT0_", "", ".exr");
+    options.mapNames["TRTX"] = computeNewFilename(options.newFileName, "impmapTRTX_", "", ".exr");
+    options.mapNames["TX"] = computeNewFilename(options.newFileName, "impmapTX_", "", ".exr");
+    options.mapNames["ALL"] = computeNewFilename(options.newFileName, "impmapALL_", "", ".exr");
+}
+
+
 /*
     Changes the pbrt options: the importance boolean, the size of the importance
     map, and the initial color of the imp map (black by default).
@@ -33,14 +52,19 @@ void changeImpOptions(Options &options) {
     options.importance = true;
     options.orthoCam = true;
     options.widthImpMap = 1024, options.heightImpMap = 512;
-    options.impMap = new Float[3 * options.widthImpMap * options.heightImpMap];
-    options.reflectImpMap = new Float[3 * options.widthImpMap * options.heightImpMap];
-    options.transmitImpMap = new Float[3 * options.widthImpMap * options.heightImpMap];
-    for (int i = 0; i < options.widthImpMap*options.heightImpMap*3; i++){
-        options.impMap[i] = 0;
-        options.reflectImpMap[i] = 0;
-        options.transmitImpMap[i] = 0;
-    }
+
+    options.maps["R0"] = new Float[3 * options.widthImpMap * options.heightImpMap];
+    options.maps["RX"] = new Float[3 * options.widthImpMap * options.heightImpMap];
+    options.maps["R"] = new Float[3 * options.widthImpMap * options.heightImpMap];
+    options.maps["TT"] = new Float[3 * options.widthImpMap * options.heightImpMap];
+    options.maps["TT0"] = new Float[3 * options.widthImpMap * options.heightImpMap];
+    options.maps["TTX"] = new Float[3 * options.widthImpMap * options.heightImpMap];
+    options.maps["TRT"] = new Float[3 * options.widthImpMap * options.heightImpMap];
+    options.maps["TRT0"] = new Float[3 * options.widthImpMap * options.heightImpMap];
+    options.maps["TRTX"] = new Float[3 * options.widthImpMap * options.heightImpMap];
+    options.maps["TX"] = new Float[3 * options.widthImpMap * options.heightImpMap];
+    options.maps["ALL"] = new Float[3 * options.widthImpMap * options.heightImpMap];
+
 }
 
 
@@ -70,10 +94,9 @@ void changeLights(Options &options, std::vector<std::shared_ptr<Light>> &lights,
     }
 
     int w = options.widthImpMap, h = options.heightImpMap;
-    // WriteImage(options.impMapName, options.impMap, Bounds2i(Point2i(0, 0), Point2i(w, h)), Point2i(w, h));
 
-    // lights.push_back(std::make_shared<InfiniteAreaLight>(light2world, Spectrum(1.0) * Spectrum(1.0), 100, options.impMapName));
-    lights.push_back(std::make_shared<InfiniteAreaLight>(light2world, Spectrum(1.0) * Spectrum(1.0), 100, "../../../build/uffizi-large.exr"));
+     lights.push_back(std::make_shared<InfiniteAreaLight>(Transform(), Spectrum(1.0) * Spectrum(1.0), 100, "../../../build/uffizi-large.exr"));
+    //lights.push_back(std::make_shared<InfiniteAreaLight>(light2world, Spectrum(1.0) * Spectrum(1.0), 100, "../../../build/test.png"));
 
 }
 
@@ -90,7 +113,6 @@ Float* normalizeImpMap(Float *impmap, int width, int height) {
     for (int i = 0; i < width*height*3; i++) {
         impmap[i] = (Float)(impmap[i] / max);
     }
-    std::cout << max << std::endl;
     return impmap;
 }
 
@@ -101,9 +123,12 @@ Float* normalizeImpMap(Float *impmap, int width, int height) {
 void writeImpImage(Options &options) {
     // options.impMap = normalizeImpMap(options.impMap, options.widthImpMap, options.heightImpMap);
     int w = options.widthImpMap, h = options.heightImpMap;
-    WriteImage(options.impMapName, options.impMap, Bounds2i(Point2i(0, 0), Point2i(w, h)), Point2i(w, h));
-    WriteImage(options.reflectImpMapName, options.reflectImpMap, Bounds2i(Point2i(0, 0), Point2i(w, h)), Point2i(w, h));
-    WriteImage(options.transmitImpMapName, options.transmitImpMap, Bounds2i(Point2i(0, 0), Point2i(w, h)), Point2i(w, h));
+    std::map<std::string, Float*>::iterator it = options.maps.begin();
+    while (it != options.maps.end()) {
+        std::string index = it->first;
+        WriteImage(options.mapNames[index], options.maps[index], Bounds2i(Point2i(0, 0), Point2i(w, h)), Point2i(w, h));
+        it++;
+    }
 }
 
 

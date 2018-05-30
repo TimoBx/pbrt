@@ -53,6 +53,8 @@ void usageMat() {
         - plastic001 : plastic material, roughness = 0.01.
         - plastic09 : plastic material, roughness = 0.9.
         - translucent : translucent material, standard parameters.
+        - translucentR : translucent material, only reflections.
+        - translucentT : translucent material, only transmissions.
         - uber : uber material, standard parameters.
 
         - custom :  Allows the creation of any of the previous materials, with any parameter.
@@ -320,6 +322,12 @@ std::shared_ptr<Material> changeObjectMaterial(Options &options, std::string mat
     }
     else if (matname == "translucent") {
         mat = newMatTranslucent(isCustom, 0.25,0.25,0.25,0.25,0.25,0.25, 0.1, 0.5,0.5,0.5, 0.5,0.5,0.5);
+    }
+    else if (matname == "translucentR") {
+        mat = newMatTranslucent(isCustom, 0.25,0.25,0.25,0.25,0.25,0.25, 0.1, 1,1,1, 0,0,0);
+    }
+    else if (matname == "translucentT") {
+        mat = newMatTranslucent(isCustom, 0.25,0.25,0.25,0.25,0.25,0.25, 0.1, 0,0,0, 1,1,1);
     }
     else if (matname == "uber") {
         mat = newMatUber(isCustom, 0.25,0.25,0.25,0.25,0.25,0.25,0,0,0,0,0,0,0.1,0,0,1,1,1,1.5);

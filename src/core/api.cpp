@@ -1335,8 +1335,8 @@ void pbrtNamedMaterial(const std::string &name) {
 void pbrtLightSource(const std::string &name, const ParamSet &params) {
 
 
-    if (PbrtOptions.importance)
-        return;
+    // if (PbrtOptions.importance)
+    //     return;
 
     VERIFY_WORLD("LightSource");
     WARN_IF_ANIMATED_TRANSFORM("LightSource");
@@ -1355,8 +1355,8 @@ void pbrtLightSource(const std::string &name, const ParamSet &params) {
 
 void pbrtAreaLightSource(const std::string &name, const ParamSet &params) {
 
-    if (PbrtOptions.importance)
-          return;
+    // if (PbrtOptions.importance)
+    //       return;
 
 
     VERIFY_WORLD("AreaLightSource");

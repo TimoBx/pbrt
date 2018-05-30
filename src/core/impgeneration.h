@@ -13,7 +13,7 @@
 namespace pbrt {
 
   std::string computeNewFilename(std::string filename, std::string prefix, std::string suffix, std::string extension);
-
+  void computeImpMapNames(Options &options);
 
   void changeImpOptions(Options &options);
   void changeIntegrator(const std::string &name, const ParamSet &params, std::string &IntegratorName, ParamSet &IntegratorParams);

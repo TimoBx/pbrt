@@ -59,6 +59,7 @@
 #include <assert.h>
 #include <string.h>
 #include <glog/logging.h>
+#include <map>
 
 
 
@@ -183,6 +184,8 @@ struct Options {
 
     // Importance Map generation
     bool importance = false;
+    std::map<std::string, Float*> maps;
+    std::map<std::string, std::string> mapNames;
     Float *impMap, *reflectImpMap, *transmitImpMap;
     int widthImpMap, heightImpMap;
     std::string reflectImpMapName, transmitImpMapName, impMapName;
