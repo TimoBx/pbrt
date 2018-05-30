@@ -41,6 +41,7 @@
 // Importance Map generation
 #include "impgeneration.h"
 #include "imageio.h"
+#include "integrators/importancePath.h"
 
 // Material Change
 #include "matchange.h"
@@ -204,6 +205,8 @@ int main(int argc, char *argv[]) {
     }
 
     options = PbrtOptions;
+
+    // std::cout << "number of rays: " << nbRays() << "; number of error: " << nbErrors() << std::endl;
 
     if (options.importance) {
         computeImpMapNames(options);

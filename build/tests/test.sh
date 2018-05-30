@@ -42,6 +42,12 @@ IMP8=$TRT$1$m$e
 IMP9=$TRT0$1$m$e
 IMP10=$TRTX$1$m$e
 
+
+printf "   \n\n"
+../../../build/pbrt $INPUT --importance --quiet $mat $2
+
+
+printf "   \n\n Here are the images created and displayed :\n\n"
 echo $IMP
 echo $IMP1
 echo $IMP2
@@ -55,7 +61,6 @@ echo $IMP9
 echo $IMP10
 
 printf "   \n\n"
-../../../build/pbrt $INPUT --importance --quiet $mat $2
 
 # printf "   \n\n---  RENDERED IMAGE  ---   \n\n"
 if [ -f $OUTPUT ]

@@ -46,6 +46,8 @@
 namespace pbrt {
 
 
+
+
 STAT_PERCENT("Integrator/Zero-radiance paths", zeroRadiancePaths, totalPaths);
 STAT_INT_DISTRIBUTION("Integrator/Path length", pathLength);
 
@@ -70,6 +72,17 @@ void fillMap(Float* map, Float proba, int index) {
   map[index] += proba;
   map[index + 1] += proba;
   map[index + 2] += proba;
+}
+
+int numberOfRays = 0;
+int numberOfErrors = 0;
+
+int nbRays() {
+    return numberOfRays;
+}
+
+int nbErrors() {
+    return numberOfErrors;
 }
 
 
@@ -97,6 +110,7 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
     // flagsMap[BSDF_ALL] = false;
 
     int value = 0;
+    numberOfRays++;
 
     for (bounces = 0;; ++bounces) {
         // Find next path vertex and accumulate contribution
@@ -134,8 +148,12 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
                   Float theta = SphericalTheta(w);
                   // std::cout << "bounces = " << bounces << "; value = " << value << std::endl;
 
-                  int u = std::floor(phi * Inv2Pi * (PbrtOptions.widthImpMap) - 0.5f);
-                  int v = std::floor(theta * InvPi * (PbrtOptions.heightImpMap) - 0.5f);
+                  // int u = std::floor(phi * Inv2Pi * (PbrtOptions.widthImpMap) - 0.5f);
+                  // int v = std::floor(theta * InvPi * (PbrtOptions.heightImpMap) - 0.5f);
+
+                  int u = int(phi * Inv2Pi * (PbrtOptions.widthImpMap -1));
+                  int v = int(theta * InvPi * (PbrtOptions.heightImpMap -1));
+                  // if (u!=u1 || v!=v1) numberOfErrors++;
 
                   Float proba = 0, sintheta = std::sin(theta);
                   if (sintheta != 0) proba = 1 / (2 * Pi * Pi * sintheta);

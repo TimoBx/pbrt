@@ -68,6 +68,10 @@ class ImportancePathIntegrator : public SamplerIntegrator {
     // std::map<std::string, Spectrum> flagsMap;
 };
 
+int nbRays();
+
+int nbErrors();
+
 ImportancePathIntegrator *CreateImportancePathIntegrator(const ParamSet &params,
                                      std::shared_ptr<Sampler> sampler,
                                      std::shared_ptr<const Camera> camera);
