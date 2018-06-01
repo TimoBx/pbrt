@@ -209,6 +209,8 @@ int main(int argc, char *argv[]) {
     // std::cout << "number of rays: " << nbRays() << "; number of error: " << nbErrors() << std::endl;
 
     if (options.importance) {
+        // normalizeMaps(options);
+        std::cout << options.total << std::endl;
         computeImpMapNames(options);
         writeImpImage(options);
     }

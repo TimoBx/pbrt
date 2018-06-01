@@ -3,13 +3,14 @@
 
 
 
-LookAt	0 0 -3
+LookAt	0 0 -8
 	0 0 0
 	0 1 0
 
 
 Rotate -20 5 1 1
-Camera "perspective" "float fov" 90
+#Camera "perspective" "float fov" 90
+Camera "orthographic"
 
 
 
@@ -17,7 +18,7 @@ Film "image"
 "integer xresolution" [700] "integer yresolution" [700]
     "string filename" "chesspiece.exr"
 
-Sampler "sobol" "integer pixelsamples" [64]
+Sampler "stratified" "integer pixelsamples" [64]
 Integrator "path"
 
 

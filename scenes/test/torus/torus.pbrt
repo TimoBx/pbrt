@@ -1,0 +1,28 @@
+LookAt	0 -5 0
+	0 0 0
+	0 0 1
+
+  Camera "orthographic" "float screenwindow" [-2 2 -2 2]
+  #Camera "perspective" "float fov" 90
+
+Film "image"
+"integer xresolution" [700] "integer yresolution" [700]
+    "string filename" "torus.exr"
+
+Sampler "stratified" "integer pixelsamples" [256]
+Integrator "path"
+
+
+WorldBegin
+
+
+ObjectBegin "target"
+Rotate 90 1 0 0
+Shape "plymesh" "string filename" [ "torus.ply" ]
+ObjectEnd
+
+ObjectInstance "target"
+
+
+
+WorldEnd

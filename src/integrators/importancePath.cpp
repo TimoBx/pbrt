@@ -146,7 +146,6 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
                   Vector3f w = Normalize(light->WorldToLight(ray.d));
                   Float phi = SphericalPhi(w);
                   Float theta = SphericalTheta(w);
-                  // std::cout << "bounces = " << bounces << "; value = " << value << std::endl;
 
                   // int u = std::floor(phi * Inv2Pi * (PbrtOptions.widthImpMap) - 0.5f);
                   // int v = std::floor(theta * InvPi * (PbrtOptions.heightImpMap) - 0.5f);
@@ -159,51 +158,38 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
                   if (sintheta != 0) proba = 1 / (2 * Pi * Pi * sintheta);
 
                   int index = (v * PbrtOptions.widthImpMap + u) * 3;
+                  PbrtOptions.total++;
                   fillMap(PbrtOptions.maps["ALL"], proba, index);
 
                   if (value % 10 == 1) {
                       fillMap(PbrtOptions.maps["R"], proba, index);
-                      if (value == 1) {
+                      if (value == 1)
                           fillMap(PbrtOptions.maps["R0"], proba, index);
-                          // std::cout << value << " --> R" << std::endl;
-                      }
-                      else {
+                      else
                           fillMap(PbrtOptions.maps["RX"], proba, index);
-                          // std::cout << value << " --> RX+" << std::endl;
-                      }
                   }
 
                   else if (value % 10 == 2) {
                       fillMap(PbrtOptions.maps["TX"], proba, index);
                       int indexSecondT = 1;
                       while(value % int(std::pow(10, indexSecondT+1)) < 2 * std::pow(10, indexSecondT)) {
-                          // std::cout << (value % 10^(indexSecondT+1)) << " inférieur à " << ((10^(indexSecondT)) * 2) << std::endl;
                           indexSecondT++;
                           if (indexSecondT > maxDepth+1) break;
                       }
 
-                      // int rest = value % 10^(indexSecondT+1);
                       if (indexSecondT == 1) {
                           fillMap(PbrtOptions.maps["TT"], proba, index);
-                          if (value == 22) {
-                              // std::cout << value << " --> TT" << std::endl;
+                          if (value == 22)
                               fillMap(PbrtOptions.maps["TT0"], proba, index);
-                          }
-                          else {
+                          else
                               fillMap(PbrtOptions.maps["TTX"], proba, index);
-                              // std::cout << value << " --> TTX+" << std::endl;
-                          }
                       }
                       else {
                           fillMap(PbrtOptions.maps["TRT"], proba, index);
-                          if (value < std::pow(10, (indexSecondT+1))) {
-                              // std::cout << value << " --> TR+T" << std::endl;
+                          if (value < std::pow(10, (indexSecondT+1)))
                               fillMap(PbrtOptions.maps["TRT0"], proba, index);
-                          }
-                          else {
-                              // std::cout << value << " --> TR+TX+" << std::endl;
+                          else
                               fillMap(PbrtOptions.maps["TRTX"], proba, index);
-                          }
                       }
                   }
               }
@@ -288,7 +274,6 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
         if (foundIntersection) {
             if (flags & BSDF_REFLECTION) value += (1 * std::pow(10, bounces));
             else if (flags & BSDF_TRANSMISSION) value += (2 * std::pow(10, bounces));
-            else std::cout << "PROBLEEEEEEEEEEEEEEEEEEEEEEEEEEEME" << std::endl;
         }
 
         // Possibly terminate the path with Russian roulette.

@@ -190,6 +190,7 @@ struct Options {
     int widthImpMap, heightImpMap;
     std::string reflectImpMapName, transmitImpMapName, impMapName;
     bool orthoCam = false;
+    int total;
 
     // Changing Material
     bool matChange = false;

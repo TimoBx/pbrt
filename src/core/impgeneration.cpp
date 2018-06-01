@@ -50,7 +50,8 @@ void computeImpMapNames(Options &options) {
 */
 void changeImpOptions(Options &options) {
     options.importance = true;
-    options.orthoCam = true;
+    // options.orthoCam = true;
+    options.total = 0;
     options.widthImpMap = 1024, options.heightImpMap = 512;
 
     options.maps["R0"] = new Float[3 * options.widthImpMap * options.heightImpMap];
@@ -92,6 +93,7 @@ void changeLights(Options &options, std::vector<std::shared_ptr<Light>> &lights,
     if (!lights.empty()) {
         lights.clear();
     }
+    // std::cout << lights.size() << std::endl;
 
     int w = options.widthImpMap, h = options.heightImpMap;
 
@@ -115,6 +117,15 @@ Float* normalizeImpMap(Float *impmap, int width, int height) {
     }
     return impmap;
 }
+
+// void normalizeMaps(Options &options) {
+//     int total = 0, w = options.widthImpMap, h = options.heightImpMap;
+//     for (int i = 0; i < w*h; i++) {
+//
+//
+//
+//     }
+// }
 
 /*
     Saves the importance map in the .EXR image file used by the previously

@@ -36,6 +36,8 @@ MakeNamedMaterial "Material.004" "string type" "translucent" "color Kd" [1 0 0] 
 
 MakeNamedMaterial "Material.005" "string type" "disney" "color color" [0 1 0]
 
+
+ObjectBegin "target"
 # Name "Suzanne"
 AttributeBegin
 
@@ -2033,5 +2035,8 @@ Shape "trianglemesh"
 	]
 
 AttributeEnd
+ObjectEnd
+
+ObjectInstance "target"
 
 WorldEnd

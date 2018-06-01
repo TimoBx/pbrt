@@ -1,0 +1,37 @@
+LookAt	0 -5 0
+	0 0 0
+	0 0 1
+
+  Rotate 50 3 -4 7
+
+  Camera "perspective" "float fov" 90
+  #Camera "orthographic" "float screenwindow" [-2 2 -2 2]
+
+
+Film "image"
+"integer xresolution" [700] "integer yresolution" [700]
+    "string filename" "conePlane.exr"
+
+Sampler "stratified" "integer pixelsamples" [256]
+Integrator "path"
+
+
+WorldBegin
+
+
+ObjectBegin "target"
+Shape "cone"
+ObjectEnd
+
+ObjectInstance "target"
+
+AttributeBegin
+Shape "trianglemesh" "point P" [ -10000 -10000 0 10000 -10000 0 10000 10000 0 -10000 10000 0 ]
+      "float uv" [ 0 0 5 0 5 5 0 5 ]
+	"integer indices" [ 0 1 2 2 3 0]
+
+AttributeEnd
+
+
+
+WorldEnd
