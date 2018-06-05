@@ -1,0 +1,31 @@
+LookAt	0 -5 0
+	0 0 0
+	0 0 1
+
+  Rotate 50 0 0 1
+
+  #Camera "perspective" "float fov" 90
+  Camera "orthographic" "float screenwindow" [-6 6 -6 6]
+
+
+Film "image"
+"integer xresolution" [700] "integer yresolution" [700]
+    "string filename" "whale.exr"
+
+Sampler "stratified" "integer pixelsamples" [256]
+Integrator "path"
+
+
+WorldBegin
+
+
+ObjectBegin "target"
+Translate 0 0 -8
+Shape "plymesh" "string filename" [ "whale.ply" ]
+ObjectEnd
+
+ObjectInstance "target"
+
+
+
+WorldEnd

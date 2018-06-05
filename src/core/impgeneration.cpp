@@ -6,6 +6,12 @@
 #include "lights/infinite.h"
 
 #include "paramset.h"
+#include <limits>
+#include <algorithm>
+
+// #include <iostream>
+// #include <string>
+// #include <fstream>
 
 
 
@@ -118,14 +124,64 @@ Float* normalizeImpMap(Float *impmap, int width, int height) {
     return impmap;
 }
 
-// void normalizeMaps(Options &options) {
-//     int total = 0, w = options.widthImpMap, h = options.heightImpMap;
-//     for (int i = 0; i < w*h; i++) {
-//
-//
-//
-//     }
-// }
+Float getTotal(Float* t, int w, int h) {
+    Float total = 0;
+    for (int i = 0; i < w*h; i++) {
+        total += t[i*3];
+    }
+    return total;
+}
+
+Float getMax(Float* t, int w, int h) {
+    Float max = 0;
+    for (int i = 0; i < w*h; i++) {
+        if (t[i*3] > max) max = t[i*3];
+    }
+    return max;
+}
+
+Float getMean(Float* t, int w, int h) {
+    Float min = std::numeric_limits<float>::max(), max = 0;
+    for (int i = 0; i < w*h; i++) {
+        if (t[i*3] > 0 && t[i*3] < min) min = t[i*3];
+        if (t[i*3] > max) max = t[i*3];
+    }
+    return (max - min) / 2;
+}
+
+Float getMedian(Float* t, int w, int h) {
+    std::vector<Float> tmp;
+    for (int i = 0; i < w*h; i++) {
+        if (t[i*3] > 1)
+            tmp.push_back(t[i*3]);
+    }
+    std::sort(tmp.begin(), tmp.end());
+
+    // std::ofstream fichier("test.txt", std::ios::out | std::ios::trunc);
+    // if(fichier) {
+    //     for (int i = 0; i < tmp.size(); i++) {
+    //         fichier << tmp[i] << std::endl;
+    //     }
+    //     fichier.close();
+    // }
+    // else
+    //     std::cout << "Impossible d'ouvrir le fichier !" << std::endl;
+
+    return 0.5 * (tmp[tmp.size()/2 - 1] + tmp[tmp.size()/2]);
+}
+
+void normalizeMaps(Options &options, Float value) {
+    int w = options.widthImpMap, h = options.heightImpMap;
+
+    if (value == 0) return;
+    std::map<std::string, Float*>::iterator it = options.maps.begin();
+    while (it != options.maps.end()) {
+        for (int i = 0; i < w*h*3; i++) {
+            (it->second)[i] /= value;
+        }
+        it++;
+    }
+}
 
 /*
     Saves the importance map in the .EXR image file used by the previously

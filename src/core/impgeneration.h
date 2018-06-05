@@ -19,6 +19,13 @@ namespace pbrt {
   void changeIntegrator(const std::string &name, const ParamSet &params, std::string &IntegratorName, ParamSet &IntegratorParams);
   void changeLights(Options &PbrtOptions, std::vector<std::shared_ptr<Light>> &lights, const Transform &light2world);
   Float* normalizeImpMap(Float *impmap, int width, int height);
+
+  Float getTotal(Float* t, int w, int h);
+  Float getMax(Float* t, int w, int h);
+  Float getMean(Float* t, int w, int h);
+  Float getMedian(Float* t, int w, int h);
+  void normalizeMaps(Options &options, Float value);
+
   void writeImpImage(Options &options);
 
 

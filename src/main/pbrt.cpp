@@ -209,8 +209,13 @@ int main(int argc, char *argv[]) {
     // std::cout << "number of rays: " << nbRays() << "; number of error: " << nbErrors() << std::endl;
 
     if (options.importance) {
-        // normalizeMaps(options);
-        std::cout << options.total << std::endl;
+        Float value = 0;
+        value = getMean(options.maps["ALL"], options.widthImpMap, options.heightImpMap);
+
+        std::cout << value << std::endl;
+        // std::cout << (options.widthImpMap * options.heightImpMap) / value << std::endl;
+        normalizeMaps(options, value);
+
         computeImpMapNames(options);
         writeImpImage(options);
     }

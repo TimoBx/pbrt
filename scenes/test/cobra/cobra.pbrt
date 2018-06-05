@@ -1,0 +1,36 @@
+LookAt	0 -5 0
+	0 0 0
+	0 0 1
+
+
+  Translate -0.5 0 -2
+
+  #Camera "perspective" "float fov" 90
+  Camera "orthographic" "float screenwindow" [-5 5 -5 5]
+
+
+Film "image"
+"integer xresolution" [700] "integer yresolution" [700]
+    "string filename" "cobra.exr"
+
+Sampler "stratified" "integer pixelsamples" [256]
+Integrator "path"
+
+
+WorldBegin
+
+
+ObjectBegin "target"
+AttributeBegin
+Rotate 90 1 0 0
+Rotate 180 0 1 0
+
+Include "cobraGeo.pbrt"
+AttributeEnd
+ObjectEnd
+
+ObjectInstance "target"
+
+
+
+WorldEnd

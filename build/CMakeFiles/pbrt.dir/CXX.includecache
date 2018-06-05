@@ -1635,6 +1635,10 @@ lights/infinite.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/lights/infinite.h
 paramset.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/paramset.h
+limits
+-
+algorithm
+-
 
 /home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
 pbrt.h
