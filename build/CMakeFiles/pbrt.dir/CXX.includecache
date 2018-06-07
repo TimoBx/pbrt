@@ -1639,6 +1639,12 @@ limits
 -
 algorithm
 -
+iostream
+-
+string
+-
+fstream
+-
 
 /home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
 pbrt.h

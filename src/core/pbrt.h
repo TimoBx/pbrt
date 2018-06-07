@@ -197,6 +197,12 @@ struct Options {
     std::string newMatName, newFileName;
     std::shared_ptr<Material> newMat;
 
+    // Mask
+    bool applyMask = false;
+    int wMask, hMask;
+    std::string maskPlusName, maskMinusName;
+    Float *maskPlus, *maskMinus;
+
 };
 
 

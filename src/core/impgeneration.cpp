@@ -9,9 +9,9 @@
 #include <limits>
 #include <algorithm>
 
-// #include <iostream>
-// #include <string>
-// #include <fstream>
+#include <iostream>
+#include <string>
+#include <fstream>
 
 
 
@@ -56,8 +56,8 @@ void computeImpMapNames(Options &options) {
 */
 void changeImpOptions(Options &options) {
     options.importance = true;
-    // options.orthoCam = true;
-    options.total = 0;
+    options.orthoCam = true;
+    // options.total = 0;
     options.widthImpMap = 1024, options.heightImpMap = 512;
 
     options.maps["R0"] = new Float[3 * options.widthImpMap * options.heightImpMap];
@@ -90,7 +90,7 @@ void changeIntegrator(const std::string &name, const ParamSet &params, std::stri
 
 /*
     Remove all lights in the scene, and add a single light source of type InfiniteAreaLight.
-    There is supposedly no light meft in the scene already; but just in case, we clear the light vector.
+    There is supposedly no light left in the scene already; but just in case, we clear the light vector.
     The importance map, used to initialize the infinite light, is created, with its file
     name given by the computeNewFilename function.
 */
@@ -99,7 +99,6 @@ void changeLights(Options &options, std::vector<std::shared_ptr<Light>> &lights,
     if (!lights.empty()) {
         lights.clear();
     }
-    // std::cout << lights.size() << std::endl;
 
     int w = options.widthImpMap, h = options.heightImpMap;
 
@@ -124,6 +123,12 @@ Float* normalizeImpMap(Float *impmap, int width, int height) {
     return impmap;
 }
 
+
+/*
+    The following functions aim to normalize the importance maps, using an arbitrairy value:
+    the mean of the basic imp map, its median, its maxi value etc...
+    The max seems to be the best choice to use; in doubt, use max.
+*/
 Float getTotal(Float* t, int w, int h) {
     Float total = 0;
     for (int i = 0; i < w*h; i++) {
@@ -152,7 +157,7 @@ Float getMean(Float* t, int w, int h) {
 Float getMedian(Float* t, int w, int h) {
     std::vector<Float> tmp;
     for (int i = 0; i < w*h; i++) {
-        if (t[i*3] > 1)
+        if (t[i*3] > 0)
             tmp.push_back(t[i*3]);
     }
     std::sort(tmp.begin(), tmp.end());

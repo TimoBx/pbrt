@@ -237,7 +237,7 @@ void SamplerIntegrator::Render(const Scene &scene) {
                    (sampleExtent.y + tileSize - 1) / tileSize);
 
     ProgressReporter reporter(nTiles.x * nTiles.y, "Rendering");
-    
+
     {
         ParallelFor2D([&](Point2i tile) {
             // Render section of image corresponding to _tile_
@@ -263,6 +263,7 @@ void SamplerIntegrator::Render(const Scene &scene) {
 
             // Loop over pixels in tile to render them
             for (Point2i pixel : tileBounds) {
+                // std::cout << pixel.x << "  " << pixel.y << std::endl;
                 {
                     ProfilePhase pp(Prof::StartPixel);
                     tileSampler->StartPixel(pixel);
@@ -274,6 +275,11 @@ void SamplerIntegrator::Render(const Scene &scene) {
                 // debugging.
                 if (!InsideExclusive(pixel, pixelBounds))
                     continue;
+
+                if (!PbrtOptions.applyMask || (PbrtOptions.maskPlus[3*(pixel.y*PbrtOptions.wMask + pixel.x)]
+                                              + PbrtOptions.maskPlus[3*(pixel.y*PbrtOptions.wMask + pixel.x +1)]
+                                              + PbrtOptions.maskPlus[3*(pixel.y*PbrtOptions.wMask + pixel.x +2)] != 0)) {
+                  // std::cout << 3*(pixel.y*PbrtOptions.wMask + pixel.x) + 3*(pixel.y*PbrtOptions.wMask + pixel.x +1) + 3*(pixel.y*PbrtOptions.wMask + pixel.x +2) << std::endl;
 
                 do {
                     // Initialize _CameraSample_ for current sample
@@ -325,6 +331,9 @@ void SamplerIntegrator::Render(const Scene &scene) {
                     // value
                     arena.Reset();
                 } while (tileSampler->StartNextSample());
+
+
+              }
             }
             LOG(INFO) << "Finished image tile " << tileBounds;
 

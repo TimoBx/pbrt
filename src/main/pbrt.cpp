@@ -59,6 +59,8 @@ Rendering options:
   --importance         Compute the importance map. Does not render an image of
                        the scene; instead, render the importance map as a .EXR
                        image (use this file in Gratin afterwards).
+  --mask <filename>    Apply a mask to the rendering. The mask has to be in a format
+                       supported by pbrt: .exr, .png...
   --matchange <mat>    Change all the materials in the scene to a chosen one.
   --nthreads <num>     Use specified number of threads for rendering.
   --outfile <filename> Write the final image to the given filename.
@@ -163,6 +165,22 @@ int main(int argc, char *argv[]) {
                 return 0;
             }
         }
+        else if (!strcmp(argv[i], "--mask")) {
+            if (i + 1 == argc)
+                usage("missing value after --mask argument");
+            options.applyMask = true;
+            options.maskPlusName = argv[++i];
+            Point2i dimMask;
+            std::unique_ptr<RGBSpectrum[]> imageSpectrum = ReadImage(options.maskPlusName, &dimMask);
+            options.wMask = dimMask.x, options.hMask = dimMask.y;
+            options.maskPlus = new Float[3 * options.wMask * options.hMask];
+            for (int i = 0; i < options.wMask * options.hMask; i++) {
+                options.maskPlus[i*3 + 0] = (imageSpectrum[i])[0];
+                options.maskPlus[i*3 + 1] = (imageSpectrum[i])[1];
+                options.maskPlus[i*3 + 2] = (imageSpectrum[i])[2];
+            }
+            // WriteImage("testMask.exr", options.maskPlus, Bounds2i(Point2i(0, 0), Point2i(wMask, hMask)), Point2i(wMask, hMask));
+        }
         else
             filenames.push_back(argv[i]);
     }
@@ -210,12 +228,11 @@ int main(int argc, char *argv[]) {
 
     if (options.importance) {
         Float value = 0;
-        value = getMean(options.maps["ALL"], options.widthImpMap, options.heightImpMap);
+        value = getMax(options.maps["ALL"], options.widthImpMap, options.heightImpMap);
 
         std::cout << value << std::endl;
-        // std::cout << (options.widthImpMap * options.heightImpMap) / value << std::endl;
         normalizeMaps(options, value);
-
+        // std::cout << Float(nbRays()) / (options.widthImpMap * options.heightImpMap) << std::endl;
         computeImpMapNames(options);
         writeImpImage(options);
     }

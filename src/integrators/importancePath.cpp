@@ -110,7 +110,6 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
     // flagsMap[BSDF_ALL] = false;
 
     int value = 0;
-    numberOfRays++;
 
     for (bounces = 0;; ++bounces) {
         // Find next path vertex and accumulate contribution
@@ -123,6 +122,7 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
         if (foundIntersection && bounces == 0 && isect.primitive->isTarget) {
             ray.firstIsectTarget = true;
             targetFoundFirstBounce = true;
+            numberOfRays++;
         }
 
 
@@ -200,9 +200,10 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
         // Compute scattering functions and skip over medium boundaries
         isect.ComputeScatteringFunctions(ray, arena, true);
         if (!isect.bsdf) {
-            bool tmp = ray.firstIsectTarget;
+            bool tmp1 = ray.firstIsectTarget, tmp2 = ray.wanted;
             ray = isect.SpawnRay(ray.d);
-            ray.firstIsectTarget = tmp;
+            ray.firstIsectTarget = tmp1;
+            ray.wanted = tmp2;
             bounces--;
             continue;
         }
@@ -239,10 +240,10 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             etaScale *= (Dot(wo, isect.n) > 0) ? (eta * eta) : 1 / (eta * eta);
         }
 
-        bool tmp = ray.firstIsectTarget;
+        bool tmp1 = ray.firstIsectTarget, tmp2 = ray.wanted;
         ray = isect.SpawnRay(wi);
-        ray.firstIsectTarget = tmp;
-
+        ray.firstIsectTarget = tmp1;
+        ray.wanted = tmp2;
 
         // Account for subsurface scattering, if applicable
         if (isect.bssrdf && (flags & BSDF_TRANSMISSION)) {
@@ -266,9 +267,10 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             DCHECK(!std::isinf(beta.y()));
             specularBounce = (flags & BSDF_SPECULAR) != 0;
 
-            bool tmp = ray.firstIsectTarget;
+            bool tmp1 = ray.firstIsectTarget, tmp2 = ray.wanted;
             ray = pi.SpawnRay(wi);
-            ray.firstIsectTarget = tmp;
+            ray.firstIsectTarget = tmp1;
+            ray.wanted = tmp2;
         }
 
         if (foundIntersection) {
