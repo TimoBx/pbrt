@@ -57,7 +57,6 @@ void computeImpMapNames(Options &options) {
 void changeImpOptions(Options &options) {
     options.importance = true;
     options.orthoCam = true;
-    // options.total = 0;
     options.widthImpMap = 1024, options.heightImpMap = 512;
 
     options.maps["R0"] = new Float[3 * options.widthImpMap * options.heightImpMap];

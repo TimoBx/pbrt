@@ -263,6 +263,7 @@ void SamplerIntegrator::Render(const Scene &scene) {
 
             // Loop over pixels in tile to render them
             for (Point2i pixel : tileBounds) {
+
                 // std::cout << pixel.x << "  " << pixel.y << std::endl;
                 {
                     ProfilePhase pp(Prof::StartPixel);
@@ -276,10 +277,6 @@ void SamplerIntegrator::Render(const Scene &scene) {
                 if (!InsideExclusive(pixel, pixelBounds))
                     continue;
 
-                if (!PbrtOptions.applyMask || (PbrtOptions.maskPlus[3*(pixel.y*PbrtOptions.wMask + pixel.x)]
-                                              + PbrtOptions.maskPlus[3*(pixel.y*PbrtOptions.wMask + pixel.x +1)]
-                                              + PbrtOptions.maskPlus[3*(pixel.y*PbrtOptions.wMask + pixel.x +2)] != 0)) {
-                  // std::cout << 3*(pixel.y*PbrtOptions.wMask + pixel.x) + 3*(pixel.y*PbrtOptions.wMask + pixel.x +1) + 3*(pixel.y*PbrtOptions.wMask + pixel.x +2) << std::endl;
 
                 do {
                     // Initialize _CameraSample_ for current sample
@@ -293,6 +290,24 @@ void SamplerIntegrator::Render(const Scene &scene) {
                     ray.ScaleDifferentials(
                         1 / std::sqrt((Float)tileSampler->samplesPerPixel));
                     ++nCameraRays;
+
+                    // Apply mask if needed
+                    if (PbrtOptions.applyMask) {
+                        Float r = PbrtOptions.mask[3*(pixel.y*PbrtOptions.wMask + pixel.x) + 0];
+                        Float g = PbrtOptions.mask[3*(pixel.y*PbrtOptions.wMask + pixel.x) + 1];
+                        Float b = PbrtOptions.mask[3*(pixel.y*PbrtOptions.wMask + pixel.x) + 2];
+
+                        // ray.wantedValue is initialized with an int: -1 if we don't want this pixel, 1 if we want this piwel, 0 otherwise.
+                        ray.wantedValue = 0;
+                        if (r != 0 && g == 0 && b == 0) {  // RED, MINUS MASK
+                            ray.wantedValue = -1;
+                        }
+                        else if (r == 0 && g == 0 && b != 0) {  // BLUE, PLUS MASK
+                            ray.wantedValue = 1;
+                        }
+                        // else
+                            // std::cout << r << " " << g << " " << b << std::endl;
+                    }
 
                     // Evaluate radiance along camera ray
                     Spectrum L(0.f);
@@ -332,8 +347,6 @@ void SamplerIntegrator::Render(const Scene &scene) {
                     arena.Reset();
                 } while (tileSampler->StartNextSample());
 
-
-              }
             }
             LOG(INFO) << "Finished image tile " << tileBounds;
 

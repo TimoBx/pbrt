@@ -611,6 +611,18 @@ CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.o
  /home/timothebarbaux/Documents/stage/pbrt/src/core/stringprint.h
  src/ext/glog/glog/logging.h
  src/ext/glog/glog/vlog_is_on.h
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o
+ ../src/ext/glog/src/glog/log_severity.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/error.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/geometry.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/imageio.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/mask.cpp
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/mask.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/pbrt.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/spectrum.h
+ /home/timothebarbaux/Documents/stage/pbrt/src/core/stringprint.h
+ src/ext/glog/glog/logging.h
+ src/ext/glog/glog/vlog_is_on.h
 CMakeFiles/pbrt.dir/src/core/matchange.cpp.o
  ../src/core/bssrdf.h
  ../src/core/interaction.h

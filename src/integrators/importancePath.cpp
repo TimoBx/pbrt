@@ -68,10 +68,22 @@ void ImportancePathIntegrator::Preprocess(const Scene &scene, Sampler &sampler) 
 }
 
 
-void fillMap(Float* map, Float proba, int index) {
-  map[index] += proba;
-  map[index + 1] += proba;
-  map[index + 2] += proba;
+void fillMaps(std::string name, Float proba, int index, int maskValue) {
+  PbrtOptions.maps[name][index] += proba;
+  PbrtOptions.maps[name][index + 1] += proba;
+  PbrtOptions.maps[name][index + 2] += proba;
+
+  if (PbrtOptions.applyMask && maskValue == 1) {
+    PbrtOptions.maskPlusMaps[name][index] = 1;
+    PbrtOptions.maskPlusMaps[name][index + 1] = 1;
+    PbrtOptions.maskPlusMaps[name][index + 2] = 1;
+  }
+
+  else if (PbrtOptions.applyMask && maskValue == -1) {
+    PbrtOptions.maskMinusMaps[name][index] = 1;
+    PbrtOptions.maskMinusMaps[name][index + 1] = 1;
+    PbrtOptions.maskMinusMaps[name][index + 2] = 1;
+  }
 }
 
 int numberOfRays = 0;
@@ -119,10 +131,12 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
         bool foundIntersection = scene.Intersect(ray, &isect);
 
 
+
         if (foundIntersection && bounces == 0 && isect.primitive->isTarget) {
             ray.firstIsectTarget = true;
             targetFoundFirstBounce = true;
             numberOfRays++;
+            // std::cout << ray.wantedValue << std::endl;
         }
 
 
@@ -159,18 +173,18 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
 
                   int index = (v * PbrtOptions.widthImpMap + u) * 3;
                   PbrtOptions.total++;
-                  fillMap(PbrtOptions.maps["ALL"], proba, index);
+                  fillMaps("ALL", proba, index, ray.wantedValue);
 
                   if (value % 10 == 1) {
-                      fillMap(PbrtOptions.maps["R"], proba, index);
+                      fillMaps("R", proba, index, ray.wantedValue);
                       if (value == 1)
-                          fillMap(PbrtOptions.maps["R0"], proba, index);
+                          fillMaps("R0", proba, index, ray.wantedValue);
                       else
-                          fillMap(PbrtOptions.maps["RX"], proba, index);
+                          fillMaps("RX", proba, index, ray.wantedValue);
                   }
 
                   else if (value % 10 == 2) {
-                      fillMap(PbrtOptions.maps["TX"], proba, index);
+                      fillMaps("TX", proba, index, ray.wantedValue);
                       int indexSecondT = 1;
                       while(value % int(std::pow(10, indexSecondT+1)) < 2 * std::pow(10, indexSecondT)) {
                           indexSecondT++;
@@ -178,18 +192,18 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
                       }
 
                       if (indexSecondT == 1) {
-                          fillMap(PbrtOptions.maps["TT"], proba, index);
+                          fillMaps("TT", proba, index, ray.wantedValue);
                           if (value == 22)
-                              fillMap(PbrtOptions.maps["TT0"], proba, index);
+                              fillMaps("TT0", proba, index, ray.wantedValue);
                           else
-                              fillMap(PbrtOptions.maps["TTX"], proba, index);
+                              fillMaps("TTX", proba, index, ray.wantedValue);
                       }
                       else {
-                          fillMap(PbrtOptions.maps["TRT"], proba, index);
+                          fillMaps("TRT", proba, index, ray.wantedValue);
                           if (value < std::pow(10, (indexSecondT+1)))
-                              fillMap(PbrtOptions.maps["TRT0"], proba, index);
+                              fillMaps("TRT0", proba, index, ray.wantedValue);
                           else
-                              fillMap(PbrtOptions.maps["TRTX"], proba, index);
+                              fillMaps("TRTX", proba, index, ray.wantedValue);
                       }
                   }
               }
@@ -200,10 +214,11 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
         // Compute scattering functions and skip over medium boundaries
         isect.ComputeScatteringFunctions(ray, arena, true);
         if (!isect.bsdf) {
-            bool tmp1 = ray.firstIsectTarget, tmp2 = ray.wanted;
+            bool tmp1 = ray.firstIsectTarget;
+            int tmp2 = ray.wantedValue;
             ray = isect.SpawnRay(ray.d);
             ray.firstIsectTarget = tmp1;
-            ray.wanted = tmp2;
+            ray.wantedValue = tmp2;
             bounces--;
             continue;
         }
@@ -240,10 +255,11 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             etaScale *= (Dot(wo, isect.n) > 0) ? (eta * eta) : 1 / (eta * eta);
         }
 
-        bool tmp1 = ray.firstIsectTarget, tmp2 = ray.wanted;
+        bool tmp1 = ray.firstIsectTarget;
+        int tmp2 = ray.wantedValue;
         ray = isect.SpawnRay(wi);
         ray.firstIsectTarget = tmp1;
-        ray.wanted = tmp2;
+        ray.wantedValue = tmp2;
 
         // Account for subsurface scattering, if applicable
         if (isect.bssrdf && (flags & BSDF_TRANSMISSION)) {
@@ -267,10 +283,11 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             DCHECK(!std::isinf(beta.y()));
             specularBounce = (flags & BSDF_SPECULAR) != 0;
 
-            bool tmp1 = ray.firstIsectTarget, tmp2 = ray.wanted;
+            bool tmp1 = ray.firstIsectTarget;
+            int tmp2 = ray.wantedValue;
             ray = pi.SpawnRay(wi);
             ray.firstIsectTarget = tmp1;
-            ray.wanted = tmp2;
+            ray.wantedValue = tmp2;
         }
 
         if (foundIntersection) {
@@ -290,6 +307,19 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
     }
 
     ReportValue(pathLength, bounces);
+    if (PbrtOptions.applyMask && ray.firstIsectTarget) {
+        if (ray.wantedValue == 1) {
+            L[0] = 0;
+            L[1] = 0;
+        }
+        else if (ray.wantedValue == -1) {
+            L[1] = 0;
+            L[2] = 0;
+        }
+        // else
+            // std::cout << "we found a weird ray" << std::endl;
+
+    }
     return L;
 }
 

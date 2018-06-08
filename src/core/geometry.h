@@ -888,7 +888,7 @@ class Ray {
     Float time;
     const Medium *medium;
     bool firstIsectTarget;
-    bool wanted = true;
+    int wantedValue = 1;
 };
 
 class RayDifferential : public Ray {

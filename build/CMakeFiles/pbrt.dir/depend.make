@@ -611,6 +611,18 @@ CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.o: ../src/core/stringprint.h
 CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.o: src/ext/glog/glog/logging.h
 CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.o: src/ext/glog/glog/vlog_is_on.h
 
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o: ../src/ext/glog/src/glog/log_severity.h
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o: ../src/core/error.h
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o: ../src/core/geometry.h
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o: ../src/core/imageio.h
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o: ../src/core/mask.cpp
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o: ../src/core/mask.h
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o: ../src/core/pbrt.h
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o: ../src/core/spectrum.h
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o: ../src/core/stringprint.h
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o: src/ext/glog/glog/logging.h
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o: src/ext/glog/glog/vlog_is_on.h
+
 CMakeFiles/pbrt.dir/src/core/matchange.cpp.o: ../src/core/bssrdf.h
 CMakeFiles/pbrt.dir/src/core/matchange.cpp.o: ../src/core/interaction.h
 CMakeFiles/pbrt.dir/src/core/matchange.cpp.o: ../src/core/interpolation.h

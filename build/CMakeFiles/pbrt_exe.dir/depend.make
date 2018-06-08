@@ -10,6 +10,7 @@ CMakeFiles/pbrt_exe.dir/src/main/pbrt.cpp.o: ../src/core/integrator.h
 CMakeFiles/pbrt_exe.dir/src/main/pbrt.cpp.o: ../src/core/interaction.h
 CMakeFiles/pbrt_exe.dir/src/main/pbrt.cpp.o: ../src/core/light.h
 CMakeFiles/pbrt_exe.dir/src/main/pbrt.cpp.o: ../src/core/lightdistrib.h
+CMakeFiles/pbrt_exe.dir/src/main/pbrt.cpp.o: ../src/core/mask.h
 CMakeFiles/pbrt_exe.dir/src/main/pbrt.cpp.o: ../src/core/matchange.h
 CMakeFiles/pbrt_exe.dir/src/main/pbrt.cpp.o: ../src/core/material.h
 CMakeFiles/pbrt_exe.dir/src/main/pbrt.cpp.o: ../src/core/medium.h

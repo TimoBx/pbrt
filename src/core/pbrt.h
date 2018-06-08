@@ -200,8 +200,9 @@ struct Options {
     // Mask
     bool applyMask = false;
     int wMask, hMask;
-    std::string maskPlusName, maskMinusName;
-    Float *maskPlus, *maskMinus;
+    Float *mask;
+    std::map<std::string, Float*> maskPlusMaps, maskMinusMaps;
+    std::string maskName, maskMinusName;
 
 };
 

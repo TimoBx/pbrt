@@ -46,6 +46,9 @@
 // Material Change
 #include "matchange.h"
 
+// Mask
+#include "mask.h"
+
 using namespace pbrt;
 
 static void usage(const char *msg = nullptr) {
@@ -168,18 +171,8 @@ int main(int argc, char *argv[]) {
         else if (!strcmp(argv[i], "--mask")) {
             if (i + 1 == argc)
                 usage("missing value after --mask argument");
-            options.applyMask = true;
-            options.maskPlusName = argv[++i];
-            Point2i dimMask;
-            std::unique_ptr<RGBSpectrum[]> imageSpectrum = ReadImage(options.maskPlusName, &dimMask);
-            options.wMask = dimMask.x, options.hMask = dimMask.y;
-            options.maskPlus = new Float[3 * options.wMask * options.hMask];
-            for (int i = 0; i < options.wMask * options.hMask; i++) {
-                options.maskPlus[i*3 + 0] = (imageSpectrum[i])[0];
-                options.maskPlus[i*3 + 1] = (imageSpectrum[i])[1];
-                options.maskPlus[i*3 + 2] = (imageSpectrum[i])[2];
-            }
-            // WriteImage("testMask.exr", options.maskPlus, Bounds2i(Point2i(0, 0), Point2i(wMask, hMask)), Point2i(wMask, hMask));
+            options.maskName = argv[++i];
+            changeMaskOptions(options);
         }
         else
             filenames.push_back(argv[i]);
@@ -231,9 +224,13 @@ int main(int argc, char *argv[]) {
         value = getMax(options.maps["ALL"], options.widthImpMap, options.heightImpMap);
 
         std::cout << value << std::endl;
-        normalizeMaps(options, value);
+        // normalizeMaps(options, value);
         // std::cout << Float(nbRays()) / (options.widthImpMap * options.heightImpMap) << std::endl;
         computeImpMapNames(options);
+
+        if (options.applyMask)
+            applyMaskToImpMap(options);
+
         writeImpImage(options);
     }
 

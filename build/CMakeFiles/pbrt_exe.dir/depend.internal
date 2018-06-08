@@ -11,6 +11,7 @@ CMakeFiles/pbrt_exe.dir/src/main/pbrt.cpp.o
  ../src/core/interaction.h
  ../src/core/light.h
  ../src/core/lightdistrib.h
+ ../src/core/mask.h
  ../src/core/matchange.h
  ../src/core/material.h
  ../src/core/medium.h

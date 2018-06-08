@@ -489,9 +489,33 @@ CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.o.provides: CMakeFiles/pbrt.dir/
 CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.o.provides.build: CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.o
 
 
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o: CMakeFiles/pbrt.dir/flags.make
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o: ../src/core/mask.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/pbrt.dir/src/core/mask.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/mask.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/mask.cpp
+
+CMakeFiles/pbrt.dir/src/core/mask.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pbrt.dir/src/core/mask.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/timothebarbaux/Documents/stage/pbrt/src/core/mask.cpp > CMakeFiles/pbrt.dir/src/core/mask.cpp.i
+
+CMakeFiles/pbrt.dir/src/core/mask.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pbrt.dir/src/core/mask.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/timothebarbaux/Documents/stage/pbrt/src/core/mask.cpp -o CMakeFiles/pbrt.dir/src/core/mask.cpp.s
+
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o.requires:
+
+.PHONY : CMakeFiles/pbrt.dir/src/core/mask.cpp.o.requires
+
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o.provides: CMakeFiles/pbrt.dir/src/core/mask.cpp.o.requires
+	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/src/core/mask.cpp.o.provides.build
+.PHONY : CMakeFiles/pbrt.dir/src/core/mask.cpp.o.provides
+
+CMakeFiles/pbrt.dir/src/core/mask.cpp.o.provides.build: CMakeFiles/pbrt.dir/src/core/mask.cpp.o
+
+
 CMakeFiles/pbrt.dir/src/core/matchange.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/matchange.cpp.o: ../src/core/matchange.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/pbrt.dir/src/core/matchange.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/pbrt.dir/src/core/matchange.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/matchange.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/matchange.cpp
 
 CMakeFiles/pbrt.dir/src/core/matchange.cpp.i: cmake_force
@@ -515,7 +539,7 @@ CMakeFiles/pbrt.dir/src/core/matchange.cpp.o.provides.build: CMakeFiles/pbrt.dir
 
 CMakeFiles/pbrt.dir/src/core/material.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/material.cpp.o: ../src/core/material.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/pbrt.dir/src/core/material.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/pbrt.dir/src/core/material.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/material.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/material.cpp
 
 CMakeFiles/pbrt.dir/src/core/material.cpp.i: cmake_force
@@ -539,7 +563,7 @@ CMakeFiles/pbrt.dir/src/core/material.cpp.o.provides.build: CMakeFiles/pbrt.dir/
 
 CMakeFiles/pbrt.dir/src/core/medium.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/medium.cpp.o: ../src/core/medium.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/pbrt.dir/src/core/medium.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/pbrt.dir/src/core/medium.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/medium.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/medium.cpp
 
 CMakeFiles/pbrt.dir/src/core/medium.cpp.i: cmake_force
@@ -563,7 +587,7 @@ CMakeFiles/pbrt.dir/src/core/medium.cpp.o.provides.build: CMakeFiles/pbrt.dir/sr
 
 CMakeFiles/pbrt.dir/src/core/memory.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/memory.cpp.o: ../src/core/memory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/pbrt.dir/src/core/memory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/pbrt.dir/src/core/memory.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/memory.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/memory.cpp
 
 CMakeFiles/pbrt.dir/src/core/memory.cpp.i: cmake_force
@@ -587,7 +611,7 @@ CMakeFiles/pbrt.dir/src/core/memory.cpp.o.provides.build: CMakeFiles/pbrt.dir/sr
 
 CMakeFiles/pbrt.dir/src/core/microfacet.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/microfacet.cpp.o: ../src/core/microfacet.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/pbrt.dir/src/core/microfacet.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/pbrt.dir/src/core/microfacet.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/microfacet.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/microfacet.cpp
 
 CMakeFiles/pbrt.dir/src/core/microfacet.cpp.i: cmake_force
@@ -611,7 +635,7 @@ CMakeFiles/pbrt.dir/src/core/microfacet.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/core/parallel.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/parallel.cpp.o: ../src/core/parallel.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/pbrt.dir/src/core/parallel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/pbrt.dir/src/core/parallel.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/parallel.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/parallel.cpp
 
 CMakeFiles/pbrt.dir/src/core/parallel.cpp.i: cmake_force
@@ -635,7 +659,7 @@ CMakeFiles/pbrt.dir/src/core/parallel.cpp.o.provides.build: CMakeFiles/pbrt.dir/
 
 CMakeFiles/pbrt.dir/src/core/paramset.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/paramset.cpp.o: ../src/core/paramset.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/pbrt.dir/src/core/paramset.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/pbrt.dir/src/core/paramset.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/paramset.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/paramset.cpp
 
 CMakeFiles/pbrt.dir/src/core/paramset.cpp.i: cmake_force
@@ -659,7 +683,7 @@ CMakeFiles/pbrt.dir/src/core/paramset.cpp.o.provides.build: CMakeFiles/pbrt.dir/
 
 CMakeFiles/pbrt.dir/src/core/parser.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/parser.cpp.o: ../src/core/parser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/pbrt.dir/src/core/parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/pbrt.dir/src/core/parser.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/parser.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/parser.cpp
 
 CMakeFiles/pbrt.dir/src/core/parser.cpp.i: cmake_force
@@ -683,7 +707,7 @@ CMakeFiles/pbrt.dir/src/core/parser.cpp.o.provides.build: CMakeFiles/pbrt.dir/sr
 
 CMakeFiles/pbrt.dir/src/core/primitive.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/primitive.cpp.o: ../src/core/primitive.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/pbrt.dir/src/core/primitive.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/pbrt.dir/src/core/primitive.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/primitive.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/primitive.cpp
 
 CMakeFiles/pbrt.dir/src/core/primitive.cpp.i: cmake_force
@@ -707,7 +731,7 @@ CMakeFiles/pbrt.dir/src/core/primitive.cpp.o.provides.build: CMakeFiles/pbrt.dir
 
 CMakeFiles/pbrt.dir/src/core/progressreporter.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/progressreporter.cpp.o: ../src/core/progressreporter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/pbrt.dir/src/core/progressreporter.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/pbrt.dir/src/core/progressreporter.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/progressreporter.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/progressreporter.cpp
 
 CMakeFiles/pbrt.dir/src/core/progressreporter.cpp.i: cmake_force
@@ -731,7 +755,7 @@ CMakeFiles/pbrt.dir/src/core/progressreporter.cpp.o.provides.build: CMakeFiles/p
 
 CMakeFiles/pbrt.dir/src/core/quaternion.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/quaternion.cpp.o: ../src/core/quaternion.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/pbrt.dir/src/core/quaternion.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/pbrt.dir/src/core/quaternion.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/quaternion.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/quaternion.cpp
 
 CMakeFiles/pbrt.dir/src/core/quaternion.cpp.i: cmake_force
@@ -755,7 +779,7 @@ CMakeFiles/pbrt.dir/src/core/quaternion.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/core/reflection.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/reflection.cpp.o: ../src/core/reflection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/pbrt.dir/src/core/reflection.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/pbrt.dir/src/core/reflection.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/reflection.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/reflection.cpp
 
 CMakeFiles/pbrt.dir/src/core/reflection.cpp.i: cmake_force
@@ -779,7 +803,7 @@ CMakeFiles/pbrt.dir/src/core/reflection.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/core/sampler.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/sampler.cpp.o: ../src/core/sampler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/pbrt.dir/src/core/sampler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/pbrt.dir/src/core/sampler.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/sampler.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/sampler.cpp
 
 CMakeFiles/pbrt.dir/src/core/sampler.cpp.i: cmake_force
@@ -803,7 +827,7 @@ CMakeFiles/pbrt.dir/src/core/sampler.cpp.o.provides.build: CMakeFiles/pbrt.dir/s
 
 CMakeFiles/pbrt.dir/src/core/sampling.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/sampling.cpp.o: ../src/core/sampling.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/pbrt.dir/src/core/sampling.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/pbrt.dir/src/core/sampling.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/sampling.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/sampling.cpp
 
 CMakeFiles/pbrt.dir/src/core/sampling.cpp.i: cmake_force
@@ -827,7 +851,7 @@ CMakeFiles/pbrt.dir/src/core/sampling.cpp.o.provides.build: CMakeFiles/pbrt.dir/
 
 CMakeFiles/pbrt.dir/src/core/scene.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/scene.cpp.o: ../src/core/scene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/pbrt.dir/src/core/scene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/pbrt.dir/src/core/scene.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/scene.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/scene.cpp
 
 CMakeFiles/pbrt.dir/src/core/scene.cpp.i: cmake_force
@@ -851,7 +875,7 @@ CMakeFiles/pbrt.dir/src/core/scene.cpp.o.provides.build: CMakeFiles/pbrt.dir/src
 
 CMakeFiles/pbrt.dir/src/core/shape.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/shape.cpp.o: ../src/core/shape.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/pbrt.dir/src/core/shape.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/pbrt.dir/src/core/shape.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/shape.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/shape.cpp
 
 CMakeFiles/pbrt.dir/src/core/shape.cpp.i: cmake_force
@@ -875,7 +899,7 @@ CMakeFiles/pbrt.dir/src/core/shape.cpp.o.provides.build: CMakeFiles/pbrt.dir/src
 
 CMakeFiles/pbrt.dir/src/core/sobolmatrices.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/sobolmatrices.cpp.o: ../src/core/sobolmatrices.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/pbrt.dir/src/core/sobolmatrices.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/pbrt.dir/src/core/sobolmatrices.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/sobolmatrices.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/sobolmatrices.cpp
 
 CMakeFiles/pbrt.dir/src/core/sobolmatrices.cpp.i: cmake_force
@@ -899,7 +923,7 @@ CMakeFiles/pbrt.dir/src/core/sobolmatrices.cpp.o.provides.build: CMakeFiles/pbrt
 
 CMakeFiles/pbrt.dir/src/core/spectrum.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/spectrum.cpp.o: ../src/core/spectrum.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/pbrt.dir/src/core/spectrum.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/pbrt.dir/src/core/spectrum.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/spectrum.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/spectrum.cpp
 
 CMakeFiles/pbrt.dir/src/core/spectrum.cpp.i: cmake_force
@@ -923,7 +947,7 @@ CMakeFiles/pbrt.dir/src/core/spectrum.cpp.o.provides.build: CMakeFiles/pbrt.dir/
 
 CMakeFiles/pbrt.dir/src/core/stats.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/stats.cpp.o: ../src/core/stats.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/pbrt.dir/src/core/stats.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/pbrt.dir/src/core/stats.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/stats.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/stats.cpp
 
 CMakeFiles/pbrt.dir/src/core/stats.cpp.i: cmake_force
@@ -947,7 +971,7 @@ CMakeFiles/pbrt.dir/src/core/stats.cpp.o.provides.build: CMakeFiles/pbrt.dir/src
 
 CMakeFiles/pbrt.dir/src/core/texture.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/texture.cpp.o: ../src/core/texture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/pbrt.dir/src/core/texture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/pbrt.dir/src/core/texture.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/texture.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/texture.cpp
 
 CMakeFiles/pbrt.dir/src/core/texture.cpp.i: cmake_force
@@ -971,7 +995,7 @@ CMakeFiles/pbrt.dir/src/core/texture.cpp.o.provides.build: CMakeFiles/pbrt.dir/s
 
 CMakeFiles/pbrt.dir/src/core/transform.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/core/transform.cpp.o: ../src/core/transform.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/pbrt.dir/src/core/transform.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/pbrt.dir/src/core/transform.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/core/transform.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/core/transform.cpp
 
 CMakeFiles/pbrt.dir/src/core/transform.cpp.i: cmake_force
@@ -995,7 +1019,7 @@ CMakeFiles/pbrt.dir/src/core/transform.cpp.o.provides.build: CMakeFiles/pbrt.dir
 
 CMakeFiles/pbrt.dir/src/ext/ArHosekSkyModel.c.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/ext/ArHosekSkyModel.c.o: ../src/ext/ArHosekSkyModel.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/pbrt.dir/src/ext/ArHosekSkyModel.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/pbrt.dir/src/ext/ArHosekSkyModel.c.o"
 	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/pbrt.dir/src/ext/ArHosekSkyModel.c.o   -c /home/timothebarbaux/Documents/stage/pbrt/src/ext/ArHosekSkyModel.c
 
 CMakeFiles/pbrt.dir/src/ext/ArHosekSkyModel.c.i: cmake_force
@@ -1019,7 +1043,7 @@ CMakeFiles/pbrt.dir/src/ext/ArHosekSkyModel.c.o.provides.build: CMakeFiles/pbrt.
 
 CMakeFiles/pbrt.dir/src/ext/targa.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/ext/targa.cpp.o: ../src/ext/targa.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/pbrt.dir/src/ext/targa.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/pbrt.dir/src/ext/targa.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/ext/targa.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/ext/targa.cpp
 
 CMakeFiles/pbrt.dir/src/ext/targa.cpp.i: cmake_force
@@ -1043,7 +1067,7 @@ CMakeFiles/pbrt.dir/src/ext/targa.cpp.o.provides.build: CMakeFiles/pbrt.dir/src/
 
 CMakeFiles/pbrt.dir/src/ext/rply.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/ext/rply.cpp.o: ../src/ext/rply.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/pbrt.dir/src/ext/rply.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/pbrt.dir/src/ext/rply.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/ext/rply.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/ext/rply.cpp
 
 CMakeFiles/pbrt.dir/src/ext/rply.cpp.i: cmake_force
@@ -1067,7 +1091,7 @@ CMakeFiles/pbrt.dir/src/ext/rply.cpp.o.provides.build: CMakeFiles/pbrt.dir/src/e
 
 CMakeFiles/pbrt.dir/src/ext/lodepng.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/ext/lodepng.cpp.o: ../src/ext/lodepng.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/pbrt.dir/src/ext/lodepng.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/pbrt.dir/src/ext/lodepng.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/ext/lodepng.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/ext/lodepng.cpp
 
 CMakeFiles/pbrt.dir/src/ext/lodepng.cpp.i: cmake_force
@@ -1091,7 +1115,7 @@ CMakeFiles/pbrt.dir/src/ext/lodepng.cpp.o.provides.build: CMakeFiles/pbrt.dir/sr
 
 CMakeFiles/pbrt.dir/src/accelerators/kdtreeaccel.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/accelerators/kdtreeaccel.cpp.o: ../src/accelerators/kdtreeaccel.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/pbrt.dir/src/accelerators/kdtreeaccel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/pbrt.dir/src/accelerators/kdtreeaccel.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/accelerators/kdtreeaccel.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/accelerators/kdtreeaccel.cpp
 
 CMakeFiles/pbrt.dir/src/accelerators/kdtreeaccel.cpp.i: cmake_force
@@ -1115,7 +1139,7 @@ CMakeFiles/pbrt.dir/src/accelerators/kdtreeaccel.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/pbrt.dir/src/accelerators/bvh.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/accelerators/bvh.cpp.o: ../src/accelerators/bvh.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/pbrt.dir/src/accelerators/bvh.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/pbrt.dir/src/accelerators/bvh.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/accelerators/bvh.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/accelerators/bvh.cpp
 
 CMakeFiles/pbrt.dir/src/accelerators/bvh.cpp.i: cmake_force
@@ -1139,7 +1163,7 @@ CMakeFiles/pbrt.dir/src/accelerators/bvh.cpp.o.provides.build: CMakeFiles/pbrt.d
 
 CMakeFiles/pbrt.dir/src/cameras/environment.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/cameras/environment.cpp.o: ../src/cameras/environment.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/pbrt.dir/src/cameras/environment.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/pbrt.dir/src/cameras/environment.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/cameras/environment.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/cameras/environment.cpp
 
 CMakeFiles/pbrt.dir/src/cameras/environment.cpp.i: cmake_force
@@ -1163,7 +1187,7 @@ CMakeFiles/pbrt.dir/src/cameras/environment.cpp.o.provides.build: CMakeFiles/pbr
 
 CMakeFiles/pbrt.dir/src/cameras/perspective.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/cameras/perspective.cpp.o: ../src/cameras/perspective.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/pbrt.dir/src/cameras/perspective.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/pbrt.dir/src/cameras/perspective.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/cameras/perspective.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/cameras/perspective.cpp
 
 CMakeFiles/pbrt.dir/src/cameras/perspective.cpp.i: cmake_force
@@ -1187,7 +1211,7 @@ CMakeFiles/pbrt.dir/src/cameras/perspective.cpp.o.provides.build: CMakeFiles/pbr
 
 CMakeFiles/pbrt.dir/src/cameras/realistic.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/cameras/realistic.cpp.o: ../src/cameras/realistic.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/pbrt.dir/src/cameras/realistic.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/pbrt.dir/src/cameras/realistic.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/cameras/realistic.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/cameras/realistic.cpp
 
 CMakeFiles/pbrt.dir/src/cameras/realistic.cpp.i: cmake_force
@@ -1211,7 +1235,7 @@ CMakeFiles/pbrt.dir/src/cameras/realistic.cpp.o.provides.build: CMakeFiles/pbrt.
 
 CMakeFiles/pbrt.dir/src/cameras/orthographic.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/cameras/orthographic.cpp.o: ../src/cameras/orthographic.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/pbrt.dir/src/cameras/orthographic.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/pbrt.dir/src/cameras/orthographic.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/cameras/orthographic.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/cameras/orthographic.cpp
 
 CMakeFiles/pbrt.dir/src/cameras/orthographic.cpp.i: cmake_force
@@ -1235,7 +1259,7 @@ CMakeFiles/pbrt.dir/src/cameras/orthographic.cpp.o.provides.build: CMakeFiles/pb
 
 CMakeFiles/pbrt.dir/src/filters/sinc.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/filters/sinc.cpp.o: ../src/filters/sinc.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/pbrt.dir/src/filters/sinc.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/pbrt.dir/src/filters/sinc.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/filters/sinc.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/filters/sinc.cpp
 
 CMakeFiles/pbrt.dir/src/filters/sinc.cpp.i: cmake_force
@@ -1259,7 +1283,7 @@ CMakeFiles/pbrt.dir/src/filters/sinc.cpp.o.provides.build: CMakeFiles/pbrt.dir/s
 
 CMakeFiles/pbrt.dir/src/filters/triangle.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/filters/triangle.cpp.o: ../src/filters/triangle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/pbrt.dir/src/filters/triangle.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/pbrt.dir/src/filters/triangle.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/filters/triangle.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/filters/triangle.cpp
 
 CMakeFiles/pbrt.dir/src/filters/triangle.cpp.i: cmake_force
@@ -1283,7 +1307,7 @@ CMakeFiles/pbrt.dir/src/filters/triangle.cpp.o.provides.build: CMakeFiles/pbrt.d
 
 CMakeFiles/pbrt.dir/src/filters/box.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/filters/box.cpp.o: ../src/filters/box.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/pbrt.dir/src/filters/box.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/pbrt.dir/src/filters/box.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/filters/box.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/filters/box.cpp
 
 CMakeFiles/pbrt.dir/src/filters/box.cpp.i: cmake_force
@@ -1307,7 +1331,7 @@ CMakeFiles/pbrt.dir/src/filters/box.cpp.o.provides.build: CMakeFiles/pbrt.dir/sr
 
 CMakeFiles/pbrt.dir/src/filters/mitchell.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/filters/mitchell.cpp.o: ../src/filters/mitchell.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/pbrt.dir/src/filters/mitchell.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/pbrt.dir/src/filters/mitchell.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/filters/mitchell.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/filters/mitchell.cpp
 
 CMakeFiles/pbrt.dir/src/filters/mitchell.cpp.i: cmake_force
@@ -1331,7 +1355,7 @@ CMakeFiles/pbrt.dir/src/filters/mitchell.cpp.o.provides.build: CMakeFiles/pbrt.d
 
 CMakeFiles/pbrt.dir/src/filters/gaussian.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/filters/gaussian.cpp.o: ../src/filters/gaussian.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/pbrt.dir/src/filters/gaussian.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/pbrt.dir/src/filters/gaussian.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/filters/gaussian.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/filters/gaussian.cpp
 
 CMakeFiles/pbrt.dir/src/filters/gaussian.cpp.i: cmake_force
@@ -1355,7 +1379,7 @@ CMakeFiles/pbrt.dir/src/filters/gaussian.cpp.o.provides.build: CMakeFiles/pbrt.d
 
 CMakeFiles/pbrt.dir/src/integrators/path.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/integrators/path.cpp.o: ../src/integrators/path.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/path.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/path.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/integrators/path.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/integrators/path.cpp
 
 CMakeFiles/pbrt.dir/src/integrators/path.cpp.i: cmake_force
@@ -1379,7 +1403,7 @@ CMakeFiles/pbrt.dir/src/integrators/path.cpp.o.provides.build: CMakeFiles/pbrt.d
 
 CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o: ../src/integrators/importancePath.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/integrators/importancePath.cpp
 
 CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.i: cmake_force
@@ -1403,7 +1427,7 @@ CMakeFiles/pbrt.dir/src/integrators/importancePath.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/pbrt.dir/src/integrators/directlighting.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/integrators/directlighting.cpp.o: ../src/integrators/directlighting.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/directlighting.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/directlighting.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/integrators/directlighting.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/integrators/directlighting.cpp
 
 CMakeFiles/pbrt.dir/src/integrators/directlighting.cpp.i: cmake_force
@@ -1427,7 +1451,7 @@ CMakeFiles/pbrt.dir/src/integrators/directlighting.cpp.o.provides.build: CMakeFi
 
 CMakeFiles/pbrt.dir/src/integrators/volpath.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/integrators/volpath.cpp.o: ../src/integrators/volpath.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/volpath.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/volpath.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/integrators/volpath.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/integrators/volpath.cpp
 
 CMakeFiles/pbrt.dir/src/integrators/volpath.cpp.i: cmake_force
@@ -1451,7 +1475,7 @@ CMakeFiles/pbrt.dir/src/integrators/volpath.cpp.o.provides.build: CMakeFiles/pbr
 
 CMakeFiles/pbrt.dir/src/integrators/sppm.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/integrators/sppm.cpp.o: ../src/integrators/sppm.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/sppm.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/sppm.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/integrators/sppm.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/integrators/sppm.cpp
 
 CMakeFiles/pbrt.dir/src/integrators/sppm.cpp.i: cmake_force
@@ -1475,7 +1499,7 @@ CMakeFiles/pbrt.dir/src/integrators/sppm.cpp.o.provides.build: CMakeFiles/pbrt.d
 
 CMakeFiles/pbrt.dir/src/integrators/whitted.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/integrators/whitted.cpp.o: ../src/integrators/whitted.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/whitted.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/whitted.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/integrators/whitted.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/integrators/whitted.cpp
 
 CMakeFiles/pbrt.dir/src/integrators/whitted.cpp.i: cmake_force
@@ -1499,7 +1523,7 @@ CMakeFiles/pbrt.dir/src/integrators/whitted.cpp.o.provides.build: CMakeFiles/pbr
 
 CMakeFiles/pbrt.dir/src/integrators/mlt.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/integrators/mlt.cpp.o: ../src/integrators/mlt.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/mlt.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/mlt.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/integrators/mlt.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/integrators/mlt.cpp
 
 CMakeFiles/pbrt.dir/src/integrators/mlt.cpp.i: cmake_force
@@ -1523,7 +1547,7 @@ CMakeFiles/pbrt.dir/src/integrators/mlt.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/integrators/bdpt.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/integrators/bdpt.cpp.o: ../src/integrators/bdpt.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/bdpt.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/bdpt.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/integrators/bdpt.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/integrators/bdpt.cpp
 
 CMakeFiles/pbrt.dir/src/integrators/bdpt.cpp.i: cmake_force
@@ -1547,7 +1571,7 @@ CMakeFiles/pbrt.dir/src/integrators/bdpt.cpp.o.provides.build: CMakeFiles/pbrt.d
 
 CMakeFiles/pbrt.dir/src/integrators/ao.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/integrators/ao.cpp.o: ../src/integrators/ao.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/ao.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/pbrt.dir/src/integrators/ao.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/integrators/ao.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/integrators/ao.cpp
 
 CMakeFiles/pbrt.dir/src/integrators/ao.cpp.i: cmake_force
@@ -1571,7 +1595,7 @@ CMakeFiles/pbrt.dir/src/integrators/ao.cpp.o.provides.build: CMakeFiles/pbrt.dir
 
 CMakeFiles/pbrt.dir/src/lights/diffuse.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/lights/diffuse.cpp.o: ../src/lights/diffuse.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/pbrt.dir/src/lights/diffuse.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/pbrt.dir/src/lights/diffuse.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/lights/diffuse.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/lights/diffuse.cpp
 
 CMakeFiles/pbrt.dir/src/lights/diffuse.cpp.i: cmake_force
@@ -1595,7 +1619,7 @@ CMakeFiles/pbrt.dir/src/lights/diffuse.cpp.o.provides.build: CMakeFiles/pbrt.dir
 
 CMakeFiles/pbrt.dir/src/lights/projection.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/lights/projection.cpp.o: ../src/lights/projection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/pbrt.dir/src/lights/projection.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/pbrt.dir/src/lights/projection.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/lights/projection.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/lights/projection.cpp
 
 CMakeFiles/pbrt.dir/src/lights/projection.cpp.i: cmake_force
@@ -1619,7 +1643,7 @@ CMakeFiles/pbrt.dir/src/lights/projection.cpp.o.provides.build: CMakeFiles/pbrt.
 
 CMakeFiles/pbrt.dir/src/lights/spot.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/lights/spot.cpp.o: ../src/lights/spot.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/pbrt.dir/src/lights/spot.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/pbrt.dir/src/lights/spot.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/lights/spot.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/lights/spot.cpp
 
 CMakeFiles/pbrt.dir/src/lights/spot.cpp.i: cmake_force
@@ -1643,7 +1667,7 @@ CMakeFiles/pbrt.dir/src/lights/spot.cpp.o.provides.build: CMakeFiles/pbrt.dir/sr
 
 CMakeFiles/pbrt.dir/src/lights/distant.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/lights/distant.cpp.o: ../src/lights/distant.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/pbrt.dir/src/lights/distant.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object CMakeFiles/pbrt.dir/src/lights/distant.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/lights/distant.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/lights/distant.cpp
 
 CMakeFiles/pbrt.dir/src/lights/distant.cpp.i: cmake_force
@@ -1667,7 +1691,7 @@ CMakeFiles/pbrt.dir/src/lights/distant.cpp.o.provides.build: CMakeFiles/pbrt.dir
 
 CMakeFiles/pbrt.dir/src/lights/point.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/lights/point.cpp.o: ../src/lights/point.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object CMakeFiles/pbrt.dir/src/lights/point.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object CMakeFiles/pbrt.dir/src/lights/point.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/lights/point.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/lights/point.cpp
 
 CMakeFiles/pbrt.dir/src/lights/point.cpp.i: cmake_force
@@ -1691,7 +1715,7 @@ CMakeFiles/pbrt.dir/src/lights/point.cpp.o.provides.build: CMakeFiles/pbrt.dir/s
 
 CMakeFiles/pbrt.dir/src/lights/goniometric.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/lights/goniometric.cpp.o: ../src/lights/goniometric.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object CMakeFiles/pbrt.dir/src/lights/goniometric.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object CMakeFiles/pbrt.dir/src/lights/goniometric.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/lights/goniometric.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/lights/goniometric.cpp
 
 CMakeFiles/pbrt.dir/src/lights/goniometric.cpp.i: cmake_force
@@ -1715,7 +1739,7 @@ CMakeFiles/pbrt.dir/src/lights/goniometric.cpp.o.provides.build: CMakeFiles/pbrt
 
 CMakeFiles/pbrt.dir/src/lights/infinite.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/lights/infinite.cpp.o: ../src/lights/infinite.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object CMakeFiles/pbrt.dir/src/lights/infinite.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object CMakeFiles/pbrt.dir/src/lights/infinite.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/lights/infinite.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/lights/infinite.cpp
 
 CMakeFiles/pbrt.dir/src/lights/infinite.cpp.i: cmake_force
@@ -1739,7 +1763,7 @@ CMakeFiles/pbrt.dir/src/lights/infinite.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/materials/disney.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/disney.cpp.o: ../src/materials/disney.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object CMakeFiles/pbrt.dir/src/materials/disney.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building CXX object CMakeFiles/pbrt.dir/src/materials/disney.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/disney.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/disney.cpp
 
 CMakeFiles/pbrt.dir/src/materials/disney.cpp.i: cmake_force
@@ -1763,7 +1787,7 @@ CMakeFiles/pbrt.dir/src/materials/disney.cpp.o.provides.build: CMakeFiles/pbrt.d
 
 CMakeFiles/pbrt.dir/src/materials/translucent.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/translucent.cpp.o: ../src/materials/translucent.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building CXX object CMakeFiles/pbrt.dir/src/materials/translucent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building CXX object CMakeFiles/pbrt.dir/src/materials/translucent.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/translucent.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/translucent.cpp
 
 CMakeFiles/pbrt.dir/src/materials/translucent.cpp.i: cmake_force
@@ -1787,7 +1811,7 @@ CMakeFiles/pbrt.dir/src/materials/translucent.cpp.o.provides.build: CMakeFiles/p
 
 CMakeFiles/pbrt.dir/src/materials/metal.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/metal.cpp.o: ../src/materials/metal.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building CXX object CMakeFiles/pbrt.dir/src/materials/metal.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building CXX object CMakeFiles/pbrt.dir/src/materials/metal.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/metal.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/metal.cpp
 
 CMakeFiles/pbrt.dir/src/materials/metal.cpp.i: cmake_force
@@ -1811,7 +1835,7 @@ CMakeFiles/pbrt.dir/src/materials/metal.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/materials/uber.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/uber.cpp.o: ../src/materials/uber.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building CXX object CMakeFiles/pbrt.dir/src/materials/uber.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building CXX object CMakeFiles/pbrt.dir/src/materials/uber.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/uber.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/uber.cpp
 
 CMakeFiles/pbrt.dir/src/materials/uber.cpp.i: cmake_force
@@ -1835,7 +1859,7 @@ CMakeFiles/pbrt.dir/src/materials/uber.cpp.o.provides.build: CMakeFiles/pbrt.dir
 
 CMakeFiles/pbrt.dir/src/materials/matte.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/matte.cpp.o: ../src/materials/matte.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building CXX object CMakeFiles/pbrt.dir/src/materials/matte.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building CXX object CMakeFiles/pbrt.dir/src/materials/matte.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/matte.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/matte.cpp
 
 CMakeFiles/pbrt.dir/src/materials/matte.cpp.i: cmake_force
@@ -1859,7 +1883,7 @@ CMakeFiles/pbrt.dir/src/materials/matte.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/materials/kdsubsurface.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/kdsubsurface.cpp.o: ../src/materials/kdsubsurface.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building CXX object CMakeFiles/pbrt.dir/src/materials/kdsubsurface.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building CXX object CMakeFiles/pbrt.dir/src/materials/kdsubsurface.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/kdsubsurface.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/kdsubsurface.cpp
 
 CMakeFiles/pbrt.dir/src/materials/kdsubsurface.cpp.i: cmake_force
@@ -1883,7 +1907,7 @@ CMakeFiles/pbrt.dir/src/materials/kdsubsurface.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/pbrt.dir/src/materials/plastic.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/plastic.cpp.o: ../src/materials/plastic.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building CXX object CMakeFiles/pbrt.dir/src/materials/plastic.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building CXX object CMakeFiles/pbrt.dir/src/materials/plastic.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/plastic.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/plastic.cpp
 
 CMakeFiles/pbrt.dir/src/materials/plastic.cpp.i: cmake_force
@@ -1907,7 +1931,7 @@ CMakeFiles/pbrt.dir/src/materials/plastic.cpp.o.provides.build: CMakeFiles/pbrt.
 
 CMakeFiles/pbrt.dir/src/materials/substrate.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/substrate.cpp.o: ../src/materials/substrate.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building CXX object CMakeFiles/pbrt.dir/src/materials/substrate.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building CXX object CMakeFiles/pbrt.dir/src/materials/substrate.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/substrate.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/substrate.cpp
 
 CMakeFiles/pbrt.dir/src/materials/substrate.cpp.i: cmake_force
@@ -1931,7 +1955,7 @@ CMakeFiles/pbrt.dir/src/materials/substrate.cpp.o.provides.build: CMakeFiles/pbr
 
 CMakeFiles/pbrt.dir/src/materials/glass.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/glass.cpp.o: ../src/materials/glass.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building CXX object CMakeFiles/pbrt.dir/src/materials/glass.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building CXX object CMakeFiles/pbrt.dir/src/materials/glass.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/glass.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/glass.cpp
 
 CMakeFiles/pbrt.dir/src/materials/glass.cpp.i: cmake_force
@@ -1955,7 +1979,7 @@ CMakeFiles/pbrt.dir/src/materials/glass.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/materials/hair.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/hair.cpp.o: ../src/materials/hair.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building CXX object CMakeFiles/pbrt.dir/src/materials/hair.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building CXX object CMakeFiles/pbrt.dir/src/materials/hair.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/hair.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/hair.cpp
 
 CMakeFiles/pbrt.dir/src/materials/hair.cpp.i: cmake_force
@@ -1979,7 +2003,7 @@ CMakeFiles/pbrt.dir/src/materials/hair.cpp.o.provides.build: CMakeFiles/pbrt.dir
 
 CMakeFiles/pbrt.dir/src/materials/subsurface.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/subsurface.cpp.o: ../src/materials/subsurface.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building CXX object CMakeFiles/pbrt.dir/src/materials/subsurface.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building CXX object CMakeFiles/pbrt.dir/src/materials/subsurface.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/subsurface.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/subsurface.cpp
 
 CMakeFiles/pbrt.dir/src/materials/subsurface.cpp.i: cmake_force
@@ -2003,7 +2027,7 @@ CMakeFiles/pbrt.dir/src/materials/subsurface.cpp.o.provides.build: CMakeFiles/pb
 
 CMakeFiles/pbrt.dir/src/materials/mixmat.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/mixmat.cpp.o: ../src/materials/mixmat.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building CXX object CMakeFiles/pbrt.dir/src/materials/mixmat.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building CXX object CMakeFiles/pbrt.dir/src/materials/mixmat.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/mixmat.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/mixmat.cpp
 
 CMakeFiles/pbrt.dir/src/materials/mixmat.cpp.i: cmake_force
@@ -2027,7 +2051,7 @@ CMakeFiles/pbrt.dir/src/materials/mixmat.cpp.o.provides.build: CMakeFiles/pbrt.d
 
 CMakeFiles/pbrt.dir/src/materials/mirror.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/mirror.cpp.o: ../src/materials/mirror.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building CXX object CMakeFiles/pbrt.dir/src/materials/mirror.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building CXX object CMakeFiles/pbrt.dir/src/materials/mirror.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/mirror.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/mirror.cpp
 
 CMakeFiles/pbrt.dir/src/materials/mirror.cpp.i: cmake_force
@@ -2051,7 +2075,7 @@ CMakeFiles/pbrt.dir/src/materials/mirror.cpp.o.provides.build: CMakeFiles/pbrt.d
 
 CMakeFiles/pbrt.dir/src/materials/fourier.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/materials/fourier.cpp.o: ../src/materials/fourier.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building CXX object CMakeFiles/pbrt.dir/src/materials/fourier.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building CXX object CMakeFiles/pbrt.dir/src/materials/fourier.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/materials/fourier.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/materials/fourier.cpp
 
 CMakeFiles/pbrt.dir/src/materials/fourier.cpp.i: cmake_force
@@ -2075,7 +2099,7 @@ CMakeFiles/pbrt.dir/src/materials/fourier.cpp.o.provides.build: CMakeFiles/pbrt.
 
 CMakeFiles/pbrt.dir/src/samplers/maxmin.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/samplers/maxmin.cpp.o: ../src/samplers/maxmin.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building CXX object CMakeFiles/pbrt.dir/src/samplers/maxmin.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building CXX object CMakeFiles/pbrt.dir/src/samplers/maxmin.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/samplers/maxmin.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/samplers/maxmin.cpp
 
 CMakeFiles/pbrt.dir/src/samplers/maxmin.cpp.i: cmake_force
@@ -2099,7 +2123,7 @@ CMakeFiles/pbrt.dir/src/samplers/maxmin.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/samplers/sobol.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/samplers/sobol.cpp.o: ../src/samplers/sobol.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building CXX object CMakeFiles/pbrt.dir/src/samplers/sobol.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building CXX object CMakeFiles/pbrt.dir/src/samplers/sobol.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/samplers/sobol.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/samplers/sobol.cpp
 
 CMakeFiles/pbrt.dir/src/samplers/sobol.cpp.i: cmake_force
@@ -2123,7 +2147,7 @@ CMakeFiles/pbrt.dir/src/samplers/sobol.cpp.o.provides.build: CMakeFiles/pbrt.dir
 
 CMakeFiles/pbrt.dir/src/samplers/halton.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/samplers/halton.cpp.o: ../src/samplers/halton.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building CXX object CMakeFiles/pbrt.dir/src/samplers/halton.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building CXX object CMakeFiles/pbrt.dir/src/samplers/halton.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/samplers/halton.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/samplers/halton.cpp
 
 CMakeFiles/pbrt.dir/src/samplers/halton.cpp.i: cmake_force
@@ -2147,7 +2171,7 @@ CMakeFiles/pbrt.dir/src/samplers/halton.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/samplers/random.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/samplers/random.cpp.o: ../src/samplers/random.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building CXX object CMakeFiles/pbrt.dir/src/samplers/random.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building CXX object CMakeFiles/pbrt.dir/src/samplers/random.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/samplers/random.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/samplers/random.cpp
 
 CMakeFiles/pbrt.dir/src/samplers/random.cpp.i: cmake_force
@@ -2171,7 +2195,7 @@ CMakeFiles/pbrt.dir/src/samplers/random.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/samplers/stratified.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/samplers/stratified.cpp.o: ../src/samplers/stratified.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building CXX object CMakeFiles/pbrt.dir/src/samplers/stratified.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building CXX object CMakeFiles/pbrt.dir/src/samplers/stratified.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/samplers/stratified.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/samplers/stratified.cpp
 
 CMakeFiles/pbrt.dir/src/samplers/stratified.cpp.i: cmake_force
@@ -2195,7 +2219,7 @@ CMakeFiles/pbrt.dir/src/samplers/stratified.cpp.o.provides.build: CMakeFiles/pbr
 
 CMakeFiles/pbrt.dir/src/samplers/zerotwosequence.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/samplers/zerotwosequence.cpp.o: ../src/samplers/zerotwosequence.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building CXX object CMakeFiles/pbrt.dir/src/samplers/zerotwosequence.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building CXX object CMakeFiles/pbrt.dir/src/samplers/zerotwosequence.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/samplers/zerotwosequence.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/samplers/zerotwosequence.cpp
 
 CMakeFiles/pbrt.dir/src/samplers/zerotwosequence.cpp.i: cmake_force
@@ -2219,7 +2243,7 @@ CMakeFiles/pbrt.dir/src/samplers/zerotwosequence.cpp.o.provides.build: CMakeFile
 
 CMakeFiles/pbrt.dir/src/shapes/disk.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/shapes/disk.cpp.o: ../src/shapes/disk.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/disk.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/disk.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/shapes/disk.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/shapes/disk.cpp
 
 CMakeFiles/pbrt.dir/src/shapes/disk.cpp.i: cmake_force
@@ -2243,7 +2267,7 @@ CMakeFiles/pbrt.dir/src/shapes/disk.cpp.o.provides.build: CMakeFiles/pbrt.dir/sr
 
 CMakeFiles/pbrt.dir/src/shapes/cone.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/shapes/cone.cpp.o: ../src/shapes/cone.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/cone.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/cone.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/shapes/cone.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/shapes/cone.cpp
 
 CMakeFiles/pbrt.dir/src/shapes/cone.cpp.i: cmake_force
@@ -2267,7 +2291,7 @@ CMakeFiles/pbrt.dir/src/shapes/cone.cpp.o.provides.build: CMakeFiles/pbrt.dir/sr
 
 CMakeFiles/pbrt.dir/src/shapes/plymesh.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/shapes/plymesh.cpp.o: ../src/shapes/plymesh.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/plymesh.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/plymesh.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/shapes/plymesh.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/shapes/plymesh.cpp
 
 CMakeFiles/pbrt.dir/src/shapes/plymesh.cpp.i: cmake_force
@@ -2291,7 +2315,7 @@ CMakeFiles/pbrt.dir/src/shapes/plymesh.cpp.o.provides.build: CMakeFiles/pbrt.dir
 
 CMakeFiles/pbrt.dir/src/shapes/triangle.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/shapes/triangle.cpp.o: ../src/shapes/triangle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/triangle.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/triangle.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/shapes/triangle.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/shapes/triangle.cpp
 
 CMakeFiles/pbrt.dir/src/shapes/triangle.cpp.i: cmake_force
@@ -2315,7 +2339,7 @@ CMakeFiles/pbrt.dir/src/shapes/triangle.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/shapes/heightfield.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/shapes/heightfield.cpp.o: ../src/shapes/heightfield.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/heightfield.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/heightfield.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/shapes/heightfield.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/shapes/heightfield.cpp
 
 CMakeFiles/pbrt.dir/src/shapes/heightfield.cpp.i: cmake_force
@@ -2339,7 +2363,7 @@ CMakeFiles/pbrt.dir/src/shapes/heightfield.cpp.o.provides.build: CMakeFiles/pbrt
 
 CMakeFiles/pbrt.dir/src/shapes/paraboloid.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/shapes/paraboloid.cpp.o: ../src/shapes/paraboloid.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/paraboloid.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/paraboloid.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/shapes/paraboloid.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/shapes/paraboloid.cpp
 
 CMakeFiles/pbrt.dir/src/shapes/paraboloid.cpp.i: cmake_force
@@ -2363,7 +2387,7 @@ CMakeFiles/pbrt.dir/src/shapes/paraboloid.cpp.o.provides.build: CMakeFiles/pbrt.
 
 CMakeFiles/pbrt.dir/src/shapes/loopsubdiv.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/shapes/loopsubdiv.cpp.o: ../src/shapes/loopsubdiv.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/loopsubdiv.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/loopsubdiv.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/shapes/loopsubdiv.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/shapes/loopsubdiv.cpp
 
 CMakeFiles/pbrt.dir/src/shapes/loopsubdiv.cpp.i: cmake_force
@@ -2387,7 +2411,7 @@ CMakeFiles/pbrt.dir/src/shapes/loopsubdiv.cpp.o.provides.build: CMakeFiles/pbrt.
 
 CMakeFiles/pbrt.dir/src/shapes/nurbs.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/shapes/nurbs.cpp.o: ../src/shapes/nurbs.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/nurbs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/nurbs.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/shapes/nurbs.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/shapes/nurbs.cpp
 
 CMakeFiles/pbrt.dir/src/shapes/nurbs.cpp.i: cmake_force
@@ -2411,7 +2435,7 @@ CMakeFiles/pbrt.dir/src/shapes/nurbs.cpp.o.provides.build: CMakeFiles/pbrt.dir/s
 
 CMakeFiles/pbrt.dir/src/shapes/cylinder.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/shapes/cylinder.cpp.o: ../src/shapes/cylinder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/cylinder.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/cylinder.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/shapes/cylinder.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/shapes/cylinder.cpp
 
 CMakeFiles/pbrt.dir/src/shapes/cylinder.cpp.i: cmake_force
@@ -2435,7 +2459,7 @@ CMakeFiles/pbrt.dir/src/shapes/cylinder.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/shapes/curve.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/shapes/curve.cpp.o: ../src/shapes/curve.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/curve.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/curve.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/shapes/curve.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/shapes/curve.cpp
 
 CMakeFiles/pbrt.dir/src/shapes/curve.cpp.i: cmake_force
@@ -2459,7 +2483,7 @@ CMakeFiles/pbrt.dir/src/shapes/curve.cpp.o.provides.build: CMakeFiles/pbrt.dir/s
 
 CMakeFiles/pbrt.dir/src/shapes/hyperboloid.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/shapes/hyperboloid.cpp.o: ../src/shapes/hyperboloid.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/hyperboloid.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/hyperboloid.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/shapes/hyperboloid.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/shapes/hyperboloid.cpp
 
 CMakeFiles/pbrt.dir/src/shapes/hyperboloid.cpp.i: cmake_force
@@ -2483,7 +2507,7 @@ CMakeFiles/pbrt.dir/src/shapes/hyperboloid.cpp.o.provides.build: CMakeFiles/pbrt
 
 CMakeFiles/pbrt.dir/src/shapes/sphere.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/shapes/sphere.cpp.o: ../src/shapes/sphere.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/sphere.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building CXX object CMakeFiles/pbrt.dir/src/shapes/sphere.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/shapes/sphere.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/shapes/sphere.cpp
 
 CMakeFiles/pbrt.dir/src/shapes/sphere.cpp.i: cmake_force
@@ -2507,7 +2531,7 @@ CMakeFiles/pbrt.dir/src/shapes/sphere.cpp.o.provides.build: CMakeFiles/pbrt.dir/
 
 CMakeFiles/pbrt.dir/src/textures/uv.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/textures/uv.cpp.o: ../src/textures/uv.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building CXX object CMakeFiles/pbrt.dir/src/textures/uv.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building CXX object CMakeFiles/pbrt.dir/src/textures/uv.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/textures/uv.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/textures/uv.cpp
 
 CMakeFiles/pbrt.dir/src/textures/uv.cpp.i: cmake_force
@@ -2531,7 +2555,7 @@ CMakeFiles/pbrt.dir/src/textures/uv.cpp.o.provides.build: CMakeFiles/pbrt.dir/sr
 
 CMakeFiles/pbrt.dir/src/textures/checkerboard.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/textures/checkerboard.cpp.o: ../src/textures/checkerboard.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building CXX object CMakeFiles/pbrt.dir/src/textures/checkerboard.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building CXX object CMakeFiles/pbrt.dir/src/textures/checkerboard.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/textures/checkerboard.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/textures/checkerboard.cpp
 
 CMakeFiles/pbrt.dir/src/textures/checkerboard.cpp.i: cmake_force
@@ -2555,7 +2579,7 @@ CMakeFiles/pbrt.dir/src/textures/checkerboard.cpp.o.provides.build: CMakeFiles/p
 
 CMakeFiles/pbrt.dir/src/textures/windy.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/textures/windy.cpp.o: ../src/textures/windy.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building CXX object CMakeFiles/pbrt.dir/src/textures/windy.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building CXX object CMakeFiles/pbrt.dir/src/textures/windy.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/textures/windy.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/textures/windy.cpp
 
 CMakeFiles/pbrt.dir/src/textures/windy.cpp.i: cmake_force
@@ -2579,7 +2603,7 @@ CMakeFiles/pbrt.dir/src/textures/windy.cpp.o.provides.build: CMakeFiles/pbrt.dir
 
 CMakeFiles/pbrt.dir/src/textures/marble.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/textures/marble.cpp.o: ../src/textures/marble.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building CXX object CMakeFiles/pbrt.dir/src/textures/marble.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building CXX object CMakeFiles/pbrt.dir/src/textures/marble.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/textures/marble.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/textures/marble.cpp
 
 CMakeFiles/pbrt.dir/src/textures/marble.cpp.i: cmake_force
@@ -2603,7 +2627,7 @@ CMakeFiles/pbrt.dir/src/textures/marble.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/textures/constant.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/textures/constant.cpp.o: ../src/textures/constant.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building CXX object CMakeFiles/pbrt.dir/src/textures/constant.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building CXX object CMakeFiles/pbrt.dir/src/textures/constant.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/textures/constant.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/textures/constant.cpp
 
 CMakeFiles/pbrt.dir/src/textures/constant.cpp.i: cmake_force
@@ -2627,7 +2651,7 @@ CMakeFiles/pbrt.dir/src/textures/constant.cpp.o.provides.build: CMakeFiles/pbrt.
 
 CMakeFiles/pbrt.dir/src/textures/imagemap.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/textures/imagemap.cpp.o: ../src/textures/imagemap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building CXX object CMakeFiles/pbrt.dir/src/textures/imagemap.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building CXX object CMakeFiles/pbrt.dir/src/textures/imagemap.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/textures/imagemap.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/textures/imagemap.cpp
 
 CMakeFiles/pbrt.dir/src/textures/imagemap.cpp.i: cmake_force
@@ -2651,7 +2675,7 @@ CMakeFiles/pbrt.dir/src/textures/imagemap.cpp.o.provides.build: CMakeFiles/pbrt.
 
 CMakeFiles/pbrt.dir/src/textures/wrinkled.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/textures/wrinkled.cpp.o: ../src/textures/wrinkled.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building CXX object CMakeFiles/pbrt.dir/src/textures/wrinkled.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building CXX object CMakeFiles/pbrt.dir/src/textures/wrinkled.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/textures/wrinkled.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/textures/wrinkled.cpp
 
 CMakeFiles/pbrt.dir/src/textures/wrinkled.cpp.i: cmake_force
@@ -2675,7 +2699,7 @@ CMakeFiles/pbrt.dir/src/textures/wrinkled.cpp.o.provides.build: CMakeFiles/pbrt.
 
 CMakeFiles/pbrt.dir/src/textures/fbm.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/textures/fbm.cpp.o: ../src/textures/fbm.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building CXX object CMakeFiles/pbrt.dir/src/textures/fbm.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building CXX object CMakeFiles/pbrt.dir/src/textures/fbm.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/textures/fbm.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/textures/fbm.cpp
 
 CMakeFiles/pbrt.dir/src/textures/fbm.cpp.i: cmake_force
@@ -2699,7 +2723,7 @@ CMakeFiles/pbrt.dir/src/textures/fbm.cpp.o.provides.build: CMakeFiles/pbrt.dir/s
 
 CMakeFiles/pbrt.dir/src/textures/ptex.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/textures/ptex.cpp.o: ../src/textures/ptex.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building CXX object CMakeFiles/pbrt.dir/src/textures/ptex.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building CXX object CMakeFiles/pbrt.dir/src/textures/ptex.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/textures/ptex.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/textures/ptex.cpp
 
 CMakeFiles/pbrt.dir/src/textures/ptex.cpp.i: cmake_force
@@ -2723,7 +2747,7 @@ CMakeFiles/pbrt.dir/src/textures/ptex.cpp.o.provides.build: CMakeFiles/pbrt.dir/
 
 CMakeFiles/pbrt.dir/src/textures/dots.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/textures/dots.cpp.o: ../src/textures/dots.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building CXX object CMakeFiles/pbrt.dir/src/textures/dots.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building CXX object CMakeFiles/pbrt.dir/src/textures/dots.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/textures/dots.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/textures/dots.cpp
 
 CMakeFiles/pbrt.dir/src/textures/dots.cpp.i: cmake_force
@@ -2747,7 +2771,7 @@ CMakeFiles/pbrt.dir/src/textures/dots.cpp.o.provides.build: CMakeFiles/pbrt.dir/
 
 CMakeFiles/pbrt.dir/src/textures/mix.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/textures/mix.cpp.o: ../src/textures/mix.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building CXX object CMakeFiles/pbrt.dir/src/textures/mix.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building CXX object CMakeFiles/pbrt.dir/src/textures/mix.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/textures/mix.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/textures/mix.cpp
 
 CMakeFiles/pbrt.dir/src/textures/mix.cpp.i: cmake_force
@@ -2771,7 +2795,7 @@ CMakeFiles/pbrt.dir/src/textures/mix.cpp.o.provides.build: CMakeFiles/pbrt.dir/s
 
 CMakeFiles/pbrt.dir/src/textures/scale.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/textures/scale.cpp.o: ../src/textures/scale.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building CXX object CMakeFiles/pbrt.dir/src/textures/scale.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building CXX object CMakeFiles/pbrt.dir/src/textures/scale.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/textures/scale.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/textures/scale.cpp
 
 CMakeFiles/pbrt.dir/src/textures/scale.cpp.i: cmake_force
@@ -2795,7 +2819,7 @@ CMakeFiles/pbrt.dir/src/textures/scale.cpp.o.provides.build: CMakeFiles/pbrt.dir
 
 CMakeFiles/pbrt.dir/src/textures/bilerp.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/textures/bilerp.cpp.o: ../src/textures/bilerp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building CXX object CMakeFiles/pbrt.dir/src/textures/bilerp.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building CXX object CMakeFiles/pbrt.dir/src/textures/bilerp.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/textures/bilerp.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/textures/bilerp.cpp
 
 CMakeFiles/pbrt.dir/src/textures/bilerp.cpp.i: cmake_force
@@ -2819,7 +2843,7 @@ CMakeFiles/pbrt.dir/src/textures/bilerp.cpp.o.provides.build: CMakeFiles/pbrt.di
 
 CMakeFiles/pbrt.dir/src/media/grid.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/media/grid.cpp.o: ../src/media/grid.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building CXX object CMakeFiles/pbrt.dir/src/media/grid.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building CXX object CMakeFiles/pbrt.dir/src/media/grid.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/media/grid.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/media/grid.cpp
 
 CMakeFiles/pbrt.dir/src/media/grid.cpp.i: cmake_force
@@ -2843,7 +2867,7 @@ CMakeFiles/pbrt.dir/src/media/grid.cpp.o.provides.build: CMakeFiles/pbrt.dir/src
 
 CMakeFiles/pbrt.dir/src/media/homogeneous.cpp.o: CMakeFiles/pbrt.dir/flags.make
 CMakeFiles/pbrt.dir/src/media/homogeneous.cpp.o: ../src/media/homogeneous.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building CXX object CMakeFiles/pbrt.dir/src/media/homogeneous.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building CXX object CMakeFiles/pbrt.dir/src/media/homogeneous.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pbrt.dir/src/media/homogeneous.cpp.o -c /home/timothebarbaux/Documents/stage/pbrt/src/media/homogeneous.cpp
 
 CMakeFiles/pbrt.dir/src/media/homogeneous.cpp.i: cmake_force
@@ -2885,6 +2909,7 @@ pbrt_OBJECTS = \
 "CMakeFiles/pbrt.dir/src/core/light.cpp.o" \
 "CMakeFiles/pbrt.dir/src/core/lightdistrib.cpp.o" \
 "CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.o" \
+"CMakeFiles/pbrt.dir/src/core/mask.cpp.o" \
 "CMakeFiles/pbrt.dir/src/core/matchange.cpp.o" \
 "CMakeFiles/pbrt.dir/src/core/material.cpp.o" \
 "CMakeFiles/pbrt.dir/src/core/medium.cpp.o" \
@@ -3006,6 +3031,7 @@ libpbrt.a: CMakeFiles/pbrt.dir/src/core/interpolation.cpp.o
 libpbrt.a: CMakeFiles/pbrt.dir/src/core/light.cpp.o
 libpbrt.a: CMakeFiles/pbrt.dir/src/core/lightdistrib.cpp.o
 libpbrt.a: CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.o
+libpbrt.a: CMakeFiles/pbrt.dir/src/core/mask.cpp.o
 libpbrt.a: CMakeFiles/pbrt.dir/src/core/matchange.cpp.o
 libpbrt.a: CMakeFiles/pbrt.dir/src/core/material.cpp.o
 libpbrt.a: CMakeFiles/pbrt.dir/src/core/medium.cpp.o
@@ -3107,7 +3133,7 @@ libpbrt.a: CMakeFiles/pbrt.dir/src/media/grid.cpp.o
 libpbrt.a: CMakeFiles/pbrt.dir/src/media/homogeneous.cpp.o
 libpbrt.a: CMakeFiles/pbrt.dir/build.make
 libpbrt.a: CMakeFiles/pbrt.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Linking CXX static library libpbrt.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Linking CXX static library libpbrt.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/pbrt.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pbrt.dir/link.txt --verbose=$(VERBOSE)
 
@@ -3134,6 +3160,7 @@ CMakeFiles/pbrt.dir/requires: CMakeFiles/pbrt.dir/src/core/interpolation.cpp.o.r
 CMakeFiles/pbrt.dir/requires: CMakeFiles/pbrt.dir/src/core/light.cpp.o.requires
 CMakeFiles/pbrt.dir/requires: CMakeFiles/pbrt.dir/src/core/lightdistrib.cpp.o.requires
 CMakeFiles/pbrt.dir/requires: CMakeFiles/pbrt.dir/src/core/lowdiscrepancy.cpp.o.requires
+CMakeFiles/pbrt.dir/requires: CMakeFiles/pbrt.dir/src/core/mask.cpp.o.requires
 CMakeFiles/pbrt.dir/requires: CMakeFiles/pbrt.dir/src/core/matchange.cpp.o.requires
 CMakeFiles/pbrt.dir/requires: CMakeFiles/pbrt.dir/src/core/material.cpp.o.requires
 CMakeFiles/pbrt.dir/requires: CMakeFiles/pbrt.dir/src/core/medium.cpp.o.requires

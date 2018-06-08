@@ -1790,6 +1790,20 @@ sampling.h
 sobolmatrices.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/sobolmatrices.h
 
+/home/timothebarbaux/Documents/stage/pbrt/src/core/mask.cpp
+mask.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/mask.h
+geometry.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/geometry.h
+imageio.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/imageio.h
+spectrum.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/spectrum.h
+
+/home/timothebarbaux/Documents/stage/pbrt/src/core/mask.h
+pbrt.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/pbrt.h
+
 /home/timothebarbaux/Documents/stage/pbrt/src/core/matchange.cpp
 matchange.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/matchange.h

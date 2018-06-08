@@ -88,6 +88,10 @@ unordered_map
 vector
 -
 
+../src/core/mask.h
+pbrt.h
+../src/core/pbrt.h
+
 ../src/core/matchange.h
 pbrt.h
 ../src/core/pbrt.h
@@ -313,6 +317,8 @@ integrators/importancePath.h
 /home/timothebarbaux/Documents/stage/pbrt/src/main/integrators/importancePath.h
 matchange.h
 /home/timothebarbaux/Documents/stage/pbrt/src/main/matchange.h
+mask.h
+/home/timothebarbaux/Documents/stage/pbrt/src/main/mask.h
 
 src/ext/glog/glog/logging.h
 errno.h
