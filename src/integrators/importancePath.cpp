@@ -41,8 +41,12 @@
 #include "stats.h"
 #include "light.h"
 #include "impgeneration.h"
+#include <map>
 
 namespace pbrt {
+
+
+
 
 STAT_PERCENT("Integrator/Zero-radiance paths", zeroRadiancePaths, totalPaths);
 STAT_INT_DISTRIBUTION("Integrator/Path length", pathLength);
@@ -63,17 +67,53 @@ void ImportancePathIntegrator::Preprocess(const Scene &scene, Sampler &sampler) 
         CreateLightSampleDistribution(lightSampleStrategy, scene);
 }
 
+
+void fillMaps(std::string name, Float proba, int index, bool r, bool g, bool b) {
+    PbrtOptions.maps[name][index + 0] += proba;
+    PbrtOptions.maps[name][index + 1] += proba;
+    PbrtOptions.maps[name][index + 2] += proba;
+
+    if (PbrtOptions.applyMask) {
+        PbrtOptions.maskMaps[name][index + 0] = r ? 1 : PbrtOptions.maskMaps[name][index + 0];
+        PbrtOptions.maskMaps[name][index + 1] = g ? 1 : PbrtOptions.maskMaps[name][index + 1];
+        PbrtOptions.maskMaps[name][index + 2] = b ? 1 : PbrtOptions.maskMaps[name][index + 2];
+    }
+
+}
+
+int numberOfRays = 0;
+int numberOfErrors = 0;
+
+int nbRays() {
+    return numberOfRays;
+}
+
+int nbErrors() {
+    return numberOfErrors;
+}
+
+RayDifferential respawnRay(SurfaceInteraction &isect, const Vector3f &d, bool firstIsectTarget, bool r, bool g, bool b) {
+    RayDifferential ray = isect.SpawnRay(d);
+    ray.firstIsectTarget = firstIsectTarget;
+    ray.rgbMask[0] = r;
+    ray.rgbMask[1] = g;
+    ray.rgbMask[2] = b;
+    return ray;
+}
+
+
 Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &scene,
                             Sampler &sampler, MemoryArena &arena,
                             int depth) const {
     ProfilePhase p(Prof::SamplerIntegratorLi);
     Spectrum L(0.f), beta(1.f);
     RayDifferential ray(r);
+    ray.firstIsectTarget = false;
     bool specularBounce = false;
     int bounces;
     Float etaScale = 1;
 
-    bool targetFoundFirstBounce = false;
+    int value = 0;
 
     for (bounces = 0;; ++bounces) {
         // Find next path vertex and accumulate contribution
@@ -82,17 +122,13 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
         SurfaceInteraction isect;
         bool foundIntersection = scene.Intersect(ray, &isect);
 
-        // std::cout << isect.primitive->isTarget << std::endl;
+
 
         if (foundIntersection && bounces == 0 && isect.primitive->isTarget) {
-          // std::cout << "We found a target on the first intersection !" << std::endl;
             ray.firstIsectTarget = true;
-            targetFoundFirstBounce = true;
+            numberOfRays++;
         }
-        else
-          // std::cout << "We didnt find a target..." << std::endl;
 
-        // std::cout << "After test bounces" << std::endl;
 
         // Possibly add emitted light at intersection
         if (bounces == 0 || specularBounce) {
@@ -107,25 +143,62 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
 
         }
 
-        // std::cout << "Before test" << std::endl;
+
 
         // Terminate path if ray escaped or _maxDepth_ was reached
         if (!foundIntersection || bounces >= maxDepth) {
-          // std::cout << "Inside first if" << std::endl;
-          if (bounces >= 1 && /*ray.firstIsectTarget*/ targetFoundFirstBounce) {
-              // std::cout << "Inside second if" << std::endl;
+          if (bounces >= 1 && ray.firstIsectTarget) {
               for (const auto &light : scene.infiniteLights) {
-                  // std::cout << "Inside for" << std::endl;
                   Vector3f w = Normalize(light->WorldToLight(ray.d));
-                  Point2i st = Point2i(int(SphericalPhi(w) * Inv2Pi * (PbrtOptions.widthImpMap-1)), int(SphericalTheta(w) * InvPi * (PbrtOptions.heightImpMap-1)));
+                  Float phi = SphericalPhi(w);
+                  Float theta = SphericalTheta(w);
 
-                  float proba = 0;
-                  if (std::sin(SphericalTheta(w) != 0)) proba = 1 / (2 * Pi * Pi * (std::sin(SphericalTheta(w))));
-                  PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3] += proba;
-                  PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 1] += proba;
-                  PbrtOptions.impMap[(st.y * PbrtOptions.widthImpMap + st.x)*3 + 2] += proba;
+                  // int u = std::floor(phi * Inv2Pi * (PbrtOptions.widthImpMap) - 0.5f);
+                  // int v = std::floor(theta * InvPi * (PbrtOptions.heightImpMap) - 0.5f);
+
+                  int u = int(phi * Inv2Pi * (PbrtOptions.widthImpMap -1));
+                  int v = int(theta * InvPi * (PbrtOptions.heightImpMap -1));
+                  // if (u!=u1 || v!=v1) numberOfErrors++;
+
+                  Float proba = 0, sintheta = std::sin(theta);
+                  if (sintheta != 0) proba = 1 / (2 * Pi * Pi * sintheta);
+
+                  int index = (v * PbrtOptions.widthImpMap + u) * 3;
+                  PbrtOptions.total++;
+                  fillMaps("ALL", proba, index, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
+
+                  if (value % 10 == 1) {
+                      fillMaps("R", proba, index, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
+                      if (value == 1)
+                          fillMaps("R0", proba, index, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
+                      else
+                          fillMaps("RX", proba, index, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
+                  }
+
+                  else if (value % 10 == 2) {
+                      fillMaps("TX", proba, index, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
+                      int indexSecondT = 1;
+                      while(value % int(std::pow(10, indexSecondT+1)) < 2 * std::pow(10, indexSecondT)) {
+                          indexSecondT++;
+                          if (indexSecondT > maxDepth+1) break;
+                      }
+
+                      if (indexSecondT == 1) {
+                          fillMaps("TT", proba, index, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
+                          if (value == 22)
+                              fillMaps("TT0", proba, index, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
+                          else
+                              fillMaps("TTX", proba, index, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
+                      }
+                      else {
+                          fillMaps("TRT", proba, index, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
+                          if (value < std::pow(10, (indexSecondT+1)))
+                              fillMaps("TRT0", proba, index, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
+                          else
+                              fillMaps("TRTX", proba, index, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
+                      }
+                  }
               }
-
           }
           break;
         }
@@ -133,10 +206,11 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
         // Compute scattering functions and skip over medium boundaries
         isect.ComputeScatteringFunctions(ray, arena, true);
         if (!isect.bsdf) {
-            ray = isect.SpawnRay(ray.d);
+            ray = respawnRay(isect, ray.d, ray.firstIsectTarget, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
             bounces--;
             continue;
         }
+
 
         const Distribution1D *distrib = lightDistribution->Lookup(isect.p);
 
@@ -168,8 +242,8 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             Float eta = isect.bsdf->eta;
             etaScale *= (Dot(wo, isect.n) > 0) ? (eta * eta) : 1 / (eta * eta);
         }
-        ray = isect.SpawnRay(wi);
 
+        ray = respawnRay(isect, wi, ray.firstIsectTarget, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
 
 
         // Account for subsurface scattering, if applicable
@@ -193,7 +267,14 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
             beta *= f * AbsDot(wi, pi.shading.n) / pdf;
             DCHECK(!std::isinf(beta.y()));
             specularBounce = (flags & BSDF_SPECULAR) != 0;
-            ray = pi.SpawnRay(wi);
+
+            ray = respawnRay(isect, wi, ray.firstIsectTarget, ray.rgbMask[0], ray.rgbMask[1], ray.rgbMask[2]);
+
+        }
+
+        if (foundIntersection) {
+            if (flags & BSDF_REFLECTION) value += (1 * std::pow(10, bounces));
+            else if (flags & BSDF_TRANSMISSION) value += (2 * std::pow(10, bounces));
         }
 
         // Possibly terminate the path with Russian roulette.
@@ -208,6 +289,17 @@ Spectrum ImportancePathIntegrator::Li(const RayDifferential &r, const Scene &sce
     }
 
     ReportValue(pathLength, bounces);
+    if (PbrtOptions.applyMask && ray.firstIsectTarget) {
+        if (!ray.rgbMask[0] && !ray.rgbMask[1] && !ray.rgbMask[2])
+            return L;
+
+        if (!ray.rgbMask[0])
+            L[0] = 0;
+        if (!ray.rgbMask[1])
+            L[1] = 0;
+        if (!ray.rgbMask[2])
+            L[2] = 0;
+    }
     return L;
 }
 

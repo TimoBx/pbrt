@@ -1,0 +1,30 @@
+LookAt	0 -5 0
+	0 0 0
+	0 0 1
+
+	#Rotate 5 1 1 1
+  Camera "orthographic"
+  #Camera "perspective" "float fov" 30
+
+Film "image"
+"integer xresolution" [700] "integer yresolution" [700]
+    "string filename" "chesspiece.exr"
+
+Sampler "stratified" "integer pixelsamples" [256]
+Integrator "path"
+
+
+WorldBegin
+
+
+LightSource "infinite" "string mapname" "red.png"
+
+
+ObjectBegin "target"
+Shape "plymesh" "string filename" [ "chesspiece.ply" ]
+ObjectEnd
+
+ObjectInstance "target"
+
+
+WorldEnd

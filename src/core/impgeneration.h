@@ -13,13 +13,20 @@
 namespace pbrt {
 
   std::string computeNewFilename(std::string filename, std::string prefix, std::string suffix, std::string extension);
-
+  void computeImpMapNames(Options &options);
 
   void changeImpOptions(Options &options);
   void changeIntegrator(const std::string &name, const ParamSet &params, std::string &IntegratorName, ParamSet &IntegratorParams);
   void changeLights(Options &PbrtOptions, std::vector<std::shared_ptr<Light>> &lights, const Transform &light2world);
   Float* normalizeImpMap(Float *impmap, int width, int height);
-  void writeImpImage(Options &options);
+
+  Float getTotal(Float* t, int w, int h);
+  Float getMax(Float* t, int w, int h);
+  Float getMean(Float* t, int w, int h);
+  Float getMedian(Float* t, int w, int h);
+  void normalizeMaps(Options &options, Float value);
+
+  void writeImpImages(Options &options);
 
 
 }  // namespace pbrt

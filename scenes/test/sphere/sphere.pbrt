@@ -1,0 +1,30 @@
+LookAt	0 -5 0
+	0 0 0
+	0 0 1
+
+Camera "orthographic" "float screenwindow" [-2 2 -2 2]
+#Camera "perspective" "float fov" 90
+
+
+Film "image"
+"integer xresolution" [700] "integer yresolution" [700]
+    "string filename" "sphere.exr"
+
+Sampler "stratified" "integer pixelsamples" [256]
+Integrator "path"
+
+
+WorldBegin
+
+
+LightSource "infinite" "string mapname" "north_light.png"
+
+ObjectBegin "target"
+Shape "sphere"
+ObjectEnd
+
+ObjectInstance "target"
+
+
+
+WorldEnd

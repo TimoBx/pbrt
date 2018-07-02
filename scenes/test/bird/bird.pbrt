@@ -1,0 +1,31 @@
+LookAt	0 -5 0
+	0 0 0
+	0 0 1
+
+  #Rotate 50 3 -4 7
+
+  #Camera "perspective" "float fov" 90
+  Camera "orthographic" "float screenwindow" [-8 8 -8 8]
+
+
+Film "image"
+"integer xresolution" [700] "integer yresolution" [700]
+    "string filename" "bird.exr"
+
+Sampler "stratified" "integer pixelsamples" [256]
+Integrator "path"
+
+
+WorldBegin
+
+
+ObjectBegin "target"
+Rotate 45 1 1 1
+Shape "plymesh" "string filename" [ "bird.ply" ]
+ObjectEnd
+
+ObjectInstance "target"
+
+
+
+WorldEnd

@@ -1,0 +1,34 @@
+LookAt	0 -5 0
+	0 0 0
+	0 0 1
+
+	#Rotate 5 1 1 1
+  Camera "orthographic" "float screenwindow" [-2 2 -2 2]
+  #Camera "perspective" "float fov" 30
+
+Film "image"
+"integer xresolution" [700] "integer yresolution" [700]
+    "string filename" "cubePlane.exr"
+
+Sampler "stratified" "integer pixelsamples" [256]
+Integrator "path"
+
+
+WorldBegin
+
+
+ObjectBegin "target"
+Shape "plymesh" "string filename" [ "cube.ply" ]
+ObjectEnd
+
+ObjectInstance "target"
+
+AttributeBegin
+Translate 0 0 -1
+Shape "trianglemesh" "point P" [ -10000 -10000 0 10000 -10000 0 10000 10000 0 -10000 10000 0 ]
+      "float uv" [ 0 0 5 0 5 5 0 5 ]
+	"integer indices" [ 0 1 2 2 3 0]
+
+AttributeEnd
+
+WorldEnd

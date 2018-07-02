@@ -59,6 +59,7 @@
 #include <assert.h>
 #include <string.h>
 #include <glog/logging.h>
+#include <map>
 
 
 
@@ -183,15 +184,25 @@ struct Options {
 
     // Importance Map generation
     bool importance = false;
-    Float *impMap;
+    std::map<std::string, Float*> maps;
+    std::map<std::string, std::string> mapNames;
+    Float *impMap, *reflectImpMap, *transmitImpMap;
     int widthImpMap, heightImpMap;
-    std::string impMapName;
+    std::string reflectImpMapName, transmitImpMapName, impMapName;
     bool orthoCam = false;
+    int total;
 
     // Changing Material
     bool matChange = false;
     std::string newMatName, newFileName;
     std::shared_ptr<Material> newMat;
+
+    // Mask
+    bool applyMask = false, hasColor = false;
+    int wMask, hMask, nbOfMasks;
+    Float *mask;
+    std::map<std::string, Float*> maskMaps;
+    std::string mask1Name, mask2Name, mask3Name;
 
 };
 

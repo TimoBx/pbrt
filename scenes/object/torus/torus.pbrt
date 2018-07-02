@@ -2,20 +2,20 @@
 # Scene bounds: (-1.250000, -0.250000, -1.250000) - (1.250000, 0.250000, 1.250000)
 
 
-LookAt	0 0 -6
+LookAt	0 -6 0
 	0 0 0
-	0 1 0
+	0 0 1
 
 
-Camera "perspective" "float fov" 90
-
+Camera "perspective" "float fov" 10
+#Camera "orthographic" "float screenwindow" [-2 2 -2 2]
 
 
 Film "image"
 "integer xresolution" [700] "integer yresolution" [700]
     "string filename" "torus.exr"
 
-Sampler "sobol" "integer pixelsamples" [32]
+Sampler "stratified" "integer pixelsamples" [32]
 Integrator "path"
 
 
@@ -56,41 +56,18 @@ MakeNamedMaterial "glass" "string type" "glass" "color Kt" [0.2 0.7 0.1]  "float
 
 
 
-# Name "Torus1"
-AttributeBegin
-Translate -1.5 -1.5 -1.5
-Rotate -45 1 1 1
-NamedMaterial "mat2"
-Include "torusGeo.pbrt"
-
-AttributeEnd
-
-# Name "Torus2"
-AttributeBegin
-Translate 1.5 -1.5 0
-Rotate 90 1 0 0
-NamedMaterial "mat3"
-Include "torusGeo.pbrt"
-
-AttributeEnd
-
-# Name "Torus3"
-AttributeBegin
-Translate -1.5 1.5 0
-Rotate 45 1 0 1
-NamedMaterial "mat4"
-Include "torusGeo.pbrt"
-
-AttributeEnd
+ObjectBegin "target"
 
 # Name "Torus4"
 AttributeBegin
-Translate 1.5 1.5 1.5
 NamedMaterial "mat6"
-Include "torusGeo.pbrt"
+#Include "torusGeo.pbrt"
+Shape "cone"
 
 AttributeEnd
 
+ObjectEnd
+ObjectInstance "target"
 
 
 WorldEnd

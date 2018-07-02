@@ -43,6 +43,7 @@ void usageMat() {
     --matchange <mat> :  Change all the materials in the scene to a chosen one.
 
     Possible options:
+        - air : glass material, with an index of refraction of 1.
         - glass : glass material, standard parameters.
         - matte : matte material, standard parameters.
         - metal : metal material, standard parameters.
@@ -52,6 +53,8 @@ void usageMat() {
         - plastic001 : plastic material, roughness = 0.01.
         - plastic09 : plastic material, roughness = 0.9.
         - translucent : translucent material, standard parameters.
+        - translucentR : translucent material, only reflections.
+        - translucentT : translucent material, only transmissions.
         - uber : uber material, standard parameters.
 
         - custom :  Allows the creation of any of the previous materials, with any parameter.
@@ -262,7 +265,7 @@ std::shared_ptr<Material> newMatCustom(Options &options) {
 
     std::cout << R"(
       Please type the extension you want for your file name (the extension for "sphere_test.exr" would be "test").
-      Not typing anything (pressing enter) will give you the extension "custom", which might result in the overwriting of a previous file.
+      Not typing anything (pressing enter) will give you the extension "custom", which might result in the overwriting of a previous custom file.
       )" << std::endl;
     std::string newSuffix;
     std::getline(std::cin, newSuffix);
@@ -319,6 +322,12 @@ std::shared_ptr<Material> changeObjectMaterial(Options &options, std::string mat
     }
     else if (matname == "translucent") {
         mat = newMatTranslucent(isCustom, 0.25,0.25,0.25,0.25,0.25,0.25, 0.1, 0.5,0.5,0.5, 0.5,0.5,0.5);
+    }
+    else if (matname == "translucentR") {
+        mat = newMatTranslucent(isCustom, 0.25,0.25,0.25,0.25,0.25,0.25, 0.1, 1,1,1, 0,0,0);
+    }
+    else if (matname == "translucentT") {
+        mat = newMatTranslucent(isCustom, 0.25,0.25,0.25,0.25,0.25,0.25, 0.1, 0,0,0, 1,1,1);
     }
     else if (matname == "uber") {
         mat = newMatUber(isCustom, 0.25,0.25,0.25,0.25,0.25,0.25,0,0,0,0,0,0,0.1,0,0,1,1,1,1.5);

@@ -237,7 +237,7 @@ void SamplerIntegrator::Render(const Scene &scene) {
                    (sampleExtent.y + tileSize - 1) / tileSize);
 
     ProgressReporter reporter(nTiles.x * nTiles.y, "Rendering");
-    
+
     {
         ParallelFor2D([&](Point2i tile) {
             // Render section of image corresponding to _tile_
@@ -263,6 +263,8 @@ void SamplerIntegrator::Render(const Scene &scene) {
 
             // Loop over pixels in tile to render them
             for (Point2i pixel : tileBounds) {
+
+                // std::cout << pixel.x << "  " << pixel.y << std::endl;
                 {
                     ProfilePhase pp(Prof::StartPixel);
                     tileSampler->StartPixel(pixel);
@@ -274,6 +276,7 @@ void SamplerIntegrator::Render(const Scene &scene) {
                 // debugging.
                 if (!InsideExclusive(pixel, pixelBounds))
                     continue;
+
 
                 do {
                     // Initialize _CameraSample_ for current sample
@@ -287,6 +290,21 @@ void SamplerIntegrator::Render(const Scene &scene) {
                     ray.ScaleDifferentials(
                         1 / std::sqrt((Float)tileSampler->samplesPerPixel));
                     ++nCameraRays;
+
+                    ray.rgbMask[0] = true;
+                    ray.rgbMask[1] = true;
+                    ray.rgbMask[2] = true;
+
+                    // Apply mask if needed
+                    if (PbrtOptions.applyMask) {
+                        bool r = PbrtOptions.mask[3*(pixel.y*PbrtOptions.wMask + pixel.x) + 0] == 0 ? false : true;
+                        bool g = PbrtOptions.mask[3*(pixel.y*PbrtOptions.wMask + pixel.x) + 1] == 0 ? false : true;
+                        bool b = PbrtOptions.mask[3*(pixel.y*PbrtOptions.wMask + pixel.x) + 2] == 0 ? false : true;
+
+                        ray.rgbMask[0] = r;
+                        ray.rgbMask[1] = g;
+                        ray.rgbMask[2] = b;
+                    }
 
                     // Evaluate radiance along camera ray
                     Spectrum L(0.f);
@@ -325,6 +343,7 @@ void SamplerIntegrator::Render(const Scene &scene) {
                     // value
                     arena.Reset();
                 } while (tileSampler->StartNextSample());
+
             }
             LOG(INFO) << "Finished image tile " << tileBounds;
 

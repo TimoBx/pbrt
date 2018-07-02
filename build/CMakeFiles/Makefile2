@@ -83,7 +83,7 @@ all: CMakeFiles/pbrt_test.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pbrt_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 84
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 83
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pbrt_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : CMakeFiles/pbrt_test.dir/rule
@@ -110,7 +110,7 @@ clean: CMakeFiles/pbrt_test.dir/clean
 CMakeFiles/pbrt.dir/all:
 	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/depend
 	$(MAKE) -f CMakeFiles/pbrt.dir/build.make CMakeFiles/pbrt.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87 "Built target pbrt"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87 "Built target pbrt"
 .PHONY : CMakeFiles/pbrt.dir/all
 
 # Include target in all.
@@ -120,7 +120,7 @@ all: CMakeFiles/pbrt.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pbrt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 35
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 36
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pbrt.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : CMakeFiles/pbrt.dir/rule
@@ -164,7 +164,7 @@ all: CMakeFiles/imgtool.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/imgtool.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 79
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 78
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/imgtool.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : CMakeFiles/imgtool.dir/rule
@@ -208,7 +208,7 @@ all: CMakeFiles/pbrt_exe.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pbrt_exe.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 79
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 78
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pbrt_exe.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : CMakeFiles/pbrt_exe.dir/rule
@@ -235,7 +235,7 @@ clean: CMakeFiles/pbrt_exe.dir/clean
 CMakeFiles/obj2pbrt.dir/all:
 	$(MAKE) -f CMakeFiles/obj2pbrt.dir/build.make CMakeFiles/obj2pbrt.dir/depend
 	$(MAKE) -f CMakeFiles/obj2pbrt.dir/build.make CMakeFiles/obj2pbrt.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=52 "Built target obj2pbrt"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num= "Built target obj2pbrt"
 .PHONY : CMakeFiles/obj2pbrt.dir/all
 
 # Include target in all.
@@ -245,7 +245,7 @@ all: CMakeFiles/obj2pbrt.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/obj2pbrt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/obj2pbrt.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : CMakeFiles/obj2pbrt.dir/rule
@@ -326,7 +326,7 @@ all: CMakeFiles/bsdftest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/bsdftest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 79
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 78
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/bsdftest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : CMakeFiles/bsdftest.dir/rule
@@ -370,7 +370,7 @@ all: CMakeFiles/importancePbrt.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/importancePbrt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 78
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 77
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/importancePbrt.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : CMakeFiles/importancePbrt.dir/rule
@@ -427,7 +427,7 @@ src/ext/openexr/CMakeFiles/CopyIlmBaseLibs.dir/all: src/ext/openexr/IlmBase/IlmT
 
 # Build rule for subdir invocation for target.
 src/ext/openexr/CMakeFiles/CopyIlmBaseLibs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/openexr/CMakeFiles/CopyIlmBaseLibs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/openexr/CMakeFiles/CopyIlmBaseLibs.dir/rule
@@ -517,7 +517,7 @@ all: src/ext/openexr/IlmBase/Half/CMakeFiles/Half.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/openexr/IlmBase/Half/CMakeFiles/Half.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/openexr/IlmBase/Half/CMakeFiles/Half.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/openexr/IlmBase/Half/CMakeFiles/Half.dir/rule
@@ -544,7 +544,7 @@ clean: src/ext/openexr/IlmBase/Half/CMakeFiles/Half.dir/clean
 src/ext/openexr/IlmBase/Half/CMakeFiles/eLut.dir/all:
 	$(MAKE) -f src/ext/openexr/IlmBase/Half/CMakeFiles/eLut.dir/build.make src/ext/openexr/IlmBase/Half/CMakeFiles/eLut.dir/depend
 	$(MAKE) -f src/ext/openexr/IlmBase/Half/CMakeFiles/eLut.dir/build.make src/ext/openexr/IlmBase/Half/CMakeFiles/eLut.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=46 "Built target eLut"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num= "Built target eLut"
 .PHONY : src/ext/openexr/IlmBase/Half/CMakeFiles/eLut.dir/all
 
 # Include target in all.
@@ -554,7 +554,7 @@ all: src/ext/openexr/IlmBase/Half/CMakeFiles/eLut.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/openexr/IlmBase/Half/CMakeFiles/eLut.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/openexr/IlmBase/Half/CMakeFiles/eLut.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/openexr/IlmBase/Half/CMakeFiles/eLut.dir/rule
@@ -893,7 +893,7 @@ all: src/ext/openexr/OpenEXR/IlmImf/CMakeFiles/IlmImf.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/openexr/OpenEXR/IlmImf/CMakeFiles/IlmImf.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 36
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 35
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/openexr/OpenEXR/IlmImf/CMakeFiles/IlmImf.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/openexr/OpenEXR/IlmImf/CMakeFiles/IlmImf.dir/rule
@@ -933,7 +933,7 @@ all: src/ext/openexr/OpenEXR/IlmImf/CMakeFiles/dwaLookups.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/openexr/OpenEXR/IlmImf/CMakeFiles/dwaLookups.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/openexr/OpenEXR/IlmImf/CMakeFiles/dwaLookups.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/openexr/OpenEXR/IlmImf/CMakeFiles/dwaLookups.dir/rule
@@ -973,7 +973,7 @@ all: src/ext/openexr/OpenEXR/IlmImf/CMakeFiles/b44ExpLogTable.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/openexr/OpenEXR/IlmImf/CMakeFiles/b44ExpLogTable.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/openexr/OpenEXR/IlmImf/CMakeFiles/b44ExpLogTable.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/openexr/OpenEXR/IlmImf/CMakeFiles/b44ExpLogTable.dir/rule
@@ -1042,7 +1042,7 @@ all: src/ext/glog/CMakeFiles/stl_logging_unittest.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/glog/CMakeFiles/stl_logging_unittest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/glog/CMakeFiles/stl_logging_unittest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/glog/CMakeFiles/stl_logging_unittest.dir/rule
@@ -1079,7 +1079,7 @@ all: src/ext/glog/CMakeFiles/utilities_unittest.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/glog/CMakeFiles/utilities_unittest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/glog/CMakeFiles/utilities_unittest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/glog/CMakeFiles/utilities_unittest.dir/rule
@@ -1116,7 +1116,7 @@ all: src/ext/glog/CMakeFiles/logging_unittest.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/glog/CMakeFiles/logging_unittest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/glog/CMakeFiles/logging_unittest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/glog/CMakeFiles/logging_unittest.dir/rule
@@ -1153,7 +1153,7 @@ all: src/ext/glog/CMakeFiles/symbolize_unittest.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/glog/CMakeFiles/symbolize_unittest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/glog/CMakeFiles/symbolize_unittest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/glog/CMakeFiles/symbolize_unittest.dir/rule
@@ -1190,7 +1190,7 @@ all: src/ext/glog/CMakeFiles/demangle_unittest.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/glog/CMakeFiles/demangle_unittest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/glog/CMakeFiles/demangle_unittest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/glog/CMakeFiles/demangle_unittest.dir/rule
@@ -1227,7 +1227,7 @@ all: src/ext/glog/CMakeFiles/stacktrace_unittest.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/glog/CMakeFiles/stacktrace_unittest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/glog/CMakeFiles/stacktrace_unittest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/glog/CMakeFiles/stacktrace_unittest.dir/rule
@@ -1264,7 +1264,7 @@ all: src/ext/glog/CMakeFiles/signalhandler_unittest.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/glog/CMakeFiles/signalhandler_unittest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/glog/CMakeFiles/signalhandler_unittest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/glog/CMakeFiles/signalhandler_unittest.dir/rule
@@ -1291,7 +1291,7 @@ clean: src/ext/glog/CMakeFiles/signalhandler_unittest.dir/clean
 src/ext/glog/CMakeFiles/glog.dir/all:
 	$(MAKE) -f src/ext/glog/CMakeFiles/glog.dir/build.make src/ext/glog/CMakeFiles/glog.dir/depend
 	$(MAKE) -f src/ext/glog/CMakeFiles/glog.dir/build.make src/ext/glog/CMakeFiles/glog.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=47,48,49 "Built target glog"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=47,48 "Built target glog"
 .PHONY : src/ext/glog/CMakeFiles/glog.dir/all
 
 # Include target in all.
@@ -1301,7 +1301,7 @@ all: src/ext/glog/CMakeFiles/glog.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/glog/CMakeFiles/glog.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/glog/CMakeFiles/glog.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/glog/CMakeFiles/glog.dir/rule
@@ -2452,7 +2452,7 @@ src/ext/ptex/src/tests/preinstall:
 src/ext/ptex/src/tests/CMakeFiles/halftest.dir/all: src/ext/ptex/src/ptex/CMakeFiles/Ptex_dynamic.dir/all
 	$(MAKE) -f src/ext/ptex/src/tests/CMakeFiles/halftest.dir/build.make src/ext/ptex/src/tests/CMakeFiles/halftest.dir/depend
 	$(MAKE) -f src/ext/ptex/src/tests/CMakeFiles/halftest.dir/build.make src/ext/ptex/src/tests/CMakeFiles/halftest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num= "Built target halftest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=49 "Built target halftest"
 .PHONY : src/ext/ptex/src/tests/CMakeFiles/halftest.dir/all
 
 # Include target in all.
@@ -2462,7 +2462,7 @@ all: src/ext/ptex/src/tests/CMakeFiles/halftest.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/ptex/src/tests/CMakeFiles/halftest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/ptex/src/tests/CMakeFiles/halftest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/ptex/src/tests/CMakeFiles/halftest.dir/rule
@@ -2489,7 +2489,7 @@ clean: src/ext/ptex/src/tests/CMakeFiles/halftest.dir/clean
 src/ext/ptex/src/tests/CMakeFiles/ftest.dir/all: src/ext/ptex/src/ptex/CMakeFiles/Ptex_dynamic.dir/all
 	$(MAKE) -f src/ext/ptex/src/tests/CMakeFiles/ftest.dir/build.make src/ext/ptex/src/tests/CMakeFiles/ftest.dir/depend
 	$(MAKE) -f src/ext/ptex/src/tests/CMakeFiles/ftest.dir/build.make src/ext/ptex/src/tests/CMakeFiles/ftest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num= "Built target ftest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles --progress-num=46 "Built target ftest"
 .PHONY : src/ext/ptex/src/tests/CMakeFiles/ftest.dir/all
 
 # Include target in all.
@@ -2499,7 +2499,7 @@ all: src/ext/ptex/src/tests/CMakeFiles/ftest.dir/all
 
 # Build rule for subdir invocation for target.
 src/ext/ptex/src/tests/CMakeFiles/ftest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 src/ext/ptex/src/tests/CMakeFiles/ftest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/timothebarbaux/Documents/stage/pbrt/build/CMakeFiles 0
 .PHONY : src/ext/ptex/src/tests/CMakeFiles/ftest.dir/rule

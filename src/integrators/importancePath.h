@@ -42,6 +42,7 @@
 #include "pbrt.h"
 #include "integrator.h"
 #include "lightdistrib.h"
+// #include <map>
 
 namespace pbrt {
 
@@ -64,7 +65,15 @@ class ImportancePathIntegrator : public SamplerIntegrator {
     const Float rrThreshold;
     const std::string lightSampleStrategy;
     std::unique_ptr<LightDistribution> lightDistribution;
+    // std::map<std::string, Spectrum> flagsMap;
 };
+
+int nbRays();
+int nbErrors();
+
+void fillMaps(std::string name, Float proba, int index, bool r, bool g, bool b);
+
+RayDifferential respawnRay(SurfaceInteraction &isect, const Vector3f &d, bool firstIsectTarget, bool r, bool g, bool b);
 
 ImportancePathIntegrator *CreateImportancePathIntegrator(const ParamSet &params,
                                      std::shared_ptr<Sampler> sampler,

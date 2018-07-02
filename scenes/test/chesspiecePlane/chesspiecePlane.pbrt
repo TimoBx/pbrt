@@ -1,0 +1,43 @@
+LookAt	0 -5 0
+	0 0 0
+	0 0 1
+
+Rotate 20 5 1 1
+  Camera "orthographic" "float screenwindow" [-2 2 -2 2]
+  #Camera "perspective" "float fov" 90
+
+Film "image"
+"integer xresolution" [700] "integer yresolution" [700]
+    "string filename" "chesspiecePlane.exr"
+
+Sampler "stratified" "integer pixelsamples" [256]
+Integrator "path"
+
+
+WorldBegin
+
+MakeNamedMaterial "black" "string type" "uber" "color Kd" [0.009773 0.009773 0.009773] "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+MakeNamedMaterial "white" "string type" "uber" "color Kd" [0.512000 0.512000 0.512000] "color Ks" [0.500000 0.500000 0.500000] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]
+
+MakeNamedMaterial "light_blue" "string type" "matte" "color Kd" [0.68 0.85 0.9]
+
+
+ObjectBegin "target"
+Shape "plymesh" "string filename" [ "chesspiece.ply" ]
+ObjectEnd
+
+ObjectInstance "target"
+
+
+AttributeBegin
+Translate 0 0 -0.5
+NamedMaterial "black"
+Shape "plymesh" "string filename" [ "plane1.ply" ]
+NamedMaterial "white"
+Shape "plymesh" "string filename" [ "plane2.ply" ]
+NamedMaterial "light_blue"
+Shape "plymesh" "string filename" [ "plane3.ply" ]
+AttributeEnd
+
+WorldEnd

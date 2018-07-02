@@ -41,9 +41,13 @@
 // Importance Map generation
 #include "impgeneration.h"
 #include "imageio.h"
+#include "integrators/importancePath.h"
 
 // Material Change
 #include "matchange.h"
+
+// Mask
+#include "mask.h"
 
 using namespace pbrt;
 
@@ -58,6 +62,11 @@ Rendering options:
   --importance         Compute the importance map. Does not render an image of
                        the scene; instead, render the importance map as a .EXR
                        image (use this file in Gratin afterwards).
+  --mask <filename>    Apply a mask to the rendering. The mask has to be in a format
+                       supported by pbrt: .exr, .png...
+  --mask2 <filename1, filename2>    Apply a mask to the rendering. The mask is made from two mask images,
+                       with a format supported by pbrt: .exr, .png... The first image is the "plus" mask: ie, what we want to keep.
+                       The second mask image is the "minus" mask: what we don't want to take into account.
   --matchange <mat>    Change all the materials in the scene to a chosen one.
   --nthreads <num>     Use specified number of threads for rendering.
   --outfile <filename> Write the final image to the given filename.
@@ -162,6 +171,33 @@ int main(int argc, char *argv[]) {
                 return 0;
             }
         }
+        else if (!strcmp(argv[i], "--mask")) {
+            if (i + 1 == argc)
+                usage("missing value after --mask argument");
+            options.mask1Name = argv[++i];
+            changeMaskOptions(options, 1, true);
+        }
+        else if (!strcmp(argv[i], "--mask1")) {
+            if (i + 1 == argc)
+                usage("missing value after --mask argument");
+            options.mask1Name = argv[++i];
+            changeMaskOptions(options, 1, false);
+        }
+        else if (!strcmp(argv[i], "--mask2")) {
+            if (i + 2 >= argc)
+                usage("missing value after --mask2 argument");
+            options.mask1Name = argv[++i];
+            options.mask2Name = argv[++i];
+            changeMaskOptions(options, 2, false);
+        }
+        else if (!strcmp(argv[i], "--mask3")) {
+            if (i + 3 == argc)
+                usage("missing value after --mask argument");
+            options.mask1Name = argv[++i];
+            options.mask2Name = argv[++i];
+            options.mask3Name = argv[++i];
+            changeMaskOptions(options, 3, false);
+        }
         else
             filenames.push_back(argv[i]);
     }
@@ -192,6 +228,7 @@ int main(int argc, char *argv[]) {
         fflush(stdout);
     }
     pbrtInit(options);
+
     // Process scene description
     if (filenames.empty()) {
         // Parse scene from standard input
@@ -205,8 +242,19 @@ int main(int argc, char *argv[]) {
     options = PbrtOptions;
 
     if (options.importance) {
-        options.impMapName = computeNewFilename(options.newFileName, "impmap_", "", ".exr");
-        writeImpImage(options);
+
+        // MASK
+        if (options.applyMask)
+            applyMaskToImpMap(options);
+
+        // NORMALIZATION
+        Float value = 0;
+        value = getMax(options.maps["ALL"], options.widthImpMap, options.heightImpMap);
+        normalizeMaps(options, value);
+
+
+        computeImpMapNames(options);
+        writeImpImages(options);
     }
 
     pbrtCleanup();

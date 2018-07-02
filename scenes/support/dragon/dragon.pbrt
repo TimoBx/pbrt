@@ -1,11 +1,21 @@
-Integrator "path" "integer maxdepth" [ 17 ]
+
 Transform [ 0.678116 -0.167853 -0.715531 -0 -0 0.973571 -0.228385 -0 -0.734955 -0.154871 -0.660194 -0 -0.554465 -6.29907 82.2988 1]
-Sampler "sobol" "integer pixelsamples" [ 64 ]
-PixelFilter "triangle" "float xwidth" [ 1.000000 ] "float ywidth" [ 1.000000 ]
-Film "image" "integer xresolution" [ 1280 ] "integer yresolution" [ 720 ] "string filename" [ "dragon.exr" ]
-Camera "perspective" "float fov" [ 28 ]
+
+Film "image"
+"integer xresolution" [700] "integer yresolution" [700]
+    "string filename" "dragon.exr"
+
+Sampler "stratified" "integer pixelsamples" [128]
+Integrator "path"
+
+#Camera "perspective" "float fov" [ 28 ]
+Camera "orthographic" "float screenwindow" [-15 15 -15 15]
 
 WorldBegin
+
+
+LightSource "infinite" "string mapname" "blue.png"
+
 
 	MakeNamedMaterial "GroundInner" "string type" [ "matte" ] "rgb Kd" [ 0.456263 0.456263 0.456263 ]
 	MakeNamedMaterial "GroundOuter" "string type" [ "matte" ] "rgb Kd" [ 0.456263 0.456263 0.456263 ]
@@ -18,34 +28,10 @@ WorldBegin
 	MakeNamedMaterial "Deco2" "string type" [ "matte" ] "rgb Kd" [ 0.793110 0.793110 0.793110 ]
 
 
-# Some ground
-	NamedMaterial "GroundOuter"
-	Shape "plymesh" "string filename" [ "models/Mesh011.ply" ]
-	NamedMaterial "GroundOuter"
-	Shape "plymesh" "string filename" [ "models/Mesh005.ply" ]
-	Shape "plymesh" "string filename" [ "models/Mesh006.ply" ]
-	NamedMaterial "GroundInner"
-	Shape "plymesh" "string filename" [ "models/Mesh012.ply" ]
-	NamedMaterial "GroundOuter"
-	Shape "plymesh" "string filename" [ "models/Mesh007.ply" ]
 
-# Decoration - Sword, rock
-	NamedMaterial "Blade"
-	Shape "plymesh" "string filename" [ "models/Mesh004.ply" ]
-	NamedMaterial "Sword"
-	Shape "plymesh" "string filename" [ "models/Mesh009.ply" ]
-	NamedMaterial "Deco"
-	Shape "plymesh" "string filename" [ "models/Mesh003.ply" ]
-	NamedMaterial "Diamond"
-	Shape "plymesh" "string filename" [ "models/Mesh002.ply" ]
-	NamedMaterial "Deco2"
-	Shape "plymesh" "string filename" [ "models/Mesh001.ply" ]
-	Shape "plymesh" "string filename" [ "models/Mesh000.ply" ]
-	NamedMaterial "Cloth"
-	Shape "plymesh" "string filename" [ "models/Mesh010.ply" ]
 
 # Dragon
-	ObjectBegin "dragon"
+	ObjectBegin "target"
 
 		NamedMaterial "Dragon"
 		Shape "plymesh" "string filename" [ "models/Mesh008.ply" ]
@@ -55,10 +41,9 @@ WorldBegin
 	ObjectEnd
 
 	AttributeBegin
-		ObjectInstance "dragon"
+		ObjectInstance "target"
 	AttributeEnd
 
-LightSource "infinite" "string mapname" "impmap_dragon.exr"
 
 
 WorldEnd

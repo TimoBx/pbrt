@@ -303,6 +303,8 @@ string.h
 -
 glog/logging.h
 -
+map
+-
 stdint.h
 -
 float.h
@@ -1633,6 +1635,16 @@ lights/infinite.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/lights/infinite.h
 paramset.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/paramset.h
+limits
+-
+algorithm
+-
+iostream
+-
+string
+-
+fstream
+-
 
 /home/timothebarbaux/Documents/stage/pbrt/src/core/impgeneration.h
 pbrt.h
@@ -1777,6 +1789,20 @@ sampling.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/sampling.h
 sobolmatrices.h
 /home/timothebarbaux/Documents/stage/pbrt/src/core/sobolmatrices.h
+
+/home/timothebarbaux/Documents/stage/pbrt/src/core/mask.cpp
+mask.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/mask.h
+geometry.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/geometry.h
+imageio.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/imageio.h
+spectrum.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/spectrum.h
+
+/home/timothebarbaux/Documents/stage/pbrt/src/core/mask.h
+pbrt.h
+/home/timothebarbaux/Documents/stage/pbrt/src/core/pbrt.h
 
 /home/timothebarbaux/Documents/stage/pbrt/src/core/matchange.cpp
 matchange.h
@@ -2030,6 +2056,8 @@ assert.h
 string.h
 -
 glog/logging.h
+-
+map
 -
 stdint.h
 -
@@ -2471,6 +2499,8 @@ light.h
 /home/timothebarbaux/Documents/stage/pbrt/src/integrators/light.h
 impgeneration.h
 /home/timothebarbaux/Documents/stage/pbrt/src/integrators/impgeneration.h
+map
+-
 
 /home/timothebarbaux/Documents/stage/pbrt/src/integrators/mlt.cpp
 integrators/mlt.h
