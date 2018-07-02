@@ -1,0 +1,11 @@
+-I/home/timothebarbaux/Documents/stage/gratin/trunk/cmake/../src-gratin
+-I/usr/include/eigen3
+-I/usr/include/OpenEXR
+-I/home/timothebarbaux/Documents/stage/gratin/trunk/src-nodes/genericNodes/imgSpritesCustom/../customNodeFiles
+-DGRATIN_MAJOR_VERSION=0
+-DGRATIN_MINOR_VERSION=3
+-DGRATIN_PATCH_VERSION=2
+-DEXR_SUPPORT
+-o
+/home/timothebarbaux/Documents/stage/gratin/trunk/build/src-nodes/genericNodes/imgSpritesCustom/moc_imgSpritesCustom.cpp
+/home/timothebarbaux/Documents/stage/gratin/trunk/src-nodes/genericNodes/imgSpritesCustom/imgSpritesCustom.h

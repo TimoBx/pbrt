@@ -1,0 +1,142 @@
+<gratin file="customNode">
+ <string val="imgGlobalVariance" name="customHandleName"/>
+ <string val="statistics/global/" name="customHandlePath"/>
+ <string val="Compute the variance of an input image" name="customHandleDesc"/>
+ <string val="Compute the variance of an input image&lt;br>&#xa;The result is stored in the last image level: ceil(log2(max(width,height)))+1" name="customHandleHelp"/>
+ <int val="1" name="customHandleInputDescSize"/>
+ <int val="1" name="customHandleOutputDescSize"/>
+ <string val="image" name="customHandleInputDesc-0"/>
+ <string val="variance" name="customHandleOutputDesc-0"/>
+ <string val="Gremlin" name="origHandleName"/>
+ <string val="Gremlins/" name="origHandlePath"/>
+ <string val="This is a gremlin" name="origHandleDesc"/>
+ <string val="No help defined for this node" name="origHandleHelp"/>
+ <int val="1" name="origHandleInputDescSize"/>
+ <int val="1" name="origHandleOutputDescSize"/>
+ <string val="image" name="origHandleInputDesc-0"/>
+ <string val="meanVal" name="origHandleOutputDesc-0"/>
+ <string val="Gremlin" name="nodeName-0"/>
+ <string val="Gremlins/" name="nodePath-0"/>
+ <uint val="10" name="nodeId-0"/>
+ <uint val="2" name="nodeGraphId-0"/>
+ <uint val="1" name="nbInputs-0"/>
+ <uint val="1" name="nbOutputs-0"/>
+ <vector2f name="nodePos-0">
+  <float val="-109.231" name="0"/>
+  <float val="-1435.83" name="1"/>
+ </vector2f>
+ <bool val="1" name="nodeGrouped-0"/>
+ <bool val="1" name="nodeHasWidget-0"/>
+ <IOData name="node-0">
+  <uint val="1" name="nbInputs"/>
+  <uint val="1" name="nbOutputs"/>
+  <uint val="3" name="nbNodes"/>
+  <string val="imgGlobalMean" name="nodeName-0"/>
+  <string val="statistics/global/" name="nodePath-0"/>
+  <uint val="0" name="nodeId-0"/>
+  <uint val="0" name="nodeGraphId-0"/>
+  <uint val="1" name="nbInputs-0"/>
+  <uint val="1" name="nbOutputs-0"/>
+  <vector2f name="nodePos-0">
+   <float val="-759.594" name="0"/>
+   <float val="1.45093" name="1"/>
+  </vector2f>
+  <bool val="0" name="nodeGrouped-0"/>
+  <string val="imgGeneric" name="nodeName-1"/>
+  <string val="generic/" name="nodePath-1"/>
+  <uint val="1" name="nodeId-1"/>
+  <uint val="0" name="nodeGraphId-1"/>
+  <uint val="1" name="nbInputs-1"/>
+  <uint val="1" name="nbOutputs-1"/>
+  <vector2f name="nodePos-1">
+   <float val="-2.84194" name="0"/>
+   <float val="-0.524658" name="1"/>
+  </vector2f>
+  <bool val="0" name="nodeGrouped-1"/>
+  <string val="imgGlobalMean" name="nodeName-2"/>
+  <string val="statistics/global/" name="nodePath-2"/>
+  <uint val="2" name="nodeId-2"/>
+  <uint val="0" name="nodeGraphId-2"/>
+  <uint val="1" name="nbInputs-2"/>
+  <uint val="1" name="nbOutputs-2"/>
+  <vector2f name="nodePos-2">
+   <float val="762.436" name="0"/>
+   <float val="-0.926025" name="1"/>
+  </vector2f>
+  <bool val="0" name="nodeGrouped-2"/>
+  <uint val="1" name="nbConnections-0-1"/>
+  <vector2u name="connection-0-1-0">
+   <uint val="0" name="0"/>
+   <uint val="0" name="1"/>
+  </vector2u>
+  <uint val="0" name="nbConnections-0-2"/>
+  <uint val="1" name="nbConnections-1-2"/>
+  <vector2u name="connection-1-2-0">
+   <uint val="0" name="0"/>
+   <uint val="0" name="1"/>
+  </vector2u>
+  <bool val="0" name="nodeHasWidget-0"/>
+  <IOData name="node-0"/>
+  <vector2f name="nodeInputPos-0-0">
+   <float val="113.461" name="0"/>
+   <float val="-157.466" name="1"/>
+  </vector2f>
+  <vector2f name="nodeOutputPos-0-0">
+   <float val="116.723" name="0"/>
+   <float val="-158.815" name="1"/>
+  </vector2f>
+  <bool val="1" name="nodeHasWidget-1"/>
+  <IOData name="node-1">
+   <string val="inBuffer0" name="genericIName-0"/>
+   <string val="outBuffer0" name="genericOName-0"/>
+   <vector2f name="genericTSize">
+    <float val="1" name="0"/>
+    <float val="1" name="1"/>
+   </vector2f>
+   <vector2f name="genericTOffset">
+    <float val="0" name="0"/>
+    <float val="0" name="1"/>
+   </vector2f>
+   <bool val="0" name="genericNeedMouse"/>
+   <uint val="0" name="genericNbSliderFloat"/>
+   <uint val="0" name="genericNbSliderInt"/>
+   <string val="#version 330&#xa;&#xa;in vec2 texcoord;&#xa;&#xa;layout(location = 0) out vec4 outBuffer0;&#xa;uniform sampler2D inBuffer0;&#xa;" name="genericHead"/>
+   <string val="void main() {&#xa;  vec2 tsize = textureSize(inBuffer0,0);&#xa;  float lod = ceil(log2(max(tsize.x,tsize.y)))+1.0;&#xa;  vec4 mean = textureLod(inBuffer0,texcoord,lod);&#xa;  vec4 current = texture(inBuffer0,texcoord);&#xa;  vec3 diff = current.xyz-mean.xyz;&#xa;  outBuffer0 = vec4(diff*diff,current.w);&#xa;//outBuffer0 = vec4(mean.xyz,current.w);&#xa;}&#xa;" name="genericBody"/>
+  </IOData>
+  <IOData name="nodeWidget-1">
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <vector2f name="nodeInputPos-1-0">
+   <float val="116.723" name="0"/>
+   <float val="-158.815" name="1"/>
+  </vector2f>
+  <vector2f name="nodeOutputPos-1-0">
+   <float val="133.723" name="0"/>
+   <float val="-158.775" name="1"/>
+  </vector2f>
+  <bool val="0" name="nodeHasWidget-2"/>
+  <IOData name="node-2"/>
+  <vector2f name="nodeInputPos-2-0">
+   <float val="133.723" name="0"/>
+   <float val="-158.775" name="1"/>
+  </vector2f>
+  <vector2f name="nodeOutputPos-2-0">
+   <float val="190.632" name="0"/>
+   <float val="-147.172" name="1"/>
+  </vector2f>
+ </IOData>
+ <IOData name="nodeWidget-0">
+  <uint val="1" name="nbChildren"/>
+  <IOData name="childWidget-0">
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+ </IOData>
+ <vector2f name="nodeInputPos-0-0">
+  <float val="113.461" name="0"/>
+  <float val="-157.466" name="1"/>
+ </vector2f>
+ <vector2f name="nodeOutputPos-0-0">
+  <float val="190.632" name="0"/>
+  <float val="-147.172" name="1"/>
+ </vector2f>
+</gratin>

@@ -1,0 +1,162 @@
+<gratin file="customNode">
+ <string val="imgFlowHSV" name="customHandleName"/>
+ <string val="visualization/flow/" name="customHandlePath"/>
+ <string val="Flow visualization using HSV color space" name="customHandleDesc"/>
+ <string val="The input is a flow (normalized or not).&lt;br>&#xa;&lt;br>&#xa;&quot;modulateOrientation&quot; allows to rotate the input flow.&lt;br>&#xa;&quot;modulateScale&quot; modify the length of the input vectors.&lt;br>&#xa;&quot;normalizeLength&quot; will normalize the input flow if activated. &lt;br>&#xa;&quot;symetric&quot; will apply the visualization from 0 to PI or from 0 to 2*PI.&lt;br>&#xa;" name="customHandleHelp"/>
+ <int val="1" name="customHandleInputDescSize"/>
+ <int val="1" name="customHandleOutputDescSize"/>
+ <string val="flow" name="customHandleInputDesc-0"/>
+ <string val="flowVis" name="customHandleOutputDesc-0"/>
+ <string val="imgGeneric" name="origHandleName"/>
+ <string val="generic/" name="origHandlePath"/>
+ <string val="Generic node for image processing" name="origHandleDesc"/>
+ <string val="This node was designed to create custom shaders&#xa;The settings widget allows to modify input, output parameters&#xa;as well as the output image sizes.&#xa;&#xa;WARNING1: you will be able to modify the number of inputs/outputs&#xa;only if the node is entirely disconnected.&#xa;WARNING2: input/output names will not be modified if a custom node is created&#xa;from this node beacause these names should be edited directly in the setting widget&#xa;WARNING3: modifying the settings of a node will remove all previously&#xa;defined keyframes&#xa;&#xa;* Special data allows to modify the output image (using a multiple of&#xa;the input size, plus an offset vector&#xa;Check use mouse if you want to interact with the mouse&#xa;&#xa;* Input data allows to add/remove/displace input data (only if disconnected)&#xa;&#xa;* Output data allows to add/remove/displace output data (only if disconnected)&#xa;&#xa;* Param data allows to add/remove parameters that will automatically be &#xa;included in your shader.&#xa;For each of them you may choose a proper name, type, and min/max/default values.&#xa;Check keyframes if you want your parameter to be accessible&#xa; through the animation widget&#xa;&#xa;In the node interface itself:&#xa;Source tab contains the head and body of your GLSL source (only the body is editable)&#xa;Params tab contains the defined widgets according to your setting choices&#xa;Log tab contains compilation errors&#xa;&#xa;Once your settings and source completed, click on apply to see the result&#xa;" name="origHandleHelp"/>
+ <int val="1" name="origHandleInputDescSize"/>
+ <int val="1" name="origHandleOutputDescSize"/>
+ <string val="flow" name="origHandleInputDesc-0"/>
+ <string val="flowVis" name="origHandleOutputDesc-0"/>
+ <string val="imgGeneric" name="nodeName-0"/>
+ <string val="generic/" name="nodePath-0"/>
+ <uint val="6" name="nodeId-0"/>
+ <uint val="0" name="nodeGraphId-0"/>
+ <uint val="1" name="nbInputs-0"/>
+ <uint val="1" name="nbOutputs-0"/>
+ <vector2f name="nodePos-0">
+  <float val="2912.08" name="0"/>
+  <float val="-922.283" name="1"/>
+ </vector2f>
+ <bool val="0" name="nodeGrouped-0"/>
+ <bool val="1" name="nodeHasWidget-0"/>
+ <IOData name="node-0">
+  <string val="flow" name="genericIName-0"/>
+  <string val="flowVis" name="genericOName-0"/>
+  <vector2f name="genericTSize">
+   <float val="1" name="0"/>
+   <float val="1" name="1"/>
+  </vector2f>
+  <vector2f name="genericTOffset">
+   <float val="0" name="0"/>
+   <float val="0" name="1"/>
+  </vector2f>
+  <bool val="0" name="genericNeedMouse"/>
+  <uint val="2" name="genericNbSliderFloat"/>
+  <bool val="1" name="genericSliderFloatIsKF-0"/>
+  <string val="modulateOrientation" name="genericSliderFloatName-0"/>
+  <bool val="1" name="genericSliderFloatIsKF-1"/>
+  <string val="modulateScale" name="genericSliderFloatName-1"/>
+  <uint val="2" name="genericNbSliderInt"/>
+  <bool val="1" name="genericSliderIntIsKF-0"/>
+  <string val="normalizeLength" name="genericSliderIntName-0"/>
+  <bool val="1" name="genericSliderIntIsKF-1"/>
+  <string val="symetric" name="genericSliderIntName-1"/>
+  <string val="#version 330&#xa;&#xa;in vec2 texcoord;&#xa;&#xa;layout(location = 0) out vec4 flowVis;&#xa;uniform sampler2D flow;&#xa;uniform float modulateOrientation;&#xa;uniform float modulateScale;&#xa;uniform int normalizeLength;&#xa;uniform int symetric;&#xa;" name="genericHead"/>
+  <string val="// rotation matrix&#xa;vec2 R = vec2(cos(modulateOrientation),sin(modulateOrientation)); &#xa;&#xa; // pixel size&#xa;vec2 S = 1.0/vec2(textureSize(flow,0));&#xa;&#xa;vec2 rotate(in vec2 f) {&#xa;&#x9;// rotate according to the user specified orientation&#xa;&#x9;return vec2(f.x*R.x-f.y*R.y,f.x*R.y+f.y*R.x);&#xa;}&#xa;&#xa;vec2 getFlow(in vec2 coord) {&#xa;&#x9;// rotate, scale, normalize, and invert if necessary&#xa;&#x9;vec2 f = rotate(texture(flow,coord).xy);&#xa;&#x9;return f!=vec2(0.0) &amp;&amp; normalizeLength==1 ? normalize(f) : f;&#xa;}&#xa;&#xa;float mtanh(float c,in float s) {&#xa;  const float tanhmax = 3.11622;&#xa;&#xa;  float x = ((c*s)/tanhmax);&#xa;  float e = exp(-2.0*x);&#xa;  &#xa;  return clamp((1.0-e)/(1.0+e),-1.0,1.0);&#xa;}&#xa;&#xa;vec3 hsvToRgb(in float h,in float s,in float v) {&#xa;  vec3 rgb;&#xa;  int hi = int(floor(h/60.0))%6;&#xa;  float f = h/60.0 - floor(h/60.0);&#xa;  float p = v*(1.0-s);&#xa;  float q = v*(1.0-f*s);&#xa;  float t = v*(1.0-(1.0-f)*s);&#xa;  &#xa;  if(hi==0) rgb = vec3(v,t,p);&#xa;  else if(hi==1) rgb = vec3(q,v,p);&#xa;  else if(hi==2) rgb = vec3(p,v,t);&#xa;  else if(hi==3) rgb = vec3(p,q,v);&#xa;  else if(hi==4) rgb = vec3(t,p,v);&#xa;  else rgb = vec3(v,p,q);&#xa;  &#xa;  return rgb;&#xa;}&#xa;&#xa;void main(void) {&#xa;  const float PI  = 3.141592;&#xa;  const float PI2 = 2.0*PI;&#xa;  const float T = 0.99;&#xa;&#xa;  vec2 f = getFlow(texcoord);&#xa;&#xa;  float gx = f.x;&#xa;  float gy = f.y;&#xa;  float ma = length(f.xy);&#xa;  &#xa;  gx = clamp(gx/ma,-1.0,1.0);&#xa;  gy = clamp(gy/ma,-1.0,1.0);&#xa;  ma  = mtanh(ma,modulateScale);&#xa;&#xa;  //gx = clamp(gx,-1.0,1.0);&#xa;  //gy = clamp(gy,-1.0,1.0);&#xa;  //ma = clamp(ma,-T,T);&#xa;&#xa;  float h   = gy>0.0 ? acos(gx) : PI2-acos(gx);&#xa;  float den = symetric==1 ? PI : PI2;&#xa;&#xa;  h = (mod(h,den)/den)*360.0;&#xa;  float s = ma;&#xa;  float v = 1.0;&#xa; &#xa;  flowVis = f==vec2(0.0) ? vec4(1) : vec4(hsvToRgb(h,s,v),1.0);&#xa;}&#xa;" name="genericBody"/>
+ </IOData>
+ <IOData name="nodeWidget-0">
+  <uint val="4" name="nbChildren"/>
+  <IOData name="childWidget-0">
+   <IOData name="keyframedFloat">
+    <float val="0" name="minVal"/>
+    <float val="3.14159" name="maxVal"/>
+    <float val="0" name="currentVal"/>
+    <IOData name="curve">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="0" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <float val="0" name="sliderVal"/>
+   <float val="0" name="sliderMinVal"/>
+   <float val="3.14159" name="sliderMaxVal"/>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-1">
+   <IOData name="keyframedFloat">
+    <float val="0" name="minVal"/>
+    <float val="1000" name="maxVal"/>
+    <float val="1" name="currentVal"/>
+    <IOData name="curve">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="1" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <float val="1" name="sliderVal"/>
+   <float val="0" name="sliderMinVal"/>
+   <float val="1000" name="sliderMaxVal"/>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-2">
+   <IOData name="keyframedFloat">
+    <float val="0" name="minVal"/>
+    <float val="1" name="maxVal"/>
+    <float val="0" name="currentVal"/>
+    <IOData name="curve">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="0" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <int val="0" name="sliderVal"/>
+   <int val="0" name="sliderMinVal"/>
+   <int val="1" name="sliderMaxVal"/>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-3">
+   <IOData name="keyframedFloat">
+    <float val="0" name="minVal"/>
+    <float val="1" name="maxVal"/>
+    <float val="1" name="currentVal"/>
+    <IOData name="curve">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="1" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <int val="1" name="sliderVal"/>
+   <int val="0" name="sliderMinVal"/>
+   <int val="1" name="sliderMaxVal"/>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+ </IOData>
+ <vector2f name="nodeInputPos-0-0">
+  <float val="56.32" name="0"/>
+  <float val="28.16" name="1"/>
+ </vector2f>
+ <vector2f name="nodeOutputPos-0-0">
+  <float val="56.32" name="0"/>
+  <float val="28.16" name="1"/>
+ </vector2f>
+</gratin>

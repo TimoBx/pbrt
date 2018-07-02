@@ -1,0 +1,162 @@
+<gratin file="customNode">
+ <string val="imgScalarIsoline" name="customHandleName"/>
+ <string val="visualization/scalar/" name="customHandlePath"/>
+ <string val="Scalar field visualization using isolines" name="customHandleDesc"/>
+ <string val="Scalar field visualization using isolines&lt;br>&#xa;&lt;br>&#xa;The input is a scalar field.&lt;br>&#xa;&quot;isoval&quot; is the value at which the line will be drawn.&lt;br>&#xa;&quot;hue&quot;, &quot;saturation&quot; and &quot;value&quot; defines the HSV color of the line.&lt;br>&#xa;" name="customHandleHelp"/>
+ <int val="1" name="customHandleInputDescSize"/>
+ <int val="1" name="customHandleOutputDescSize"/>
+ <string val="scalarField" name="customHandleInputDesc-0"/>
+ <string val="isoline" name="customHandleOutputDesc-0"/>
+ <string val="imgGeneric" name="origHandleName"/>
+ <string val="generic/" name="origHandlePath"/>
+ <string val="Generic node for image processing" name="origHandleDesc"/>
+ <string val="This node was designed to create custom shaders&#xa;The settings widget allows to modify input, output parameters&#xa;as well as the output image sizes.&#xa;&#xa;WARNING1: you will be able to modify the number of inputs/outputs&#xa;only if the node is entirely disconnected.&#xa;WARNING2: input/output names will not be modified if a custom node is created&#xa;from this node beacause these names should be edited directly in the setting widget&#xa;WARNING3: modifying the settings of a node will remove all previously&#xa;defined keyframes&#xa;&#xa;* Special data allows to modify the output image (using a multiple of&#xa;the input size, plus an offset vector&#xa;Check use mouse if you want to interact with the mouse&#xa;&#xa;* Input data allows to add/remove/displace input data (only if disconnected)&#xa;&#xa;* Output data allows to add/remove/displace output data (only if disconnected)&#xa;&#xa;* Param data allows to add/remove parameters that will automatically be &#xa;included in your shader.&#xa;For each of them you may choose a proper name, type, and min/max/default values.&#xa;Check keyframes if you want your parameter to be accessible&#xa; through the animation widget&#xa;&#xa;In the node interface itself:&#xa;Source tab contains the head and body of your GLSL source (only the body is editable)&#xa;Params tab contains the defined widgets according to your setting choices&#xa;Log tab contains compilation errors&#xa;&#xa;Once your settings and source completed, click on apply to see the result&#xa;" name="origHandleHelp"/>
+ <int val="1" name="origHandleInputDescSize"/>
+ <int val="1" name="origHandleOutputDescSize"/>
+ <string val="scalarField" name="origHandleInputDesc-0"/>
+ <string val="isoline" name="origHandleOutputDesc-0"/>
+ <string val="imgGeneric" name="nodeName-0"/>
+ <string val="generic/" name="nodePath-0"/>
+ <uint val="1" name="nodeId-0"/>
+ <uint val="0" name="nodeGraphId-0"/>
+ <uint val="1" name="nbInputs-0"/>
+ <uint val="1" name="nbOutputs-0"/>
+ <vector2f name="nodePos-0">
+  <float val="5054.92" name="0"/>
+  <float val="-1531.05" name="1"/>
+ </vector2f>
+ <bool val="0" name="nodeGrouped-0"/>
+ <bool val="1" name="nodeHasWidget-0"/>
+ <IOData name="node-0">
+  <string val="scalarField" name="genericIName-0"/>
+  <string val="isoline" name="genericOName-0"/>
+  <vector2f name="genericTSize">
+   <float val="1" name="0"/>
+   <float val="1" name="1"/>
+  </vector2f>
+  <vector2f name="genericTOffset">
+   <float val="0" name="0"/>
+   <float val="0" name="1"/>
+  </vector2f>
+  <bool val="0" name="genericNeedMouse"/>
+  <uint val="4" name="genericNbSliderFloat"/>
+  <bool val="1" name="genericSliderFloatIsKF-0"/>
+  <string val="isoval" name="genericSliderFloatName-0"/>
+  <bool val="1" name="genericSliderFloatIsKF-1"/>
+  <string val="hue" name="genericSliderFloatName-1"/>
+  <bool val="1" name="genericSliderFloatIsKF-2"/>
+  <string val="saturation" name="genericSliderFloatName-2"/>
+  <bool val="1" name="genericSliderFloatIsKF-3"/>
+  <string val="value" name="genericSliderFloatName-3"/>
+  <uint val="0" name="genericNbSliderInt"/>
+  <string val="#version 330&#xa;&#xa;in vec2 texcoord;&#xa;&#xa;layout(location = 0) out vec4 isoline;&#xa;uniform sampler2D scalarField;&#xa;uniform float isoval;&#xa;uniform float hue;&#xa;uniform float saturation;&#xa;uniform float value;&#xa;" name="genericHead"/>
+  <string val="vec2 ps = 1.0/vec2(textureSize(scalarField,0));&#x9;// pixel size&#xa;vec2 tl = texcoord+vec2(-ps.x,ps.y);&#x9;&#x9;&#x9;&#x9;&#x9;// top left coord &#xa;vec2 tr = texcoord+ps;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;// top right coord&#xa;vec2 br = texcoord+vec2(ps.x,-ps.y);&#x9;&#x9;&#x9;&#x9;&#x9;// bottom right coord&#xa;vec2 bl = texcoord-ps;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;// bottom left coord&#xa;float sa = (ps.x*2.0)*(ps.y*2.0);&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;// square area&#xa;float sao2 = 0.5*sa;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;// square area / 2&#xa;&#xa;float confidence(in float area) {&#xa;&#x9;return 1.0-clamp(abs(area-sao2)/sao2,0.0,1.0);&#xa;}&#xa;&#xa;float heightFieldValue(in vec2 coord) {&#xa;&#x9;return texture(scalarField,coord).x;&#xa;}&#xa;&#xa;float rectangleArea(in vec2 p1, in vec2 p2) { &#xa;&#x9;vec2 d = abs(p2-p1);&#xa;&#x9;return d.x*d.y;&#xa;}&#xa;&#xa;float triangleArea(in vec2 p1,in vec2 p2) {&#xa;&#x9;return 0.5*rectangleArea(p1,p2);&#xa;}&#xa;&#xa;float linearInterp(in float v1, in float v2, in float i1, in float i2, in float iso) {&#xa;&#x9;return i1&lt;i2 ? mix(v1,v2,(iso-i1)/(i2-i1)) : mix(v2,v1,(iso-i2)/(i1-i2));&#xa;}&#xa;&#xa;vec4 cornerValues() {&#xa;&#x9;return vec4(heightFieldValue(tl),&#x9;&#x9;// top-left&#xa;&#x9;&#x9;&#x9;&#x9;&#x9;heightFieldValue(tr),&#x9;&#x9;// top-right&#xa;&#x9;&#x9;&#x9;&#x9;&#x9;heightFieldValue(br),&#x9;// bottom-right&#xa;&#x9;&#x9;&#x9;&#x9;&#x9;heightFieldValue(bl));&#x9;// bottom-left&#xa;}&#xa;&#xa;float computeIsoline(in vec4 cvalues) {&#xa;&#x9;bvec2 v = bvec2(true,false);&#xa;&#x9;bvec4 b = greaterThan(cvalues,vec4(isoval));&#xa;&#x9;float r = 0.0;&#xa;&#xa;&#x9;if(b==v.xxxx || b==v.yyyy) {&#xa;&#x9;&#x9;// no contours (1111 or 0000)&#xa;&#x9;&#x9;r = 0.0;&#xa;&#x9;} else if(b==v.xxxy || b==v.yyyx) {&#xa;&#x9;&#x9;// bottom left single segment (1110 or 0001)&#xa;&#x9;&#x9;vec2 p1 = vec2(linearInterp(bl.x,br.x,cvalues.w,cvalues.z,isoval),bl.y);&#xa;&#x9;&#x9;vec2 p2 = vec2(bl.x,linearInterp(bl.y,tl.y,cvalues.w,cvalues.x,isoval));&#xa;&#x9;&#x9;r = confidence(triangleArea(p1,p2));&#xa;&#x9;} else if(b==v.xxyx || b==v.yyxy) {&#xa;&#x9;&#x9;// bottom right single segment (1101 or 0010)&#xa;&#x9;&#x9;vec2 p1 = vec2(linearInterp(br.x,bl.x,cvalues.z,cvalues.w,isoval),br.y);&#xa;&#x9;&#x9;vec2 p2 = vec2(br.x,linearInterp(br.y,tr.y,cvalues.z,cvalues.y,isoval));&#xa;&#x9;&#x9;r = confidence(triangleArea(p1,p2));&#xa;&#x9;} else if(b==v.xyxx || b==v.yxyy) {&#xa;&#x9;&#x9;// top right single segment (1011 or 0100)&#xa;&#x9;&#x9;vec2 p1 = vec2(linearInterp(tr.x,tl.x,cvalues.y,cvalues.x,isoval),tr.y);&#xa;&#x9;&#x9;vec2 p2 = vec2(tr.x,linearInterp(tr.y,br.y,cvalues.y,cvalues.z,isoval));&#xa;&#x9;&#x9;r = confidence(triangleArea(p1,p2));&#xa;&#x9;}  else if(b==v.yxxx || b==v.xyyy) {&#xa;&#x9;&#x9;// top left single segment (0111 or 1000)&#xa;&#x9;&#x9;vec2 p1 = vec2(linearInterp(tl.x,tr.x,cvalues.x,cvalues.y,isoval),tl.y);&#xa;&#x9;&#x9;vec2 p2 = vec2(tl.x,linearInterp(tl.y,bl.y,cvalues.x,cvalues.w,isoval));&#xa;&#x9;&#x9;r = confidence(triangleArea(p1,p2));&#xa;&#x9;}  else if(b==v.xxyy || b==v.yyxx) {&#xa;&#x9;&#x9;// horizontal single segment (1100 or 0011)&#xa;&#x9;&#x9;vec2 p1 = vec2(bl.x,linearInterp(bl.y,tl.y,cvalues.w,cvalues.x,isoval));&#xa;&#x9;&#x9;vec2 p2 = vec2(br.x,linearInterp(br.y,tr.y,cvalues.z,cvalues.y,isoval));&#xa;&#x9;&#x9;vec2 pt = vec2(br.x,min(p1.y,p2.y));&#xa;&#x9;&#x9;r = confidence(rectangleArea(bl,pt)+triangleArea(p1,p2));&#xa;&#x9;}  else if(b==v.xyyx || b==v.yxxy) {&#xa;&#x9;&#x9;// vertical single segment (1001 or 0110)&#xa;&#x9;&#x9;vec2 p1 = vec2(linearInterp(bl.x,br.x,cvalues.w,cvalues.z,isoval),bl.y);&#xa;&#x9;&#x9;vec2 p2 = vec2(linearInterp(tl.x,tr.x,cvalues.x,cvalues.y,isoval),tl.y);&#xa;&#x9;&#x9;vec2 pt = vec2(min(p1.x,p2.x),tl.y);&#xa;&#x9;&#x9;r = confidence(rectangleArea(bl,pt)+triangleArea(p1,p2));&#xa;&#x9;} else {&#xa;&#x9;&#x9;// need current value for the ambiguous cases &#xa;&#x9;&#x9;float h = heightFieldValue(texcoord);&#xa;&#x9;&#x9;&#xa;&#x9;&#x9;if((b==v.xyxy &amp;&amp; h>isoval) || (b==v.yxyx &amp;&amp; h&lt;=isoval)) {&#xa;&#x9;&#x9;&#x9;// bottom left and top right segments (1010+h>iso or 0101+h&lt;=iso)&#xa;&#x9;&#x9;&#x9;vec2 p11 = vec2(linearInterp(bl.x,br.x,cvalues.w,cvalues.z,isoval),bl.y);&#xa;&#x9;&#x9;&#x9;vec2 p21= vec2(bl.x,linearInterp(bl.y,tl.y,cvalues.w,cvalues.x,isoval));&#xa;&#x9;&#x9;&#x9;vec2 p12 = vec2(linearInterp(tr.x,tl.x,cvalues.y,cvalues.x,isoval),tr.y);&#xa;&#x9;&#x9;&#x9;vec2 p22 = vec2(tr.x,linearInterp(tr.y,br.y,cvalues.y,cvalues.z,isoval));&#xa;&#x9;&#x9;&#x9;float r1 = confidence(triangleArea(p11,p21));&#xa;&#x9;&#x9;&#x9;float r2 = confidence(triangleArea(p12,p22));&#xa;&#x9;&#x9;&#x9;r = min(r1+r2,1.0);&#xa;&#x9;&#x9;} else {&#xa;&#x9;&#x9;&#x9;// top left and bottom right segments (1010+h&lt;=iso or 0101+h>iso)&#xa;&#x9;&#x9;&#x9;vec2 p11 = vec2(linearInterp(tl.x,tr.x,cvalues.x,cvalues.y,isoval),tl.y);&#xa;&#x9;&#x9;&#x9;vec2 p21 = vec2(tl.x,linearInterp(tl.y,bl.y,cvalues.x,cvalues.w,isoval));&#xa;&#x9;&#x9;&#x9;vec2 p12 = vec2(linearInterp(br.x,bl.x,cvalues.z,cvalues.w,isoval),br.y);&#xa;&#x9;&#x9;&#x9;vec2 p22 = vec2(br.x,linearInterp(br.y,tr.y,cvalues.z,cvalues.y,isoval));&#xa;&#x9;&#x9;&#x9;float r1 = confidence(triangleArea(p11,p21));&#xa;&#x9;&#x9;&#x9;float r2 = confidence(triangleArea(p12,p22));&#xa;&#x9;&#x9;&#x9;r = min(r1+r2,1.0);&#xa;&#x9;&#x9;}&#xa;&#x9;}&#xa;&#xa;&#x9;return r;&#xa;}&#xa;&#xa;vec3 hsvToRgb(in float h,in float s,in float v) { &#xa;&#x9;vec3 rgb;&#xa;&#x9;int hi = int(floor(h/60.0))%6;&#xa;&#x9;float f = h/60.0 - floor(h/60.0);&#xa;&#x9;float p = v*(1.0-s);&#xa;&#x9;float q = v*(1.0-f*s);&#xa;&#x9;float t = v*(1.0-(1.0-f)*s);&#xa;  &#xa;&#x9;if(hi==0) rgb = vec3(v,t,p);&#xa;&#x9;else if(hi==1) rgb = vec3(q,v,p);&#xa;&#x9;else if(hi==2) rgb = vec3(p,v,t);&#xa;&#x9;else if(hi==3) rgb = vec3(p,q,v);&#xa;&#x9;else if(hi==4) rgb = vec3(t,p,v);&#xa;&#x9;else rgb = vec3(v,p,q);&#xa;  &#xa;&#x9;return rgb;&#xa;}&#xa;&#xa;void main() {&#xa;&#x9;vec4 d = texture(scalarField,texcoord);&#xa;&#x9;vec3 c = hsvToRgb(hue,saturation,value);&#xa;&#x9;float iso = computeIsoline(cornerValues());&#xa;&#x9;isoline = vec4(vec3(mix(d.xyz,c,iso)),d.w);&#xa;}&#xa;" name="genericBody"/>
+ </IOData>
+ <IOData name="nodeWidget-0">
+  <uint val="4" name="nbChildren"/>
+  <IOData name="childWidget-0">
+   <IOData name="keyframedFloat">
+    <float val="0" name="minVal"/>
+    <float val="1" name="maxVal"/>
+    <float val="0" name="currentVal"/>
+    <IOData name="curve">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="0" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <float val="0" name="sliderVal"/>
+   <float val="0" name="sliderMinVal"/>
+   <float val="1" name="sliderMaxVal"/>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-1">
+   <IOData name="keyframedFloat">
+    <float val="0" name="minVal"/>
+    <float val="360" name="maxVal"/>
+    <float val="0" name="currentVal"/>
+    <IOData name="curve">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="0" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <float val="0" name="sliderVal"/>
+   <float val="0" name="sliderMinVal"/>
+   <float val="360" name="sliderMaxVal"/>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-2">
+   <IOData name="keyframedFloat">
+    <float val="0" name="minVal"/>
+    <float val="1" name="maxVal"/>
+    <float val="1" name="currentVal"/>
+    <IOData name="curve">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="1" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <float val="1" name="sliderVal"/>
+   <float val="0" name="sliderMinVal"/>
+   <float val="1" name="sliderMaxVal"/>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-3">
+   <IOData name="keyframedFloat">
+    <float val="0" name="minVal"/>
+    <float val="1" name="maxVal"/>
+    <float val="1" name="currentVal"/>
+    <IOData name="curve">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="1" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <float val="1" name="sliderVal"/>
+   <float val="0" name="sliderMinVal"/>
+   <float val="1" name="sliderMaxVal"/>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+ </IOData>
+ <vector2f name="nodeInputPos-0-0">
+  <float val="56.32" name="0"/>
+  <float val="28.16" name="1"/>
+ </vector2f>
+ <vector2f name="nodeOutputPos-0-0">
+  <float val="56.32" name="0"/>
+  <float val="28.16" name="1"/>
+ </vector2f>
+</gratin>

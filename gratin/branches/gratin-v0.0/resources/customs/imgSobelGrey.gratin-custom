@@ -1,0 +1,58 @@
+<gratin file="customNode">
+ <string val="imgSobelGrey" name="customHandleName"/>
+ <string val="filters/edges/" name="customHandlePath"/>
+ <string val="Sobel filter applied on the luminance of an input RGB image." name="customHandleDesc"/>
+ <string val="sobel filter applied on the luminance of an input RGB image. &lt;br>&lt;br>&#xa;Input should contain RGB values.&lt;br>&lt;br>&#xa;The luminance is approximated with the length if the input color. &lt;br>&lt;br>&#xa;Output contains (S(x),S(y),0,1) " name="customHandleHelp"/>
+ <int val="1" name="customHandleInputDescSize"/>
+ <int val="1" name="customHandleOutputDescSize"/>
+ <string val="img" name="customHandleInputDesc-0"/>
+ <string val="sobel" name="customHandleOutputDesc-0"/>
+ <string val="imgGeneric" name="origHandleName"/>
+ <string val="generic/" name="origHandlePath"/>
+ <string val="Generic node for image processing" name="origHandleDesc"/>
+ <string val="This node was designed to create custom shaders&#xa;The settings widget allows to modify input, output parameters&#xa;as well as the output image sizes.&#xa;&#xa;WARNING1: you will be able to modify the number of inputs/outputs&#xa;only if the node is entirely disconnected.&#xa;WARNING2: input/output names will not be modified if a custom node is created&#xa;from this node beacause these names should be edited directly in the setting widget&#xa;WARNING3: modifying the settings of a node will remove all previously&#xa;defined keyframes&#xa;&#xa;* Special data allows to modify the output image (using a multiple of&#xa;the input size, plus an offset vector&#xa;Check use mouse if you want to interact with the mouse&#xa;&#xa;* Input data allows to add/remove/displace input data (only if disconnected)&#xa;&#xa;* Output data allows to add/remove/displace output data (only if disconnected)&#xa;&#xa;* Param data allows to add/remove parameters that will automatically be &#xa;included in your shader.&#xa;For each of them you may choose a proper name, type, and min/max/default values.&#xa;Check keyframes if you want your parameter to be accessible&#xa; through the animation widget&#xa;&#xa;In the node interface itself:&#xa;Source tab contains the head and body of your GLSL source (only the body is editable)&#xa;Params tab contains the defined widgets according to your setting choices&#xa;Log tab contains compilation errors&#xa;&#xa;Once your settings and source completed, click on apply to see the result&#xa;" name="origHandleHelp"/>
+ <int val="1" name="origHandleInputDescSize"/>
+ <int val="1" name="origHandleOutputDescSize"/>
+ <string val="img" name="origHandleInputDesc-0"/>
+ <string val="sobel" name="origHandleOutputDesc-0"/>
+ <string val="imgGeneric" name="nodeName-0"/>
+ <string val="generic/" name="nodePath-0"/>
+ <uint val="15" name="nodeId-0"/>
+ <uint val="0" name="nodeGraphId-0"/>
+ <uint val="1" name="nbInputs-0"/>
+ <uint val="1" name="nbOutputs-0"/>
+ <vector2f name="nodePos-0">
+  <float val="5390.93" name="0"/>
+  <float val="-2345.69" name="1"/>
+ </vector2f>
+ <bool val="0" name="nodeGrouped-0"/>
+ <bool val="1" name="nodeHasWidget-0"/>
+ <IOData name="node-0">
+  <string val="img" name="genericIName-0"/>
+  <string val="sobel" name="genericOName-0"/>
+  <vector2f name="genericTSize">
+   <float val="1" name="0"/>
+   <float val="1" name="1"/>
+  </vector2f>
+  <vector2f name="genericTOffset">
+   <float val="0" name="0"/>
+   <float val="0" name="1"/>
+  </vector2f>
+  <bool val="0" name="genericNeedMouse"/>
+  <uint val="0" name="genericNbSliderFloat"/>
+  <uint val="0" name="genericNbSliderInt"/>
+  <string val="#version 330&#xa;&#xa;in vec2 texcoord;&#xa;&#xa;layout(location = 0) out vec4 sobel;&#xa;uniform sampler2D img;&#xa;" name="genericHead"/>
+  <string val="void main() {&#xa;&#xa;  float a = length(textureOffset(img,texcoord,ivec2(-1,1)).xyz);&#xa;  float b = length(textureOffset(img,texcoord,ivec2(  0,1)).xyz);&#xa;  float c = length(textureOffset(img,texcoord,ivec2( 1,1)).xyz);&#xa;  float d = length(textureOffset(img,texcoord,ivec2(-1,0)).xyz);&#xa;  float e = length(textureOffset(img,texcoord,ivec2( 1,0)).xyz);&#xa;  float f = length(textureOffset(img,texcoord,ivec2(-1,-1)).xyz);&#xa;  float g = length(textureOffset(img,texcoord,ivec2(  0,-1)).xyz);&#xa;  float h = length(textureOffset(img,texcoord,ivec2( 1,-1)).xyz);&#xa;&#xa;  vec2 grad = vec2(-a-2.0*d-f+c+2.0*e+h,-f-2.0*g-h+a+2.0*b+c);&#xa;  sobel = vec4(grad,vec2(0,1));&#xa;}&#xa;" name="genericBody"/>
+ </IOData>
+ <IOData name="nodeWidget-0">
+  <uint val="0" name="nbChildren"/>
+ </IOData>
+ <vector2f name="nodeInputPos-0-0">
+  <float val="116.155" name="0"/>
+  <float val="-157.705" name="1"/>
+ </vector2f>
+ <vector2f name="nodeOutputPos-0-0">
+  <float val="116.155" name="0"/>
+  <float val="-157.705" name="1"/>
+ </vector2f>
+</gratin>

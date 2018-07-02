@@ -1,0 +1,169 @@
+<gratin file="customNode">
+ <string val="imgLIC" name="customHandleName"/>
+ <string val="visualization/flow/" name="customHandlePath"/>
+ <string val="Line Integral Convolution [Cabral and Leedom, 1993]" name="customHandleDesc"/>
+ <string val="Implementation of the paper &quot;Imaging vector fields using line integral convolution&quot; by B. Cabral and Leith Casey Leedom - Siggraph 1993.&lt;br>&#xa;&lt;br>&#xa;The first input is a flow (normalized or not).&lt;br>&#xa;The second input is an image (usually a noise image) that will be convolved along the flow.&lt;br>&#xa;&#xa;&quot;modulateOrientation&quot; allows to rotate the input flow.&lt;br>&#xa;&quot;modulateScale&quot; modify the length of the input vectors.&lt;br>&#xa;&quot;size&quot; is the size of the convolution kernel.&lt;br>&#xa;&quot;normalizeLength&quot; will normalize the input flow if activated. &lt;br>&#xa;" name="customHandleHelp"/>
+ <int val="2" name="customHandleInputDescSize"/>
+ <int val="1" name="customHandleOutputDescSize"/>
+ <string val="flow" name="customHandleInputDesc-0"/>
+ <string val="img" name="customHandleInputDesc-1"/>
+ <string val="flowVis" name="customHandleOutputDesc-0"/>
+ <string val="imgGeneric" name="origHandleName"/>
+ <string val="generic/" name="origHandlePath"/>
+ <string val="Generic node for image processing" name="origHandleDesc"/>
+ <string val="This node was designed to create custom shaders&#xa;The settings widget allows to modify input, output parameters&#xa;as well as the output image sizes.&#xa;&#xa;WARNING1: you will be able to modify the number of inputs/outputs&#xa;only if the node is entirely disconnected.&#xa;WARNING2: input/output names will not be modified if a custom node is created&#xa;from this node beacause these names should be edited directly in the setting widget&#xa;WARNING3: modifying the settings of a node will remove all previously&#xa;defined keyframes&#xa;&#xa;* Special data allows to modify the output image (using a multiple of&#xa;the input size, plus an offset vector&#xa;Check use mouse if you want to interact with the mouse&#xa;&#xa;* Input data allows to add/remove/displace input data (only if disconnected)&#xa;&#xa;* Output data allows to add/remove/displace output data (only if disconnected)&#xa;&#xa;* Param data allows to add/remove parameters that will automatically be &#xa;included in your shader.&#xa;For each of them you may choose a proper name, type, and min/max/default values.&#xa;Check keyframes if you want your parameter to be accessible&#xa; through the animation widget&#xa;&#xa;In the node interface itself:&#xa;Source tab contains the head and body of your GLSL source (only the body is editable)&#xa;Params tab contains the defined widgets according to your setting choices&#xa;Log tab contains compilation errors&#xa;&#xa;Once your settings and source completed, click on apply to see the result&#xa;" name="origHandleHelp"/>
+ <int val="2" name="origHandleInputDescSize"/>
+ <int val="1" name="origHandleOutputDescSize"/>
+ <string val="flow" name="origHandleInputDesc-0"/>
+ <string val="img" name="origHandleInputDesc-1"/>
+ <string val="flowVis" name="origHandleOutputDesc-0"/>
+ <string val="imgGeneric" name="nodeName-0"/>
+ <string val="generic/" name="nodePath-0"/>
+ <uint val="9" name="nodeId-0"/>
+ <uint val="0" name="nodeGraphId-0"/>
+ <uint val="2" name="nbInputs-0"/>
+ <uint val="1" name="nbOutputs-0"/>
+ <vector2f name="nodePos-0">
+  <float val="3722.24" name="0"/>
+  <float val="-2248.26" name="1"/>
+ </vector2f>
+ <bool val="0" name="nodeGrouped-0"/>
+ <bool val="1" name="nodeHasWidget-0"/>
+ <IOData name="node-0">
+  <string val="flow" name="genericIName-0"/>
+  <string val="img" name="genericIName-1"/>
+  <string val="flowVis" name="genericOName-0"/>
+  <vector2f name="genericTSize">
+   <float val="1" name="0"/>
+   <float val="1" name="1"/>
+  </vector2f>
+  <vector2f name="genericTOffset">
+   <float val="0" name="0"/>
+   <float val="0" name="1"/>
+  </vector2f>
+  <bool val="0" name="genericNeedMouse"/>
+  <uint val="2" name="genericNbSliderFloat"/>
+  <bool val="1" name="genericSliderFloatIsKF-0"/>
+  <string val="modulateOrientation" name="genericSliderFloatName-0"/>
+  <bool val="1" name="genericSliderFloatIsKF-1"/>
+  <string val="modulateScale" name="genericSliderFloatName-1"/>
+  <uint val="2" name="genericNbSliderInt"/>
+  <bool val="1" name="genericSliderIntIsKF-0"/>
+  <string val="size" name="genericSliderIntName-0"/>
+  <bool val="1" name="genericSliderIntIsKF-1"/>
+  <string val="normalizeLength" name="genericSliderIntName-1"/>
+  <string val="#version 330&#xa;&#xa;in vec2 texcoord;&#xa;&#xa;layout(location = 0) out vec4 flowVis;&#xa;uniform sampler2D flow;&#xa;uniform sampler2D img;&#xa;uniform float modulateOrientation;&#xa;uniform float modulateScale;&#xa;uniform int size;&#xa;uniform int normalizeLength;&#xa;" name="genericHead"/>
+  <string val="// rotation matrix&#xa;vec2 R = vec2(cos(modulateOrientation),sin(modulateOrientation)); &#xa;&#xa; // pixel size&#xa;vec2 S = 1.0/vec2(textureSize(flow,0));&#xa;&#xa;vec2 rotate(in vec2 f) {&#xa;&#x9;// rotate according to the user specified orientation&#xa;&#x9;return vec2(f.x*R.x-f.y*R.y,f.x*R.y+f.y*R.x);&#xa;}&#xa;&#xa;vec2 getFlow(in vec2 coord,in vec2 previousFlow) {&#xa;&#x9;// rotate, scale, normalize, and invert if necessary&#xa;&#x9;const float eps = 0.00000001;&#xa;&#x9;vec2 f = rotate(texture(flow,coord).xy);&#xa;&#x9;if(length(f)&lt;eps) return previousFlow;&#xa;&#x9;f = normalizeLength==1 ? normalize(f) : f;&#xa;&#x9;return dot(f,previousFlow)>=0.0 ? f*modulateScale: -f*modulateScale;&#xa;}&#xa;&#xa;vec4 applyLIC(in vec2 dir) {&#xa;&#x9;// apply LIC in the direction specified by dir&#xa;&#x9;vec4 res = vec4(0.0);&#xa;&#x9;vec2 currentDir = dir;&#xa;&#x9;vec2 coord = texcoord;&#xa;&#xa;&#x9;for(int i=1;i&lt;=size;++i) {&#xa;&#x9;&#x9;coord = coord+currentDir*S;&#xa;&#x9;&#x9;res += texture(img,coord);&#xa;&#x9;&#x9;currentDir = getFlow(coord,currentDir);&#xa;&#x9;}&#xa;&#xa;&#x9;return res;&#xa;}&#xa;&#xa;void main() {&#xa;&#x9;vec4 res = texture(img,texcoord);&#xa;&#x9;vec2 dir = getFlow(texcoord,vec2(1.0,0.0));&#xa;&#xa;&#x9;res += applyLIC(dir);&#xa;&#x9;res += applyLIC(-dir);&#xa;&#xa;&#x9;flowVis = res/(2.0*float(size)+1.0);&#xa;}&#xa;&#xa;" name="genericBody"/>
+ </IOData>
+ <IOData name="nodeWidget-0">
+  <uint val="4" name="nbChildren"/>
+  <IOData name="childWidget-0">
+   <IOData name="keyframedFloat">
+    <float val="0" name="minVal"/>
+    <float val="3.14159" name="maxVal"/>
+    <float val="1.5708" name="currentVal"/>
+    <IOData name="curve">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="0" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <float val="0" name="sliderVal"/>
+   <float val="0" name="sliderMinVal"/>
+   <float val="3.14159" name="sliderMaxVal"/>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-1">
+   <IOData name="keyframedFloat">
+    <float val="0" name="minVal"/>
+    <float val="10" name="maxVal"/>
+    <float val="1" name="currentVal"/>
+    <IOData name="curve">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="1" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <float val="1" name="sliderVal"/>
+   <float val="0" name="sliderMinVal"/>
+   <float val="10" name="sliderMaxVal"/>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-2">
+   <IOData name="keyframedFloat">
+    <float val="0" name="minVal"/>
+    <float val="50" name="maxVal"/>
+    <float val="10" name="currentVal"/>
+    <IOData name="curve">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="10" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <int val="10" name="sliderVal"/>
+   <int val="0" name="sliderMinVal"/>
+   <int val="50" name="sliderMaxVal"/>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-3">
+   <IOData name="keyframedFloat">
+    <float val="0" name="minVal"/>
+    <float val="1" name="maxVal"/>
+    <float val="1" name="currentVal"/>
+    <IOData name="curve">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="1" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <int val="1" name="sliderVal"/>
+   <int val="0" name="sliderMinVal"/>
+   <int val="1" name="sliderMaxVal"/>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+ </IOData>
+ <vector2f name="nodeInputPos-0-0">
+  <float val="56.32" name="0"/>
+  <float val="28.16" name="1"/>
+ </vector2f>
+ <vector2f name="nodeInputPos-0-1">
+  <float val="56.32" name="0"/>
+  <float val="28.16" name="1"/>
+ </vector2f>
+ <vector2f name="nodeOutputPos-0-0">
+  <float val="56.32" name="0"/>
+  <float val="28.16" name="1"/>
+ </vector2f>
+</gratin>

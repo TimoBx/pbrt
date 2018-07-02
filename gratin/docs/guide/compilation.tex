@@ -1,0 +1,90 @@
+\addsection{Compilation}
+Before all, make sure you have a GPU/graphics drivers capable to run (at least) OpenGL 4.1 applications. Otherwise, Gratin will not work. 
+
+\addsubsection{Download sources}
+Sources can be downloaded from the web site: \url{http://gratin.gforge.inria.fr/}, or via the svn repository:
+\begin{lstlisting}[language=bash]{Name}
+svn checkout https://scm.gforge.inria.fr/anonscm/svn/gratin/branches/gratin-v0.3.1 gratin
+\end{lstlisting}
+
+\addsubsection{Compiling on Debian, Ubuntu and Linux Mint}
+\addparagraph{Install external packages}
+\begin{lstlisting}[language=bash]{Name}
+$ sudo apt-get install cmake qtbase5-dev libqt5svg5-dev libeigen3-dev libopenexr-dev
+\end{lstlisting}
+
+\addparagraph{Building Gratin}
+\begin{lstlisting}[language=bash]{Name}
+$ cd gratin
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make -j4
+\end{lstlisting}
+
+\addparagraph{Launching Gratin}
+\begin{lstlisting}[language=bash]{Name}
+$ ./gratin [-in path/to/pipeline.gra]
+\end{lstlisting}
+
+\remark{Remark: Gratin will not compile if QT version is less than
+  5.2. On old Linux distributions, QT5 might not be available
+  natively. In that case, download and install from the web site:
+  http://www.qt.io} 
+
+\remark{Other Linux distributions: apart from the way
+  external packages are installed, the installation should be
+  equivalent.}
+
+\addsubsection{Compiling on Mac OSX}
+
+\noindent We provide an installation package for Mac OSX (Yosemite and later releases) on our Website: \\ \url{http://gratin.gforge.inria.fr/}.
+Otherwise, Gratin may be compiled using the following steps.\\
+
+\addparagraph{Install external packages}\\
+Install required packages (Qt, OpenEXR, Eigen3) from the packaging system of Mac OS. 
+
+\addparagraph{Building Gratin}
+\begin{lstlisting}[language=bash,upquote=true]{Name}
+$ cd gratin
+$ mkdir build
+$ cd build
+$ cmake .. -DCMAKE_CXX_FLAGS='-DOPENGL_MAJOR_VERSION=4 -DOPENGL_MINOR_VERSION=1'
+$ make -j4
+\end{lstlisting}
+
+\addparagraph{Launching Gratin}
+\begin{lstlisting}[language=bash]{Name}
+$ ./gratin [-in path/to/pipeline.gra]
+\end{lstlisting}
+
+\addsubsection{Compiling on Windows}
+\noindent We provide a binary package for Windows 64 bits on our website:\\ \url{http://gratin.gforge.inria.fr/}.\\
+\\ 
+Otherwise, the simplest to compile Gratin is to use qtcreator: \url{http://www.qt.io/download/}. 
+You should download and install all the required packages and open gratin/CMakeLists.txt via qtcreator. 
+Once done, you should provide the paths to the libraries in the cmake options before building the solution. \\
+\\
+The main problem with the Windows compilation comes from the (optional) OpenEXR library that is quite difficult to obtain. It requires several weird steps that we do not describe here. 
+
+\vspace{0.5cm}
+\addsubsection{Cmake options}
+\noindent A cmake error might be due to missing paths for the external
+libraries. In that case, you must provide the good paths using
+"-DLIBNAME\_\{INCLUDE/LIBRARY\}\_PATH", where LIBNAME is the name of the
+missing library and INCLUDE or LIBRARY specifies if the target is a
+source or a lib file. For instance, to specify the path to eigen, use:
+\begin{lstlisting}[language=bash,upquote=true]{Name}
+cmake -DEIGEN3_INCLUDE_DIR="path/to/eigen3" ..
+\end{lstlisting}
+
+\noindent If cmake does not find Qt, use the following option:
+\begin{lstlisting}[language=bash,upquote=true]{Name}
+cmake -DCMAKE_PREFIX_PATH="path/to/qt" ..
+\end{lstlisting}
+
+\noindent for changing the OpenGL version (default=4.2), use:
+\begin{lstlisting}[language=bash,upquote=true]{Name}
+cmake -DCMAKE_CXX_FLAGS='-DOPENGL_MAJOR_VERSION=4 -DOPENGL_MINOR_VERSION=1' ..
+\end{lstlisting}
+In that case, the version is set to OpenGL 4.1. 

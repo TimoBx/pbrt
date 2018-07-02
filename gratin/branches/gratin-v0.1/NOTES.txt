@@ -1,0 +1,4 @@
+*** CHANGES *** 
+* Use of QT5 instead of QT4
+-> use of QT5 OpenGL functions and context
+-> remove dependency to glew

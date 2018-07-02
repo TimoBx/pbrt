@@ -1,0 +1,112 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+\usepackage{hyperref}
+\usepackage{color}
+
+\usetheme{Warsaw}
+\title[Gratin : Windows Release]{Gratin : Windows Release\\How to build and release Gratin on Windows}
+\author{Bourgeas Jean}
+\institute{INRIA}
+\date{\today}
+
+\setbeamertemplate{navigation symbols}{
+\insertframenavigationsymbol % Icône frame
+\insertsubsectionnavigationsymbol % Icône sous section
+\insertsectionnavigationsymbol % Icône section
+\insertdocnavigationsymbol % Icône docnavigation
+\insertbackfindforwardnavigationsymbol % Icône backfindforward
+}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Sommaire}
+    \tableofcontents[currentsection]
+  \end{frame} 
+}
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Installation}
+\subsection{Compiler and CMake}
+
+\begin{frame}
+  \begin{enumerate}
+    \item If you already have Microsoft visual studio do nothing here.\\
+Otherwise, you have to install it or \color{blue}\href{http://www.mingw.org/}{MinGW}\color{black}.
+    \item You will now need \color{blue}\href{http://www.cmake.org/}{CMake}\color{black}.\\Get the windows installer in the download section.
+\\Once again, you just have to install it. No need to launch it.
+  \end{enumerate}
+\end{frame}
+
+\subsection{Gratin and Eigen3}
+\begin{frame}
+  \begin{enumerate}
+    \item Get the latest version of \color{blue}\href{http://gratin.gforge.inria.fr/}{Gratin}\color{black}. It should work with any version after v0.3.
+    \item You will also need to download \color{blue}\href{http://eigen.tuxfamily.org/index.php?title=Main_Page}{Eigen3}\color{black}.
+  \end{enumerate}
+\end{frame}
+
+\subsection{Qt and QtCreator}
+\begin{frame}
+  You will now need to install \color{blue}\href{https://www.qt.io/download/}{QtCreator}\color{black}.\\
+During the installation, be sure that QtCreator and the latest version of qt are checked.
+\end{frame}
+
+\section{Configuration}
+\subsection{CMake}
+\begin{frame}
+  \begin{enumerate}
+    \item To launch QtCreator, go to your Gratin folder. Remove CMakeLists.txt.user if it exists.\\
+Then right click on CMakeLists.txt and launch it with QtCreator.
+    \item If there is no pack, you will need to create one giving the paths to CMake and your compiler.
+    \item When you're at the CMake step, add : -DEIGEN3\_INCLUDE\_DIR="path/to/eigen3" in the argument command line.\\
+Just execute CMake and you're done.
+  \end{enumerate}
+\end{frame}
+
+\subsection{Qt}
+\begin{frame}
+  \begin{enumerate}
+    \item Press Ctrl+5 And be sure that you are compiling in all or release mode, not in debug mode.
+    \item Run Gratin. If there is some missing functions, it is possible that your compiler doesn't know them.\\
+Add them in src-gratin/misc/extinclude.h at the end of the file. We already did this for log2.\\
+It is also possible that dirent.h is missing in your compiler. You can find it online.
+  \end{enumerate}
+\end{frame}
+
+\subsection{Gratin}
+\begin{frame}
+  All you need to do now is to add some .dll to your release folder :
+  \begin{itemize}
+    \item icudt53.dll
+    \item icuin53.dll
+    \item icuuc53.dll
+    \item Qt5Core.dll
+    \item Qt5Gui.dll
+    \item Qt5Svg.dll
+    \item Qt5Widgets.dll
+    \item Qt5Xml.dll
+  \end{itemize}
+  They can be found at : Qt/5.4/msvc2013\_64\_opengl/bin
+\end{frame}
+
+\begin{frame}
+  You will also need to add some qt plugins folders :
+  \begin{itemize}
+    \item imageformats
+    \item platforms
+  \end{itemize}
+  They can be found at : Qt/5.4/msvc2013\_64\_opengl/plugins
+\end{frame}
+
+\begin{frame}
+  You can now execute Gratin by launching gratin.exe. That folder as no dependencies.\\Use it anytime, anywhere. Have fun !
+\end{frame}
+
+\end{document}

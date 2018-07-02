@@ -1,0 +1,6 @@
+<!DOCTYPE RCC><RCC version="1.0">
+ <qresource>
+      <file alias="multiImgLoader.vert">multiImgLoader.vert</file>
+      <file alias="multiImgLoader.frag">multiImgLoader.frag</file>
+ </qresource>
+ </RCC>

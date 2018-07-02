@@ -1,0 +1,156 @@
+<Gratin version="1.0">
+ <IOData name="mainWindow">
+  <IOData name="graphWidget">
+   <IOData name="graph">
+    <uint val="2" name="nbNodes"/>
+    <string val="imgLoader" name="nodeName-0"/>
+    <string val="inputs/" name="nodePath-0"/>
+    <uint val="0" name="nodeId-0"/>
+    <uint val="0" name="nodeGraphId-0"/>
+    <uint val="0" name="nbInputs-0"/>
+    <uint val="1" name="nbOutputs-0"/>
+    <vector2f name="nodePos-0">
+     <float val="-870" name="0"/>
+     <float val="-48" name="1"/>
+    </vector2f>
+    <bool val="0" name="nodeGrouped-0"/>
+    <string val="imgGaussianBlur" name="nodeName-1"/>
+    <string val="filters/blur/" name="nodePath-1"/>
+    <uint val="1" name="nodeId-1"/>
+    <uint val="0" name="nodeGraphId-1"/>
+    <uint val="1" name="nbInputs-1"/>
+    <uint val="1" name="nbOutputs-1"/>
+    <vector2f name="nodePos-1">
+     <float val="0" name="0"/>
+     <float val="0" name="1"/>
+    </vector2f>
+    <bool val="0" name="nodeGrouped-1"/>
+    <uint val="1" name="nbConnections-0-1"/>
+    <vector2u name="connection-0-1-0">
+     <uint val="0" name="0"/>
+     <uint val="0" name="1"/>
+    </vector2u>
+    <bool val="1" name="nodeHasWidget-0"/>
+    <IOData name="node-0">
+     <string val=":/default-tex" name="filename"/>
+     <vector2i name="size">
+      <int val="512" name="0"/>
+      <int val="512" name="1"/>
+     </vector2i>
+    </IOData>
+    <IOData name="nodeWidget-0">
+     <uint val="1" name="nbChildren"/>
+     <IOData name="childWidget-0">
+      <vector2i name="editVal">
+       <int val="512" name="0"/>
+       <int val="512" name="1"/>
+      </vector2i>
+      <vector2i name="editMinVal">
+       <int val="1" name="0"/>
+       <int val="1" name="1"/>
+      </vector2i>
+      <vector2i name="editMaxVal">
+       <int val="8192" name="0"/>
+       <int val="8192" name="1"/>
+      </vector2i>
+      <uint val="0" name="nbChildren"/>
+     </IOData>
+    </IOData>
+    <vector2f name="nodeOutputPos-0-0">
+     <float val="56.32" name="0"/>
+     <float val="28.16" name="1"/>
+    </vector2f>
+    <bool val="1" name="nodeHasWidget-1"/>
+    <IOData name="node-1"/>
+    <IOData name="nodeWidget-1">
+     <uint val="1" name="nbChildren"/>
+     <IOData name="childWidget-0">
+      <IOData name="keyframedFloat">
+       <float val="0" name="minVal"/>
+       <float val="500" name="maxVal"/>
+       <float val="-3.35509e-07" name="currentVal"/>
+       <IOData name="curve">
+        <int val="4" name="interpType"/>
+        <int val="0" name="leftType"/>
+        <int val="4" name="rightType"/>
+        <IOData name="interpolator">
+         <uint val="3" name="nbPoints"/>
+         <uint val="3" name="nbTangents"/>
+         <vector2f name="controlPoint-0">
+          <float val="0" name="0"/>
+          <float val="0" name="1"/>
+         </vector2f>
+         <vector2f name="controlPoint-1">
+          <float val="11.5661" name="0"/>
+          <float val="0.322647" name="1"/>
+         </vector2f>
+         <vector2f name="controlPoint-2">
+          <float val="67.2128" name="0"/>
+          <float val="0.0623102" name="1"/>
+         </vector2f>
+         <vector4f name="controlTangent-0">
+          <float val="11.5561" name="0"/>
+          <float val="-0.117269" name="1"/>
+          <float val="-1.99989" name="2"/>
+          <float val="0.0202945" name="3"/>
+         </vector4f>
+         <vector4f name="controlTangent-1">
+          <float val="1.21411" name="0"/>
+          <float val="0.213655" name="1"/>
+          <float val="-1.96973" name="2"/>
+          <float val="-0.346627" name="3"/>
+         </vector4f>
+         <vector4f name="controlTangent-2">
+          <float val="1.99974" name="0"/>
+          <float val="0.0319833" name="1"/>
+          <float val="-1.60706" name="2"/>
+          <float val="-0.0257028" name="3"/>
+         </vector4f>
+        </IOData>
+       </IOData>
+      </IOData>
+      <int val="0" name="sliderVal"/>
+      <int val="0" name="sliderMinVal"/>
+      <int val="500" name="sliderMaxVal"/>
+      <uint val="0" name="nbChildren"/>
+     </IOData>
+    </IOData>
+    <vector2f name="nodeInputPos-1-0">
+     <float val="56.32" name="0"/>
+     <float val="28.16" name="1"/>
+    </vector2f>
+    <vector2f name="nodeOutputPos-1-0">
+     <float val="56.32" name="0"/>
+     <float val="28.16" name="1"/>
+    </vector2f>
+   </IOData>
+   <float val="2" name="scale"/>
+   <vector2f name="offset">
+    <float val="0" name="0"/>
+    <float val="0" name="1"/>
+   </vector2f>
+   <IOData name="animation">
+    <uint val="0" name="firstFrame"/>
+    <uint val="99" name="lastFrame"/>
+    <uint val="0" name="currentFrame"/>
+    <uint val="24" name="fps"/>
+   </IOData>
+  </IOData>
+  <IOData name="animationWidget">
+   <vector2i name="animationWidgetSize">
+    <int val="1920" name="0"/>
+    <int val="807" name="1"/>
+   </vector2i>
+   <IOData name="timelineWidget"/>
+  </IOData>
+  <IOData name="nodeListWidget"/>
+  <IOData name="interactionWidget">
+   <float val="1" name="scale"/>
+   <vector2f name="offset">
+    <float val="0" name="0"/>
+    <float val="0" name="1"/>
+   </vector2f>
+  </IOData>
+  <IOData name="nodeInterfaceWidget"/>
+ </IOData>
+</Gratin>

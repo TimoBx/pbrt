@@ -1,0 +1,6 @@
+ <!DOCTYPE RCC><RCC version="1.0">
+ <qresource>
+      <file alias="distanceMap.vert">distanceMap.vert</file>
+      <file alias="distanceMap.frag">distanceMap.frag</file>
+ </qresource>
+ </RCC>

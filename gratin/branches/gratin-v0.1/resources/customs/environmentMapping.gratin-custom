@@ -1,0 +1,65 @@
+<gratin file="customNode">
+ <string val="environmentMapping" name="customHandleName"/>
+ <string val="rendering/" name="customHandlePath"/>
+ <string val="Environment mapping" name="customHandleDesc"/>
+ <string val="Environment mapping rendering.&lt;br>&#xa;Use a normal map and a latitude-longitude map as input. &lt;br>&#xa;&lt;br>&#xa;The node may easily be modified to modify the mapping&#xa;" name="customHandleHelp"/>
+ <int val="2" name="customHandleInputDescSize"/>
+ <int val="1" name="customHandleOutputDescSize"/>
+ <string val="normalMap" name="customHandleInputDesc-0"/>
+ <string val="latLongMap" name="customHandleInputDesc-1"/>
+ <string val="envMapped" name="customHandleOutputDesc-0"/>
+ <string val="imgGeneric" name="origHandleName"/>
+ <string val="generic/" name="origHandlePath"/>
+ <string val="Generic node for image processing" name="origHandleDesc"/>
+ <string val="This node was designed to create custom shaders&#xa;The settings widget allows to modify input, output parameters&#xa;as well as the output image sizes.&#xa;&#xa;WARNING1: you will be able to modify the number of inputs/outputs&#xa;only if the node is entirely disconnected.&#xa;WARNING2: input/output names will not be modified if a custom node is created&#xa;from this node beacause these names should be edited directly in the setting widget&#xa;WARNING3: modifying the settings of a node will remove all previously&#xa;defined keyframes&#xa;&#xa;* Special data allows to modify the output image (using a multiple of&#xa;the input size, plus an offset vector&#xa;Check use mouse if you want to interact with the mouse&#xa;&#xa;* Input data allows to add/remove/displace input data (only if disconnected)&#xa;&#xa;* Output data allows to add/remove/displace output data (only if disconnected)&#xa;&#xa;* Param data allows to add/remove parameters that will automatically be &#xa;included in your shader.&#xa;For each of them you may choose a proper name, type, and min/max/default values.&#xa;Check keyframes if you want your parameter to be accessible&#xa; through the animation widget&#xa;&#xa;In the node interface itself:&#xa;Source tab contains the head and body of your GLSL source (only the body is editable)&#xa;Params tab contains the defined widgets according to your setting choices&#xa;Log tab contains compilation errors&#xa;&#xa;Once your settings and source completed, click on apply to see the result&#xa;" name="origHandleHelp"/>
+ <int val="2" name="origHandleInputDescSize"/>
+ <int val="1" name="origHandleOutputDescSize"/>
+ <string val="normalMap" name="origHandleInputDesc-0"/>
+ <string val="latLongMap" name="origHandleInputDesc-1"/>
+ <string val="envMapped" name="origHandleOutputDesc-0"/>
+ <string val="imgGeneric" name="nodeName-0"/>
+ <string val="generic/" name="nodePath-0"/>
+ <uint val="8" name="nodeId-0"/>
+ <uint val="1" name="nodeGraphId-0"/>
+ <uint val="2" name="nbInputs-0"/>
+ <uint val="1" name="nbOutputs-0"/>
+ <vector2f name="nodePos-0">
+  <float val="1116.23" name="0"/>
+  <float val="-2177.77" name="1"/>
+ </vector2f>
+ <bool val="0" name="nodeGrouped-0"/>
+ <bool val="1" name="nodeHasWidget-0"/>
+ <IOData name="node-0">
+  <string val="normalMap" name="genericIName-0"/>
+  <string val="latLongMap" name="genericIName-1"/>
+  <string val="envMapped" name="genericOName-0"/>
+  <vector2f name="genericTSize">
+   <float val="1" name="0"/>
+   <float val="1" name="1"/>
+  </vector2f>
+  <vector2f name="genericTOffset">
+   <float val="0" name="0"/>
+   <float val="0" name="1"/>
+  </vector2f>
+  <bool val="0" name="genericNeedMouse"/>
+  <uint val="0" name="genericNbSliderFloat"/>
+  <uint val="0" name="genericNbSliderInt"/>
+  <string val="#version 330&#xa;&#xa;in vec2 texcoord;&#xa;&#xa;layout(location = 0) out vec4 envMapped;&#xa;uniform sampler2D normalMap;&#xa;uniform sampler2D latLongMap;&#xa;" name="genericHead"/>
+  <string val="#define PI 3.1415926535897&#xa;#define PIO2 1.5707963267948&#xa;#define PIT2 6.2831853071795&#xa;&#xa;float atan2(in float y,in float x) {&#xa;&#x9;if(x>0.0) return atan(y/x);&#xa;&#x9;if(y>=0.0 &amp;&amp; x&lt;0.0) return PI+atan(y/x);&#xa;&#x9;if(y&lt;0.0 &amp;&amp; x&lt;0.0) return -PI+atan(y/x);&#xa;&#x9;if(y>0.0 &amp;&amp; x==0.0) return PIO2;&#xa;&#x9;if(y&lt;0.0 &amp;&amp; x==0.0) return -PIO2;&#xa;&#x9;return 0.0;&#xa;}&#xa;&#xa;&#xa;vec2 envMapCoord(in vec3 r) {&#xa;&#x9;return vec2((atan2(r.x,r.z)+PI)/PIT2,acos(-r.y)/PI);&#xa;}&#xa;&#xa;&#xa;void main(void){&#xa;&#x9;vec3 n = texture(normalMap,texcoord).xyz;&#xa;&#xa;&#x9;if(n.xyz==vec3(0.0)) {&#xa;&#x9;&#x9;envMapped = vec4(0.0);&#xa;&#x9;&#x9;return;&#xa;&#x9;}&#xa;&#xa;&#x9;// reflected vector (assume a locally orthographic view vector - easy to change)&#xa;&#x9;vec3 r = reflect(vec3(0,0,-1),n);&#xa;&#xa;&#x9;// get uv coord from a 3D vector&#xa;&#x9;vec2 uv = envMapCoord(r);&#xa;&#x9;&#xa;&#x9;// return the corresponding color&#xa;&#x9;envMapped = texture(latLongMap,uv);&#xa;}&#xa;" name="genericBody"/>
+ </IOData>
+ <IOData name="nodeWidget-0">
+  <uint val="0" name="nbChildren"/>
+ </IOData>
+ <vector2f name="nodeInputPos-0-0">
+  <float val="56.32" name="0"/>
+  <float val="28.16" name="1"/>
+ </vector2f>
+ <vector2f name="nodeInputPos-0-1">
+  <float val="70.4" name="0"/>
+  <float val="17.6" name="1"/>
+ </vector2f>
+ <vector2f name="nodeOutputPos-0-0">
+  <float val="56.32" name="0"/>
+  <float val="28.16" name="1"/>
+ </vector2f>
+</gratin>

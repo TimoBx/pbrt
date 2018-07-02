@@ -1,0 +1,210 @@
+\documentclass{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{default}
+\usepackage{hyperref}
+\usepackage{color}
+
+\usetheme{Warsaw}
+\title[OpenEXR x64 : Windows Build]{OpenEXR x64 : Windows Build\\How to build and link OpenEXR x64 with Gratin on Windows}
+\author{Bourgeas Jean}
+\institute{INRIA}
+\date{\today}
+
+\setbeamertemplate{navigation symbols}{
+\insertframenavigationsymbol % Icône frame
+\insertsubsectionnavigationsymbol % Icône sous section
+\insertsectionnavigationsymbol % Icône section
+\insertdocnavigationsymbol % Icône docnavigation
+\insertbackfindforwardnavigationsymbol % Icône backfindforward
+}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Sommaire}
+    \begin{columns}[t]
+      \begin{column}{5cm}
+        \tableofcontents[sections={1-2}, currentsection]
+      \end{column}
+      \begin{column}{5cm}
+        \tableofcontents[sections={3-4}, currentsection]
+      \end{column}
+    \end{columns}
+  \end{frame} 
+}
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{easy installation}
+\subsection{Download}
+
+\begin{frame}
+  \begin{enumerate}
+    \item First of all, you need to download visual sudio 2010 SP1 if you don't have it (it is free).
+    \item find the zlib125dll.zip and zlib125.zip (this is an old version and isn't on the zlib website anymore).
+    \item find ilmbase-1.0.2.tar.gz and openexr-1.7.0.tar.gz on the \color{blue}\href{http://www.openexr.com/downloads.html/}{OpenEXR }\color{black} website.
+    \item Let's assume we're in yourpath$\backslash$ locaction. Create a Folder and extract zlib125.zip, ilmbase and openexr in it. Let's call it ``Files''.
+    \item Extract zlib125dll.zip in yourpath$\backslash$Files$\backslash$zlib$\backslash$
+  \end{enumerate}
+\end{frame}
+
+\subsection{ilmbase}
+\begin{frame}
+  \begin{enumerate}
+    \item Go to yourpath$\backslash$Files$\backslash$ilmbase-1.0.2$\backslash$vc$\backslash$vc8$\backslash$IlmBase$\backslash$ and launch IlmBase.sln with Visual Studio 2010.
+    \item In BUILD$\rightarrow$Configuration Manager, change Active solution platform to x64 and Active solution configuration to Release.
+    \item Press F7 to build the solution.
+  \end{enumerate}
+\end{frame}
+
+\subsection{zlib}
+\begin{frame}
+  \begin{enumerate}
+    \item Copy yourpath$\backslash$Files$\backslash$zlib$\backslash$dllx64$\backslash$zlibwapi.dll in yourpath$\backslash$Deploy$\backslash$bin$\backslash$x64$\backslash$Release$\backslash$
+    \item Copy yourpath$\backslash$Files$\backslash$zlib$\backslash$dllx64$\backslash$zlibwapi.lib in yourpath$\backslash$Deploy$\backslash$lib$\backslash$x64$\backslash$Release$\backslash$
+    \item Copy yourpath$\backslash$Files$\backslash$zlib-1.2.5$\backslash$zlib.h in yourpath$\backslash$Deploy$\backslash$include$\backslash$
+    \item Copy yourpath$\backslash$Files$\backslash$zlib-1.2.5$\backslash$zconf.h in yourpath$\backslash$Deploy$\backslash$include$\backslash$
+  \end{enumerate}
+\end{frame}
+
+\subsection{openexr}
+\begin{frame}
+  \begin{enumerate}
+    \item Go to yourpath$\backslash$Files$\backslash$openexr-1.7.0$\backslash$vc$\backslash$vc8$\backslash$OpenEXR$\backslash$ and launch OpenEXR.sln with Visual Studio 2010.
+    \item In BUILD$\rightarrow$Configuration Manager, change Active solution platform to x64 and Active solution configuration to Release.
+    \item Press F7 to build the solution.
+  \end{enumerate}
+\end{frame}
+
+\subsection{Gratin cmake}
+\begin{frame}
+  \begin{enumerate}
+    \item Now, when you will compile Gratin, instead of typing : \\
+      cmake -DEIGEN3\_INCLUDE\_DIR=``path\_to\_eigen''
+    \item You will have to type (let's say libpath = yourpath$\backslash$Deploy$\backslash$lib$\backslash$x64$\backslash$Release) : \\
+      cmake -DEIGEN3\_INCLUDE\_DIR=``path\_to\_eigen'' -DZLIB\_INCLUDE\_DIR=``yourpath$\backslash$Deploy$\backslash$include'' -DOPENEXR\_INCLUDE\_PATH=``yourpath$\backslash$Deploy$\backslash$include'' -DZLIB\_LIBRARY=``libpath$\backslash$zlibwapi.lib'' -DOPENEXR\_IMATH\_LIBRARY=``libpath$\backslash$imath.lib'' -DOPENEXR\_HALF\_LIBRARY=``libpath$\backslash$Half.lib'' -DOPENEXR\_IEX\_LIBRARY=``libpath$\backslash$iex.lib'' -DOPENEXR\_ILMIMF\_LIBRARY=``libpath$\backslash$IlmImf.lib'' -DOPENEXR\_ILMTHREAD\_LIBRARY=``libpath$\backslash$IlmThread.lib''
+    \item Do not forgot to copy all the dlls from yourpath$\backslash$Deploy$\backslash$bin$\backslash$x64$\backslash$Release$\backslash$ in your Gratin build directory or it will fail at the execution.
+  \end{enumerate}
+\end{frame}
+
+\subsection{transition}
+\begin{frame}
+  This was the easy way to use OpenEXR on Windows and I really hope that this version is still compatible. \\
+  If it is not, we found an hard way to make the last version of OpenEXR works on our machines.
+\end{frame}
+
+\section{zlib}
+\subsection{Download}
+
+\begin{frame}
+  \begin{enumerate}
+    \item First of all, you need to download visual sudio 2013 if you don't have it (the community version is free). We tested this manipulation with the 2008/2010/2012 version and it didn't work.
+    \item Go get \color{blue}\href{http://www.zlib.net/}{zlib }\color{black} on this page.
+    \item We made this work for the 1.2.8 version and hardly recommend to do the same.
+    \item You need to get the source code version and the compiled dll version.
+    \item Let's assume we're in yourpath$\backslash$ locaction. extract zlib128.zip here and zlib128-dll.zip in yourpath$\backslash$zlib$\backslash$.
+  \end{enumerate}
+\end{frame}
+
+\subsection{Compilation}
+\begin{frame}
+  \begin{enumerate}
+    \item Go to yourpath$\backslash$zlib-1.2.8$\backslash$contrib$\backslash$vstudio$\backslash$vc11 and open zlibvc.sln with visual studio 2013.
+    \item Accept the security warnings and the upgrade VC++ Compiler and Libraries.
+    \item In BUILD$\rightarrow$Configuration Manager, change Active solution platform to x64 and Active solution configuration to Release.
+    \item In the solution Explorer go to zlibvc$\rightarrow$zlibVC.def and change VERSION 1.2.8 to VERSION 1.28
+    \item You can now build by pressing F7.
+    \item You now have zlibwapi.dll and zlibwapi.lib in yourpath$\backslash$zlib-1.2.8$\backslash$contrib$\backslash$vstudio$\backslash$vc11$\backslash$x64$\backslash$ZlibDllRelease.
+  \end{enumerate}
+\end{frame}
+
+\subsection{1st Magic Trick}
+\begin{frame}
+  \begin{enumerate}
+    \item copy and rename zlibwapi.dll in zlib1.dll and zlibwapi.lib in zdll.lib
+    \item replace yourpath$\backslash$zlib$\backslash$zlib1.dll by the new one.
+    \item replace yourpath$\backslash$zlib$\backslash$lib$\backslash$zdll.lib by the new one.
+    \item this manipulation will remove these zlib errors : (in case you're encountering them) \\
+    error LNK2019: unresolved external symbol compress \\
+    error LNK2019: unresolved external symbol compress2 \\
+    error LNK2019: unresolved external symbol uncompress
+  \end{enumerate}
+\end{frame}
+
+\section{ilmbase}
+\subsection{Download}
+\begin{frame}
+  \begin{enumerate}
+    \item First of all, you need to download visual sudio 2010 SP1 if you don't have it (it is free). We tested this manipulation with the 2008/2010/2013 version and it didn't work.
+    \item Go get \color{blue}\href{http://www.openexr.com/downloads.html/}{ilmbase }\color{black} on this page.
+    \item We made it work with the 2.2.0 version.
+    \item extract ilmbase-2.2.0.tar.gz in yourpath$\backslash$
+  \end{enumerate}
+\end{frame}
+
+\subsection{cmake}
+\begin{frame}
+  \begin{enumerate}
+    \item Open a command prompt : press windows + R, write cmd and press OK.
+    \item go to yourpath$\backslash$ilmbase-2.2.0 and enter the following instructions :
+    \item setlocal
+    \item cmake -DCMAKE\_INSTALL\_PREFIX=..$\backslash$build -G ``Visual Studio 10 Win64'' ..$\backslash$ilmbase-2.2.0
+  \end{enumerate}
+\end{frame}
+
+\subsection{Compilation}
+\begin{frame}
+  \begin{itemize}
+    \item Go to yourpath$\backslash$ilmbase-2.2.0 and open ilmbase.sln with Visual Studio 2010.
+    \item In BUILD$\rightarrow$Configuration Manager, change Active solution platform to x64 and Active solution configuration to Release.
+    \item Press F7 to build the solution.
+    \item Right click on the INSTALL project and choose Build.
+  \end{itemize}
+\end{frame}
+
+\subsection{2nd Magic Trick}
+\begin{frame}
+  \begin{itemize}
+    \item Go to yourpath$\backslash$build$\backslash$lib and copy the five dll files.
+    \item Paste them where cmd.exe is installed on your machine (probably in C:$\backslash$Windows$\backslash$System32$\backslash$).
+    \item this manipulation will remove this error : (in case you're encountering it) \\
+    error MSB6006: ``cmd.exe'' exited with code -1073741515.
+  \end{itemize}
+\end{frame}
+
+\section{openexr}
+\subsection{Download}
+\begin{frame}
+  \begin{enumerate}
+    \item Go get \color{blue}\href{http://www.openexr.com/downloads.html/}{openexr }\color{black} on this page.
+    \item We made it work with the 2.2.0 version.
+    \item extract openexr-2.2.0.tar.gz in yourpath$\backslash$
+  \end{enumerate}
+\end{frame}
+
+\subsection{cmake}
+\begin{frame}
+  \begin{enumerate}
+    \item Open a command prompt : press windows + R, write cmd and press OK.
+    \item go to yourpath$\backslash$openexr-2.2.0 and enter the following instructions :
+    \item setlocal
+    \item cmake -DZLIB\_ROOT=..$\backslash$zlib -DILMBASE\_PACKAGE\_PREFIX=..$\backslash$build -DCMAKE\_INSTALL\_PREFIX=..$\backslash$build -G ``Visual Studio 10 Win64'' \^{} ..$\backslash$openexr-2.2.0
+  \end{enumerate}
+\end{frame}
+
+\subsection{Compilation}
+\begin{frame}
+  \begin{itemize}
+    \item Go to yourpath$\backslash$openexr-2.2.0 and open openexr.sln with Visual Studio 2010.
+    \item In BUILD$\rightarrow$Configuration Manager, change Active solution platform to x64 and Active solution configuration to Release.
+    \item from the b44ExpLogTable to IlmImfUtilTest project, you will have to resolve linker errors. For each, right click on it and choose Properties. Go to Configuration\_Properties$\rightarrow$Linker$\rightarrow$General and, in the Additional Library Directories, change the two occurencies of ../build in ../../build
+    \item Press F7 to build the solution.
+    \item Right click on the INSTALL project and choose Build.
+  \end{itemize}
+\end{frame}
+
+\end{document}

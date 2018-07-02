@@ -1,0 +1,58 @@
+<gratin file="customNode">
+ <string val="RGBToHSV" name="customHandleName"/>
+ <string val="filters/colorConv/" name="customHandlePath"/>
+ <string val="RGB to HSV" name="customHandleDesc"/>
+ <string val="Convert the input RGB color into the HSV color space" name="customHandleHelp"/>
+ <int val="1" name="customHandleInputDescSize"/>
+ <int val="1" name="customHandleOutputDescSize"/>
+ <string val="rgbImg" name="customHandleInputDesc-0"/>
+ <string val="HSVSpace" name="customHandleOutputDesc-0"/>
+ <string val="imgGeneric" name="origHandleName"/>
+ <string val="generic/" name="origHandlePath"/>
+ <string val="Generic node for image processing" name="origHandleDesc"/>
+ <string val="This node was designed to create custom shaders&#xa;The settings widget allows to modify input, output parameters&#xa;as well as the output image sizes.&#xa;&#xa;WARNING1: you will be able to modify the number of inputs/outputs&#xa;only if the node is entirely disconnected.&#xa;WARNING2: input/output names will not be modified if a custom node is created&#xa;from this node beacause these names should be edited directly in the setting widget&#xa;WARNING3: modifying the settings of a node will remove all previously&#xa;defined keyframes&#xa;&#xa;* Special data allows to modify the output image (using a multiple of&#xa;the input size, plus an offset vector&#xa;Check use mouse if you want to interact with the mouse&#xa;&#xa;* Input data allows to add/remove/displace input data (only if disconnected)&#xa;&#xa;* Output data allows to add/remove/displace output data (only if disconnected)&#xa;&#xa;* Param data allows to add/remove parameters that will automatically be &#xa;included in your shader.&#xa;For each of them you may choose a proper name, type, and min/max/default values.&#xa;Check keyframes if you want your parameter to be accessible&#xa; through the animation widget&#xa;&#xa;In the node interface itself:&#xa;Source tab contains the head and body of your GLSL source (only the body is editable)&#xa;Params tab contains the defined widgets according to your setting choices&#xa;Log tab contains compilation errors&#xa;&#xa;Once your settings and source completed, click on apply to see the result&#xa;" name="origHandleHelp"/>
+ <int val="1" name="origHandleInputDescSize"/>
+ <int val="1" name="origHandleOutputDescSize"/>
+ <string val="rgbImg" name="origHandleInputDesc-0"/>
+ <string val="HSVSpace" name="origHandleOutputDesc-0"/>
+ <string val="imgGeneric" name="nodeName-0"/>
+ <string val="generic/" name="nodePath-0"/>
+ <uint val="1" name="nodeId-0"/>
+ <uint val="0" name="nodeGraphId-0"/>
+ <uint val="1" name="nbInputs-0"/>
+ <uint val="1" name="nbOutputs-0"/>
+ <vector2f name="nodePos-0">
+  <float val="733.186" name="0"/>
+  <float val="-0.197745" name="1"/>
+ </vector2f>
+ <bool val="0" name="nodeGrouped-0"/>
+ <bool val="1" name="nodeHasWidget-0"/>
+ <IOData name="node-0">
+  <string val="rgbImg" name="genericIName-0"/>
+  <string val="HSVSpace" name="genericOName-0"/>
+  <vector2f name="genericTSize">
+   <float val="1" name="0"/>
+   <float val="1" name="1"/>
+  </vector2f>
+  <vector2f name="genericTOffset">
+   <float val="0" name="0"/>
+   <float val="0" name="1"/>
+  </vector2f>
+  <bool val="0" name="genericNeedMouse"/>
+  <uint val="0" name="genericNbSliderFloat"/>
+  <uint val="0" name="genericNbSliderInt"/>
+  <string val="#version 330&#xa;&#xa;in vec2 texcoord;&#xa;&#xa;layout(location = 0) out vec4 HSVSpace;&#xa;uniform sampler2D rgbImg;&#xa;" name="genericHead"/>
+  <string val="vec3 rgbToHsv(in float r,in float g,in float b) {&#xa;  const float eps = 0.0000000001;&#xa;  float h,s,v;&#xa;&#xa;  v = max(max(r,g),b);&#xa;  float delta = v-min(min(r,g),b);&#xa;  &#xa;  if(delta&lt;eps) {&#xa;    s = 0.0;&#xa;    h = 0.0;&#xa;  } else {&#xa;    s = delta/v;&#xa;    &#xa;    if(r==v)      h = (g-b)/delta;&#xa;    else if(g==v) h = 2.0 + (b-r)/delta;&#xa;    else          h = 4.0 + (r-g)/delta;&#xa;    &#xa;    h *= 60.0;&#xa;    if(h&lt;0.0)&#xa;      h += 360;&#xa;  }&#xa;  &#xa;  return vec3(h,s,v);&#xa;}&#xa;&#xa;void main() {&#xa;&#x9;vec4 color = texture(rgbImg,texcoord);&#xa;&#x9;HSVSpace = vec4(rgbToHsv(color.r,color.g,color.b),color.w);&#xa;}&#xa;" name="genericBody"/>
+ </IOData>
+ <IOData name="nodeWidget-0">
+  <uint val="0" name="nbChildren"/>
+ </IOData>
+ <vector2f name="nodeInputPos-0-0">
+  <float val="56.32" name="0"/>
+  <float val="28.16" name="1"/>
+ </vector2f>
+ <vector2f name="nodeOutputPos-0-0">
+  <float val="56.32" name="0"/>
+  <float val="28.16" name="1"/>
+ </vector2f>
+</gratin>

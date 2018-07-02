@@ -1,0 +1,233 @@
+<Gratin type="node">
+ <int val="0" name="majorVersion"/>
+ <int val="2" name="minorVersion"/>
+ <string val="imgGenericId" name="coreHandleStringId"/>
+ <uint val="1" name="coreHandleVersion"/>
+ <string val="4D_SIMPLEX_NOISE_ID_" name="nodeStringId-0"/>
+ <uint val="1" name="nodeVersion-0"/>
+ <string val="4DSimplexNoise" name="nodeName-0"/>
+ <string val="texture/" name="nodePath-0"/>
+ <string val="4D Simplex Noise" name="nodeDesc-0"/>
+ <string val="This node was designed to create a texture from a 4D &quot;Simplex Noise&quot;.&#xa;It was made from the paper : &quot;Simplex noise demystified, Stefan Gustavson, Linkoping University, Sweden (stegu@itn.liu.se), 2005-03-22&quot;.&#xa;This document is available at : &quot;http://www.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf&#xa;&#xa;In 2001, Ken Perlin presented &quot;simplex noise&quot; as a replacement for his classic noise algorithm.&#xa;This paper is explaining the algorithm a little more thoroughly than Ken Perlin had time to do in his course notes from Siggraph 2001 and 2002." name="nodeHelp-0"/>
+ <uint val="0" name="nodeId-0"/>
+ <uint val="0" name="nodeGraphId-0"/>
+ <vector2f name="nodePos-0">
+  <float val="-371.493" name="0"/>
+  <float val="-191.98" name="1"/>
+ </vector2f>
+ <int val="0" name="nodeInputNameSize-0"/>
+ <int val="1" name="nodeOutputNameSize-0"/>
+ <string val="outBuffer0" name="nodeOutputName-0-0"/>
+ <bool val="1" name="nodeHasWidget-0"/>
+ <IOData name="node-0">
+  <string val="420" name="genericGlslVersion"/>
+  <string val="4DSimplexNoise" name="genericNodeName"/>
+  <bool val="0" name="genericUseVertex"/>
+  <bool val="0" name="genericUseTesselation"/>
+  <bool val="0" name="genericUseGeometry"/>
+  <bool val="1" name="genericUseFragment"/>
+  <int val="9729" name="genericOutFilter"/>
+  <int val="33071" name="genericOutWrap"/>
+  <bool val="0" name="genericUseDepthTest"/>
+  <bool val="0" name="genericUseBlending"/>
+  <uint val="513" name="genericDepthFunc"/>
+  <uint val="1" name="genericBlendSrc"/>
+  <uint val="0" name="genericBlendDst"/>
+  <vector4f name="genericBackground">
+   <float val="0" name="0"/>
+   <float val="0" name="1"/>
+   <float val="0" name="2"/>
+   <float val="0" name="3"/>
+  </vector4f>
+  <string val="#version 420&#xa;&#xa;layout(location = 0) in vec2 vertex;&#xa;layout(location = 1) in vec2 coord;&#xa;uniform float Scale;&#xa;uniform float OffsetX;&#xa;uniform float OffsetY;&#xa;uniform float OffsetZ;&#xa;uniform float OffsetW;&#xa;uniform float gamma;&#xa;" name="genericVertHead"/>
+  <string val="out vec2 texcoord;&#xa;&#xa;void main() {&#xa;&#x9;gl_Position = vec4(vertex,0,1);&#xa;&#x9;texcoord    = coord;&#xa;}&#xa;" name="genericVertBody"/>
+  <string val="#version 420&#xa;&#xa;layout(location = 0) out vec4 outBuffer0;&#xa;uniform float Scale;&#xa;uniform float OffsetX;&#xa;uniform float OffsetY;&#xa;uniform float OffsetZ;&#xa;uniform float OffsetW;&#xa;uniform float gamma;&#xa;" name="genericFragHead"/>
+  <string val="in vec2 texcoord;&#xa;&#xa;int grad[] = {0,1,1,1,0,1,1,-1,0,1,-1,1,0,1,-1,-1,0,-1,1,1,0,-1,1,-1,0,-1,-1,1,0,-1,-1,-1,1,0,1,1,1,0,1,-1,1,0,-1,1,1,0,-1,-1,-1,0,1,1,-1,0,1,-1,-1,0,-1,1,-1,0,-1,-1,1,1,0,1,1,1,0,-1,1,-1,0,1,1,-1,0,-1,-1,1,0,1,-1,1,0,-1,-1,-1,0,1,-1,-1,0,-1,1,1,1,0,1,1,-1,0,1,-1,1,0,1,-1,-1,0,-1,1,1,0,-1,1,-1,0, 1,-1,1,0,-1,-1,-1,0};&#xa;&#xa;int perm[] = {151,160,137,91,90,15,131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,190,6,148,247,120,234,75,0,26,197,62,94,252,219,203,117,35,11,32,57,177,33,88,237,149,56,87,174,20,125,136,171,168,68,175,74,165,71,134,139,48,27,166,77,146,158,231,83,111,229,122,60,211,133,230,220,105,92,41,55,46,245,40,244,102,143,54,65,25,63,161,1,216,80,73,209,76,132,187,208,89,18,169,200,196,135,130,116,188,159,86,164,100,109,198,173,186,3,64,52,217,226,250,124,123,5,202,38,147,118,126,255,82,85,212,207,206,59,227,47,16,58,17,182,189,28,42,223,183,170,213,119,248,152,2,44,154,163,70,221,153,101,155,167,43,172,9,129,22,39,253,19,98,108,110,79,113,224,232,178,185,112,104,218,246,97,228,251,34,242,193,238,210,144,12,191,179,162,241,81,51,145,235,249,14,239,107,49,192,214,31,181,199,106,157,184,84,204,176,115,121,50,45,127,4,150,254,138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180,151,160,137,91,90,15,131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,190,6,148,247,120,234,75,0,26,197,62,94,252,219,203,117,35,11,32,57,177,33,88,237,149,56,87,174,20,125,136,171,168,68,175,74,165,71,134,139,48,27,166,77,146,158,231,83,111,229,122,60,211,133,230,220,105,92,41,55,46,245,40,244,102,143,54,65,25,63,161,1,216,80,73,209,76,132,187,208,89,18,169,200,196,135,130,116,188,159,86,164,100,109,198,173,186,3,64,52,217,226,250,124,123,5,202,38,147,118,126,255,82,85,212,207,206,59,227,47,16,58,17,182,189,28,42,223,183,170,213,119,248,152,2,44,154,163,70,221,153,101,155,167,43,172,9,129,22,39,253,19,98,108,110,79,113,224,232,178,185,112,104,218,246,97,228,251,34,242,193,238,210,144,12,191,179,162,241,81,51,145,235,249,14,239,107,49,192,214,31,181,199,106,157,184,84,204,176,115,121,50,45,127,4,150,254,138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180};&#xa;&#xa;double f = (sqrt(5.0) - 1.0) / 4.0;&#xa;double g = (5.0 - sqrt(5.0)) / 20.0;&#xa;&#xa;// Skew the input space&#xa;vec4 skew_cell(double x, double y, double z, double w) {&#xa;&#x9;double s = (x + y + z + w) * f;&#xa;&#x9;return vec4(floor(x+s), floor(y+s), floor(z+s), floor(w+s));&#xa;}&#xa;&#xa;// determine which simplex cell we're in&#xa;vec4 simplex_cell(vec4 skewCell, double x, double y, double z, double w) {&#xa;&#x9;double t = (skewCell.x + skewCell.y + skewCell.z + skewCell.w)*g;&#xa;&#x9;return vec4(x-skewCell.x+t, y-skewCell.y+t, z-skewCell.z+t, w-skewCell.w+t);&#xa;&#x9;// return : position for first corner of simplex&#xa;}&#xa;&#xa;// determine rank&#xa;vec4 rank(vec4 dist) {&#xa;&#x9;vec4 rank = vec4(0);&#xa;&#x9;if(dist.x > dist.y) {rank.x = rank.x + 1.0;} else {rank.y = rank.y + 1.0;}&#xa;&#x9;if(dist.x > dist.z) {rank.x = rank.x + 1.0;} else {rank.z = rank.z + 1.0;}&#xa;&#x9;if(dist.x > dist.w) {rank.x = rank.x + 1.0;} else {rank.w = rank.w + 1.0;}&#xa;&#x9;if(dist.y > dist.z) {rank.y = rank.y + 1.0;} else {rank.z = rank.z + 1.0;}&#xa;&#x9;if(dist.y > dist.w) {rank.y = rank.y + 1.0;} else {rank.w = rank.w + 1.0;}&#xa;&#x9;if(dist.z > dist.w) {rank.z = rank.z + 1.0;} else {rank.w = rank.w + 1.0;}&#xa;&#x9;return rank;&#xa;}&#xa;&#xa;// determine the order for the second, the third and the fourth corners&#xa;int[12] simplex_order(vec4 rank) {&#xa;&#x9;int[12] result = {0,0,0,0,0,0,0,0,0,0,0,0};&#xa;&#x9;for(int i = 0; i &lt; 3; i = i + 1) {&#xa;&#x9;&#x9;if(rank.x >= 2.5 - i) {result[i * 4] = 1;}&#xa;&#x9;&#x9;if(rank.y >= 2.5 - i) {result[i * 4 + 1] = 1;}&#xa;&#x9;&#x9;if(rank.z >= 2.5 - i) {result[i * 4 + 2] = 1;}&#xa;&#x9;&#x9;if(rank.w >= 2.5 - i) {result[i * 4 + 3] = 1;}&#xa;&#x9;}&#xa;&#x9;return result;&#xa;}&#xa;&#xa;// determine the offset for second corner in unskewed coords&#xa;vec4 simplex_second_offset(int[12] order, vec4 dist) {&#xa;&#x9;return vec4(dist.x - order[0] + g, dist.y - order[1] + g, dist.z - order[2] + g, dist.w - order[3] + g);&#xa;}&#xa;&#xa;// determine the offset for third corner in unskewed coords&#xa;vec4 simplex_third_offset(int[12] order, vec4 dist) {&#xa;&#x9;return vec4(dist.x - order[4] + 2.0*g, dist.y - order[5] + 2.0*g, dist.z - order[6] + 2.0*g, dist.w - order[7] + 2.0*g);&#xa;}&#xa;&#xa;// determine the offset for fourth corner in unskewed coords&#xa;vec4 simplex_fourth_offset(int[12] order, vec4 dist) {&#xa;&#x9;return vec4(dist.x - order[8] + 3.0*g, dist.y - order[9] + 3.0*g, dist.z - order[10] + 3.0*g, dist.w - order[11] + 3.0*g);&#xa;}&#xa;&#xa;// determine the offset for last corner in unskewed coords&#xa;vec4 simplex_last_offset(vec4 dist) {&#xa;&#x9;return vec4(dist.x - 1 + 4.0*g, dist.y - 1 + 4.0*g, dist.z - 1 + 4.0*g, dist.w - 1 + 4.0*g);&#xa;}&#xa;&#xa;// Work out the hashed gradient indices of the five simplex corners&#xa;int[5] gradient_indices(vec4 ijkl, int[12] order) {&#xa;&#x9;int[] result = {0,0,0,0,0};&#xa;&#x9;int i = 255 &amp; int(ijkl.x);&#xa;&#x9;int j = 255 &amp; int(ijkl.y);&#xa;&#x9;int k = 255 &amp; int(ijkl.z);&#xa;&#x9;int l = 255 &amp; int(ijkl.w);&#xa;&#x9;result[0] = perm[i + perm[j + perm[k + perm[l]]]] % 32;&#xa;&#x9;result[1] = perm[i + order[0] + perm[j + order[1] + perm[k + order[2] + perm[l + order[3]]]]] % 32;&#xa;&#x9;result[2] = perm[i + order[4] + perm[j + order[5] + perm[k + order[6] + perm[l + order[7]]]]] % 32;&#xa;&#x9;result[3] = perm[i + order[8] + perm[j + order[9] + perm[k + order[10] + perm[l + order[11]]]]] % 32;&#xa;&#x9;result[4] = perm[i + 1 + perm[j + 1 + perm[k + 1 + perm[l + 1]]]] % 32;&#xa;&#x9;return result;&#xa;}&#xa;&#xa;// determine the contribution from a corner&#xa;double contribution(int g_index, vec4 offset) {&#xa;&#x9;float t = 0.5 + 0.1 * gamma - offset.x*offset.x - offset.y*offset.y - offset.z*offset.z - offset.w*offset.w;&#xa;&#x9;if(t &lt; 0) {&#xa;&#x9;&#x9;return 0.0;&#xa;&#x9;}&#xa;&#x9;return pow(t, 4) * (grad[g_index*4] * offset.x + grad[g_index*4 + 1] * offset.y + grad[g_index*4 + 2] * offset.z + grad[g_index*4 + 3] * offset.w);&#xa;}&#xa;&#xa;double simplexNoises(vec4 pos) {&#xa;&#x9;vec4 pos_cell = skew_cell(pos.x, pos.y, pos.z, pos.w);&#xa;&#x9;vec4 offset0 = simplex_cell(pos_cell, pos.x, pos.y, pos.z, pos.w);&#xa;&#x9;int[] order = simplex_order(rank(offset0));&#xa;&#x9;vec4 offset1 = simplex_second_offset(order, offset0);&#xa;&#x9;vec4 offset2 = simplex_third_offset(order, offset0);&#xa;&#x9;vec4 offset3 = simplex_fourth_offset(order, offset0);&#xa;&#x9;vec4 offset4 = simplex_last_offset(offset0);&#xa;&#x9;int[] indices = gradient_indices(pos_cell, order);&#xa;&#x9;double cont0 = contribution(indices[0], offset0);&#xa;&#x9;double cont1 = contribution(indices[1], offset1);&#xa;&#x9;double cont2 = contribution(indices[2], offset2);&#xa;&#x9;double cont3 = contribution(indices[3], offset3);&#xa;&#x9;double cont4 = contribution(indices[4], offset4);&#xa;&#x9;return 27.0 * (cont0 + cont1 + cont2 + cont3 + cont4);&#xa;&#x9;// result : a value in the interval [-1; 1]&#xa;}&#xa;&#xa;void main() {&#xa;&#x9;vec4 xyzw = vec4(texcoord * Scale, 0, 0) + vec4(OffsetX, OffsetY, OffsetZ, OffsetW);&#xa;&#x9;outBuffer0 = vec4(vec3((simplexNoises(xyzw)+1)/2),1);&#xa;}&#xa;" name="genericFragBody"/>
+  <string val="#version 420&#xa;&#xa;layout(vertices = 4) out;&#xa;uniform float Scale;&#xa;uniform float OffsetX;&#xa;uniform float OffsetY;&#xa;uniform float OffsetZ;&#xa;uniform float OffsetW;&#xa;uniform float gamma;&#xa;" name="genericTessCHead"/>
+  <string val="void main(void) {&#xa;&#x9;gl_TessLevelOuter[0] = 1;&#xa;&#x9;gl_TessLevelOuter[1] = 1;&#xa;&#x9;gl_TessLevelOuter[2] = 1;&#xa;&#x9;gl_TessLevelOuter[3] = 1;&#xa;&#x9;gl_TessLevelInner[0] = 1;&#xa;&#x9;gl_TessLevelInner[1] = 1;&#xa;&#x9;gl_out[gl_InvocationID].gl_Position = gl_in[gl_InvocationID].gl_Position;&#xa;}&#xa;" name="genericTessCBody"/>
+  <string val="#version 420&#xa;&#xa;uniform float Scale;&#xa;uniform float OffsetX;&#xa;uniform float OffsetY;&#xa;uniform float OffsetZ;&#xa;uniform float OffsetW;&#xa;uniform float gamma;&#xa;" name="genericTessEHead"/>
+  <string val="layout(quads,equal_spacing) in;&#xa;&#xa;void main() {&#xa;&#x9;vec4 p1 = mix(gl_in[0].gl_Position,gl_in[1].gl_Position,gl_TessCoord.x);&#xa;&#x9;vec4 p2 = mix(gl_in[3].gl_Position,gl_in[2].gl_Position,gl_TessCoord.x);&#xa;&#x9;gl_Position = mix(p1,p2,gl_TessCoord.y);&#xa;}&#xa;" name="genericTessEBody"/>
+  <string val="#version 420&#xa;&#xa;layout(triangles) in;&#xa;uniform float Scale;&#xa;uniform float OffsetX;&#xa;uniform float OffsetY;&#xa;uniform float OffsetZ;&#xa;uniform float OffsetW;&#xa;uniform float gamma;&#xa;" name="genericGeomHead"/>
+  <string val="layout(triangle_strip, max_vertices = 3) out;&#xa;&#xa;void main() {&#xa;&#x9;gl_Position = gl_in[0].gl_Position; EmitVertex();&#xa;&#x9;gl_Position = gl_in[1].gl_Position; EmitVertex();&#xa;&#x9;gl_Position = gl_in[2].gl_Position; EmitVertex();&#xa;&#x9;EndPrimitive();&#xa;}" name="genericGeomBody"/>
+  <vector2f name="genericTSize">
+   <float val="0" name="0"/>
+   <float val="0" name="1"/>
+  </vector2f>
+  <vector2f name="genericTOffset">
+   <float val="512" name="0"/>
+   <float val="512" name="1"/>
+  </vector2f>
+  <bool val="0" name="genericNeedMouse"/>
+  <bool val="0" name="genericNeedKeyboard"/>
+  <uint val="6" name="genericNbWidgets"/>
+  <int val="0" name="genericWidgetType-0"/>
+  <int val="1" name="genericWidgetView-0"/>
+  <string val="Scale" name="genericWidgetName-0"/>
+  <bool val="0" name="genericWidgetKeyframed-0"/>
+  <int val="0" name="genericWidgetType-1"/>
+  <int val="1" name="genericWidgetView-1"/>
+  <string val="OffsetX" name="genericWidgetName-1"/>
+  <bool val="0" name="genericWidgetKeyframed-1"/>
+  <int val="0" name="genericWidgetType-2"/>
+  <int val="1" name="genericWidgetView-2"/>
+  <string val="OffsetY" name="genericWidgetName-2"/>
+  <bool val="0" name="genericWidgetKeyframed-2"/>
+  <int val="0" name="genericWidgetType-3"/>
+  <int val="1" name="genericWidgetView-3"/>
+  <string val="OffsetZ" name="genericWidgetName-3"/>
+  <bool val="0" name="genericWidgetKeyframed-3"/>
+  <int val="0" name="genericWidgetType-4"/>
+  <int val="1" name="genericWidgetView-4"/>
+  <string val="OffsetW" name="genericWidgetName-4"/>
+  <bool val="0" name="genericWidgetKeyframed-4"/>
+  <int val="0" name="genericWidgetType-5"/>
+  <int val="1" name="genericWidgetView-5"/>
+  <string val="gamma" name="genericWidgetName-5"/>
+  <bool val="0" name="genericWidgetKeyframed-5"/>
+ </IOData>
+ <IOData name="nodeWidget-0">
+  <uint val="6" name="nbChildren"/>
+  <IOData name="childWidget-0">
+   <bool val="0" name="floatAttribKeyframed"/>
+   <float val="0" name="floatAttribMinVal"/>
+   <float val="20" name="floatAttribMaxVal"/>
+   <IOData name="floatAttribCurve">
+    <float val="10" name="currentVal"/>
+    <uint val="1" name="nbCurves"/>
+    <IOData name="curve-0">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="10" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-1">
+   <bool val="0" name="floatAttribKeyframed"/>
+   <float val="0" name="floatAttribMinVal"/>
+   <float val="20" name="floatAttribMaxVal"/>
+   <IOData name="floatAttribCurve">
+    <float val="10" name="currentVal"/>
+    <uint val="1" name="nbCurves"/>
+    <IOData name="curve-0">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="10" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-2">
+   <bool val="0" name="floatAttribKeyframed"/>
+   <float val="0" name="floatAttribMinVal"/>
+   <float val="20" name="floatAttribMaxVal"/>
+   <IOData name="floatAttribCurve">
+    <float val="10" name="currentVal"/>
+    <uint val="1" name="nbCurves"/>
+    <IOData name="curve-0">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="10" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-3">
+   <bool val="0" name="floatAttribKeyframed"/>
+   <float val="0" name="floatAttribMinVal"/>
+   <float val="20" name="floatAttribMaxVal"/>
+   <IOData name="floatAttribCurve">
+    <float val="10" name="currentVal"/>
+    <uint val="1" name="nbCurves"/>
+    <IOData name="curve-0">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="10" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-4">
+   <bool val="0" name="floatAttribKeyframed"/>
+   <float val="0" name="floatAttribMinVal"/>
+   <float val="20" name="floatAttribMaxVal"/>
+   <IOData name="floatAttribCurve">
+    <float val="10" name="currentVal"/>
+    <uint val="1" name="nbCurves"/>
+    <IOData name="curve-0">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="10" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+  <IOData name="childWidget-5">
+   <bool val="0" name="floatAttribKeyframed"/>
+   <float val="0" name="floatAttribMinVal"/>
+   <float val="1" name="floatAttribMaxVal"/>
+   <IOData name="floatAttribCurve">
+    <float val="0" name="currentVal"/>
+    <uint val="1" name="nbCurves"/>
+    <IOData name="curve-0">
+     <int val="0" name="interpType"/>
+     <int val="0" name="leftType"/>
+     <int val="0" name="rightType"/>
+     <IOData name="interpolator">
+      <uint val="1" name="nbPoints"/>
+      <uint val="0" name="nbTangents"/>
+      <vector2f name="controlPoint-0">
+       <float val="0" name="0"/>
+       <float val="0" name="1"/>
+      </vector2f>
+     </IOData>
+    </IOData>
+   </IOData>
+   <uint val="0" name="nbChildren"/>
+  </IOData>
+ </IOData>
+ <vector2f name="nodeOutputPos-0-0">
+  <float val="56.32" name="0"/>
+  <float val="28.16" name="1"/>
+ </vector2f>
+</Gratin>
