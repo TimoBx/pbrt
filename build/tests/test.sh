@@ -3,16 +3,37 @@
 p=".pbrt"
 e=".exr"
 
-if [ "$1" = "" ]
+USAGE="\ntest.sh usage: ./test.sh <filename without extension> <new mat if needed, else type \"default\"> <if needed, one or two mask filenames>\n\n"
+
+if [ "$1" = "" ] || [ "$1" = "usage" ] || [ "$2" = "" ]
 then
-        printf "\nCan you please give me a file name (without its extension) ?\n\n"
-else
+        echo $USAGE
+        exit 1
+fi
+
 
 m=""
-if [ "$2" != "" ]
+m2=""
+mat=""
+if [ "$2" != "default" ]
 then
           m=_$2
+          m2=$2
           mat="--matchange"
+fi
+
+maskOpt=""
+mask1=""
+mask2=""
+if [ "$3" != "" ]
+then
+    maskOpt="--mask"
+    mask1=$3
+fi
+if [ "$4" != "" ]
+then
+    maskOpt="--mask2"
+    mask2=$4
 fi
 
 INPUT=$1$p
@@ -42,23 +63,9 @@ IMP8=$TRT$1$m$e
 IMP9=$TRT0$1$m$e
 IMP10=$TRTX$1$m$e
 
-
-printf "   \n\n"
-../../../build/pbrt $INPUT --importance --quiet $mat $2
+../../../build/pbrt $INPUT --importance --quiet $mat $m2 $maskOpt $mask1 $mask2
 
 
-printf "   \n\n Here are the images created and displayed :\n\n"
-echo $IMP
-echo $IMP1
-echo $IMP2
-echo $IMP3
-echo $IMP4
-echo $IMP5
-echo $IMP6
-echo $IMP7
-echo $IMP8
-echo $IMP9
-echo $IMP10
 
 printf "   \n\n"
 
@@ -74,6 +81,16 @@ then
   exrdisplay $IMP
 fi
 
+# printf "   \n\n---  IMP MAPS  ---   \n\n"
+if [ -f $IMP1 ] && [ -f $IMP2 ] && [ -f $IMP4 ] && [ -f $IMP5 ] && [ -f $IMP8 ]
+then
+    pfsv $IMP1 $IMP4 $IMP2 $IMP5 $IMP8
+fi
+
+
+
+DEBUG=false
+if ${DEBUG}; then
 # printf "   \n\n---  IMP MAP R  ---   \n\n"
 if [ -f $IMP1 ]
 then
@@ -133,8 +150,5 @@ if [ -f $IMP10 ]
 then
   exrdisplay $IMP10
 fi
-
-
-
 
 fi

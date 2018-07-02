@@ -23,7 +23,8 @@ Integrator "path"
 
 WorldBegin
 
-LightSource "infinite" "string mapname" "impmap_monkey.exr"
+LightSource "infinite" "rgb L" [.1 .1 .1]
+LightSource "infinite" "string mapname" "testeyes.png"
 
 
 MakeNamedMaterial "Material.001" "string type" "uber" "color Kd" [0.117375 0.640000 0.196547] "color Ks" [0.500000 0.459553 0.181912] "float roughness" [0.010408] "rgb Kt" [0.000000 0.000000 0.000000] "float index" [1.000000] "rgb opacity" [1.000000 1.000000 1.000000]

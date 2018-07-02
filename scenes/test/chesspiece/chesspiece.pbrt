@@ -3,7 +3,7 @@ LookAt	0 -5 0
 	0 0 1
 
 	#Rotate 5 1 1 1
-  Camera "orthographic" "float screenwindow" [-2 2 -2 2]
+  Camera "orthographic"
   #Camera "perspective" "float fov" 30
 
 Film "image"
@@ -15,6 +15,9 @@ Integrator "path"
 
 
 WorldBegin
+
+
+LightSource "infinite" "string mapname" "red.png"
 
 
 ObjectBegin "target"

@@ -16,6 +16,8 @@ Integrator "path"
 WorldBegin
 
 
+LightSource "infinite" "string mapname" "yellow.png"
+
 ObjectBegin "target"
 Rotate 90 1 0 0
 Shape "plymesh" "string filename" [ "torus.ply" ]

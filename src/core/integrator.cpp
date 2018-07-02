@@ -291,22 +291,19 @@ void SamplerIntegrator::Render(const Scene &scene) {
                         1 / std::sqrt((Float)tileSampler->samplesPerPixel));
                     ++nCameraRays;
 
+                    ray.rgbMask[0] = true;
+                    ray.rgbMask[1] = true;
+                    ray.rgbMask[2] = true;
+
                     // Apply mask if needed
                     if (PbrtOptions.applyMask) {
-                        Float r = PbrtOptions.mask[3*(pixel.y*PbrtOptions.wMask + pixel.x) + 0];
-                        Float g = PbrtOptions.mask[3*(pixel.y*PbrtOptions.wMask + pixel.x) + 1];
-                        Float b = PbrtOptions.mask[3*(pixel.y*PbrtOptions.wMask + pixel.x) + 2];
+                        bool r = PbrtOptions.mask[3*(pixel.y*PbrtOptions.wMask + pixel.x) + 0] == 0 ? false : true;
+                        bool g = PbrtOptions.mask[3*(pixel.y*PbrtOptions.wMask + pixel.x) + 1] == 0 ? false : true;
+                        bool b = PbrtOptions.mask[3*(pixel.y*PbrtOptions.wMask + pixel.x) + 2] == 0 ? false : true;
 
-                        // ray.wantedValue is initialized with an int: -1 if we don't want this pixel, 1 if we want this piwel, 0 otherwise.
-                        ray.wantedValue = 0;
-                        if (r != 0 && g == 0 && b == 0) {  // RED, MINUS MASK
-                            ray.wantedValue = -1;
-                        }
-                        else if (r == 0 && g == 0 && b != 0) {  // BLUE, PLUS MASK
-                            ray.wantedValue = 1;
-                        }
-                        // else
-                            // std::cout << r << " " << g << " " << b << std::endl;
+                        ray.rgbMask[0] = r;
+                        ray.rgbMask[1] = g;
+                        ray.rgbMask[2] = b;
                     }
 
                     // Evaluate radiance along camera ray

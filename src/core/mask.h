@@ -13,7 +13,7 @@
 namespace pbrt {
 
 
-  void changeMaskOptions(Options &options);
+  void changeMaskOptions(Options &options, int nbMasks, bool hasColor);
 
   void applyMaskToImpMap(Options &options);
 

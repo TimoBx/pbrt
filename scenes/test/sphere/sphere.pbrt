@@ -17,6 +17,8 @@ Integrator "path"
 WorldBegin
 
 
+LightSource "infinite" "string mapname" "north_light.png"
+
 ObjectBegin "target"
 Shape "sphere"
 ObjectEnd

@@ -191,7 +191,7 @@ void normalizeMaps(Options &options, Float value) {
     Saves the importance map in the .EXR image file used by the previously
     created infinite light.
 */
-void writeImpImage(Options &options) {
+void writeImpImages(Options &options) {
     // options.impMap = normalizeImpMap(options.impMap, options.widthImpMap, options.heightImpMap);
     int w = options.widthImpMap, h = options.heightImpMap;
     std::map<std::string, Float*>::iterator it = options.maps.begin();

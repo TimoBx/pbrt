@@ -69,8 +69,11 @@ class ImportancePathIntegrator : public SamplerIntegrator {
 };
 
 int nbRays();
-
 int nbErrors();
+
+void fillMaps(std::string name, Float proba, int index, bool r, bool g, bool b);
+
+RayDifferential respawnRay(SurfaceInteraction &isect, const Vector3f &d, bool firstIsectTarget, bool r, bool g, bool b);
 
 ImportancePathIntegrator *CreateImportancePathIntegrator(const ParamSet &params,
                                      std::shared_ptr<Sampler> sampler,

@@ -26,7 +26,7 @@ namespace pbrt {
   Float getMedian(Float* t, int w, int h);
   void normalizeMaps(Options &options, Float value);
 
-  void writeImpImage(Options &options);
+  void writeImpImages(Options &options);
 
 
 }  // namespace pbrt

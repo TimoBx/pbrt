@@ -20,6 +20,9 @@ Integrator "path"
 WorldBegin
 
 
+LightSource "infinite" "string mapname" "test.png"
+
+
 ObjectBegin "target"
 AttributeBegin
 Rotate 90 1 0 0

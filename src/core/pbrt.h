@@ -198,11 +198,11 @@ struct Options {
     std::shared_ptr<Material> newMat;
 
     // Mask
-    bool applyMask = false;
-    int wMask, hMask;
+    bool applyMask = false, hasColor = false;
+    int wMask, hMask, nbOfMasks;
     Float *mask;
-    std::map<std::string, Float*> maskPlusMaps, maskMinusMaps;
-    std::string maskName, maskMinusName;
+    std::map<std::string, Float*> maskMaps;
+    std::string mask1Name, mask2Name, mask3Name;
 
 };
 

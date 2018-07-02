@@ -18,6 +18,7 @@ Integrator "path"
 
 WorldBegin
 
+LightSource "infinite" "string mapname" "green.png"
 
 ObjectBegin "target"
 Translate 0 0 -8
