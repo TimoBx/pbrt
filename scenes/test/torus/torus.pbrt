@@ -16,7 +16,7 @@ Integrator "path"
 WorldBegin
 
 
-LightSource "infinite" "string mapname" "yellow.png"
+LightSource "infinite" "string mapname" "lightmap_glass.png"
 
 ObjectBegin "target"
 Rotate 90 1 0 0
