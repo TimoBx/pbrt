@@ -1,9 +1,0 @@
-Open QtCreator
-open gratin-vxxx/CMakeLists.txt
-choose nmake MVSC13 OpenGL64 
-add the following options to cmake (possibly change paths)
--DEIGEN3_INCLUDE_DIR="../../ext/eigen3/" -DZLIB_INCLUDE_DIR="../../ext/windows64IncLibs/openexr/include" -DOPENEXR_INCLUDE_PATH="../../ext/windows64IncLibs/openexr/include" -DZLIB_LIBRARY="../../ext/windows64IncLibs/openexr/lib/x64/Release/zlibwapi.lib"  -DOPENEXR_IMATH_LIBRARY="../../ext/windows64IncLibs/openexr/lib/x64/Release/Imath.lib" -DOPENEXR_HALF_LIBRARY="../../ext/windows64IncLibs/openexr/lib/x64/Release/Half.lib" -DOPENEXR_IEX_LIBRARY="../../ext/windows64IncLibs/openexr/lib/x64/Release/Iex.lib" -DOPENEXR_ILMIMF_LIBRARY="../../ext/windows64IncLibs/openexr/lib/x64/Release/IlmImf.lib" -DOPENEXR_ILMTHREAD_LIBRARY="../../ext/windows64IncLibs/openexr/lib/x64/Release/IlmThread.lib"
-compile
-copy everything from gratin/ext/windows64DLLs to gratin-vxxx-build
-remove unnecessary files in gratin-vxxx-build: sources/CmakeFiles/etc
-rename the directory to gratin-vxxx-windows64-bin
